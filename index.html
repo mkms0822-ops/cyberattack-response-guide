@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>個人情報が漏れたら｜いま何をすべきか 対処ガイド</title>
+<meta name="description" content="サイバー攻撃で個人情報が漏洩したとき、何をどの順番ですべきか。信用情報機関への本人申告、本人通知制度、相談先まで、手数料と手順をまとめました。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="個人情報が漏れたら｜対処ガイド">
+<meta property="og:description" content="免許証やクレジット情報が流出したとき、いま何をすべきか。">
+<meta name="theme-color" content="#131a26">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg:#f5f7fa; --card:#fff; --line:#dde4ed; --ink:#1a2332; --sub:#64748b;
+    --red:#d33a3a; --amber:#e08a2e; --green:#2e9e6b; --blue:#2c6fd1;
+    --mono:'SFMono-Regular',Consolas,monospace;
+  }
+  html{scroll-behavior:smooth;scroll-padding-top:16px}
+  body{
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
+    background:var(--bg); color:var(--ink); line-height:1.85;
+    -webkit-text-size-adjust:100%;
+    padding-bottom:calc(40px + env(safe-area-inset-bottom,0px));
+  }
+  .wrap{max-width:780px;margin:0 auto;padding:0 13px}
+
+  .hero{
+    background:linear-gradient(150deg,#131a26,#1e2a3d 60%,#2a3550);
+    color:#fff;margin:0 -13px 18px;padding:28px 20px 24px;
+    padding-top:calc(28px + env(safe-area-inset-top,0px));text-align:center;
+  }
+  .hero .mk{font-family:var(--mono);font-size:9.5px;letter-spacing:.34em;color:#8fb8e8;margin-bottom:9px}
+  .hero h1{font-size:25px;font-weight:700;line-height:1.4}
+  .hero .jp{font-size:13px;color:#b9c9de;margin-top:11px;line-height:1.8}
+
+  /* 緊急度 */
+  .urgent{
+    background:#fff3f3;border:2px solid #f3c0c0;border-radius:16px;
+    padding:16px 17px;margin-bottom:18px;
+  }
+  .urgent h2{font-size:15.5px;font-weight:700;color:var(--red);margin-bottom:8px}
+  .urgent p{font-size:13.5px;line-height:1.85}
+  .urgent b{color:var(--red)}
+
+  /* 手順 */
+  .step{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;
+    margin-bottom:12px;overflow:hidden;
+  }
+  .step-h{
+    display:flex;align-items:center;gap:12px;width:100%;
+    padding:15px 16px;background:transparent;border:none;cursor:pointer;
+    font-family:inherit;text-align:left;color:var(--ink);
+  }
+  .step-h:hover{background:#f8fafc}
+  .step-h .no{
+    width:30px;height:30px;flex-shrink:0;border-radius:50%;
+    background:var(--ink);color:#fff;font-size:13.5px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .step.done .step-h .no{background:var(--green)}
+  .step-h .bd{flex:1;min-width:0}
+  .step-h .ti{font-size:15.5px;font-weight:700;line-height:1.45}
+  .step-h .mt{font-size:11.5px;color:var(--sub);margin-top:2px}
+  .step-h .ar{font-size:11px;color:var(--sub);transition:transform .2s}
+  .step.open .step-h .ar{transform:rotate(90deg)}
+  .step-b{display:none;padding:0 16px 16px}
+  .step.open .step-b{display:block}
+  .step-h:focus-visible{outline:3px solid var(--blue);outline-offset:-2px}
+
+  .step p{font-size:13.5px;line-height:1.9;margin-bottom:10px}
+  .step ul{margin:0 0 10px 19px}
+  .step li{font-size:13px;line-height:1.85;margin-bottom:5px}
+
+  /* 機関カード */
+  .org{display:grid;gap:9px;margin:12px 0}
+  .org-c{border:1px solid var(--line);border-radius:12px;padding:13px 14px;background:#fafcff}
+  .org-c .top{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:6px}
+  .org-c .nm{font-size:15px;font-weight:700}
+  .org-c .fee{
+    font-family:var(--mono);font-size:12.5px;font-weight:700;
+    background:#eef4fc;color:var(--blue);border-radius:6px;padding:2px 9px;
+  }
+  .org-c .go{
+    margin-left:auto;font-size:11.5px;font-weight:700;background:var(--blue);color:#fff;
+    border-radius:99px;padding:6px 13px;text-decoration:none;white-space:nowrap;
+  }
+  .org-c .go:hover{filter:brightness(1.1)}
+  .org-c .ds{font-size:12.5px;color:var(--sub);line-height:1.75}
+  .org-c .tgt{font-size:11.5px;margin-top:5px}
+  .org-c .tgt b{color:var(--ink)}
+
+  /* チェック */
+  .chk{display:flex;align-items:center;gap:9px;margin-top:11px;
+       padding:10px 12px;background:#f1f8f4;border:1px solid #c6e6d4;border-radius:10px;
+       cursor:pointer;font-size:13px}
+  .chk input{width:19px;height:19px;accent-color:var(--green);cursor:pointer;flex-shrink:0;margin:0}
+
+  .warn{background:#fffaf0;border:1px solid #f3dcb0;border-radius:11px;
+        padding:11px 13px;font-size:12.5px;line-height:1.8;margin:10px 0}
+  .warn b{color:#9a6500}
+
+  /* リンク集 */
+  .lnk{display:grid;gap:8px}
+  .lnk a{
+    display:flex;align-items:center;gap:11px;padding:13px 14px;
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    text-decoration:none;color:var(--ink);
+  }
+  .lnk a:hover{border-color:var(--blue);transform:translateX(3px)}
+  .lnk .ic{font-size:19px;flex-shrink:0}
+  .lnk .tx{flex:1;min-width:0}
+  .lnk .tx b{display:block;font-size:14px;font-weight:700}
+  .lnk .tx small{display:block;font-size:11.5px;color:var(--sub);margin-top:2px;line-height:1.6}
+  .lnk .gt{font-size:12px;color:var(--sub);flex-shrink:0}
+
+  .sec{margin-top:24px}
+  .sec h2{font-size:16px;font-weight:700;margin-bottom:11px;display:flex;align-items:center;gap:8px}
+
+  /* 進み具合 */
+  .prog{
+    position:sticky;top:0;z-index:30;margin:0 -13px 16px;
+    background:rgba(255,255,255,.97);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);padding:10px 16px;
+  }
+  .prog .lb{display:flex;justify-content:space-between;font-size:11.5px;color:var(--sub);margin-bottom:5px}
+  .prog .lb b{color:var(--ink)}
+  .prog .tr{height:7px;background:#e4eaf2;border-radius:99px;overflow:hidden}
+  .prog .tr i{display:block;height:100%;width:0;border-radius:99px;
+              background:linear-gradient(90deg,#7ec89c,var(--green));transition:width .4s}
+
+  .note{margin-top:22px;font-size:11.5px;color:var(--sub);line-height:1.85;
+        background:var(--card);border:1px solid var(--line);border-radius:13px;padding:13px 15px}
+  .note b{color:var(--ink)}
+  .tools{display:flex;gap:7px;margin-top:14px;flex-wrap:wrap}
+  .tools button{flex:1;min-width:100px;padding:11px 6px;border:1px solid var(--line);
+    border-radius:99px;background:var(--card);color:var(--sub);
+    font-family:inherit;font-size:12.5px;cursor:pointer}
+  .tools button:hover{border-color:var(--blue);color:var(--blue)}
+  .foot{text-align:center;font-size:10px;color:var(--sub);padding:24px 10px 6px;
+        font-family:var(--mono);letter-spacing:.1em;line-height:2}
+
+
+  /* ===== ヘッダー画像 ===== */
+  .hero-img{margin:0 -13px;position:relative;line-height:0}
+  .hero-img img{width:100%;height:auto;display:block}
+
+  /* ===== 上部の操作バー ===== */
+  .topbar{
+    position:sticky;top:0;z-index:40;
+    background:rgba(255,255,255,.97);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+    margin:0 -13px;padding:7px 12px;
+    padding-top:calc(7px + env(safe-area-inset-top,0px));
+    display:flex;align-items:center;gap:5px;flex-wrap:nowrap;overflow-x:auto;
+  }
+  .topbar::-webkit-scrollbar{display:none}
+  .tb{
+    display:inline-flex;align-items:center;gap:4px;flex-shrink:0;
+    padding:8px 11px;border:1px solid var(--line);border-radius:99px;
+    background:var(--card);color:var(--sub);font-family:inherit;font-size:12px;
+    cursor:pointer;white-space:nowrap;line-height:1;
+  }
+  .tb:hover{border-color:var(--blue);color:var(--blue)}
+  .tb:active{transform:translateY(1px)}
+  .tb:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+  .tb .ic{font-size:14px}
+  .tb-sz{display:inline-flex;border:1px solid var(--line);border-radius:99px;overflow:hidden;flex-shrink:0}
+  .tb-sz button{
+    border:none;background:var(--card);color:var(--sub);font-family:inherit;
+    cursor:pointer;padding:8px 10px;line-height:1;
+  }
+  .tb-sz button.on{background:var(--blue);color:#fff}
+  .tb-sz .z1{font-size:10.5px}.tb-sz .z2{font-size:12.5px}.tb-sz .z3{font-size:15px}
+  .tb-ham{margin-left:auto;flex-shrink:0}
+
+  /* ===== 暗い表示 ===== */
+  html.dk{background:#0e141f}
+  html.dk body{background:#0e141f;color:#e2e8f0}
+  html.dk .step,html.dk .lnk a,html.dk .note,html.dk .tools button,
+  html.dk .topbar,html.dk .tb,html.dk .tb-sz button,html.dk .mnu-in{
+    background:#1a2332 !important;border-color:#2e3b50 !important;color:#e2e8f0;
+  }
+  html.dk .org-c{background:#222c3e !important;border-color:#33425b !important}
+  html.dk .step-h{color:#e2e8f0}
+  html.dk .step-h:hover{background:#222c3e}
+  html.dk .urgent{background:#2a1a1e !important;border-color:#5e3236 !important}
+  html.dk .warn{background:#2a2418 !important;border-color:#55472a !important}
+  html.dk .warn b{color:#f0c674}
+  html.dk .chk{background:#192a22 !important;border-color:#2f5440 !important}
+  html.dk .prog{background:rgba(14,20,31,.97) !important;border-bottom-color:#2e3b50}
+  html.dk .prog .tr{background:#2a3547}
+  html.dk .step-h .mt,html.dk .lnk .tx small,html.dk .org-c .ds,
+  html.dk .note,html.dk .foot,html.dk .prog .lb{color:#94a3b8 !important}
+  html.dk .org-c .fee{background:#1e3350;color:#8fc0ff}
+  html.dk .tb-sz button.on{background:var(--blue);color:#fff}
+  html.dk img{filter:none}
+
+  /* ===== 文字の大きさ ===== */
+  .zoomed{zoom:var(--z,1)}
+  @supports not (zoom:1){
+    .zoomed{transform:scale(var(--z,1));transform-origin:top center;
+            width:calc(100% / var(--z,1));margin-inline:auto}
+  }
+
+  /* ===== メニュー ===== */
+  .mnu{position:fixed;inset:0;z-index:90;display:none;background:rgba(10,18,30,.55)}
+  .mnu.open{display:block}
+  .mnu-in{
+    position:absolute;top:0;right:0;height:100%;width:min(90vw,340px);
+    background:var(--card);overflow-y:auto;-webkit-overflow-scrolling:touch;
+    padding:calc(18px + env(safe-area-inset-top,0px)) 16px calc(28px + env(safe-area-inset-bottom,0px));
+    box-shadow:-8px 0 30px rgba(10,20,35,.3);
+    transform:translateX(100%);transition:transform .3s cubic-bezier(.16,1,.3,1);
+  }
+  .mnu.open .mnu-in{transform:translateX(0)}
+  .mnu-h{display:flex;align-items:center;gap:9px;padding-bottom:14px;
+         border-bottom:1px solid var(--line);margin-bottom:14px}
+  .mnu-h b{flex:1;font-size:16px}
+  .mnu-x{background:none;border:none;font-size:21px;color:var(--sub);cursor:pointer;padding:4px}
+  .mnu-sec{font-size:10px;letter-spacing:.14em;color:var(--sub);margin:16px 2px 7px;font-weight:700}
+  .mnu-i{
+    display:flex;align-items:center;gap:11px;width:100%;
+    padding:13px 14px;margin-bottom:6px;border:1px solid var(--line);border-radius:12px;
+    background:transparent;color:inherit;font-family:inherit;font-size:14px;font-weight:700;
+    text-align:left;text-decoration:none;cursor:pointer;
+  }
+  .mnu-i:hover{border-color:var(--blue);transform:translateX(3px)}
+  .mnu-i .ic{font-size:19px;flex-shrink:0}
+  .mnu-i .tx{flex:1;min-width:0}
+  .mnu-i .tx small{display:block;font-size:11px;color:var(--sub);font-weight:400;margin-top:2px;line-height:1.6}
+  .mnu-qr{text-align:center;padding:14px 10px;background:#f1f8f3;border:1px solid #c9e4d3;
+          border-radius:12px;margin-bottom:6px}
+  html.dk .mnu-qr{background:#17281d !important;border-color:#2e5540 !important}
+  .mnu-qr img{width:150px;height:150px;border-radius:9px;background:#fff;padding:6px}
+  .mnu-qr .cap{font-size:11.5px;color:var(--sub);margin-top:7px;line-height:1.7}
+
+  /* ===== ダイアログ ===== */
+  .dlg{position:fixed;inset:0;z-index:100;display:none;background:rgba(10,18,30,.6);
+       padding:18px;overflow-y:auto}
+  .dlg.open{display:block}
+  .dlg-in{max-width:600px;margin:30px auto;background:var(--card);border-radius:18px;
+          padding:24px 22px calc(24px + env(safe-area-inset-bottom,0px));position:relative;
+          box-shadow:0 18px 50px rgba(10,20,35,.35)}
+  html.dk .dlg-in{background:#1a2332}
+  .dlg-x{position:absolute;top:13px;right:15px;background:none;border:none;
+         font-size:21px;color:var(--sub);cursor:pointer;padding:4px}
+  .dlg h2{font-size:18px;font-weight:700;margin-bottom:14px}
+  .dlg h3{font-size:14px;font-weight:700;color:var(--blue);margin:18px 0 6px}
+  .dlg p{font-size:13.5px;line-height:1.9;margin-bottom:9px}
+  .dlg ul{margin:0 0 9px 19px}
+  .dlg li{font-size:13px;line-height:1.85;margin-bottom:4px}
+  .dlg .sm{font-size:11.5px;color:var(--sub);line-height:1.8}
+  .credit-box{background:#f5f8fc;border:1px solid var(--line);border-radius:12px;
+              padding:14px 15px;margin-top:10px;font-size:13px;line-height:1.95}
+  html.dk .credit-box{background:#222c3e !important;border-color:#33425b !important}
+  .credit-box .ro{display:flex;gap:10px;margin-bottom:7px}
+  .credit-box .ro:last-child{margin-bottom:0}
+  .credit-box .lb{width:96px;flex-shrink:0;font-size:11.5px;color:var(--sub);padding-top:2px}
+  .credit-box .vl{flex:1;min-width:0;font-weight:700}
+  .credit-box .vl small{display:block;font-size:11px;color:var(--sub);font-weight:400;margin-top:1px}
+
+
+
+  /* ===== 書類ごとの対応 ===== */
+  .doc-tab{display:flex;gap:6px;margin:12px 0 11px}
+  .doc-tab button{
+    flex:1;padding:11px 6px;border:1.5px solid var(--line);border-radius:11px;
+    background:var(--card);color:var(--sub);font-family:inherit;
+    font-size:13px;font-weight:700;cursor:pointer;line-height:1.4;
+  }
+  html.dk .doc-tab button{background:#1a2332 !important;border-color:#2e3b50 !important}
+  .doc-tab button:hover{border-color:var(--blue)}
+  .doc-tab button.on{background:var(--ink);border-color:var(--ink);color:#fff}
+  html.dk .doc-tab button.on{background:var(--blue) !important;border-color:var(--blue) !important;color:#fff}
+  .doc-p{display:none}
+  .doc-p.on{display:block}
+
+  .fee-t{
+    width:100%;border-collapse:collapse;margin:11px 0;font-size:13px;
+    border:1px solid var(--line);border-radius:10px;overflow:hidden;
+  }
+  .fee-t th,.fee-t td{border-bottom:1px solid var(--line);padding:9px 11px;
+                      text-align:left;line-height:1.7;vertical-align:top}
+  .fee-t th{background:#f2f6fb;font-weight:700;font-size:12px;color:var(--blue)}
+  html.dk .fee-t th{background:#222c3e !important;color:#8fc0ff}
+  html.dk .fee-t td{border-color:#2e3b50}
+  .fee-t tr:last-child th,.fee-t tr:last-child td{border-bottom:none}
+  .fee-t .y{font-family:var(--mono);font-weight:700;white-space:nowrap;text-align:right}
+  .fee-t .free{color:var(--green)}
+
+  .urg-call{
+    background:#fff3f3;border:2px solid #f0bcbc;border-radius:12px;
+    padding:13px 15px;margin:12px 0;
+  }
+  html.dk .urg-call{background:#2a1a1e !important;border-color:#5e3236 !important}
+  .urg-call .ti{font-size:14px;font-weight:700;color:var(--red);margin-bottom:6px}
+  .urg-call .tel{
+    display:block;font-family:var(--mono);font-size:23px;font-weight:700;
+    color:var(--red);text-decoration:none;letter-spacing:.02em;margin:4px 0;
+  }
+  .urg-call .sub2{font-size:12px;color:var(--sub);line-height:1.75}
+
+  /* ===== サイバー脅威マップの説明 ===== */
+  .cm-lead{font-size:13.5px;line-height:1.9;margin-bottom:14px}
+  .cm-note{
+    background:#eef4fc;border:1px solid #c9ddf3;border-radius:12px;
+    padding:12px 14px;font-size:12.5px;line-height:1.85;margin:12px 0;
+  }
+  html.dk .cm-note{background:#1a2740 !important;border-color:#2c4468 !important}
+  .cm-note b{color:var(--blue)}
+  html.dk .cm-note b{color:#8fc0ff}
+
+  .cm-list{display:grid;gap:9px;margin:14px 0}
+  .cm-i{
+    border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card);
+  }
+  html.dk .cm-i{background:#1a2332 !important;border-color:#2e3b50 !important}
+  .cm-i .hd{display:flex;align-items:center;gap:10px;padding:11px 13px}
+  .cm-i .cd{
+    font-family:var(--mono);font-size:14px;font-weight:700;
+    padding:4px 10px;border-radius:7px;flex-shrink:0;min-width:54px;text-align:center;
+    color:#fff;
+  }
+  .cm-i .bd{flex:1;min-width:0}
+  .cm-i .en{font-size:11px;color:var(--sub);font-family:var(--mono);letter-spacing:.03em}
+  .cm-i .ja{font-size:14.5px;font-weight:700;line-height:1.45}
+  .cm-i .ds{
+    font-size:12.5px;line-height:1.85;padding:0 13px 12px;color:var(--sub);
+  }
+  .cm-i .ex{
+    margin:0 13px 12px;padding:9px 11px;border-radius:9px;
+    background:#f7faff;border:1px solid #e0eaf7;font-size:12px;line-height:1.8;
+  }
+  html.dk .cm-i .ex{background:#222c3e !important;border-color:#33425b !important}
+  .cm-i .ex b{color:var(--ink)}
+  html.dk .cm-i .ex b{color:#e2e8f0}
+
+  .cm-read{
+    background:#fffaf0;border:1px solid #f3dcb0;border-radius:12px;
+    padding:13px 15px;margin:14px 0;font-size:13px;line-height:1.9;
+  }
+  html.dk .cm-read{background:#2a2418 !important;border-color:#55472a !important}
+  .cm-read h4{font-size:14px;font-weight:700;color:#9a6500;margin-bottom:7px}
+  html.dk .cm-read h4{color:#f0c674}
+  .cm-read ul{margin:0 0 0 19px}
+  .cm-read li{font-size:12.5px;line-height:1.85;margin-bottom:5px}
+
+  @media(max-width:430px){
+    .tb .tx{display:none}
+    .tb{padding:8px 9px}
+    .tb .ic{font-size:16px}
+  }
+  @media print{
+    .topbar,.mnu,.dlg{display:none !important}
+  }
+
+  .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(12px);
+    background:var(--ink);color:#fff;padding:10px 19px;border-radius:99px;
+    font-size:13px;z-index:70;opacity:0;pointer-events:none;
+    transition:opacity .25s,transform .25s}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  @media(max-width:430px){
+    .hero h1{font-size:21px}
+    .step-h .ti{font-size:14.5px}
+    .org-c .go{margin-left:0;margin-top:5px}
+  }
+  @media print{
+    .tools,.toast,.prog{display:none}
+    .step-b{display:block !important}
+    body{padding-bottom:0;background:#fff}
+    .step,.org-c,.lnk a{break-inside:avoid}
+  }
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} *{transition:none !important} }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="topbar">
+    <button type="button" class="tb" onclick="doShare()" aria-label="共有する">
+      <span class="ic">📤</span><span class="tx">共有</span></button>
+    <button type="button" class="tb" onclick="doCopyText()" aria-label="内容をコピー">
+      <span class="ic">📋</span><span class="tx">コピー</span></button>
+    <button type="button" class="tb" onclick="doCopyUrl()" aria-label="リンクをコピー">
+      <span class="ic">🔗</span><span class="tx">リンク</span></button>
+    <button type="button" class="tb" id="tbTheme" onclick="doTheme()" aria-label="表示を切り替える">
+      <span class="ic">🌙</span><span class="tx">暗く</span></button>
+    <span class="tb-sz" role="group" aria-label="文字の大きさ">
+      <button type="button" class="z1" data-z="s" onclick="doSize('s')" aria-label="小さく">小</button>
+      <button type="button" class="z2" data-z="m" onclick="doSize('m')" aria-label="標準">中</button>
+      <button type="button" class="z3" data-z="l" onclick="doSize('l')" aria-label="大きく">大</button>
+    </span>
+    <button type="button" class="tb tb-ham" onclick="openMenu()" aria-label="メニュー">
+      <span class="ic">☰</span></button>
+  </div>
+
+  <div class="hero-img">
+    <img src="leak-hero.jpg"
+         alt="DATA BREACH RESPONSE GUIDE 個人情報が漏れたら。いま何を、どの順番ですべきか。手数料や手順をまとめました。DWA防災情報センター">
+  </div>
+
+<div class="zoomed" id="zoomArea">
+
+  <div class="prog">
+    <div class="lb"><span>対応の進み具合</span><b id="pn">0 / 7</b></div>
+    <div class="tr"><i id="pb"></i></div>
+  </div>
+
+  <div class="urgent">
+    <h2>⚠️ 最優先は「名義を使われないこと」</h2>
+    <p>漏れた情報そのものは取り戻せません。だから、<b>あなたの名義で勝手に契約されるのを防ぐ</b>ことに絞ります。<br>
+    とくに<b>運転免許証の画像</b>が流出した場合は、カードやローン、携帯回線を他人に契約されるおそれがあります。</p>
+  </div>
+
+  <div id="steps"></div>
+
+  <div class="sec">
+    <h2>🏛 公的機関の最新情報</h2>
+    <div class="lnk" id="links"></div>
+  </div>
+
+  <div class="sec">
+    <h2>☎️ 困ったときの相談先</h2>
+    <div class="lnk" id="consult"></div>
+  </div>
+
+  <div class="note">
+    <b>このページについて</b><br>
+    手数料や手続きの方法は変更されることがあります。<b>申し込む前に、必ず各機関の公式ページで最新の内容をご確認ください。</b><br><br>
+    記載の金額は2026年10月時点で各機関が公表しているものです。<br><br>
+    このページは一般的な情報の提供であり、法的な助言ではありません。実際の被害が生じた場合や、賠償請求をお考えの場合は、弁護士にご相談ください。<br><br>
+    チェックの記録は、お使いのブラウザにのみ保存されます。外部へ送信されることはありません。
+  </div>
+
+  <div class="tools">
+    <button type="button" onclick="window.print()">🖨 印刷</button>
+    <button type="button" onclick="resetAll()">↺ チェックを消す</button>
+  </div>
+
+  <div class="foot">
+    DWA 防災情報センター<br>
+    Tool development: Kouji Furutani&nbsp;&nbsp;|&nbsp;&nbsp;Built with Claude (Anthropic)
+  </div>
+
+</div><!-- /zoomArea -->
+</div><!-- /wrap -->
+
+
+<!-- ===== メニュー ===== -->
+<div class="mnu" id="mnu" onclick="if(event.target===this)closeMenu()">
+  <nav class="mnu-in">
+    <div class="mnu-h">
+      <span style="font-size:22px">🛡</span>
+      <b>メニュー</b>
+      <button class="mnu-x" onclick="closeMenu()" aria-label="閉じる">✕</button>
+    </div>
+
+    <div class="mnu-sec">// 関連サイト</div>
+    <a class="mnu-i" href="http://bousai0111.info/" target="_blank" rel="noopener">
+      <span class="ic">🏠</span>
+      <span class="tx">DWA防災情報センター<small>防災情報の総合サイト</small></span></a>
+    <a class="mnu-i" href="https://cybermap.kaspersky.com/ja" target="_blank" rel="noopener">
+      <span class="ic">🌐</span>
+      <span class="tx">サイバー脅威マップ<small>世界の攻撃をリアルタイムで表示（Kaspersky）</small></span></a>
+    <button type="button" class="mnu-i" onclick="openDlg('dlgCyber')">
+      <span class="ic">📖</span>
+      <span class="tx">脅威マップの見方<small>OAS・ODS・MAVなど9項目の意味</small></span></button>
+
+    <div class="mnu-sec">// 公式LINE</div>
+    <div class="mnu-qr">
+      <img src="https://qr-official.line.me/gs/M_187ukqci_GW.png?oat_content=qr"
+           alt="DWA防災情報センター 公式LINEの友だち追加用QRコード" loading="lazy">
+      <div class="cap">QRコードを読み取ると<br>公式LINEに登録できます</div>
+    </div>
+
+    <div class="mnu-sec">// このページについて</div>
+    <button type="button" class="mnu-i" onclick="openDlg('dlgPriv')">
+      <span class="ic">🔒</span>
+      <span class="tx">プライバシーポリシー<small>情報の取り扱いについて</small></span></button>
+    <button type="button" class="mnu-i" onclick="openDlg('dlgCredit')">
+      <span class="ic">📝</span>
+      <span class="tx">制作について<small>作成者と制作支援</small></span></button>
+  </nav>
+</div>
+
+<!-- ===== プライバシーポリシー ===== -->
+<div class="dlg" id="dlgPriv" onclick="if(event.target===this)closeDlg('dlgPriv')">
+  <div class="dlg-in">
+    <button class="dlg-x" onclick="closeDlg('dlgPriv')" aria-label="閉じる">✕</button>
+    <h2>🔒 プライバシーポリシー</h2>
+
+    <h3>1. このページが取得する情報</h3>
+    <p>このページは、<b>個人を特定する情報を一切取得しません。</b>
+    氏名、住所、連絡先などの入力欄はなく、サーバーへの送信も行いません。</p>
+
+    <h3>2. 端末に保存するもの</h3>
+    <p>次の2つだけを、お使いのブラウザに保存します。</p>
+    <ul>
+      <li>対処手順のチェック状況</li>
+      <li>表示の設定（明るさ・文字の大きさ）</li>
+    </ul>
+    <p>いずれも<b>この端末の中だけ</b>に残り、外部へ送信されることはありません。
+    ブラウザの閲覧データを削除すると、これらも消えます。</p>
+
+    <h3>3. 外部サイトへのリンク</h3>
+    <p>信用情報機関、公的機関、相談先などへのリンクを掲載しています。
+    リンク先での情報の取り扱いは、それぞれのサイトの方針が適用されます。</p>
+
+    <h3>4. 掲載内容について</h3>
+    <p>手数料や手続きの方法は変更されることがあります。
+    <b>申し込む前に、必ず各機関の公式ページで最新の内容をご確認ください。</b></p>
+    <p>このページは一般的な情報の提供であり、<b>法的な助言ではありません。</b>
+    実際の被害が生じた場合や、賠償請求をお考えの場合は、弁護士にご相談ください。</p>
+
+    <h3>5. お問い合わせ</h3>
+    <p>DWA防災情報センター<br>
+    <a href="http://bousai0111.info/" target="_blank" rel="noopener"
+       style="color:var(--blue);font-weight:700">bousai0111.info</a></p>
+
+    <p class="sm">制定日：2026年10月<br>内容は必要に応じて見直すことがあります。</p>
+  </div>
+</div>
+
+<!-- ===== 制作について ===== -->
+<div class="dlg" id="dlgCredit" onclick="if(event.target===this)closeDlg('dlgCredit')">
+  <div class="dlg-in">
+    <button class="dlg-x" onclick="closeDlg('dlgCredit')" aria-label="閉じる">✕</button>
+    <h2>📝 制作について</h2>
+
+    <div class="credit-box">
+      <div class="ro"><span class="lb">ツール作成</span>
+        <span class="vl">古谷 浩二<small>Kouji Furutani</small></span></div>
+      <div class="ro"><span class="lb">運営</span>
+        <span class="vl">DWA防災情報センター<small>長岡京市認定 市民活動団体</small></span></div>
+      <div class="ro"><span class="lb">制作支援</span>
+        <span class="vl">Claude<small>Anthropic（アンソロピック）社のAI</small></span></div>
+    </div>
+
+    <h3>制作の経緯</h3>
+    <p>2026年9月に発生した大規模な個人情報漏洩を受け、
+    <b>被害に遭った方が何をすべきか分からない</b>という状況を目にして作成しました。</p>
+    <p>企業名の一覧ではなく、<b>いま手を動かせること</b>に絞っています。</p>
+
+    <h3>制作支援について</h3>
+    <p>構成の設計、情報の取捨選択、内容の確認は作成者が行い、
+    <b>Claude</b>が調査と実装を担当しました。</p>
+    <p>掲載内容は、各機関の公式ページで確認したうえで記載しています。</p>
+
+    <h3>出典</h3>
+    <ul>
+      <li>CIC（指定信用情報機関）</li>
+      <li>JICC（日本信用情報機構）</li>
+      <li>全国銀行個人信用情報センター</li>
+      <li>個人情報保護委員会</li>
+      <li>IPA 情報処理推進機構</li>
+      <li>警察庁 サイバー警察局</li>
+    </ul>
+
+    <p class="sm">© 2026 DWA 防災情報センター</p>
+  </div>
+</div>
+
+
+<!-- ===== サイバー脅威マップの説明書 ===== -->
+<div class="dlg" id="dlgCyber" onclick="if(event.target===this)closeDlg('dlgCyber')">
+  <div class="dlg-in">
+    <button class="dlg-x" onclick="closeDlg('dlgCyber')" aria-label="閉じる">✕</button>
+    <h2>📖 サイバー脅威マップの見方</h2>
+
+    <p class="cm-lead">Kaspersky社の
+    <a href="https://cybermap.kaspersky.com/ja" target="_blank" rel="noopener"
+       style="color:var(--blue);font-weight:700">Cyberthreat Real-Time Map</a>
+    は、同社の製品が<b>検知・ブロックした脅威</b>を地図上にリアルタイムで表示するものです。</p>
+
+    <div class="cm-note">
+      <b>数字は「攻撃の総数」ではありません。</b><br>
+      表示されるのは、Kaspersky製品を使っている人のところで検知された分だけです。
+      世界で起きている攻撃の一部にすぎず、<b>傾向をつかむための目安</b>とお考えください。
+    </div>
+
+    <h3>画面右の9項目</h3>
+    <p style="font-size:12.5px;color:var(--sub);margin-bottom:4px">
+    それぞれ「どうやって見つけたか」を表しています。数字はその日の検知件数です。</p>
+
+    <div class="cm-list" id="cmList"></div>
+
+    <div class="cm-read">
+      <h4>💡 数字の読み方</h4>
+      <ul>
+        <li><b>OASが最も多いのが普通です。</b>ファイルを開く・保存するたびに動く、常時監視だからです</li>
+        <li><b>WAVが増えていたら</b>、危険なサイトや改ざんされたページが広がっているサインです</li>
+        <li><b>MAVとKASが同時に増えたら</b>、大規模なばらまきメールが流れている可能性があります</li>
+        <li><b>IDSの急増</b>は、ネットワークへの直接攻撃が活発になっている合図です</li>
+        <li><b>RMWが出たら要注意。</b>件数は少なくても、1件あたりの被害が甚大です</li>
+        <li><b>VULが少ないのは良いこと</b>ではありません。更新を怠った機器が見つかっていないだけ、という場合もあります</li>
+      </ul>
+    </div>
+
+    <h3>日常の備えにつなげるなら</h3>
+    <ul>
+      <li><b>OAS・ODS</b>が多い → 不審なファイルを開かない。USBメモリの扱いに注意</li>
+      <li><b>MAV・KAS</b>が多い → メールの添付とリンクを安易に開かない</li>
+      <li><b>WAV</b>が多い → 見覚えのないサイトを避ける。ブラウザを最新に</li>
+      <li><b>IDS・VUL</b>が多い → ルーターとOSの更新。初期パスワードを変える</li>
+      <li><b>BAD</b>が多い → 家電やカメラが乗っ取られていないか確認</li>
+      <li><b>RMW</b>が多い → バックアップを<b>切り離して</b>保管</li>
+    </ul>
+
+    <p class="sm" style="margin-top:14px">
+    ※ 各項目の定義は、Kaspersky社の公表内容にもとづいています。<br>
+    ※ 同種のマップは他社も公開しています（Check Point、Fortinet、NETSCOUTなど）。
+    見比べると、偏りに気づけます。</p>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   対処の手順
+   ============================================================ */
+var STEPS = [
+ { id:'s1', ti:'何が漏れたかを確かめる', mt:'まずここから。対策の範囲が決まります',
+   body:
+   '<p>企業からの通知メールや公式発表で、<b>自分の何が漏れたか</b>を確認します。' +
+   '漏れた項目によって、すべきことが変わります。</p>' +
+   '<ul>' +
+   '<li><b>氏名・住所・電話番号</b> … 迷惑電話や詐欺の連絡に注意</li>' +
+   '<li><b>メールアドレス</b> … なりすましメールに注意</li>' +
+   '<li><b>パスワード</b> … 使い回していた他のサービスも変更</li>' +
+   '<li><b>運転免許証・マイナンバーカードの画像</b> … <b>最も危険</b>。手順2へ</li>' +
+   '<li><b>クレジットカード番号</b> … カード会社へ即連絡。手順3へ</li>' +
+   '</ul>' +
+   '<div class="warn">⚠️ <b>通知を装った詐欺に注意。</b>' +
+   '「補償金を受け取るには口座情報を入力」といったメールは詐欺です。' +
+   '企業の公式サイトを自分で開いて確認してください。</div>' },
+
+ { id:'s2', ti:'信用情報機関に「本人申告」をする', mt:'名義の悪用を防ぐ、いちばん重要な手続き',
+   body:
+   '<p>登録すると、あなたの名義でカードやローンが申し込まれたとき、' +
+   '審査する会社が<b>慎重に確認するようになります</b>。</p>' +
+   '<p><b>機関は3つあり、加盟している業種が違います。</b>' +
+   'どれか1つでは防ぎきれないため、可能なら3つとも登録してください。</p>' +
+
+   '<div class="org">' +
+     '<div class="org-c"><div class="top">' +
+       '<span class="nm">CIC</span><span class="fee">1,000円</span>' +
+       '<a class="go" href="https://www.cic.co.jp/mydata/declaration/index.html" target="_blank" rel="noopener">申込ページ ↗</a>' +
+     '</div>' +
+     '<div class="ds">クレジットカード会社、携帯電話会社、信販会社が加盟。</div>' +
+     '<div class="tgt">▶ <b>携帯の不正契約を防ぐなら、ここが要です</b></div></div>' +
+
+     '<div class="org-c"><div class="top">' +
+       '<span class="nm">JICC</span><span class="fee">700円</span>' +
+       '<a class="go" href="https://www.jicc.co.jp/comment" target="_blank" rel="noopener">申込ページ ↗</a>' +
+     '</div>' +
+     '<div class="ds">消費者金融、信販会社が加盟。スマホアプリから申し込めます。</div>' +
+     '<div class="tgt">▶ 現物が手元にある場合は「<b>名義の悪用防止</b>」を選択</div></div>' +
+
+     '<div class="org-c"><div class="top">' +
+       '<span class="nm">全国銀行個人信用情報センター</span><span class="fee">500円</span>' +
+       '<a class="go" href="https://www.zenginkyo.or.jp/pcic/return/" target="_blank" rel="noopener">申込ページ ↗</a>' +
+     '</div>' +
+     '<div class="ds">銀行、信用金庫が加盟。マイナンバーカードでオンライン申込ができます。</div>' +
+     '<div class="tgt">▶ 銀行ローンの不正契約を防ぎます</div></div>' +
+   '</div>' +
+
+   '<div class="warn">💡 <b>手数料は3つで合計2,200円。</b>' +
+   '高く感じるかもしれませんが、不正契約が1件でも成立すると、' +
+   '取り消しの手続きに何か月もかかります。<br>' +
+   '登録は<b>5年間</b>有効です。</div>' +
+
+   '<p class="note" style="margin:0;font-size:12px">' +
+   '※ 大規模な漏洩では、企業が費用を負担する補償策を出すことがあります。' +
+   '通知の内容を確認してから申し込むと、自己負担を避けられる場合があります。</p>' },
+
+
+ { id:'s2b', ti:'身分証そのものへの対応', mt:'免許証・マイナンバーカードが流出したとき',
+   body:
+   '<p>どちらが流出したかで、やることが変わります。</p>' +
+
+   '<div class="doc-tab">' +
+     '<button type="button" class="on" onclick="docTab(\'lic\',this)">🚗 運転免許証</button>' +
+     '<button type="button" onclick="docTab(\'myn\',this)">🪪 マイナンバーカード</button>' +
+   '</div>' +
+
+   /* ---- 運転免許証 ---- */
+   '<div class="doc-p on" id="docLic">' +
+     '<p><b>手元にカードがある（画像だけ流出した）場合</b>、' +
+     '急いで再発行する必要はありません。まず手順2の本人申告を済ませてください。</p>' +
+
+     '<div class="warn">💡 <b>再発行すると、番号の末尾1桁（再交付回数）が変わります。</b><br>' +
+     '番号そのものは変わりませんが、<b>流出した画像と現在の免許証が一致しなくなる</b>ため、' +
+     '窓口で照合されたときに不正を見つけやすくなります。</div>' +
+
+     '<table class="fee-t">' +
+       '<tr><th>いまの持ち方</th><th>再交付後</th><th style="text-align:right">手数料</th></tr>' +
+       '<tr><td>免許証のみ</td><td>免許証のみ</td><td class="y">2,600円</td></tr>' +
+       '<tr><td>免許証のみ</td><td>マイナ免許証のみ</td><td class="y">1,500円</td></tr>' +
+       '<tr><td>2枚持ち（免許証だけ紛失）</td><td>マイナ免許証のみ</td><td class="y free">0円</td></tr>' +
+       '<tr><td>2枚持ち（マイナだけ紛失）</td><td>免許証のみ</td><td class="y free">0円</td></tr>' +
+     '</table>' +
+
+     '<p><b>手続きの場所</b><br>' +
+     '運転免許センター、運転免許試験場、一部の警察署。' +
+     '即日交付かどうかは地域で異なります。</p>' +
+
+     '<p><b>持ち物</b></p>' +
+     '<ul>' +
+       '<li>証明写真1枚（縦3cm×横2.4cm、6か月以内）</li>' +
+       '<li>本人確認書類</li>' +
+       '<li>手元にある免許証（紛失していない場合）</li>' +
+     '</ul>' +
+
+     '<div class="warn">📅 <b>更新時期が近いなら、更新と同時に。</b>' +
+     '再交付手数料が不要になり、更新手数料だけで済みます。</div>' +
+   '</div>' +
+
+   /* ---- マイナンバーカード ---- */
+   '<div class="doc-p" id="docMyn">' +
+     '<div class="urg-call">' +
+       '<div class="ti">⚠️ カードが手元にない場合は、すぐ電話を</div>' +
+       '<a class="tel" href="tel:0120950178">0120-95-0178</a>' +
+       '<div class="sub2">マイナンバー総合フリーダイヤル（24時間365日・通話無料）<br>' +
+       '音声ガイダンス<b>2番</b>で、電子証明書の機能を<b>一時停止</b>できます。</div>' +
+     '</div>' +
+
+     '<p><b>画像だけが流出し、カードは手元にある場合</b>は、一時停止までは不要です。' +
+     'ただし次の点にご注意ください。</p>' +
+
+     '<div class="warn">🔑 <b>マイナンバー（12桁）は、原則として変わりません。</b><br>' +
+     '再発行してもカードが新しくなるだけです。' +
+     '番号を変更できるのは、<b>不正に使われるおそれがあると市区町村が認めた場合</b>に限られます。' +
+     '実害が出ている、または強く懸念される場合は、窓口にご相談ください。</div>' +
+
+     '<table class="fee-t">' +
+       '<tr><th>区分</th><th>内容</th><th style="text-align:right">手数料</th></tr>' +
+       '<tr><td>通常の再交付</td><td>電子証明書あり</td><td class="y">1,000円</td></tr>' +
+       '<tr><td>通常の再交付</td><td>電子証明書なし</td><td class="y">800円</td></tr>' +
+       '<tr><td>特急発行</td><td>短期間で受け取る</td><td class="y">2,000円</td></tr>' +
+       '<tr><td>盗難の場合</td><td>被害届の証明があるとき</td><td class="y free">0円</td></tr>' +
+     '</table>' +
+
+     '<p class="sm" style="font-size:12px">※ 盗難届や罹災証明が確認できる場合は無料になります。' +
+     '取り扱いは自治体により異なるため、窓口でご確認ください。</p>' +
+
+     '<p><b>手続きの流れ</b></p>' +
+     '<ul>' +
+       '<li>① カードが手元にない → <b>0120-95-0178</b> で一時停止</li>' +
+       '<li>② 警察署・交番へ<b>遺失届</b>（受理番号を控える）</li>' +
+       '<li>③ 住民票のある市区町村の窓口で再交付を申請</li>' +
+       '<li>④ 受け取りまで<b>1〜2か月</b>（特急発行なら短縮）</li>' +
+     '</ul>' +
+
+     '<div class="warn">💡 <b>見つかった場合は、窓口で無料で解除</b>できます。' +
+     '電話やコンビニでは解除できません。</div>' +
+
+     '<p><b>マイナ保険証をお使いの場合</b><br>' +
+     '一時停止すると、医療機関で保険証として使えなくなります。' +
+     '受診の予定がある方は、資格確認書の発行を窓口で相談してください。</p>' +
+   '</div>' +
+
+   '<div class="cm-note" style="margin-top:14px">' +
+     '<b>どちらの場合も、最優先は手順2の本人申告です。</b><br>' +
+     'カードを作り直しても、流出した情報は取り戻せません。' +
+     '名義を使われないようにする手続きを、先に済ませてください。' +
+   '</div>' },
+ { id:'s3', ti:'カードと口座を確認する', mt:'身に覚えのない利用がないか',
+   body:
+   '<p>クレジットカード情報が含まれていた場合は、<b>すぐにカード会社へ連絡</b>してください。' +
+   '含まれていなくても、念のため確認を。</p>' +
+   '<ul>' +
+   '<li>直近3か月の<b>利用明細</b>を見る（少額の試し利用が狙われます）</li>' +
+   '<li>銀行口座の<b>入出金</b>を確認する</li>' +
+   '<li><b>ログイン通知</b>をオンにする</li>' +
+   '<li><b>送金の上限額</b>を下げておく</li>' +
+   '</ul>' +
+   '<div class="warn">⚠️ <b>不正利用は、まず数百円の少額から試されます。</b>' +
+   '「こんな小さい額なら」と見逃さないでください。</div>' },
+
+ { id:'s4', ti:'パスワードを変える', mt:'使い回していた他のサービスも',
+   body:
+   '<p>漏れたサービスだけでなく、<b>同じパスワードを使っていたすべてのサービス</b>を変更します。</p>' +
+   '<p><b>優先する順番</b></p>' +
+   '<ul>' +
+   '<li>① <b>メール</b> … ここを取られると、他のパスワードも再設定されます</li>' +
+   '<li>② <b>金融機関・決済サービス</b></li>' +
+   '<li>③ ネット通販（カード情報を登録しているもの）</li>' +
+   '<li>④ SNS</li>' +
+   '</ul>' +
+   '<p><b>あわせて二段階認証を</b>。パスワードが漏れても、これがあれば止められます。' +
+   '最低でもメールと金融機関には設定してください。</p>' },
+
+ { id:'s5', ti:'自治体の「本人通知制度」に登録する', mt:'無料。住民票の不正取得を知らせてくれます',
+   body:
+   '<p>住民票や戸籍謄本が第三者に交付されたとき、<b>あなたに通知が届く</b>制度です。</p>' +
+   '<p><b>手数料は無料</b>。多くの自治体が実施しています。</p>' +
+   '<p>なりすましで住民票を取られると、そこを足がかりに他の手続きをされるおそれがあります。' +
+   '早く気づけることに意味があります。</p>' +
+   '<div class="warn">📍 <b>お住まいの市区町村の窓口</b>、または自治体サイトで' +
+   '「本人通知制度」と検索してください。名称は自治体により異なります。</div>' },
+
+ { id:'s6', ti:'記録を残す', mt:'あとで必要になります',
+   body:
+   '<p>賠償請求や相談をするとき、<b>記録が証拠になります</b>。</p>' +
+   '<ul>' +
+   '<li>企業から届いた<b>通知メール</b>（削除しない）</li>' +
+   '<li>公式発表の<b>画面を保存</b>（日付が分かる形で）</li>' +
+   '<li>本人申告の<b>登録完了通知</b></li>' +
+   '<li>手数料の<b>領収書</b></li>' +
+   '<li>不審な連絡があった<b>日時と内容</b></li>' +
+   '</ul>' +
+   '<div class="warn">💡 <b>かかった費用は、損害として請求できる可能性があります。</b>' +
+   '領収書は必ず残してください。</div>' }
+];
+
+/* 公的機関のリンク */
+var LINKS = [
+ { ic:'🏛', nm:'個人情報保護委員会', ds:'漏えい事案の公表、相談窓口（03-6457-9849）',
+   u:'https://www.ppc.go.jp/' },
+ { ic:'🛡', nm:'IPA 情報処理推進機構', ds:'セキュリティの注意喚起、10大脅威',
+   u:'https://www.ipa.go.jp/security/' },
+ { ic:'👮', nm:'警察庁 サイバー警察局', ds:'サイバー犯罪の統計と注意喚起',
+   u:'https://www.npa.go.jp/bureau/cyber/index.html' },
+ { ic:'📡', nm:'NISC 内閣サイバーセキュリティセンター', ds:'政府の注意喚起',
+   u:'https://www.nisc.go.jp/' },
+ { ic:'🔔', nm:'JPCERT/CC', ds:'脆弱性と攻撃の最新情報',
+   u:'https://www.jpcert.or.jp/' }
+];
+
+/* 相談先 */
+var CONSULT = [
+ { ic:'📞', nm:'個人情報保護委員会 相談ダイヤル', ds:'03-6457-9849（平日 9:30〜17:30）',
+   u:'https://www.ppc.go.jp/aboutus/contactus/' },
+ { ic:'🛒', nm:'消費者ホットライン 188', ds:'契約トラブル全般。局番なしで188',
+   u:'https://www.kokusen.go.jp/map/' },
+ { ic:'👮', nm:'警察相談専用窓口 #9110', ds:'犯罪被害のおそれがあるとき',
+   u:'https://www.npa.go.jp/bureau/safetylife/soudan.html' },
+ { ic:'⚖️', nm:'法テラス', ds:'0570-078374。収入条件を満たせば無料相談',
+   u:'https://www.houterasu.or.jp/' },
+ { ic:'💳', nm:'日本クレジット協会', ds:'カードの不正利用に関する相談',
+   u:'https://www.j-credit.or.jp/' }
+];
+
+/* ============================================================
+   組み立て
+   ============================================================ */
+var KEY = 'leak-done';
+
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function getDone(){
+  try{ return JSON.parse(localStorage.getItem(KEY) || '{}'); }catch(e){ return {}; }
+}
+function setDone(o){
+  try{ localStorage.setItem(KEY, JSON.stringify(o)); }catch(e){}
+}
+
+function drawSteps(){
+  var done = getDone();
+  var h = '';
+  for(var i=0;i<STEPS.length;i++){
+    var s = STEPS[i], on = !!done[s.id];
+    h += '<div class="step' + (on ? ' done' : '') + '" id="' + s.id + '">' +
+      '<button type="button" class="step-h" onclick="toggleStep(\'' + s.id + '\')">' +
+        '<span class="no">' + (on ? '✓' : (i+1)) + '</span>' +
+        '<span class="bd"><span class="ti">' + esc(s.ti) + '</span>' +
+        '<span class="mt">' + esc(s.mt) + '</span></span>' +
+        '<span class="ar">▶</span>' +
+      '</button>' +
+      '<div class="step-b">' + s.body +
+        '<label class="chk"><input type="checkbox"' + (on ? ' checked' : '') +
+        ' onchange="mark(\'' + s.id + '\', this.checked)">' +
+        '<span>この手順を終えました</span></label>' +
+      '</div></div>';
+  }
+  document.getElementById('steps').innerHTML = h;
+  updProg();
+}
+
+function toggleStep(id){
+  var el = document.getElementById(id);
+  if(el) el.classList.toggle('open');
+}
+
+function mark(id, on){
+  var d = getDone();
+  if(on) d[id] = 1; else delete d[id];
+  setDone(d);
+  var el = document.getElementById(id);
+  if(el){
+    el.classList.toggle('done', on);
+    var no = el.querySelector('.no');
+    var idx = STEPS.map(function(s){ return s.id; }).indexOf(id);
+    if(no) no.textContent = on ? '✓' : (idx + 1);
+  }
+  updProg();
+  if(on) toast('ひとつ進みました');
+}
+
+function updProg(){
+  var d = getDone(), n = 0;
+  for(var i=0;i<STEPS.length;i++) if(d[STEPS[i].id]) n++;
+  var pb = document.getElementById('pb');
+  var pn = document.getElementById('pn');
+  if(pb) pb.style.width = (n / STEPS.length * 100) + '%';
+  if(pn) pn.textContent = (n === STEPS.length) ? 'すべて完了' : (n + ' / ' + STEPS.length);
+}
+
+function resetAll(){
+  if(!confirm('チェックをすべて消します。よろしいですか。')) return;
+  setDone({});
+  drawSteps();
+  toast('チェックを消しました');
+}
+
+function drawLinks(id, arr){
+  var h = '';
+  for(var i=0;i<arr.length;i++){
+    var l = arr[i];
+    h += '<a href="' + esc(l.u) + '" target="_blank" rel="noopener">' +
+      '<span class="ic">' + l.ic + '</span>' +
+      '<span class="tx"><b>' + esc(l.nm) + '</b><small>' + esc(l.ds) + '</small></span>' +
+      '<span class="gt">↗</span></a>';
+  }
+  document.getElementById(id).innerHTML = h;
+}
+
+/* ---- 共有 ---- */
+function toast(m){
+  var t = document.getElementById('toast');
+  t.textContent = m; t.classList.add('show');
+  clearTimeout(t._tm); t._tm = setTimeout(function(){ t.classList.remove('show'); }, 2200);
+}
+function share(){
+  var url = location.href.split('#')[0];
+  var text = '個人情報が漏れたら｜いま何をすべきか 対処ガイド\n';
+  if(navigator.share){
+    navigator.share({ title:'個人情報が漏れたら', text:text, url:url }).catch(function(){});
+    return;
+  }
+  copy(text + url, '共有メッセージをコピーしました');
+}
+function copyLink(){ copy(location.href.split('#')[0], 'リンクをコピーしました'); }
+function copy(text, done){
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(function(){ toast(done); })
+      .catch(function(){ fb(text, done); });
+  }else fb(text, done);
+}
+function fb(text, done){
+  try{
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta);
+    toast(done);
+  }catch(e){ prompt('コピーしてください', text); }
+}
+
+
+/* ============================================================
+   表示の設定・メニュー・共有
+   ============================================================ */
+var TK = 'leak-theme', ZK = 'leak-size';
+var ZS = { s:0.9, m:1, l:1.18 };
+
+function getTheme(){ try{ return localStorage.getItem(TK) || 'light'; }catch(e){ return 'light'; } }
+function getSize(){ try{ return localStorage.getItem(ZK) || 'm'; }catch(e){ return 'm'; } }
+function save(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+
+function applyTheme(v){
+  document.documentElement.classList.toggle('dk', v === 'dark');
+  var b = document.getElementById('tbTheme');
+  if(b){
+    b.querySelector('.ic').textContent = (v === 'dark') ? '☀️' : '🌙';
+    var tx = b.querySelector('.tx');
+    if(tx) tx.textContent = (v === 'dark') ? '明るく' : '暗く';
+  }
+}
+function doTheme(){
+  var n = (getTheme() === 'dark') ? 'light' : 'dark';
+  save(TK, n); applyTheme(n);
+}
+
+function applySize(v){
+  document.documentElement.style.setProperty('--z', ZS[v] || 1);
+  var a = document.getElementById('zoomArea');
+  if(a) a.classList.add('zoomed');
+  var bs = document.querySelectorAll('.tb-sz button');
+  for(var i=0;i<bs.length;i++) bs[i].classList.toggle('on', bs[i].getAttribute('data-z') === v);
+}
+function doSize(v){ save(ZK, v); applySize(v); }
+
+/* ---- メニュー ---- */
+function openMenu(){
+  document.getElementById('mnu').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMenu(){
+  document.getElementById('mnu').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function openDlg(id){
+  closeMenu();
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeDlg(id){
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* ---- 共有 ---- */
+function doShare(){
+  var url = location.href.split('#')[0];
+  var text = '個人情報が漏れたら｜いま何をすべきか 対処ガイド\n' +
+             '信用情報機関への本人申告など、6つの手順をまとめています。\n';
+  if(navigator.share){
+    navigator.share({ title:'個人情報が漏れたら', text:text, url:url }).catch(function(){});
+    return;
+  }
+  copy(text + url, '共有メッセージをコピーしました');
+}
+function doCopyUrl(){ copy(location.href.split('#')[0], 'リンクをコピーしました'); }
+
+/* 手順の要点を、文章としてコピーする */
+function doCopyText(){
+  var t = '【個人情報が漏れたら｜対処ガイド】\n\n';
+  for(var i=0;i<STEPS.length;i++){
+    t += (i+1) + '. ' + STEPS[i].ti + '\n   ' + STEPS[i].mt + '\n';
+  }
+  t += '\n■ 信用情報機関への本人申告（名義の悪用を防ぐ）\n';
+  t += '  CIC    1,000円  カード・携帯\n';
+  t += '  JICC     700円  消費者金融・信販\n';
+  t += '  全銀協   500円  銀行\n';
+  t += '  ※3つとも登録すると、より確実です\n\n';
+  t += '詳しくは → ' + location.href.split('#')[0] + '\n';
+  t += 'DWA防災情報センター';
+  copy(t, '内容をコピーしました');
+}
+
+/* ---- 画面ができる前に設定を当てる（ちらつき防止） ---- */
+(function(){
+  var h = document.documentElement;
+  if(getTheme() === 'dark') h.classList.add('dk');
+  h.style.setProperty('--z', ZS[getSize()] || 1);
+})();
+
+document.addEventListener('keydown', function(e){
+  if(e.key !== 'Escape') return;
+  closeMenu(); closeDlg('dlgPriv'); closeDlg('dlgCredit');
+});
+
+
+
+/* 身分証の種類を切り替える */
+function docTab(k, btn){
+  var l = document.getElementById('docLic');
+  var m = document.getElementById('docMyn');
+  if(l) l.classList.toggle('on', k === 'lic');
+  if(m) m.classList.toggle('on', k === 'myn');
+  var bs = document.querySelectorAll('.doc-tab button');
+  for(var i=0;i<bs.length;i++) bs[i].classList.remove('on');
+  if(btn) btn.classList.add('on');
+}
+
+/* ============================================================
+   サイバー脅威マップの9項目
+   Kaspersky社の公表内容にもとづく
+   ============================================================ */
+var CMAP = [
+ { cd:'OAS', col:'#2eb872', en:'On-Access Scan', ja:'リアルタイム検知',
+   ds:'ファイルを開く・コピーする・実行する・保存する、そのときに見つかったものです。常に動いている監視なので、通常いちばん件数が多くなります。',
+   ex:'<b>こんなとき：</b>ダウンロードしたファイルを開こうとしたら止められた' },
+
+ { cd:'ODS', col:'#e0455a', en:'On-Demand Scan', ja:'手動スキャン検知',
+   ds:'利用者が自分で「ウイルススキャン」を実行したときに見つかったものです。すでに保存されていた、気づかれていなかったものが多く含まれます。',
+   ex:'<b>こんなとき：</b>久しぶりに全体をスキャンしたら、古いファイルから見つかった' },
+
+ { cd:'MAV', col:'#e08a2e', en:'Mail Anti-Virus', ja:'メール経由の検知',
+   ds:'メールソフトに新しいメールが届いたときの検査で見つかったものです。添付ファイルを保存するときは、あらためてOASが働きます。',
+   ex:'<b>こんなとき：</b>請求書を装った添付ファイルが、開く前に遮断された' },
+
+ { cd:'WAV', col:'#2c8fe0', en:'Web Anti-Virus', ja:'Web閲覧中の検知',
+   ds:'サイトを開いたとき、またはファイルをダウンロードしたときに見つかったものです。改ざんされたページや、偽サイトが含まれます。',
+   ex:'<b>こんなとき：</b>検索から入ったサイトで、警告が出て接続が止まった' },
+
+ { cd:'IDS', col:'#d14fd1', en:'Intrusion Detection System', ja:'ネットワーク侵入検知',
+   ds:'ネットワークを通じた攻撃を見つけたものです。ファイルではなく、通信そのものが対象になります。ルーターや公開サーバーが狙われます。',
+   ex:'<b>こんなとき：</b>外部から、管理画面へのログインが何度も試された' },
+
+ { cd:'VUL', col:'#e8c93a', en:'Vulnerability Scan', ja:'脆弱性の発見',
+   ds:'ソフトや設定の弱点が見つかったものです。攻撃を受けたわけではなく、<b>「ここが狙われやすい」という警告</b>です。更新をしていない機器で多く出ます。',
+   ex:'<b>こんなとき：</b>古いままのソフトに、既知の弱点が残っていた' },
+
+ { cd:'KAS', col:'#8f6ae0', en:'Kaspersky Anti-Spam', ja:'迷惑メールの検知',
+   ds:'評判情報をもとに、不審なメールや迷惑メールの通信を見つけたものです。詐欺メールの大量配信が始まると、数字が跳ね上がります。',
+   ex:'<b>こんなとき：</b>同じ文面のメールが、世界中に一斉に送られている' },
+
+ { cd:'BAD', col:'#3ab8c4', en:'Botnet Activity Detection', ja:'ボットネットの活動',
+   ds:'乗っ取られた機器が、指令サーバーと通信しているのを見つけたものです。DDoS攻撃の被害者側と、命令を出す側のIPアドレスが対象です。',
+   ex:'<b>こんなとき：</b>家庭のカメラが乗っ取られ、攻撃に使われていた' },
+
+ { cd:'RMW', col:'#4f7fd1', en:'Ransomware', ja:'身代金要求型ウイルス',
+   ds:'ファイルを暗号化して金銭を要求する攻撃を見つけたものです。<b>件数は少なくても、1件あたりの被害が最も大きい</b>種類です。',
+   ex:'<b>こんなとき：</b>社内のファイルがすべて開けなくなり、金銭を要求された' }
+];
+
+function drawCmap(){
+  var box = document.getElementById('cmList');
+  if(!box) return;
+  var h = '';
+  for(var i=0;i<CMAP.length;i++){
+    var c = CMAP[i];
+    h += '<div class="cm-i">' +
+      '<div class="hd">' +
+        '<span class="cd" style="background:' + c.col + '">' + c.cd + '</span>' +
+        '<span class="bd"><span class="en">' + c.en + '</span>' +
+        '<span class="ja">' + c.ja + '</span></span>' +
+      '</div>' +
+      '<div class="ds">' + c.ds + '</div>' +
+      '<div class="ex">' + c.ex + '</div>' +
+      '</div>';
+  }
+  box.innerHTML = h;
+}
+
+/* ---- 起動 ---- */
+(function(){
+  function go(){
+    drawSteps();
+    drawLinks('links', LINKS);
+    drawLinks('consult', CONSULT);
+    applyTheme(getTheme());
+    applySize(getSize());
+    drawCmap();
+    /* 最初の手順だけ開いておく */
+    var first = document.getElementById('s1');
+    if(first) first.classList.add('open');
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', go);
+    window.addEventListener('load', go);
+  }else go();
+})();
+</script>
+
+</body>
+</html>
