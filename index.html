@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>個人情報が漏れたら｜いま何をすべきか 対処ガイド</title>
-<meta name="description" content="サイバー攻撃で個人情報が漏洩したとき、何をどの順番ですべきか。信用情報機関への本人申告、本人通知制度、相談先まで、手数料と手順をまとめました。">
+<meta name="description" content="サイバー攻撃で個人情報が漏洩したとき、何をどの順番ですべきか。信用情報機関への本人申告（混雑時の進め方）、本人通知制度、相談先まで、手数料と手順をまとめました。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="個人情報が漏れたら｜対処ガイド">
 <meta property="og:description" content="免許証やクレジット情報が流出したとき、いま何をすべきか。">
@@ -61,6 +61,7 @@
   }
   .step.done .step-h .no{background:var(--green)}
   .step-h .bd{flex:1;min-width:0}
+  .step-h .ti,.step-h .mt{display:block}
   .step-h .ti{font-size:15.5px;font-weight:700;line-height:1.45}
   .step-h .mt{font-size:11.5px;color:var(--sub);margin-top:2px}
   .step-h .ar{font-size:11px;color:var(--sub);transition:transform .2s}
@@ -100,6 +101,31 @@
   .warn{background:#fffaf0;border:1px solid #f3dcb0;border-radius:11px;
         padding:11px 13px;font-size:12.5px;line-height:1.8;margin:10px 0}
   .warn b{color:#9a6500}
+
+  /* 混雑のお知らせ */
+  .alert{
+    background:#fff8e8;border:2px solid #e8c98a;border-radius:16px;
+    padding:15px 17px;margin-bottom:18px;
+  }
+  html.dk .alert{background:#2b2515 !important;border-color:#5c4c24 !important}
+  .alert .al-h{font-size:15.5px;font-weight:700;color:#9a6500;margin-bottom:8px;line-height:1.5}
+  html.dk .alert .al-h{color:#f0c674}
+  .alert p{font-size:13.5px;line-height:1.85;margin-bottom:9px}
+  .alert ul{margin:0 0 9px 19px}
+  .alert li{font-size:13px;line-height:1.85;margin-bottom:6px}
+  .alert .al-f{font-size:11.5px;color:var(--sub);line-height:1.75;
+               border-top:1px dashed #e0c48a;padding-top:9px;margin-top:4px}
+  html.dk .alert .al-f{border-top-color:#5c4c24}
+
+  /* 機関カードの注記 */
+  .org-c .cond{
+    font-size:11.5px;line-height:1.75;margin-top:6px;padding:7px 9px;
+    background:#fff8e8;border:1px solid #ecd9ab;border-radius:8px;
+  }
+  html.dk .org-c .cond{background:#2b2515 !important;border-color:#5c4c24 !important}
+  .org-c .cond b{color:#9a6500}
+  html.dk .org-c .cond b{color:#f0c674}
+  .org-c .fee small{font-family:inherit;font-weight:400;font-size:10.5px}
 
   /* リンク集 */
   .lnk{display:grid;gap:8px}
@@ -406,7 +432,7 @@
 <div class="zoomed" id="zoomArea">
 
   <div class="prog">
-    <div class="lb"><span>対応の進み具合</span><b id="pn">0 / 7</b></div>
+    <div class="lb"><span>対応の進み具合</span><b id="pn">0 / 8</b></div>
     <div class="tr"><i id="pb"></i></div>
   </div>
 
@@ -414,6 +440,25 @@
     <h2>⚠️ 最優先は「名義を使われないこと」</h2>
     <p>漏れた情報そのものは取り戻せません。だから、<b>あなたの名義で勝手に契約されるのを防ぐ</b>ことに絞ります。<br>
     とくに<b>運転免許証の画像</b>が流出した場合は、カードやローン、携帯回線を他人に契約されるおそれがあります。</p>
+  </div>
+
+  <div class="alert">
+    <div class="al-h">⏳ いま、信用情報機関の受付が混み合っています</div>
+    <p>タイムズカーの情報漏洩（2026年9月28日公表）を受けて申込が集中し、
+    <b>CIC・JICC・全国銀行個人信用情報センターの3機関すべてが、公式に遅延を告知</b>しています。
+    手順2に進む前に、次の3点をご確認ください。</p>
+    <ul>
+      <li><b>申込済みなら、出し直さないでください。</b>
+      登録は<b>5年間</b>有効で、数日から数週間の遅れで効力が落ちるものではありません。
+      重複して申し込むと、ご自身の順番が後ろに回ります</li>
+      <li><b>JICCは、登録が完了しても完了メールとプッシュ通知が届かない場合があります。</b>
+      スマホアプリのトップにある「申込状況と登録結果の確認」を開き、
+      ステータスが「コメント登録完了」になっていれば、もう済んでいます</li>
+      <li><b>待っている間に、手順3を先に済ませてください。</b>
+      カードと銀行の利用通知をオンにするのが、いま<b>最も早く効きます</b></li>
+    </ul>
+    <div class="al-f">この案内は<b>2026年10月9日</b>時点で各機関が公表している内容にもとづいています。
+    状況は日々変わりますので、申し込む前に公式ページでご確認ください。</div>
   </div>
 
   <div id="steps"></div>
@@ -431,7 +476,8 @@
   <div class="note">
     <b>このページについて</b><br>
     手数料や手続きの方法は変更されることがあります。<b>申し込む前に、必ず各機関の公式ページで最新の内容をご確認ください。</b><br><br>
-    記載の金額は2026年10月時点で各機関が公表しているものです。<br><br>
+    <b>最終確認日：2026年10月9日。</b>金額と申込方法は、この日にCIC・JICC・全国銀行個人信用情報センターの公式ページで確認したものです。
+    同日時点で、3機関とも申込の集中による遅延を公式に告知しています。<br><br>
     このページは一般的な情報の提供であり、法的な助言ではありません。実際の被害が生じた場合や、賠償請求をお考えの場合は、弁護士にご相談ください。<br><br>
     チェックの記録は、お使いのブラウザにのみ保存されます。外部へ送信されることはありません。
   </div>
@@ -460,7 +506,7 @@
     </div>
 
     <div class="mnu-sec">// 関連サイト</div>
-    <a class="mnu-i" href="http://bousai0111.info/" target="_blank" rel="noopener">
+    <a class="mnu-i" href="https://bousai0111.info/" target="_blank" rel="noopener">
       <span class="ic">🏠</span>
       <span class="tx">DWA防災情報センター<small>防災情報の総合サイト</small></span></a>
     <a class="mnu-i" href="https://cybermap.kaspersky.com/ja" target="_blank" rel="noopener">
@@ -518,7 +564,7 @@
 
     <h3>5. お問い合わせ</h3>
     <p>DWA防災情報センター<br>
-    <a href="http://bousai0111.info/" target="_blank" rel="noopener"
+    <a href="https://bousai0111.info/" target="_blank" rel="noopener"
        style="color:var(--blue);font-weight:700">bousai0111.info</a></p>
 
     <p class="sm">制定日：2026年10月<br>内容は必要に応じて見直すことがあります。</p>
@@ -642,37 +688,77 @@ var STEPS = [
  { id:'s2', ti:'信用情報機関に「本人申告」をする', mt:'名義の悪用を防ぐ、いちばん重要な手続き',
    body:
    '<p>登録すると、あなたの名義でカードやローンが申し込まれたとき、' +
-   '審査する会社が<b>慎重に確認するようになります</b>。</p>' +
+   '審査する会社が<b>慎重に確認するようになります</b>。登録は<b>5年間</b>有効です。</p>' +
+
+   '<div class="warn">⏳ <b>3機関すべてが混み合っています（2026年10月9日時点）。</b><br>' +
+   '登録まで通常より日数がかかりますが、焦る必要はありません。' +
+   '<b>出し直すと、かえって遅くなります。</b>' +
+   '申込の控えや受付番号を残して、待ってください。</div>' +
+
    '<p><b>機関は3つあり、加盟している業種が違います。</b>' +
    'どれか1つでは防ぎきれないため、可能なら3つとも登録してください。</p>' +
 
    '<div class="org">' +
      '<div class="org-c"><div class="top">' +
-       '<span class="nm">CIC</span><span class="fee">1,000円</span>' +
-       '<a class="go" href="https://www.cic.co.jp/mydata/declaration/index.html" target="_blank" rel="noopener">申込ページ ↗</a>' +
+       '<span class="nm">CIC</span>' +
+       '<span class="fee">1,000円</span>' +
+       '<a class="go" href="https://www.cic.co.jp/statements/" target="_blank" rel="noopener">申込ページ ↗</a>' +
      '</div>' +
-     '<div class="ds">クレジットカード会社、携帯電話会社、信販会社が加盟。</div>' +
-     '<div class="tgt">▶ <b>携帯の不正契約を防ぐなら、ここが要です</b></div></div>' +
+     '<div class="ds">クレジットカード会社、携帯電話会社、信販会社が加盟。' +
+     'インターネットと郵送、どちらも1,000円です。</div>' +
+     '<div class="tgt">▶ <b>携帯の不正契約を防ぐなら、ここが要です</b></div>' +
+     '<div class="cond"><b>ネット申込には「受付番号」が必要です。</b>' +
+     'カード会社などに届け出てCICに登録されている電話番号から、' +
+     'ナビダイヤル（0570-021-717）にかけて取得します。有効時間は1時間です。<br>' +
+     'この電話番号から発信できない方、住所や氏名を変更された方は<b>郵送</b>をお使いください。' +
+     '郵送は手数料1,000円ぶんの<b>定額小為替</b>（郵便局で購入）を同封します。</div></div>' +
 
      '<div class="org-c"><div class="top">' +
-       '<span class="nm">JICC</span><span class="fee">700円</span>' +
+       '<span class="nm">JICC</span>' +
+       '<span class="fee">700円<small>〜</small></span>' +
        '<a class="go" href="https://www.jicc.co.jp/comment" target="_blank" rel="noopener">申込ページ ↗</a>' +
      '</div>' +
-     '<div class="ds">消費者金融、信販会社が加盟。スマホアプリから申し込めます。</div>' +
-     '<div class="tgt">▶ 現物が手元にある場合は「<b>名義の悪用防止</b>」を選択</div></div>' +
+     '<div class="ds">消費者金融、信販会社が加盟。' +
+     '<b>スマホアプリなら700円</b>、郵送は1,111円です。' +
+     'アプリの場合、登録まで即日から2日程度（平日）が目安です。</div>' +
+     '<div class="tgt">▶ 現物が手元にある場合は「<b>名義の悪用防止</b>」を選択</div>' +
+     '<div class="cond"><b>完了通知が届かないことがあります。</b>' +
+     'アプリのトップにある「申込状況と登録結果の確認」で、' +
+     'ステータスが「コメント登録完了」になっていれば済んでいます。' +
+     'メールが来ないからといって、申し込み直さないでください。<br>' +
+     '郵送の場合は、コンビニのマルチコピー機かLoppiで' +
+     '「本人申告利用券」（商品番号 0267189）を購入します。定額小為替は使えません。</div></div>' +
 
      '<div class="org-c"><div class="top">' +
-       '<span class="nm">全国銀行個人信用情報センター</span><span class="fee">500円</span>' +
+       '<span class="nm">全国銀行個人信用情報センター</span>' +
+       '<span class="fee">500円</span>' +
        '<a class="go" href="https://www.zenginkyo.or.jp/pcic/return/" target="_blank" rel="noopener">申込ページ ↗</a>' +
      '</div>' +
-     '<div class="ds">銀行、信用金庫が加盟。マイナンバーカードでオンライン申込ができます。</div>' +
-     '<div class="tgt">▶ 銀行ローンの不正契約を防ぎます</div></div>' +
+     '<div class="ds">銀行、信用金庫が加盟。3機関のうち、もっとも安く済みます。</div>' +
+     '<div class="tgt">▶ 銀行ローンの不正契約を防ぎます</div>' +
+     '<div class="cond"><b>ネット申込にはマイナンバーカードが必要です。</b>' +
+     'NFC対応のスマートフォンと専用アプリで本人確認をします。' +
+     'お持ちでない場合は<b>郵送</b>をお使いください。<br>' +
+     '窓口での受付は行っていません。問い合わせは 0120-540-558 です。</div></div>' +
    '</div>' +
 
-   '<div class="warn">💡 <b>手数料は3つで合計2,200円。</b>' +
+   '<p><b>申込方法ごとの手数料</b></p>' +
+   '<table class="fee-t">' +
+     '<tr><th>機関</th><th>申込方法</th><th style="text-align:right">手数料</th></tr>' +
+     '<tr><td>CIC</td><td>インターネット</td><td class="y">1,000円</td></tr>' +
+     '<tr><td>CIC</td><td>郵送（定額小為替）</td><td class="y">1,000円</td></tr>' +
+     '<tr><td>JICC</td><td>スマホアプリ</td><td class="y">700円</td></tr>' +
+     '<tr><td>JICC</td><td>郵送（コンビニで利用券）</td><td class="y">1,111円</td></tr>' +
+     '<tr><td>全銀協</td><td>インターネット（マイナカード）</td><td class="y">500円</td></tr>' +
+   '</table>' +
+   '<p class="sm" style="font-size:12px;color:var(--sub)">' +
+   '※ 全銀協は郵送も受け付けています。郵送の金額は公式ページでご確認ください。</p>' +
+
+   '<div class="warn">💡 <b>いちばん安い組み合わせで、3機関あわせて2,200円。</b>' +
+   '（CICネット1,000円＋JICCアプリ700円＋全銀協ネット500円）<br>' +
    '高く感じるかもしれませんが、不正契約が1件でも成立すると、' +
-   '取り消しの手続きに何か月もかかります。<br>' +
-   '登録は<b>5年間</b>有効です。</div>' +
+   '取り消しの手続きに何か月もかかります。' +
+   'かかった費用は<b>損害として請求できる可能性</b>があるので、領収書は残してください（手順7）。</div>' +
 
    '<p class="note" style="margin:0;font-size:12px">' +
    '※ 大規模な漏洩では、企業が費用を負担する補償策を出すことがあります。' +
@@ -769,7 +855,7 @@ var STEPS = [
      'カードを作り直しても、流出した情報は取り戻せません。' +
      '名義を使われないようにする手続きを、先に済ませてください。' +
    '</div>' },
- { id:'s3', ti:'カードと口座を確認する', mt:'身に覚えのない利用がないか',
+ { id:'s3', ti:'カードと口座を確認する', mt:'いま最も早く効きます。本人申告を待っている間に',
    body:
    '<p>クレジットカード情報が含まれていた場合は、<b>すぐにカード会社へ連絡</b>してください。' +
    '含まれていなくても、念のため確認を。</p>' +
@@ -779,6 +865,11 @@ var STEPS = [
    '<li><b>ログイン通知</b>をオンにする</li>' +
    '<li><b>送金の上限額</b>を下げておく</li>' +
    '</ul>' +
+   '<div class="warn">⚡ <b>いちばん早く効くのは、通知をオンにすることです。</b><br>' +
+   'カード会社と銀行のアプリで、利用通知（プッシュ通知・メール）を' +
+   '<b>金額にかかわらず全件</b>受け取る設定にしてください。今日すぐできます。<br>' +
+   '本人申告は「審査する会社に気づかせる」間接的な仕組みですが、' +
+   'こちらは<b>自分が直接見張る</b>仕組みです。登録を待っている間、これが実質的な守りになります。</div>' +
    '<div class="warn">⚠️ <b>不正利用は、まず数百円の少額から試されます。</b>' +
    '「こんな小さい額なら」と見逃さないでください。</div>' },
 
@@ -815,7 +906,33 @@ var STEPS = [
    '<li>不審な連絡があった<b>日時と内容</b></li>' +
    '</ul>' +
    '<div class="warn">💡 <b>かかった費用は、損害として請求できる可能性があります。</b>' +
-   '領収書は必ず残してください。</div>' }
+   '領収書は必ず残してください。</div>' },
+
+ { id:'s7', ti:'数か月後に、もう一度確かめる', mt:'開示請求は、いま急がなくてよい手続きです',
+   body:
+   '<p>信用情報の<b>開示請求</b>は、自分の名義で勝手に契約されていないかを確かめる手続きです。' +
+   'ただし<b>いま急いでも、得られるものが少ない</b>ので、落ち着いてからにしてください。</p>' +
+   '<p>理由は2つあります。</p>' +
+   '<ul>' +
+   '<li>名義を悪用されても、<b>信用情報に記録が載るまでには時間がかかります。</b>' +
+   'いま開示しても、まだ何も出てきません</li>' +
+   '<li>開示請求も同じように混み合っており、<b>開示書の発送が遅れています</b>' +
+   '（JICCが2026年10月8日に告知）。いま並ぶと、手順2の登録まで一緒に遅れます</li>' +
+   '</ul>' +
+   '<div class="warn">📅 <b>目安は、3か月後と1年後。</b>' +
+   'そのころには、もし悪用されていれば記録に現れているはずです。<br>' +
+   '手順2の本人申告だけ先に列に並べておいて、<b>開示は後回しにする</b>。' +
+   'これがいちばん合理的な順番です。</div>' +
+   '<p><b>開示されたら、ここを見ます</b></p>' +
+   '<ul>' +
+   '<li>身に覚えのない<b>契約・申込の記録</b>がないか</li>' +
+   '<li>申し込んでいない会社からの<b>照会履歴</b>がないか' +
+   '（＝あなたの名義で審査された記録です）</li>' +
+   '</ul>' +
+   '<p>見つかったら、その会社と、カード会社、そして警察（<b>#9110</b>）に連絡してください。' +
+   '手順6で残した記録が、ここで効いてきます。</p>' +
+   '<div class="cm-note">開示にも手数料がかかります。金額と申込方法は、' +
+   '手順2と同じ各機関の公式ページでご確認ください。</div>' }
 ];
 
 /* 公的機関のリンク */
@@ -1019,7 +1136,7 @@ function closeDlg(id){
 function doShare(){
   var url = location.href.split('#')[0];
   var text = '個人情報が漏れたら｜いま何をすべきか 対処ガイド\n' +
-             '信用情報機関への本人申告など、6つの手順をまとめています。\n';
+             '信用情報機関への本人申告など、8つの手順をまとめています。\n';
   if(navigator.share){
     navigator.share({ title:'個人情報が漏れたら', text:text, url:url }).catch(function(){});
     return;
@@ -1035,10 +1152,15 @@ function doCopyText(){
     t += (i+1) + '. ' + STEPS[i].ti + '\n   ' + STEPS[i].mt + '\n';
   }
   t += '\n■ 信用情報機関への本人申告（名義の悪用を防ぐ）\n';
-  t += '  CIC    1,000円  カード・携帯\n';
-  t += '  JICC     700円  消費者金融・信販\n';
-  t += '  全銀協   500円  銀行\n';
-  t += '  ※3つとも登録すると、より確実です\n\n';
+  t += '  CIC    1,000円  カード・携帯（ネット/郵送）\n';
+  t += '  JICC     700円  消費者金融・信販（アプリ。郵送は1,111円）\n';
+  t += '  全銀協   500円  銀行（ネット。マイナカード必須）\n';
+  t += '  ※3つとも登録すると、より確実です。登録は5年間有効\n\n';
+  t += '■ いま3機関とも受付が混み合っています（2026年10月9日時点）\n';
+  t += '  ・申込済みなら、出し直さないこと\n';
+  t += '  ・JICCは完了通知が届かない場合あり。アプリの\n';
+  t += '    「申込状況と登録結果の確認」でステータスを見る\n';
+  t += '  ・待っている間に、カードと銀行の利用通知をオンに\n\n';
   t += '詳しくは → ' + location.href.split('#')[0] + '\n';
   t += 'DWA防災情報センター';
   copy(t, '内容をコピーしました');
