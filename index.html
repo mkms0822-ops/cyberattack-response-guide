@@ -400,6 +400,17 @@
     .step,.org-c,.lnk a{break-inside:avoid}
   }
   @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} *{transition:none !important} }
+
+  /* ===== 機関から連絡が来たら ===== */
+  .step ol{margin:0 0 10px 21px}
+  .step ol li{font-size:13px;line-height:1.85;margin-bottom:6px}
+  .ntc-lead{font-size:13px;line-height:1.85;color:var(--sub);margin-bottom:11px}
+  .ntc-t td,.ntc-t th{vertical-align:top;font-size:12px;line-height:1.7}
+  .ntc-t td:first-child{white-space:nowrap;font-weight:700}
+  .ntc-sc{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .ntc-sc table{min-width:560px}
+  .tel{display:inline-block;font-family:var(--mono);font-weight:700;background:#eef3fb;border:1px solid var(--line);border-radius:7px;padding:0 7px}
+  html.dk .tel{background:#223049}
 </style>
 </head>
 <body>
@@ -463,6 +474,23 @@
 
   <div id="steps"></div>
 
+  <div class="sec" id="secNotice">
+    <h2>📨 金融機関・省庁・警察から「連絡」が来たら</h2>
+    <div class="urgent">
+      <h2>⚠️ 連絡が来たこと自体を、信用しないでください</h2>
+      <p>情報漏洩のあとは、<b>本物そっくりの通知を装った詐欺</b>が増えます。
+      メール・SMS・電話・書面のどれでも、<b>相手の連絡手段は使わず、自分で調べた窓口で確かめる</b>のが基本です。
+      <b>「急いで」「秘密にして」と言われたら、それ自体が危険信号</b>です。</p>
+    </div>
+    <div id="notices"></div>
+    <div class="lnk" id="noticeLinks" style="margin-top:12px"></div>
+    <div class="note" style="margin-top:12px">
+      ここに書いた内容は、官公庁・業界団体の一般的な注意喚起にもとづく目安です。
+      「本物は〜しない」という傾向には例外もあります。<b>迷ったら、必ず公式の窓口で確認してください。</b>
+      電話番号や受付時間は変更されることがあります。
+    </div>
+  </div>
+
   <div class="sec">
     <h2>🏛 公的機関の最新情報</h2>
     <div class="lnk" id="links"></div>
@@ -504,6 +532,11 @@
       <b>メニュー</b>
       <button class="mnu-x" onclick="closeMenu()" aria-label="閉じる">✕</button>
     </div>
+
+    <div class="mnu-sec">// 連絡が来たら</div>
+    <button type="button" class="mnu-i" onclick="goNotice()">
+      <span class="ic">📨</span>
+      <span class="tx">機関から連絡が来たら<small>金融機関・省庁・警察の確認手順と対処</small></span></button>
 
     <div class="mnu-sec">// 関連サイト</div>
     <a class="mnu-i" href="https://bousai0111.info/" target="_blank" rel="noopener">
@@ -683,7 +716,8 @@ var STEPS = [
    '</ul>' +
    '<div class="warn">⚠️ <b>通知を装った詐欺に注意。</b>' +
    '「補償金を受け取るには口座情報を入力」といったメールは詐欺です。' +
-   '企業の公式サイトを自分で開いて確認してください。</div>' },
+   '企業の公式サイトを自分で開いて確認してください。' +
+   '<br><a href="#secNotice" onclick="goNotice();return false">→ 機関から連絡が来たときの確認手順</a></div>' },
 
  { id:'s2', ti:'信用情報機関に「本人申告」をする', mt:'名義の悪用を防ぐ、いちばん重要な手続き',
    body:
@@ -1161,6 +1195,11 @@ function doCopyText(){
   t += '  ・JICCは完了通知が届かない場合あり。アプリの\n';
   t += '    「申込状況と登録結果の確認」でステータスを見る\n';
   t += '  ・待っている間に、カードと銀行の利用通知をオンに\n\n';
+  t += '■ 機関から連絡が来たら（金融機関・省庁・警察）\n';
+  t += '  ・メール/SMS/書面のリンク・電話番号・QR・添付は使わない\n';
+  t += '  ・自分で調べた公式窓口（カード裏面・公式サイト）で確認する\n';
+  t += '  ・暗証番号・認証コードを聞く、ATMへ誘導、急かす → 詐欺\n';
+  t += '  ・相談: 警察 #9110 / 消費者ホットライン 188\n\n';
   t += '詳しくは → ' + location.href.split('#')[0] + '\n';
   t += 'DWA防災情報センター';
   copy(t, '内容をコピーしました');
@@ -1252,12 +1291,153 @@ function drawCmap(){
   box.innerHTML = h;
 }
 
+
+/* ============================================================
+   機関から連絡が来たとき（確認手順と対処）
+   ============================================================ */
+var NOTICES = [
+ { id:'n1', ic:'🛑', ti:'まず守る3つの鉄則', mt:'メール・電話・書面、どの機関でも共通です',
+   body:
+   "<p><b>① 相手の連絡手段を使わない。</b>" +
+   "メール・SMS・書面にある<b>リンク、電話番号、QRコード、添付ファイル</b>は使いません。" +
+   "電話の着信番号も、偽装されることがあります。</p>" +
+   "<p><b>② 自分で調べた窓口に連絡する。</b>" +
+   "公式サイトをブックマークや検索から<b>自分で開く</b>、" +
+   "<b>カードの裏面・通帳・取引明細書</b>にある番号にかける、公式アプリやマイページのお知らせを見る、のいずれかです。</p>" +
+   "<p><b>③ その場で決めない。</b>" +
+   "家族や、警察相談専用電話 <span class='tel'>#9110</span>、消費者ホットライン <span class='tel'>188</span> に相談してからにします。</p>" +
+   "<div class='warn'>🚩 <b>次のどれかに当てはまれば、ほぼ詐欺です。</b><ul style='margin-top:6px'>" +
+   "<li>暗証番号、パスワード、ワンタイムパスワード（認証コード）、口座・カード情報を聞かれる、入力させられる</li>" +
+   "<li>「至急」「本日中」「口座凍結」「法的措置」「逮捕」など、期限や脅しで急かす</li>" +
+   "<li>キャッシュカード・通帳・印鑑を「預かる」「交換する」「送って」と言われる</li>" +
+   "<li><b>ATMへ行くよう指示される</b>（還付金や給付金は、ATMでは受け取れません）</li>" +
+   "<li>電子マネー、ギフトカード、暗号資産での支払いを求められる</li>" +
+   "<li>LINEなど別のアプリへ誘導される、ビデオ通話を求められる</li>" +
+   "<li>「誰にも話さないで」と秘密を求められる</li></ul></div>" },
+
+ { id:'n2', ic:'📧', ti:'メール・SMSが届いたとき', mt:'6つの確認手順',
+   body:
+   "<ol>" +
+   "<li><b>開かない・押さない・返信しない。</b>リンクも添付ファイルも、そのままにします。</li>" +
+   "<li><b>差出人を見る。</b>表示される名前は偽装できます。メールアドレスの<b>ドメイン</b>（@より後ろ）を確かめます。" +
+   "国の機関は <b>go.jp</b>、自治体は <b>lg.jp</b> や市区町村名のドメインが多いです。" +
+   "ただし、よく似たドメインで偽装されることもあるため、<b>ドメインだけで安全とは決めません。</b></li>" +
+   "<li><b>文面の違和感を探す。</b>「お客様」とだけ書かれた宛名、不自然な日本語、金額や期限の強調、個人情報の入力要求などです。</li>" +
+   "<li><b>公式サイトで照合する。</b>メールのリンクではなく、自分で開いた公式サイトや公式アプリに、<b>同じお知らせが出ているか</b>を見ます。</li>" +
+   "<li><b>それでも不安なら電話で確認する。</b>番号は、公式サイトやカード裏面で自分で調べたものを使います。</li>" +
+   "<li><b>偽物だったら、証拠を残して報告する。</b>削除する前に、画面のスクリーンショットを保存します。" +
+   "金融機関や、フィッシング対策協議会、警察に連絡します。SMSは、契約している携帯会社の迷惑SMS報告窓口（多くは「7726」宛への転送）に報告できます。</li>" +
+   "</ol>" +
+   "<div class='warn'>⚠️ <b>返信や「配信停止」のリンクも押さないでください。</b>" +
+   "押すと、そのアドレスが使われていると相手に知らせることになります。</div>" },
+
+ { id:'n3', ic:'📮', ti:'電話・書面（郵便・FAX）が届いたとき', mt:'一度切る。書面の連絡先にはかけない',
+   body:
+   "<p><b>■ 電話</b></p>" +
+   "<ul>" +
+   "<li><b>いったん切って</b>、自分で調べた番号にかけ直します。「警察です」「銀行協会です」「総務省です」と名乗られても同じです。</li>" +
+   "<li>警察署や銀行の番号が画面に表示されても、<b>表示は偽装できます</b>。</li>" +
+   "<li>自動音声で「1を押してください」と言われたら、押さずに切ります。</li>" +
+   "<li>警察が、電話で暗証番号を聞いたり、捜査の名目で送金を求めたりすることは<b>ありません</b>。</li>" +
+   "</ul>" +
+   "<p><b>■ 書面（封書・ハガキ・FAX）</b></p>" +
+   "<ul>" +
+   "<li>差出人の名前、住所、押印、ロゴは<b>偽装できます</b>。書面に書かれた<b>電話番号やQRコードは使いません</b>。</li>" +
+   "<li><b>取引のない金融機関</b>からの書面は、無視して構いません。取引がある場合は、マイページや公式窓口で照会します。</li>" +
+   "<li>裁判所の正式な書類（訴状など）は、通常<b>「特別送達」</b>という郵便で、配達員から手渡しで受け取ります。" +
+   "ハガキや普通郵便の「訴訟最終通知」「法務省管轄」「民事訴訟告知」などの文面は、<b>架空請求の典型</b>です。</li>" +
+   "<li>書面は<b>封筒ごと保管</b>します。消印や差出人の記載が、相談時の手がかりになります。</li>" +
+   "</ul>" },
+
+ { id:'n4', ic:'🏛', ti:'機関別：本物のやり方と、偽物の典型', mt:'金融機関・警察・税務・自治体・裁判所など',
+   body:
+   "<p class='sm' style='font-size:12px;color:var(--sub)'>表は横にスクロールできます。</p>" +
+   "<div class='ntc-sc'><table class='fee-t ntc-t'>" +
+   "<tr><th>機関</th><th>本物は通常</th><th>偽物の典型</th><th>確認先</th></tr>" +
+   "<tr><td>銀行・カード会社・証券</td><td>電話やメールで、暗証番号・ワンタイムパスワードを聞かない。キャッシュカードを預からない</td>" +
+   "<td>「不正利用を検知」「口座を凍結」のメール＋偽のログイン画面。「カードを交換する」と自宅を訪問</td>" +
+   "<td>カード裏面・通帳の番号、公式アプリ</td></tr>" +
+   "<tr><td>警察</td><td>電話・SNS・メールで、逮捕状の提示や、捜査協力名目の送金・LINE追加・ビデオ通話での取り調べをしない</td>" +
+   "<td>「あなたの口座が犯罪に使われた」と言い、資産の調査や送金を求める</td>" +
+   "<td><span class='tel'>#9110</span>、最寄りの警察署（番号は自分で調べる）</td></tr>" +
+   "<tr><td>国税庁・自治体・年金・健康保険</td><td>還付金・給付金のために、ATMの操作を指示しない</td>" +
+   "<td>「還付金があります」とATMへ誘導。メールのURLから個人情報を入力させる</td>" +
+   "<td>各機関の公式サイト、窓口、<span class='tel'>188</span></td></tr>" +
+   "<tr><td>省庁（総務省・デジタル庁・厚労省など）</td><td>正式な案内は、公式サイトや書面で行う</td>" +
+   "<td>マイナンバー、ポイント、保険証の手続きを名目に、URLから入力させる</td>" +
+   "<td>各省庁の公式サイトの注意喚起ページ</td></tr>" +
+   "<tr><td>裁判所・法務省・弁護士</td><td>訴状などは「特別送達」で手渡し。メールやSMSでの突然の最終通告はしない</td>" +
+   "<td>ハガキ・メール・SMSで「訴訟最終通知」。連絡先の電話番号へかけさせる</td>" +
+   "<td><span class='tel'>188</span>、法テラス</td></tr>" +
+   "<tr><td>漏洩を起こした企業</td><td>補償や返金のために、口座番号・カード番号・暗証番号を聞かない</td>" +
+   "<td>「補償金の受取に口座情報を入力」と案内</td>" +
+   "<td>企業の公式サイトの「お知らせ」</td></tr>" +
+   "</table></div>" },
+
+ { id:'n5', ic:'🚨', ti:'開いた・入力した・お金を送ってしまったら', mt:'状況別の対処。時間が勝負です',
+   body:
+   "<ul>" +
+   "<li><b>リンクを開いただけで、何も入力していない</b> → 閉じます。OSとブラウザを最新にして、念のためウイルススキャンをします。</li>" +
+   "<li><b>IDとパスワードを入力した</b> → 公式アプリや、自分で開いた公式サイトから<b>すぐパスワードを変更</b>します。使い回していた他のサービスも変更し、多要素認証をオンにします。金融機関には、不審な取引がないか確認します。</li>" +
+   "<li><b>カード番号・暗証番号・認証コードを入力した、伝えた</b> → <b>すぐにカード会社・銀行に連絡</b>して、利用停止と再発行を依頼します。ネットバンキングは利用停止を依頼します。</li>" +
+   "<li><b>添付ファイルを開いた、アプリを入れた、遠隔操作を許した</b> → Wi-Fiとモバイル通信を切り、該当のアプリを削除します。端末の初期化も検討してください。重要なパスワードは、<b>別の端末から</b>変更します。IPAの情報セキュリティ安心相談窓口（<span class='tel'>03-5978-7509</span>）に相談できます。</li>" +
+   "<li><b>身分証の画像を送った</b> → 手順2（信用情報機関への本人申告）と、手順3（カード・口座の利用通知）を急いでください。</li>" +
+   "<li><b>お金を振り込んだ、渡した</b> → <b>1分でも早く</b>、自分の取引金融機関と振込先の金融機関に連絡して、振込先口座の凍結を依頼します。次に、警察（緊急は <span class='tel'>110</span>、相談は <span class='tel'>#9110</span>）と、消費者ホットライン <span class='tel'>188</span> に連絡します。</li>" +
+   "</ul>" +
+   "<div class='warn'>📝 <b>相談するときに手元に置くもの</b><br>" +
+   "メールやSMSの画面（スクリーンショット）、差出人、日時、電話番号、書面と封筒、振込の明細、やり取りの内容のメモ。<b>消さずに保存</b>しておいてください。</div>" }
+];
+
+var NOTICE_LINKS = [
+ { ic:'📞', nm:'IPA 情報セキュリティ安心相談窓口', ds:'不審なメール・ウイルスの相談（03-5978-7509）',
+   u:'https://www.ipa.go.jp/security/' },
+ { ic:'🎣', nm:'フィッシング対策協議会', ds:'フィッシングの報告と、最新の注意喚起',
+   u:'https://www.antiphishing.jp/' },
+ { ic:'👮', nm:'警察庁 特殊詐欺対策ページ（SOS47）', ds:'手口の紹介と、相談窓口',
+   u:'https://www.npa.go.jp/bureau/safetylife/sos47/' },
+ { ic:'🏦', nm:'全国銀行協会', ds:'銀行をかたる偽メール・偽サイトの注意喚起',
+   u:'https://www.zenginkyo.or.jp/' },
+ { ic:'🧾', nm:'国税庁', ds:'国税庁をかたる偽メール・偽サイトの注意',
+   u:'https://www.nta.go.jp/' },
+ { ic:'📋', nm:'日本年金機構', ds:'年金をかたる詐欺の注意喚起',
+   u:'https://www.nenkin.go.jp/' },
+ { ic:'🏛', nm:'政府広報オンライン', ds:'還付金詐欺などの暮らしの注意',
+   u:'https://www.gov-online.go.jp/' }
+];
+
+function drawNotices(){
+  var h = '';
+  for(var i=0;i<NOTICES.length;i++){
+    var s = NOTICES[i];
+    h += '<div class="step" id="' + s.id + '">' +
+      '<button type="button" class="step-h" onclick="toggleStep(\'' + s.id + '\')">' +
+        '<span class="no">' + s.ic + '</span>' +
+        '<span class="bd"><span class="ti">' + esc(s.ti) + '</span>' +
+        '<span class="mt">' + esc(s.mt) + '</span></span>' +
+        '<span class="ar">▶</span>' +
+      '</button>' +
+      '<div class="step-b">' + s.body + '</div></div>';
+  }
+  var el = document.getElementById('notices');
+  if(el) el.innerHTML = h;
+}
+
+function goNotice(){
+  closeMenu();
+  var sec = document.getElementById('secNotice');
+  var n1 = document.getElementById('n1');
+  if(n1) n1.classList.add('open');
+  if(sec) sec.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
 /* ---- 起動 ---- */
 (function(){
   function go(){
     drawSteps();
     drawLinks('links', LINKS);
     drawLinks('consult', CONSULT);
+    drawNotices();
+    drawLinks('noticeLinks', NOTICE_LINKS);
     applyTheme(getTheme());
     applySize(getSize());
     drawCmap();
