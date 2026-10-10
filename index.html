@@ -384,7 +384,7 @@
 
   .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(12px);
     background:var(--ink);color:#fff;padding:10px 19px;border-radius:99px;
-    font-size:13px;z-index:70;opacity:0;pointer-events:none;
+    font-size:13px;z-index:200;opacity:0;pointer-events:none;
     transition:opacity .25s,transform .25s}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
@@ -411,6 +411,42 @@
   .ntc-sc table{min-width:560px}
   .tel{display:inline-block;font-family:var(--mono);font-weight:700;background:#eef3fb;border:1px solid var(--line);border-radius:7px;padding:0 7px}
   html.dk .tel{background:#223049}
+
+  /* ===== 被害防止ツール ===== */
+  .tl input[type=text],.tl textarea{width:100%;max-width:520px;min-height:44px;font-size:16px;padding:7px 11px;border:2px solid var(--line);border-radius:10px;background:#fff;color:inherit;font-family:inherit}
+  html.dk .tl input[type=text],html.dk .tl textarea{background:#141c2b}
+  .tl label.lb{font-size:13px;font-weight:700;display:block;margin:8px 0 3px}
+  .tl-b{display:inline-block;min-height:44px;padding:8px 15px;margin:8px 8px 4px 0;border-radius:10px;border:2px solid var(--line);background:#fff;color:inherit;font-size:13.5px;cursor:pointer;font-family:inherit}
+  html.dk .tl-b{background:#141c2b}
+  .tl-b.p{background:var(--blue);border-color:var(--blue);color:#fff}
+  .tk-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:0 10px}
+  .tk{display:flex;align-items:center;gap:9px;min-height:44px;font-size:13px;cursor:pointer}
+  .tk input{width:20px;height:20px;flex-shrink:0;margin:0;accent-color:var(--blue)}
+  .act{border-left:5px solid var(--line);padding:7px 11px;margin:7px 0;border-radius:7px;background:#f4f7fb;font-size:13px;line-height:1.75}
+  html.dk .act{background:#1b2536}
+  .act.a1{border-color:#b42318}.act.a2{border-color:#c2410c}.act.a3{border-color:#1864ab}
+  .u{display:inline-block;margin-right:6px;padding:0 8px;border-radius:8px;color:#fff;font-size:12px;font-weight:700}
+  .u1{background:#b42318}.u2{background:#c2410c}.u3{background:#1864ab}
+  .rk{display:inline-block;min-width:34px;text-align:center;padding:1px 6px;border-radius:8px;font-weight:700;font-size:12px;color:#fff}
+  .rk-SS{background:#8f1d14}.rk-A{background:#c2410c}.rk-B{background:#8a5a00}.rk-C{background:#1864ab}.rk-D{background:#5b6573}.rk-E{background:transparent;color:inherit;border:1.5px solid var(--sub)}
+  .tl-r{font-size:15px;font-weight:700;margin:8px 0}
+  .tl-mono{font-family:var(--mono);letter-spacing:.03em}
+  @media print{#secShield{display:none}}
+  .dlg-wide .dlg-in{max-width:900px}
+  .ls-ctl{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:8px 0}
+  .ls-ctl .lb2{font-size:12.5px;font-weight:700;margin-right:2px}
+  .seg{display:inline-flex;flex-wrap:wrap;gap:4px}
+  .seg button{min-height:40px;padding:5px 12px;border-radius:10px;border:2px solid var(--line);background:#fff;color:inherit;font-size:13px;cursor:pointer;font-family:inherit}
+  html.dk .seg button{background:#141c2b}
+  .seg button[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+  .ls-card{border:1px solid var(--line);border-radius:11px;padding:10px 12px;margin:8px 0;font-size:13px;line-height:1.75}
+  .ls-card .hd{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:3px}
+  .ls-card .hd b{font-size:14.5px}
+  .ls-card .mt2{color:var(--sub);font-size:12px}
+  .ls-card dl{margin:4px 0 0}.ls-card dt{font-weight:700;display:inline}.ls-card dd{display:inline;margin:0}
+  .ls-card dd:after{content:"";display:block;margin-bottom:3px}
+  .ls-cn{font-weight:700;font-size:15px;margin:14px 0 4px;color:var(--blue)}
+  .ls-sum{font-size:12.5px;color:var(--sub);margin:4px 0}
 </style>
 </head>
 <body>
@@ -418,6 +454,8 @@
 <div class="wrap">
 
   <div class="topbar">
+    <button type="button" class="tb" onclick="doRefresh()" aria-label="最新版に更新する">
+      <span class="ic">🔄</span><span class="tx">更新</span></button>
     <button type="button" class="tb" onclick="doShare()" aria-label="共有する">
       <span class="ic">📤</span><span class="tx">共有</span></button>
     <button type="button" class="tb" onclick="doCopyText()" aria-label="内容をコピー">
@@ -491,6 +529,50 @@
     </div>
   </div>
 
+  <div class="sec" id="secShield">
+    <h2>🛡 被害防止ツール(これからの備え)</h2>
+    <p class="ntc-lead">入力した内容は、保存も送信もしません(再読み込みで消えます)。判定は目安で、安全を保証するものではありません。</p>
+
+    <div class="step" id="t1"><button type="button" class="step-h" onclick="toggleStep('t1')">
+      <span class="no">1</span><span class="bd"><span class="ti">使っているサービスが、漏洩事案に入っていないか照合する</span>
+      <span class="mt">一覧から選ぶと、該当する事案と対応策を表示します</span></span><span class="ar">▶</span></button>
+      <div class="step-b tl">
+        <p>2026年に公表された主要な事案の一覧です。利用中・登録中のものを選んでください。<button type="button" class="tl-b" onclick="openList('')">🌏 世界版の一覧を開く</button></p>
+        <label class="lb" for="svQ">機関名で絞り込み</label>
+        <input id="svQ" type="text" autocomplete="off" placeholder="例:JR東日本、ローソン">
+        <div><button type="button" class="tl-b" id="svClr">選択をすべて外す</button></div>
+        <div class="tk-list" id="svList" style="max-height:260px;overflow:auto"></div>
+        <div id="svOut" aria-live="polite"></div>
+        <p class="sm" style="font-size:12px;color:var(--sub)">掲載は主要な事案のみで、2026年10月10日時点です。<b>一覧にないからといって、漏れていないとは限りません。</b>該当したら、その機関の公式サイトを自分で開いて、本人向けのお知らせを確認してください。</p>
+      </div></div>
+
+    <div class="step" id="t2"><button type="button" class="step-h" onclick="toggleStep('t2')">
+      <span class="no">2</span><span class="bd"><span class="ti">怪しい連絡(メール・電話・書面・SMS)をチェックする</span>
+      <span class="mt">当てはまる項目を選ぶと、危険度を判定します</span></span><span class="ar">▶</span></button>
+      <div class="step-b tl">
+        <div class="tk-list" id="ckList"></div>
+        <div id="ckOut" aria-live="polite"></div>
+        <p style="margin-top:14px"><b>URLの構造チェック</b>(開かずに調べます)</p>
+        <label class="lb" for="urlIn">調べたいURLを貼り付け</label>
+        <input id="urlIn" type="text" autocomplete="off" spellcheck="false" class="tl-mono">
+        <div><button type="button" class="tl-b p" id="urlBtn">調べる</button></div>
+        <div id="urlOut" aria-live="polite"></div>
+      </div></div>
+
+    <div class="step" id="t3"><button type="button" class="step-h" onclick="toggleStep('t3')">
+      <span class="no">3</span><span class="bd"><span class="ti">家族の合言葉と、家族への注意喚起</span>
+      <span class="mt">特殊詐欺から、離れて暮らす家族を守ります</span></span><span class="ar">▶</span></button>
+      <div class="step-b tl">
+        <p>電話で本人かどうか確かめるための合言葉です。決めたら<b>口頭で共有</b>し、スマホにメモしないでください。</p>
+        <div><button type="button" class="tl-b p" id="fmGen">合言葉を作る</button></div>
+        <label class="lb" for="fmW">合言葉(自由に書き換えられます)</label>
+        <input id="fmW" type="text" autocomplete="off" class="tl-mono">
+        <label class="lb" for="fmM">家族に送る文面</label>
+        <textarea id="fmM" rows="9" autocomplete="off"></textarea>
+        <div><button type="button" class="tl-b" id="fmCopy">📋 コピー</button><button type="button" class="tl-b" id="fmShare">📤 共有</button></div>
+      </div></div>
+  </div>
+
   <div class="sec">
     <h2>🏛 公的機関の最新情報</h2>
     <div class="lnk" id="links"></div>
@@ -538,6 +620,16 @@
       <span class="ic">📨</span>
       <span class="tx">機関から連絡が来たら<small>金融機関・省庁・警察の確認手順と対処</small></span></button>
 
+    <div class="mnu-sec">// 情報漏洩一覧</div>
+    <button type="button" class="mnu-i" onclick="openList('')">
+      <span class="ic">🌏</span>
+      <span class="tx">情報漏洩企業一覧2026 世界版<small>検索・並べ替え・重大度ランク</small></span></button>
+
+    <div class="mnu-sec">// これからの備え</div>
+    <button type="button" class="mnu-i" onclick="goShield()">
+      <span class="ic">🛡</span>
+      <span class="tx">被害防止ツール<small>照合・怪しい連絡チェック・家族の合言葉</small></span></button>
+
     <div class="mnu-sec">// 関連サイト</div>
     <a class="mnu-i" href="https://bousai0111.info/" target="_blank" rel="noopener">
       <span class="ic">🏠</span>
@@ -584,6 +676,7 @@
     </ul>
     <p>いずれも<b>この端末の中だけ</b>に残り、外部へ送信されることはありません。
     ブラウザの閲覧データを削除すると、これらも消えます。</p>
+    <p>「被害防止ツール」に入力した内容(選んだ機関、URL、合言葉など)は、<b>保存も送信もしません。</b>再読み込みすると消えます。</p>
 
     <h3>3. 外部サイトへのリンク</h3>
     <p>信用情報機関、公的機関、相談先などへのリンクを掲載しています。
@@ -697,6 +790,30 @@
 </div>
 
 <div class="toast" id="toast"></div>
+
+<!-- ===== 情報漏洩企業一覧2026 世界版 ===== -->
+<div class="dlg dlg-wide" id="dlgList" onclick="if(event.target===this)closeDlg('dlgList')">
+  <div class="dlg-in">
+    <button class="dlg-x" onclick="closeDlg('dlgList')" aria-label="閉じる">✕</button>
+    <h2>🌏 情報漏洩企業一覧2026 世界版</h2>
+    <p class="ls-sum">2026年10月10日時点の報道にもとづく主要事案です。件数は人数ではなく件数・アカウント数の場合があります。「主張」は攻撃者側の数字で、確認されていません。</p>
+    <label for="lsQ" style="font-size:13px;font-weight:700">検索(機関名・国・漏洩内容)</label>
+    <input id="lsQ" type="text" autocomplete="off" placeholder="例:JR東日本、医療、パスワード、米国" style="width:100%;min-height:44px;font-size:16px;padding:7px 11px;border:2px solid var(--line);border-radius:10px;background:transparent;color:inherit;font-family:inherit">
+    <div class="ls-ctl"><span class="lb2" id="lsLb1">並べ替え</span><span class="seg" role="group" aria-labelledby="lsLb1" id="lsSort">
+      <button type="button" data-o="kana" aria-pressed="false">あいうえお順</button>
+      <button type="button" data-o="date" aria-pressed="true">日付順</button>
+      <button type="button" data-o="size" aria-pressed="false">漏洩規模順</button>
+      <button type="button" data-o="sev" aria-pressed="false">重大度順</button></span></div>
+    <div class="ls-ctl"><span class="lb2" id="lsLb2">表示</span><span class="seg" role="group" aria-labelledby="lsLb2" id="lsMode">
+      <button type="button" data-m="all" aria-pressed="true">全体</button>
+      <button type="button" data-m="country" aria-pressed="false">国別</button></span></div>
+    <div class="ls-sum" id="lsInfo" aria-live="polite"></div>
+    <div class="ls-ctl"><button type="button" class="tl-b p" id="lsCopy">📋 結果をコピー</button><button type="button" class="tl-b" id="lsShare">📤 結果を共有</button></div>
+    <details><summary style="cursor:pointer;font-size:13px;min-height:36px">重大度ランク(SS・A・B・C・D・E)の基準</summary>
+      <p class="sm" style="font-size:12px;color:var(--sub)">規模(件数)・情報の機微さ(旅券・免許・口座・医療など)・影響範囲(ランサムウェア、多数機関への波及など)からの目安で、公的な区分ではありません。規模が未確認の事案は低めに出るため暫定です。IDCフロンティアは多数の組織に波及しデータ復元が困難なため、手動でSSとしています。</p></details>
+    <div id="lsOut"></div>
+  </div>
+</div>
 
 <script>
 /* ============================================================
@@ -1200,6 +1317,9 @@ function doCopyText(){
   t += '  ・自分で調べた公式窓口（カード裏面・公式サイト）で確認する\n';
   t += '  ・暗証番号・認証コードを聞く、ATMへ誘導、急かす → 詐欺\n';
   t += '  ・相談: 警察 #9110 / 消費者ホットライン 188\n\n';
+  t += '■ 情報漏洩企業一覧2026 世界版（メニューから開けます）\n';
+  t += '■ 被害防止ツール（これからの備え）\n';
+  t += '  1. 使っているサービスの照合  2. 怪しい連絡チェック  3. 家族の合言葉\n\n';
   t += '詳しくは → ' + location.href.split('#')[0] + '\n';
   t += 'DWA防災情報センター';
   copy(t, '内容をコピーしました');
@@ -1429,6 +1549,178 @@ function goNotice(){
   if(n1) n1.classList.add('open');
   if(sec) sec.scrollIntoView({behavior:'smooth', block:'start'});
 }
+
+
+/* ============================================================
+   更新・被害防止ツール
+   ============================================================ */
+var BREACH_DATA = [{"o":"IDCフロンティア(ソフトバンク子会社)","y":"あいでぃーしーふろんてぃあ","k":"日本","d":"2026-10-07","n":0,"t":"","r":"SS","i":"IDCFクラウド契約の495企業・自治体が影響。JR東日本、日水物流(17拠点で入出荷停止)、茨城県・小平市、UDトーク、サイバー大学などで障害や漏えいのおそれ。個人情報の流出範囲は調査中","w":"ランサムウェア攻撃。東日本リージョン1の4ゾーンで仮想サーバーが停止、データ復元は顧客自身のバックアップからのみ","s":"ネットワーク遮断・管理コンソール停止・緊急対策本部設置・監督省庁と警視庁へ報告。顧客は別環境で再構築、バックアップ取得を"},{"o":"AdaptHealth","y":"あだぷとへるす","k":"米国","d":"2026-08","n":4115802,"t":"人","r":"B","i":"医療関連の個人情報(HHS報告)","w":"ネットワークサーバー侵害","s":"被害者通知・規制当局報告"},{"o":"アドベンチャー(skyticket)","y":"あどべんちゃー","k":"日本","d":"2026-10-09","n":14640000,"t":"件","r":"B","i":"旅行予約サイトの流出件数(約1,464万件)","w":"個人情報流出通知メールを送付。原因の詳細は公式発表で要確認","s":"利用者へ通知・パスワード変更と不審メール警戒"},{"o":"阿波銀行","y":"あわぎんこう","k":"日本","d":"2026-04-03","n":0,"t":"","r":"E","i":"お客さま情報等の一部","w":"行内OAシステムのテスト環境への不正アクセス","s":"公表・調査(テスト環境での本番データ保管が論点)"},{"o":"EPARKリラク&エステ","y":"いーぱーく","k":"日本","d":"2026","n":22180000,"t":"件","r":"SS","i":"健康状態など要配慮個人情報を含むレコード","w":"予約サイトからデータが外部転送","s":"要配慮情報のため厳格な通知・対応"},{"o":"イープラス","y":"いーぷらす","k":"日本","d":"2026-09-29","n":1463,"t":"件","r":"E","i":"スマチケの返金申請情報","w":"払戻管理システムへの不正アクセス","s":"漏えい確認・公表"},{"o":"岩手銀行(大和証券委託先経由)","y":"いわてぎんこう","k":"日本","d":"2026-10-08","n":0,"t":"","r":"D","i":"提携の大和証券サービス利用顧客の氏名・口座番号など(大和証券全体では約22万件)","w":"大和証券の外部委託先への不正アクセス(10/2〜3)","s":"大和証券からの報告を受け確認、公表"},{"o":"Instructure(Canvas)","y":"いんすとらくちゃー","k":"米国","d":"2026-05","n":275000000,"t":"主張","r":"A","i":"氏名・メール・学籍番号・メッセージ","w":"ShinyHunters による恐喝(約9,000機関と主張)","s":"学校を装うフィッシング警戒"},{"o":"ADT","y":"えーでぃーてぃー","k":"米国","d":"2026","n":5500000,"t":"人","r":"A","i":"氏名・電話・住所、一部は生年月日とSSN下4桁","w":"従業員アカウント侵害","s":"不審な訪問・電話は公式窓口で確認"},{"o":"Aesto Health","y":"えすと","k":"米国","d":"2026-09","n":9500000,"t":"人","r":"A","i":"患者情報","w":"報道で950万人超","s":"被害者通知"},{"o":"FBI(内部システム)","y":"えふびーあい","k":"米国","d":"2026-09","n":0,"t":"","r":"D","i":"捜査関連の機微情報・個人情報(窃取は未確認)","w":"ShinyHunters が窃取を主張(9/22)","s":"連邦機関は特権アクセス・ベンダー接続を見直し"},{"o":"欧州委員会","y":"おうしゅういいんかい","k":"EU","d":"2026-03","n":0,"t":"","r":"E","i":"詳細は調査中(2026年で2件目)","w":"調査中","s":"調査・通知"},{"o":"Aura","y":"おーら","k":"米国","d":"2026-03","n":900000,"t":"件","r":"D","i":"マーケティング記録(氏名・メール)","w":"ボイスフィッシングで従業員アカウント侵害","s":"公式アプリ/サイトで確認"},{"o":"OZmall(スターツ出版)","y":"おずもーる","k":"日本","d":"2026-10-01","n":442779,"t":"人","r":"D","i":"メール、一部氏名・都道府県(最大)","w":"不正アクセス(第2報)","s":"閲覧可能性の通知・注意喚起"},{"o":"Carnival","y":"かーにばる","k":"米国","d":"2026","n":5995277,"t":"人","r":"A","i":"氏名・住所・電話・生年月日・会員情報、一部に旅券/免許番号","w":"ソーシャルエンジニアリング","s":"信用情報の監視"},{"o":"科学技術振興機構(JST)","y":"かがくぎじゅつしんこうきこう","k":"日本","d":"2026-08-07","n":0,"t":"","r":"E","i":"一部役職員のメールボックス内のメールが外部に漏えいした可能性(7/28に外部機関から情報提供)","w":"メールアカウントへの不正アクセス","s":"不正アクセス経路を遮断・アクセス権限を無効化"},{"o":"Gyazo","y":"ぎゃぞ","k":"日本","d":"2026-09-16","n":23620000,"t":"件","r":"A","i":"ユーザー情報約2,362万件+画像メタデータ約4.9億件(続報で約1.74億件追加)。メール・パスワードのハッシュ値・利用者ID","w":"画像アップロードサーバーの脆弱性を悪用(9/11)","s":"認証データ無効化・画像アクセス制限、9/27復旧"},{"o":"QUOカード","y":"くおかーど","k":"日本","d":"2026-09-29","n":0,"t":"","r":"E","i":"LINEキャンペーンシステムの情報(件数調査中)","w":"キャンペーンシステムへの不正アクセス","s":"公表・調査"},{"o":"KDDI","y":"けーでぃーでぃーあい","k":"日本","d":"2026-06","n":0,"t":"","r":"E","i":"メールシステムへの不正アクセス(6/17検知)","w":"メールシステムへの侵入","s":"検知後6/23に公表"},{"o":"国防総省 DMDC","y":"こくぼうそうしょう","k":"米国","d":"2026-07","n":3000000,"t":"人","r":"A","i":"軍人・退役軍人・家族の機微情報(暗号化なし)","w":"2025年10月〜7/16発覚まで約9カ月アクセスを許した","s":"対象者へ通知書を送付"},{"o":"Kodak","y":"こだっく","k":"米国","d":"2026-06","n":2200000,"t":"件","r":"D","i":"顧客・社内レコード","w":"ShinyHunters が窃取を主張","s":"調査・通知"},{"o":"鳥取県琴浦町","y":"ことうらちょう","k":"日本","d":"2026-09-28","n":828,"t":"人","r":"E","i":"住民情報","w":"委託事業者が別自治体の領域へ誤格納","s":"誤格納先の閲覧者は職員1名・調査"},{"o":"さくらインターネット","y":"さくらいんたーねっと","k":"日本","d":"2026-09","n":1360563,"t":"件","r":"D","i":"アカウント情報(最大・可能性)","w":"販売管理システムへの不正アクセス","s":"公表・調査"},{"o":"JR九州","y":"じぇいあーるきゅうしゅう","k":"日本","d":"2026-10-09","n":1300000,"t":"件","r":"D","i":"メールアドレス(約130万件)","w":"報道見出しベース。原因は公式発表で要確認","s":"公表・調査"},{"o":"JR東日本(ビューカード/えきねっと/大人の休日倶楽部)","y":"じぇいあーるひがしにほん","k":"日本","d":"2026-10-09","n":6090000,"t":"件","r":"A","i":"メールアドレス(のべ。ビューカード約403万・えきねっと約167万・大人の休日倶楽部約39万)。大人の休日倶楽部は会員番号・カード有効期限・生年月日も。氏名・住所・電話・カード番号は可能性なしと説明","w":"ソフトバンク子会社IDCフロンティアの法人向けクラウドへの不正アクセス(メール配信用外部サービス経由)","s":"対象者へ個別メール通知予定。メール配信が一部停止(切符予約は通常どおり)。不審メール警戒"},{"o":"集英社(HAPPY PLUS COMMUNITY)","y":"しゅうえいしゃ","k":"日本","d":"2026-09-28","n":2835,"t":"人","r":"E","i":"ブロガーなどの情報","w":"コミュニティシステムへの不正アクセス","s":"漏えい確認・公表"},{"o":"修道学園ほか教育機関3組織","y":"しゅうどうがくえん","k":"日本","d":"2026-09-30","n":0,"t":"","r":"D","i":"教職員・学生・取引先の口座情報を含む","w":"管理サーバーへの不正アクセスなど","s":"公表・調査"},{"o":"スマレジEC","y":"すまれじ","k":"日本","d":"2026-09-25","n":0,"t":"","r":"E","i":"一部顧客環境の情報","w":"一部顧客環境への不正アクセス","s":"公表・調査"},{"o":"セイコーマート","y":"せいこーまーと","k":"日本","d":"2026-09-29","n":572022,"t":"人","r":"D","i":"氏名・生年月日・住所・電話・メール","w":"第三者による閲覧を確認","s":"公表・注意喚起"},{"o":"Cegedim Santé","y":"せじでぃむ","k":"フランス","d":"2026-03","n":15800000,"t":"件","r":"SS","i":"患者記録(欧州最大級の医療情報漏洩)","w":"医療ソフトから窃取(2025年末侵害)","s":"当局通知・患者告知"},{"o":"01銀行(ゼロワンバンク)","y":"ぜろわんぎんこう","k":"日本","d":"2026-08-27","n":0,"t":"","r":"D","i":"顧客識別情報・メールアドレス(最大100社分、対象顧客は未特定。口座情報・パスワードは対象外と公表)","w":"システムへの不正アクセス(8/17検知。経路は非公表)","s":"経路遮断・外部専門家と調査・警察に相談・関係当局へ報告"},{"o":"CenterPoint Energy","y":"せんたーぽいんと","k":"米国","d":"2026-09","n":0,"t":"","r":"E","i":"顧客データ(攻撃者主張。同社は未確認)","w":"8月17日〜9月1日の侵害を集団訴訟が主張","s":"8-K提出(9/14)"},{"o":"第一興商(ビッグエコー)","y":"だいいちこうしょう","k":"日本","d":"2026-10-09","n":8720000,"t":"件","r":"C","i":"利用者の個人情報(流出のおそれ)","w":"委託先での不正アクセス・情報漏えいのおそれ(原因の詳細は公式発表で要確認)","s":"公表・調査。不審メール警戒"},{"o":"第一生命グループ","y":"だいいちせいめい","k":"日本","d":"2026-10-02","n":120000,"t":"人","r":"D","i":"従業員・退職者の氏名・住所・電話・所属・職位","w":"人事システムへの不正アクセス","s":"公表・影響調査"},{"o":"タイムズカー","y":"たいむずかー","k":"日本","d":"2026-09-28","n":6600000,"t":"件","r":"A","i":"氏名・住所・生年月日・電話・メール等(法人会員含む)。うち約160万件は免許証など本人確認書類の画像。カード情報は対象外","w":"9/25検知、9/26遮断","s":"攻撃者の遮断・影響範囲確定・公表"},{"o":"大和証券","y":"だいわしょうけん","k":"日本","d":"2026-10-05","n":110000,"t":"人","r":"D","i":"顧客情報(約22万件)","w":"外部委託先への不正アクセス","s":"委託先管理の見直し・顧客へ注意喚起"},{"o":"ちばぎん商店(千葉銀行)","y":"ちばぎんしょうてん","k":"日本","d":"2026-09-17","n":10000,"t":"件","r":"E","i":"グループ合計約1万件の顧客情報(ちばぎん商店分は個人約192先・法人約722先)","w":"コーポレートサイトへの不正アクセス","s":"対象先へ通知"},{"o":"デジタル庁(GSS)","y":"でじたるちょう","k":"日本","d":"2026-09-11","n":246000,"t":"件","r":"D","i":"職員・業務関係者の氏名・メール・電話・住所","w":"不正アクセス(6/25検知、7/9侵入確認)","s":"公表・調査"},{"o":"TEMAIRAZU(宿泊予約システム)","y":"てまいらず","k":"日本","d":"2026-09-28","n":0,"t":"","r":"E","i":"宿泊予約者情報の閲覧・取得の可能性","w":"不正アクセス。宿泊者に不審なメッセージ","s":"不審メッセージへの注意喚起"},{"o":"DentaQuest","y":"でんたくえすと","k":"米国","d":"2026-06","n":0,"t":"","r":"E","i":"234GBのデータが公開されたと主張","w":"恐喝型攻撃","s":"7月から通知開始"},{"o":"東京メトロ「メトポ」","y":"とうきょうめとろ","k":"日本","d":"2026-09-27","n":59000,"t":"件","r":"E","i":"会員のメールアドレス","w":"不正アクセス","s":"閲覧・取得の可能性を公表、不審メール警戒"},{"o":"東洋紡グループ","y":"とうようぼう","k":"日本","d":"2026-09-25","n":0,"t":"","r":"E","i":"メールアカウント内の情報","w":"メールアカウントへの不正アクセス","s":"公表・調査"},{"o":"TOPPAN(損保ジャパン契約者)","y":"とっぱん","k":"日本","d":"2026-09-29","n":177426,"t":"人","r":"D","i":"保険料控除証明書のデータ","w":"同業他社への誤送付(委託先の取り扱いミス)","s":"送付先で削除済み・契約者へ通知"},{"o":"TriZetto Provider Solutions","y":"とりぜっと","k":"米国","d":"2026","n":3433965,"t":"人","r":"B","i":"医療関連の個人情報","w":"医療IT事業者への侵害","s":"被害者通知・HHS報告"},{"o":"ニッポンレンタカー","y":"にっぽんれんたかー","k":"日本","d":"2026-09-26","n":0,"t":"","r":"E","i":"アプリ会員情報(10/1に別の不正アクセスも判明)","w":"アプリへの不正アクセス","s":"公表・調査"},{"o":"日本エネルギー経済研究所","y":"にほんえねるぎーけいざいけんきゅうじょ","k":"日本","d":"2026-09-11","n":0,"t":"","r":"E","i":"情報漏えいを公表","w":"不正アクセス","s":"公表・調査"},{"o":"日本経済新聞社","y":"にほんけいざいしんぶんしゃ","k":"日本","d":"2026-10-04","n":0,"t":"","r":"E","i":"社員Google Workspaceの情報","w":"社員アカウントへの不正ログイン(気づかず継続)","s":"不正ログイン対策・公表"},{"o":"日本テレネット","y":"にほんてれねっと","k":"日本","d":"2026-09","n":1066000,"t":"件","r":"D","i":"委託元の顧客情報","w":"コールセンター受託会社での漏えい","s":"委託先管理の見直し"},{"o":"日本郵便(郵便局アプリ・ゆうID)","y":"にほんゆうびん","k":"日本","d":"2026-09-29","n":69,"t":"件","r":"E","i":"19名分。住所録・送り状情報を含む","w":"外部からの不正アクセス","s":"公表・対象者へ通知"},{"o":"八十二長野銀行","y":"はちじゅうにながのぎんこう","k":"日本","d":"2026-10-08","n":35,"t":"人","r":"E","i":"メールアドレス35名分。その他の情報は確認中","w":"職員が受信した不審メールを起点に、メールアカウントへ不正アクセス(10/7発生)","s":"対象者へ個別連絡・アカウントのアクセス遮断・外部専門事業者が調査"},{"o":"Panera Bread","y":"ぱねら","k":"米国","d":"2026","n":5100000,"t":"人","r":"C","i":"氏名・メール・電話・住所(約1,400万レコード)","w":"連絡先データの公開","s":"ポイント/返金を装うフィッシング警戒"},{"o":"VALX「FUN」(Commune基盤)","y":"ばるくす","k":"日本","d":"2026-10-08","n":0,"t":"","r":"E","i":"コミュニティ会員情報(件数未確認)","w":"コミュニティ基盤Communeへの不正アクセスの影響","s":"お知らせ公表・調査中"},{"o":"PFU(キングジムも公表)","y":"ぴーえふゆー","k":"日本","d":"2026-09-04","n":169355,"t":"件","r":"D","i":"注文データ(最大)","w":"過去に利用したショップサーブ経由","s":"漏えいを公表"},{"o":"福岡銀行(メットライフ生命出向者)","y":"ふくおかぎんこう","k":"日本","d":"2026","n":1052,"t":"人","r":"E","i":"個人1,052人・法人45社の契約情報の一部","w":"出向者による顧客情報の持ち出し(内部不正)","s":"メットライフ生命からの出向受け入れを廃止"},{"o":"ブックオフGHD(子会社会員管理)","y":"ぶっくおふ","k":"日本","d":"2026-10-09","n":6430000,"t":"件","r":"B","i":"氏名・生年月日・性別・メール・電話・住所・パスワードのハッシュ値・ポイントカード番号","w":"子会社の会員管理システムへの不正アクセス(経路未公表)。10/6確認","s":"調査・公表(件数は会員番号ベースで人数ではない)。パスワード変更・フィッシング警戒"},{"o":"VOISING","y":"ぼいしんぐ","k":"日本","d":"2026-09-30","n":170000,"t":"件","r":"D","i":"個人情報(第四報で調査結果を公表)","w":"利用するBIツールへの不正アクセス(ツールの脆弱性)","s":"調査結果と再発防止策を公表"},{"o":"MrMax","y":"みすたーまっくす","k":"日本","d":"2026-10-06","n":1730000,"t":"人","r":"D","i":"氏名・メール・電話(最大約173万人)","w":"オンラインストア等のサーバーへの不正アクセス","s":"公表・調査。偽メール警戒"},{"o":"ムーンスター","y":"むーんすたー","k":"日本","d":"2026-10-02","n":0,"t":"","r":"E","i":"オンラインストア利用者の氏名・住所・電話・メール・注文履歴(カード・パスワードは対象外)","w":"サーバーへの不正アクセス(3/26第一報、10/2続報)","s":"同社を装うフィッシングに警戒"},{"o":"ムラウチドットコム","y":"むらうちどっとこむ","k":"日本","d":"2026-09-15","n":7716811,"t":"件","r":"B","i":"氏名・住所・電話・メール・生年月日・性別","w":"システムの脆弱性(7月に発生)","s":"持ち出しを確認・調査結果を公表"},{"o":"物語コーポレーション(焼肉きんぐアプリ)","y":"ものがたりこーぽれーしょん","k":"日本","d":"2026-10-05","n":10788963,"t":"件","r":"B","i":"会員情報(メール・電話を含む)","w":"公式アプリ会員管理システムへの不正アクセス。10/2確認","s":"公表・調査・フィッシング警戒"},{"o":"ヤマトグループ(クロネコ代金後払い)","y":"やまとぐるーぷ","k":"日本","d":"2026-09-29","n":0,"t":"","r":"E","i":"件数調査中","w":"サービスへの不正アクセス","s":"公表・調査"},{"o":"ユーザベース(NewsPicks)","y":"ゆーざーべーす","k":"日本","d":"2026-10-08","n":1735154,"t":"人","r":"C","i":"会員ID・氏名・メール・電話。氏名・勤務先・カード番号下3〜4桁の可能性","w":"業務用管理ツールへの不正アクセス。10/3検知","s":"サービス一時停止・外部アクセス遮断"},{"o":"RIZAP","y":"らいざっぷ","k":"日本","d":"2026-09-03","n":19996,"t":"人","r":"D","i":"疾患情報を含む個人情報","w":"従業員が外部の生成AIに個人情報を入力(シャドーAI)","s":"AI利用ルールの整備"},{"o":"らしんばん","y":"らしんばん","k":"日本","d":"2026-10-01","n":0,"t":"","r":"E","i":"利用者の個人情報の一部(可能性)","w":"サービスへの第三者不正アクセス","s":"調査・公表"},{"o":"ローソン(ローソンID/アプリ予約)","y":"ろーそん","k":"日本","d":"2026-10-08","n":2155345,"t":"件","r":"D","i":"個人情報(ID情報を表示する仕組みへの不正アクセス)","w":"Webサービス・アプリ経由の不正アクセス","s":"公表・被害者への注意喚起。不審メール警戒"},{"o":"ロート製薬","y":"ろーとせいやく","k":"日本","d":"2026-09-11","n":0,"t":"","r":"E","i":"顧客情報を扱うシステム","w":"システムへの不正アクセス","s":"公表・調査"}];
+
+function doRefresh(){
+  toast('最新版を確認しています…');
+  try{ if(window.caches) caches.keys().then(function(ks){ ks.forEach(function(k){ caches.delete(k); }); }); }catch(e){}
+  setTimeout(function(){ try{ location.reload(); }catch(e){} }, 500);
+}
+function goShield(){
+  closeMenu();
+  var s = document.getElementById('secShield'), t = document.getElementById('t1');
+  if(t) t.classList.add('open');
+  if(s) s.scrollIntoView({behavior:'smooth', block:'start'});
+}
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var BR = BREACH_DATA;
+  var RO = ['SS','A','B','C','D','E'];
+  /* 1. 照合 */
+  $('svList').innerHTML = BR.map(function(o,i){
+    return '<label class="tk" data-t="' + esc((o.o + o.y).toLowerCase()) + '"><input type="checkbox" data-svc="' + i + '"><span>' + esc(o.o) + ' <small style="color:var(--sub)">(' + esc(o.k) + ')</small></span></label>';
+  }).join('');
+  function svRun(){
+    var on = [].slice.call(document.querySelectorAll('[data-svc]:checked')).map(function(x){ return BR[+x.getAttribute('data-svc')]; });
+    if(!on.length){ $('svOut').innerHTML = ''; return; }
+    on.sort(function(a,b){ return RO.indexOf(a.r) - RO.indexOf(b.r); });
+    $('svOut').innerHTML = '<div class="tl-r">該当 ' + on.length + ' 件</div>' + on.map(function(o){
+      var lv = /^(SS|A)$/.test(o.r) ? 1 : /^(B|C)$/.test(o.r) ? 2 : 3;
+      return '<div class="act a' + lv + '"><span class="rk rk-' + o.r + '">' + o.r + '</span> <b>' + esc(o.o) + '</b>(' + esc(o.d) + ')<br>漏洩:' + esc(o.i) + '<br>対応:' + esc(o.s) + '<br><a href="#" class="ls" data-q="' + esc(o.o) + '">世界版一覧で詳しく見る ↗</a></div>';
+    }).join('') + '<p class="sm" style="font-size:12px;color:var(--sub)">ランクは、規模・情報の機微さ・影響範囲からの目安(SS が最も重大)です。</p>';
+  }
+  [].forEach.call(document.querySelectorAll('[data-svc]'), function(x){ x.onchange = svRun; });
+  $('svOut').onclick = function(e){ var a = e.target.closest && e.target.closest('.ls'); if(a){ e.preventDefault(); openList(a.getAttribute('data-q')); } };
+  $('svClr').onclick = function(){ [].forEach.call(document.querySelectorAll('[data-svc]'), function(x){ x.checked = false; }); svRun(); };
+  $('svQ').oninput = function(){
+    var q = $('svQ').value.trim().toLowerCase();
+    [].forEach.call(document.querySelectorAll('#svList [data-t]'), function(l){ l.hidden = !!q && l.getAttribute('data-t').indexOf(q) < 0; });
+  };
+  /* 2. 怪しい連絡 */
+  var C = [['暗証番号・パスワード・認証コード(ワンタイムパスワード)を聞かれた、入力させられた',5],['ATMに行くよう言われた(還付金・給付金)',5],['キャッシュカード・通帳を預かる、渡すよう言われた',5],['電子マネー・ギフトカード・暗号資産での支払いを求められた',5],['「逮捕」「口座凍結」「法的措置」などで脅された',4],['「至急」「本日中」など期限で急かされた',3],['LINEなど別アプリへの移行や、ビデオ通話を求められた',3],['「誰にも話さないで」と言われた',4],['メール・SMS・書面にあるリンク、電話番号、QRコードを使うよう案内された',3],['差出人や担当者の名前・部署が不明確、または日本語が不自然',2],['取引のない機関から、突然届いた',2]];
+  $('ckList').innerHTML = C.map(function(c,i){ return '<label class="tk"><input type="checkbox" data-ck="' + i + '"><span>' + c[0] + '</span></label>'; }).join('');
+  function ckRun(){
+    var on = [].slice.call(document.querySelectorAll('[data-ck]:checked')).map(function(x){ return C[+x.getAttribute('data-ck')][1]; });
+    if(!on.length){ $('ckOut').innerHTML = ''; return; }
+    var t = on.reduce(function(a,b){ return a + b; }, 0), mx = Math.max.apply(null, on);
+    var lv = (mx >= 5 || t >= 8) ? 1 : t >= 4 ? 2 : 3;
+    var tx = ['','危険:詐欺の可能性が非常に高い','要警戒:詐欺の可能性が高い','注意:確認が必要'];
+    $('ckOut').innerHTML = '<div class="act a' + lv + '"><b class="u u' + lv + '">' + tx[lv] + '</b><br>' + (lv == 1
+      ? '<b>いますぐ連絡を切り、何も入力・送金しないでください。</b>すでに伝えた、送った場合は、金融機関・警察(緊急110/相談#9110)・188へ連絡します。'
+      : '相手の連絡手段は使わず、自分で調べた公式窓口で確認してください。家族にも相談を。') + '</div>';
+  }
+  [].forEach.call(document.querySelectorAll('[data-ck]'), function(x){ x.onchange = ckRun; });
+  var TW = ['co.jp','or.jp','ne.jp','go.jp','lg.jp','ac.jp','ed.jp','gr.jp'];
+  $('urlBtn').onclick = function(){
+    var u = $('urlIn').value.trim(), o = $('urlOut');
+    if(!u){ o.innerHTML = ''; return; }
+    var x; try{ x = new URL(/^[a-z]+:\/\//i.test(u) ? u : 'https://' + u); }catch(e){ o.innerHTML = '<div class="act a2">URLとして読み取れません。</div>'; return; }
+    var h = x.hostname.toLowerCase(), p = h.split('.'), f = [];
+    var reg = (p.length >= 3 && TW.indexOf(p.slice(-2).join('.')) >= 0) ? p.slice(-3).join('.') : p.slice(-2).join('.');
+    if(x.protocol !== 'https:') f.push('https ではありません');
+    if(/^\d+(\.\d+){3}$/.test(h)) f.push('ドメインが数字のIPアドレスです');
+    if(h.indexOf('xn--') >= 0) f.push('国際化ドメイン(xn--)です。似た別の文字が使われている可能性があります');
+    if(u.indexOf('@') >= 0) f.push('「@」を含みます(別のサイトへ飛ばす手口)');
+    if(p.length >= 5) f.push('サブドメインが多すぎます');
+    if((h.match(/-/g) || []).length >= 2) f.push('ハイフンが多いドメインです');
+    if(/(^|\.)(bit\.ly|t\.co|tinyurl\.com|is\.gd|cutt\.ly|ow\.ly|goo\.gl|t\.ly)$/.test(h)) f.push('短縮URLです(行き先が見えません)');
+    if(/\.(top|xyz|click|icu|cfd|sbs|cyou|buzz|vip|loan)$/.test(h)) f.push('フィッシングに悪用されやすい末尾のドメインです');
+    if(/(login|verify|secure|signin|confirm|update|account)/.test(h)) f.push('ドメインに login・verify などの語が含まれます');
+    o.innerHTML = '<div class="act a' + (f.length ? 1 : 3) + '"><b>本当の接続先ドメイン:</b> <span class="tl-mono">' + esc(reg) + '</span>(ホスト名: ' + esc(h) + ')<br>' +
+      (f.length ? '<b>怪しい兆候:</b><ul style="margin:4px 0 4px 19px">' + f.map(function(s){ return '<li>' + esc(s) + '</li>'; }).join('') + '</ul>' : '構造上の大きな兆候は見つかりませんでした。') +
+      '<br><b>ただし、兆候がなくても安全とは限りません。</b>このURLは開かず、公式サイトを自分で検索して開いてください。</div>';
+  };
+  /* 3. 家族 */
+  var W = ['あおぞら','みかん','ひまわり','かぼちゃ','たいやき','ふじさん','てんぷら','さくら','すいか','だいこん','おにぎり','こたつ','うみ','はなび','まつり','くじら','やきそば','もみじ','ぶどう','たこやき','きんぎょ','ふうせん','らーめん','いちご'];
+  function rnd(n){ var a = new Uint32Array(1), l = Math.floor(4294967296 / n) * n, v; do{ crypto.getRandomValues(a); v = a[0]; }while(v >= l); return v % n; }
+  function fm(){
+    var w = $('fmW').value.trim();
+    $('fmM').value = '【家族への大事なお知らせ】\n警察・銀行・役所・裁判所を名乗る電話やメールは、まず詐欺を疑ってください。\n\n1. 暗証番号・認証コードは、誰にも教えない\n2. キャッシュカードは渡さない。ATMにも行かない\n3. 一度切って、自分で調べた番号(カードの裏面など)にかけ直す\n4. 迷ったら、警察 #9110 か 消費者ホットライン 188 に相談\n5. 「誰にも言わないで」は詐欺のサイン\n' + (w ? '\nわが家の合言葉:「' + w + '」\n(電話で本人かどうか確かめるときに使います)' : '');
+  }
+  $('fmGen').onclick = function(){ var a = rnd(W.length), b2 = rnd(W.length); while(b2 == a) b2 = rnd(W.length); $('fmW').value = W[a] + '・' + W[b2] + '・' + (10 + rnd(90)); fm(); };
+  $('fmW').oninput = fm; fm();
+  $('fmCopy').onclick = function(){ copy($('fmM').value, '文面をコピーしました'); };
+  $('fmShare').onclick = function(){
+    if(navigator.share){ navigator.share({text: $('fmM').value}).catch(function(){}); }
+    else copy($('fmM').value, '文面をコピーしました');
+  };
+})();
+
+
+/* ============================================================
+   情報漏洩企業一覧2026 世界版
+   ============================================================ */
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var RO = ['SS','A','B','C','D','E'], so = 'date', mo = 'all', q = '', last = [];
+  function fmn(n){ return n >= 1e8 ? (n/1e8).toFixed(2) + '億' : n >= 1e4 ? Math.round(n/1e4).toLocaleString() + '万' : String(n); }
+  var CMP = {
+    date: function(a,b){ return b.d.localeCompare(a.d); },
+    kana: function(a,b){ return a.y.localeCompare(b.y, 'ja'); },
+    size: function(a,b){ return b.n - a.n; },
+    sev: function(a,b){ return (RO.indexOf(a.r) - RO.indexOf(b.r)) || (b.n - a.n); }
+  };
+  var NM = {kana:'あいうえお順', date:'日付順(新しい順)', size:'漏洩規模順', sev:'重大度順(SS→E)'};
+  function card(o){
+    var sc = scale(o);
+    return '<div class="ls-card"><div class="hd"><span class="rk rk-' + o.r + '" aria-label="重大度' + o.r + '">' + o.r + '</span><b>' + esc(o.o) + '</b></div>' +
+      '<div class="mt2">' + esc(o.k) + ' ・ ' + esc(o.d) + ' ・ 規模:' + esc(sc) + '</div>' +
+      '<dl><dt>漏洩:</dt><dd>' + esc(o.i) + '</dd><dt>手口:</dt><dd>' + esc(o.w) + '</dd><dt>対応:</dt><dd>' + esc(o.s) + '</dd></dl></div>';
+  }
+  function render(){
+    var k = q.trim().toLowerCase();
+    var rows = BREACH_DATA.filter(function(o){ return !k || (o.o + o.y + o.k + o.i + o.w + o.s).toLowerCase().indexOf(k) >= 0; }).sort(CMP[so]);
+    last = rows;
+    var cnt = RO.map(function(r){ return r + ':' + rows.filter(function(o){ return o.r === r; }).length; }).join(' ');
+    $('lsInfo').textContent = '該当 ' + rows.length + ' 件 / 全 ' + BREACH_DATA.length + ' 件 ・ ' + NM[so] + ' ・ 重大度 ' + cnt;
+    var h = '';
+    if(!rows.length) h = '<p class="sm">該当する事案が見つかりません。</p>';
+    else if(mo === 'all') h = rows.map(card).join('');
+    else{
+      var cs = [];
+      rows.forEach(function(o){ if(cs.indexOf(o.k) < 0) cs.push(o.k); });
+      cs.sort(function(a,b){ return rows.filter(function(o){ return o.k === b; }).length - rows.filter(function(o){ return o.k === a; }).length; });
+      h = cs.map(function(c){ var r = rows.filter(function(o){ return o.k === c; }); return '<div class="ls-cn">' + esc(c) + '(' + r.length + '件)</div>' + r.map(card).join(''); }).join('');
+    }
+    $('lsOut').innerHTML = h;
+    [].forEach.call(document.querySelectorAll('#lsSort button'), function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-o') === so); });
+    [].forEach.call(document.querySelectorAll('#lsMode button'), function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-m') === mo); });
+  }
+  [].forEach.call(document.querySelectorAll('#lsSort button'), function(b){ b.onclick = function(){ so = b.getAttribute('data-o'); render(); }; });
+  [].forEach.call(document.querySelectorAll('#lsMode button'), function(b){ b.onclick = function(){ mo = b.getAttribute('data-m'); render(); }; });
+  function scale(o){
+    if(!o.n) return '規模未確認';
+    var s = fmn(o.n) + ((o.t === '件' || o.t === '人') ? o.t : '');
+    if(o.t === '主張') s += '(攻撃者の主張)'; else if(o.t === '分析' || o.t === '報道') s += '(' + o.t + ')';
+    return s;
+  }
+  function lsText(){
+    var k = q.trim();
+    var t = '【情報漏洩企業一覧2026 世界版】\n条件:' + (k ? '検索「' + k + '」' : '検索なし') + ' / ' + NM[so] + ' / ' + (mo === 'all' ? '全体' : '国別') +
+      '\n該当 ' + last.length + ' 件(全 ' + BREACH_DATA.length + ' 件・2026年10月10日時点の報道)\n';
+    function line(o, i){ return '\n' + i + '. [' + o.r + '] ' + o.o + '(' + o.k + '・' + o.d + ')\n   規模:' + scale(o) + '\n   漏洩:' + o.i + '\n   手口:' + o.w + '\n   対応:' + o.s + '\n'; }
+    if(mo === 'all'){ last.forEach(function(o, i){ t += line(o, i + 1); }); }
+    else{
+      var cs = []; last.forEach(function(o){ if(cs.indexOf(o.k) < 0) cs.push(o.k); });
+      cs.sort(function(a, b){ return last.filter(function(o){ return o.k === b; }).length - last.filter(function(o){ return o.k === a; }).length; });
+      var n = 0;
+      cs.forEach(function(c){ var r = last.filter(function(o){ return o.k === c; }); t += '\n■ ' + c + '(' + r.length + '件)\n'; r.forEach(function(o){ n++; t += line(o, n); }); });
+    }
+    return t + '\n※件数は人数ではなく、件数・アカウント数の場合があります。「主張」は攻撃者側の数字で、未確認です。重大度ランク(SS〜E)は目安です。\n詳しくは → ' + location.href.split('#')[0] + '\nDWA防災情報センター';
+  }
+  $('lsCopy').onclick = function(){
+    if(!last.length){ toast('コピーする結果がありません'); return; }
+    copy(lsText(), last.length + '件の結果をコピーしました');
+  };
+  $('lsShare').onclick = function(){
+    if(!last.length){ toast('共有する結果がありません'); return; }
+    var txt = lsText();
+    if(navigator.share){ navigator.share({title: '情報漏洩企業一覧2026 世界版', text: txt}).catch(function(){}); }
+    else copy(txt, '共有に未対応のため、結果をコピーしました');
+  };
+  $('lsQ').oninput = function(){ q = $('lsQ').value; render(); };
+  window.openList = function(query){
+    q = query || ''; $('lsQ').value = q;
+    render(); openDlg('dlgList');
+    var d = $('dlgList'); if(d) d.scrollTop = 0;
+  };
+  render();
+})();
 
 /* ---- 起動 ---- */
 (function(){
