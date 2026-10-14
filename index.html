@@ -460,6 +460,26 @@
   .ls-card dd:after{content:"";display:block;margin-bottom:3px}
   .ls-cn{font-weight:700;font-size:15px;margin:14px 0 4px;color:var(--blue)}
   .ls-sum{font-size:12.5px;color:var(--sub);margin:4px 0}
+  /* 解約ページ詐欺チェッカー */
+  .cx-d{border-top:1px solid var(--line);padding:2px 0}
+  .cx-d>summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-size:14.5px;font-weight:700;list-style:none}
+  .cx-d>summary::-webkit-details-marker{display:none}
+  .cx-d>summary::before{content:"▶";font-size:11px;margin-right:8px;color:var(--sub);transition:transform .15s}
+  .cx-d[open]>summary::before{transform:rotate(90deg)}
+  .cx-d .cx-b{padding:2px 0 12px}
+  .cx-list{display:grid;grid-template-columns:1fr;gap:0}
+  .cx-list .tk{align-items:flex-start;padding:7px 0;border-bottom:1px dashed var(--line)}
+  .cx-list .tk input{margin-top:2px}
+  .cx-list .tk span{line-height:1.7}
+  .cx-list .tk span small{display:block;font-size:12px;color:var(--sub);line-height:1.7;margin-top:2px}
+  .cx-sos{font-size:14px;line-height:1.8;border:2px solid #b42318;border-radius:12px;padding:11px 13px;margin:10px 0 14px;background:rgba(180,35,24,.07)}
+  .cx-sos b{color:#b42318}
+  html.dk .cx-sos b{color:#ff8a7d}
+  .cx-sel,.cx-in{width:100%;min-height:44px;font-size:16px;padding:7px 11px;border:2px solid var(--line);border-radius:10px;background:transparent;color:inherit;font-family:inherit;margin:3px 0 8px}
+  .cx-prog{font-size:13px;font-weight:700;margin:8px 0}
+  .cx-lnk{display:block;padding:9px 0;border-bottom:1px dashed var(--line);font-size:13.5px;line-height:1.7}
+  .cx-lnk small{display:block;font-size:12px;color:var(--sub)}
+  @media print{#dlgCancel{display:none !important}}
 </style>
 </head>
 <body>
@@ -545,6 +565,10 @@
   <div class="sec" id="secShield">
     <h2>🛡 被害防止ツール(これからの備え)</h2>
     <p class="ntc-lead">入力した内容は、保存も送信もしません(再読み込みで消えます)。判定は目安で、安全を保証するものではありません。</p>
+
+    <button type="button" class="nw-link" onclick="openDlg('dlgCancel')">
+      <span style="font-size:24px">🔎</span>
+      <span><b>【新着】解約ページ詐欺チェッカー</b><small>「解約」の検索で出る偽ページに手数料を払わされ、カード情報を抜かれる手口への対処と確認方法</small></span></button>
 
     <div class="step" id="t1"><button type="button" class="step-h" onclick="toggleStep('t1')">
       <span class="no">1</span><span class="bd"><span class="ti">使っているサービスが、漏洩事案に入っていないか照合する</span>
@@ -655,6 +679,10 @@
       <span class="ic">🛡</span>
       <span class="tx">被害防止ツール<small>照合・怪しい連絡チェック・家族の合言葉</small></span></button>
 
+    <button type="button" class="mnu-i" onclick="openDlg('dlgCancel')">
+      <span class="ic">🔎</span>
+      <span class="tx">解約ページ詐欺チェッカー<small>偽の解約ページの見分け方・払ってしまった時の手順</small></span></button>
+
     <div class="mnu-sec">// 関連サイト</div>
     <a class="mnu-i" href="https://bousai0111.info/" target="_blank" rel="noopener">
       <span class="ic">🏠</span>
@@ -701,7 +729,7 @@
     </ul>
     <p>いずれも<b>この端末の中だけ</b>に残り、外部へ送信されることはありません。
     ブラウザの閲覧データを削除すると、これらも消えます。</p>
-    <p>「被害防止ツール」に入力した内容(選んだ機関、URL、合言葉など)は、<b>保存も送信もしません。</b>再読み込みすると消えます。</p>
+    <p>「被害防止ツール」と「解約ページ詐欺チェッカー」に入力した内容(選んだ機関、URL、合言葉など)は、<b>保存も送信もしません。</b>再読み込みすると消えます。</p>
 
     <h3>3. 外部サイトへのリンク</h3>
     <p>信用情報機関、公的機関、相談先などへのリンクを掲載しています。
@@ -893,6 +921,108 @@
         <li><a href="https://dysruptionhub.com/incidents/" target="_blank" rel="noopener">Cyber Incident Registry(Dysruption Hub)</a></li>
         <li><a href="https://www.cyfirma.com/news/weekly-intelligence-report-1-oct-2026/" target="_blank" rel="noopener">Weekly Intelligence Report 1 Oct 2026(CYFIRMA)</a></li>
       </ul></details>
+  </div>
+</div>
+
+<!-- ===== 解約ページ詐欺チェッカー ===== -->
+<div class="dlg" id="dlgCancel" onclick="if(event.target===this)closeDlg('dlgCancel')">
+  <div class="dlg-in">
+    <button class="dlg-x" onclick="closeDlg('dlgCancel')" aria-label="閉じる">✕</button>
+    <h2>🔎 解約ページ詐欺チェッカー</h2>
+    <p>「サービス名 解約」と検索して出てきた<b>偽の解約ページ</b>で、解約手数料(数百円など)をカードで払わせ、カード情報などを抜き取られ、後日に高額な請求が来る――という事案への対処と、本物かどうかの確認方法です。</p>
+    <p class="sm">入力した内容は、保存も送信もしません(再読み込みで消えます)。この手口を名指しした公的機関の公表は、作成時点(2026年10月14日)の検索では見つけられませんでした。そのため、報告された手口をもとに、偽サイトへのカード情報入力や不審な請求に関する公的機関の案内を参考にして、まとめています。判定は目安で、安全を保証するものではありません。</p>
+
+    <div><button type="button" class="tl-b" id="cxLink">🔗 このページのリンクをコピー</button></div>
+
+    <div class="cx-sos">
+      <b>もう手数料を払った・カード番号を入力した場合</b><br>
+      まず<b>カード会社に電話</b>します(カード裏面の番号)。
+      <div><button type="button" class="tl-b p" onclick="cxOpen('cxS3')">緊急の手順を開く</button></div>
+    </div>
+
+    <h3>まず覚えておくこと</h3>
+    <div class="act a1"><b>1. 解約のためだけに、新しくカード番号を入力させるページは、まず偽物を疑う。</b><br>
+    本物の解約は、自分のアカウントにログインして行うのが基本です。</div>
+    <div class="act a1"><b>2. 検索結果や広告から、解約ページを開かない。</b><br>
+    公式アプリ、またはブックマークしたサイトから入ります。</div>
+    <div class="act a1"><b>3. 入力してしまったら、翌日ではなく、すぐカード会社へ。</b></div>
+
+    <details class="cx-d" id="cxS1" open>
+      <summary>① 開いているページを、チェックする</summary>
+      <div class="cx-b">
+        <p>当てはまるものを選んでください。</p>
+        <div class="cx-list" id="cxList"></div>
+        <div id="cxOut" aria-live="polite"></div>
+      </div>
+    </details>
+
+    <details class="cx-d" id="cxS2">
+      <summary>② URLを、公式のドメインと照合する</summary>
+      <div class="cx-b">
+        <p>URLを貼り付けます(<b>開きません</b>)。公式のドメインも入れると、一致するかを照合します。</p>
+        <label class="lb" for="cxUrl" style="font-size:13px;font-weight:700">開いているページのURL</label>
+        <input id="cxUrl" class="cx-in tl-mono" type="text" autocomplete="off" spellcheck="false" placeholder="例:https://example-kaiyaku.com/cancel">
+        <label class="lb" for="cxSv" style="font-size:13px;font-weight:700">主なサービスから、公式ドメインを入れる(目安)</label>
+        <select id="cxSv" class="cx-sel"><option value="">選ばない</option></select>
+        <label class="lb" for="cxOff" style="font-size:13px;font-weight:700">公式のドメイン(複数ならスペースで区切る)</label>
+        <input id="cxOff" class="cx-in tl-mono" type="text" autocomplete="off" spellcheck="false" placeholder="契約書面・公式アプリ・手元のカード明細で確認したもの">
+        <p class="sm">一覧のドメインは目安で、変更されることがあります。<b>公式のドメインは、契約書面や公式アプリなど、手元にある情報で確認してください。</b>検索結果や、届いたメールのリンク先を、公式のドメインとして入れないでください。</p>
+        <div><button type="button" class="tl-b p" id="cxGo">照合する</button></div>
+        <div id="cxUOut" aria-live="polite"></div>
+      </div>
+    </details>
+
+    <details class="cx-d" id="cxS3">
+      <summary>③ もう払った・入力した場合の手順</summary>
+      <div class="cx-b">
+        <p>上から順に進めます。チェックを入れて、進み具合を確認できます。</p>
+        <div class="cx-prog" id="cxProg" aria-live="polite"></div>
+        <div class="cx-list" id="cxSteps"></div>
+      </div>
+    </details>
+
+    <details class="cx-d" id="cxS4">
+      <summary>④ 本物の解約のしかた(真偽の確認方法)</summary>
+      <div class="cx-b">
+        <ol style="margin:0 0 9px 20px">
+          <li><b>何の請求かを特定する。</b>カード明細の請求元名を見ます。iPhoneは「設定 → 自分の名前 → サブスクリプション」、Androidは「Playストア → プロフィール → お支払いと定期購入 → 定期購入」で、契約中のものが分かります。</li>
+          <li><b>公式アプリ、またはブックマークからログインする。</b>アカウント、契約内容、プランなどの画面に、解約の項目があります。ログインせずに解約できるとうたうページは、疑います。</li>
+          <li><b>検索するなら、結果の「広告」「スポンサー」表示に注意する。</b>表示されたURLのドメインを、①②のチェックで確認します。</li>
+          <li><b>解約料が本当にあるかは、契約書面や利用規約で確認する。</b>見覚えのない手数料を、新しいカードで払わせようとするページは、いったん止めて、公式の問い合わせ先に確認します。</li>
+          <li><b>運営会社を確認する。</b>「特定商取引法に基づく表記」の会社名と所在地を、国税庁の法人番号公表サイトで照合します。会社名・住所が書かれていない、または一致しないページは、疑います。</li>
+          <li><b>電話番号は、ページに出ているものを使わない。</b>請求書、契約書面、公式アプリに書かれた番号にかけます。</li>
+          <li><b>解約後も確認する。</b>アプリ内の契約状況が「解約済み」になっているか、次の請求月の明細に請求がないかを見ます。</li>
+        </ol>
+        <p class="sm">このチェッカーは、この端末の中だけで動く簡易な判定です。最新の悪質サイトの一覧(ブロックリスト)とは照合できません。</p>
+      </div>
+    </details>
+
+    <details class="cx-d" id="cxS5">
+      <summary>⑤ 相談・通報先</summary>
+      <div class="cx-b" id="cxLinks"></div>
+    </details>
+
+    <details class="cx-d" id="cxS6">
+      <summary>⑥ 家族に注意を伝える</summary>
+      <div class="cx-b">
+        <label class="lb" for="cxMsg" style="font-size:13px;font-weight:700">家族に送る文面</label>
+        <textarea id="cxMsg" rows="12" autocomplete="off" style="width:100%;font-size:14px;line-height:1.7;padding:9px 11px;border:2px solid var(--line);border-radius:10px;background:transparent;color:inherit;font-family:inherit"></textarea>
+        <div><button type="button" class="tl-b" id="cxCopy">📋 コピー</button><button type="button" class="tl-b" id="cxShare">📤 共有</button></div>
+      </div>
+    </details>
+
+    <details class="cx-d" id="cxS7">
+      <summary>出典と、この内容の位置づけ</summary>
+      <div class="cx-b">
+        <ul class="sm" style="font-size:12px;line-height:1.9">
+          <li><a href="https://www.kokusen.go.jp/news/data/n-20231108_2.html" target="_blank" rel="noopener">フィッシングに関する注意喚起(国民生活センター 2023年11月8日)</a>:偽サイトに入力した場合のカード会社への連絡、利用明細の確認、利用限度額の設定、ID・パスワードの使い回しの回避</li>
+          <li><a href="https://www.caa.go.jp/policies/policy/consumer_policy/caution/caution_039" target="_blank" rel="noopener">クレジットカードの不正利用にご注意ください(消費者庁)</a>:身に覚えのない請求はすぐにカード会社へ連絡</li>
+          <li><a href="https://www.pref.saitama.lg.jp/b0304/shohisoudan/jirei/fushin/20230925.html" target="_blank" rel="noopener">偽サイトへの誘導の事例(埼玉県)</a>:入力せずにサイトを閉じる、正規のURLをブックマークする</li>
+          <li><a href="https://www.pref.kanagawa.jp/docs/r7b/cnt/f370213/000834.html" target="_blank" rel="noopener">海外有料サイトの解約について(神奈川県)</a>:解約料の請求事例、解約後もカード情報の変更を検討、ほかの請求の確認</li>
+        </ul>
+        <p class="sm">上の出典は、偽サイトへのカード情報の入力や不審な請求への一般的な対処を扱っています。<b>「解約」の検索から偽ページに誘導される今回の手口そのものを扱ったものではありません。</b>危険度の点数、ドメインの照合、手順の並び順、返金をうたう連絡への警戒などは、作成者の一般的な考え方で、公的な基準ではありません。</p>
+      </div>
+    </details>
   </div>
 </div>
 
@@ -1678,7 +1808,7 @@ function goShield(){
     [].forEach.call(document.querySelectorAll('#svList [data-t]'), function(l){ l.hidden = !!q && l.getAttribute('data-t').indexOf(q) < 0; });
   };
   /* 2. 怪しい連絡 */
-  var C = [['暗証番号・パスワード・認証コード(ワンタイムパスワード)を聞かれた、入力させられた',5],['ATMに行くよう言われた(還付金・給付金)',5],['キャッシュカード・通帳を預かる、渡すよう言われた',5],['電子マネー・ギフトカード・暗号資産での支払いを求められた',5],['「逮捕」「口座凍結」「法的措置」などで脅された',4],['「至急」「本日中」など期限で急かされた',3],['LINEなど別アプリへの移行や、ビデオ通話を求められた',3],['「誰にも話さないで」と言われた',4],['メール・SMS・書面にあるリンク、電話番号、QRコードを使うよう案内された',3],['差出人や担当者の名前・部署が不明確、または日本語が不自然',2],['取引のない機関から、突然届いた',2]];
+  var C = [['暗証番号・パスワード・認証コード(ワンタイムパスワード)を聞かれた、入力させられた',5],['ATMに行くよう言われた(還付金・給付金)',5],['キャッシュカード・通帳を預かる、渡すよう言われた',5],['電子マネー・ギフトカード・暗号資産での支払いを求められた',5],['「逮捕」「口座凍結」「法的措置」などで脅された',4],['「至急」「本日中」など期限で急かされた',3],['LINEなど別アプリへの移行や、ビデオ通話を求められた',3],['「誰にも話さないで」と言われた',4],['メール・SMS・書面にあるリンク、電話番号、QRコードを使うよう案内された',3],['差出人や担当者の名前・部署が不明確、または日本語が不自然',2],['取引のない機関から、突然届いた',2],['「解約」「退会」の手続きとして、手数料の支払いやカード番号の入力を求められた',5]];
   $('ckList').innerHTML = C.map(function(c,i){ return '<label class="tk"><input type="checkbox" data-ck="' + i + '"><span>' + c[0] + '</span></label>'; }).join('');
   function ckRun(){
     var on = [].slice.call(document.querySelectorAll('[data-ck]:checked')).map(function(x){ return C[+x.getAttribute('data-ck')][1]; });
@@ -1863,6 +1993,173 @@ function goShield(){
     document.addEventListener('DOMContentLoaded', go);
     window.addEventListener('load', go);
   }else go();
+})();
+
+/* ============================================================
+   解約ページ詐欺チェッカー
+   ============================================================ */
+function cxOpen(id){
+  var d = document.getElementById(id);
+  if(!d) return;
+  d.open = true;
+  try{ d.scrollIntoView({behavior:'smooth', block:'start'}); }catch(e){ d.scrollIntoView(); }
+}
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var TW = ['co.jp','or.jp','ne.jp','go.jp','lg.jp','ac.jp','ed.jp','gr.jp'];
+  function regOf(h){ var p = h.split('.'); return (p.length >= 3 && TW.indexOf(p.slice(-2).join('.')) >= 0) ? p.slice(-3).join('.') : p.slice(-2).join('.'); }
+  function parse(u){
+    u = String(u || '').trim();
+    if(!u) return null;
+    try{ return new URL(/^[a-z][a-z0-9+.\-]*:\/\//i.test(u) ? u : 'https://' + u); }catch(e){ return null; }
+  }
+
+  /* ① ページのチェック */
+  var CXI = [
+    ['「解約」などで検索し、検索結果(「広告」「スポンサー」表示を含む)から開いた', 3],
+    ['解約に、手数料(数百円など)の支払いを求められた', 4],
+    ['解約のために、クレジットカード番号を新たに入力させられる', 5],
+    ['セキュリティコード、暗証番号、認証コード(3Dセキュアなど)を求められた', 5],
+    ['契約中のIDやパスワードでログインせず、解約できるという', 3],
+    ['氏名・生年月日・電話番号・住所などを、多く入力させられる', 3],
+    ['画面のURLが公式サイトと違う、またはよく分からない', 4],
+    ['「本日中」「今すぐ」など、カウントダウンや期限が表示される', 2],
+    ['運営会社名・所在地・電話番号が書かれていない、または不自然', 3],
+    ['「解約代行」「サポートセンター」などを名乗っている', 3],
+    ['ページに表示された電話番号に、かけるよう案内された', 3],
+    ['アプリや遠隔操作ソフトのインストールを求められた', 5]
+  ];
+  $('cxList').innerHTML = CXI.map(function(c, i){
+    return '<label class="tk"><input type="checkbox" data-cx="' + i + '"><span>' + esc(c[0]) + '</span></label>';
+  }).join('') +
+  '<label class="tk"><input type="checkbox" id="cxDone"><span><b>すでに、手数料を払った・カード情報などを入力した</b><small>点数には入れず、緊急の手順を案内します</small></span></label>';
+  function cxRun(){
+    var on = [].slice.call(document.querySelectorAll('[data-cx]:checked')).map(function(x){ return CXI[+x.getAttribute('data-cx')][1]; });
+    var done = $('cxDone').checked, h = '';
+    if(on.length){
+      var t = on.reduce(function(a, b){ return a + b; }, 0), mx = Math.max.apply(null, on);
+      var lv = (mx >= 5 || t >= 8) ? 1 : t >= 4 ? 2 : 3;
+      var tx = ['', '危険:偽の解約ページの可能性が非常に高い', '要警戒:偽の解約ページの可能性が高い', '注意:確認が必要'];
+      h += '<div class="act a' + lv + '"><b class="u u' + lv + '">' + tx[lv] + '</b><br>' + (lv === 1
+        ? '<b>ここで、入力も支払いも止めて、ページを閉じてください。</b>解約は、公式アプリ、またはブックマークから、ログインして行います。'
+        : lv === 2
+          ? '入力を止めて、公式アプリや契約書面の連絡先で確認してください。'
+          : '入力する前に、②のURL照合と、④の確認方法で確かめてください。') + '</div>';
+    }
+    if(done){
+      h += '<div class="act a1"><b class="u u1">緊急</b><br><b>いますぐ、カード会社に電話してください</b>(カード裏面の番号)。利用停止と再発行、該当の請求の調査を頼みます。' +
+        '<div><button type="button" class="tl-b p" onclick="cxOpen(\'cxS3\')">③の手順を開く</button></div></div>';
+    }
+    $('cxOut').innerHTML = h;
+  }
+  [].forEach.call(document.querySelectorAll('[data-cx],#cxDone'), function(x){ x.onchange = cxRun; });
+
+  /* ② URL照合 */
+  var CXV = [
+    ['Amazon(プライム等)', 'amazon.co.jp amazon.com'], ['Netflix', 'netflix.com'], ['Apple(サブスク等)', 'apple.com'],
+    ['Google / YouTube', 'google.com youtube.com'], ['Spotify', 'spotify.com'], ['Disney+', 'disneyplus.com'],
+    ['Hulu', 'hulu.jp'], ['U-NEXT', 'unext.jp'], ['DAZN', 'dazn.com'], ['Adobe', 'adobe.com'],
+    ['Microsoft', 'microsoft.com'], ['LINE', 'line.me'], ['楽天', 'rakuten.co.jp'], ['Yahoo! JAPAN', 'yahoo.co.jp'],
+    ['NTTドコモ', 'docomo.ne.jp nttdocomo.co.jp'], ['au', 'au.com'], ['ソフトバンク', 'softbank.jp']
+  ];
+  $('cxSv').innerHTML = '<option value="">選ばない</option>' + CXV.map(function(v){ return '<option value="' + esc(v[1]) + '">' + esc(v[0]) + '(' + esc(v[1]) + ')</option>'; }).join('');
+  $('cxSv').onchange = function(){ if($('cxSv').value) $('cxOff').value = $('cxSv').value; };
+  $('cxGo').onclick = function(){
+    var o = $('cxUOut'), raw = $('cxUrl').value;
+    if(!raw.trim()){ o.innerHTML = ''; return; }
+    var x = parse(raw);
+    if(!x || !x.hostname){ o.innerHTML = '<div class="act a2">URLとして読み取れません。</div>'; return; }
+    var h = x.hostname.toLowerCase().replace(/\.$/, ''), isIp = /^\d+(\.\d+){3}$/.test(h), reg = isIp ? h : regOf(h), p = h.split('.'), f = [];
+    var offs = [];
+    String($('cxOff').value || '').split(/[\s,、]+/).forEach(function(t){
+      var y = parse(t);
+      if(y && y.hostname && y.hostname.indexOf('.') > 0){ var r = regOf(y.hostname.toLowerCase().replace(/^www\./, '')); if(offs.indexOf(r) < 0) offs.push(r); }
+    });
+    var match = offs.some(function(d){ return h === d || h.slice(-(d.length + 1)) === '.' + d; });
+    var mismatch = offs.length > 0 && !match;
+    var brandLike = mismatch && offs.some(function(d){ var b = d.split('.')[0]; return b.length >= 3 && h.indexOf(b) >= 0; });
+    if(x.protocol !== 'https:') f.push('https ではありません');
+    if(/^\d+(\.\d+){3}$/.test(h)) f.push('ドメインが数字のIPアドレスです');
+    if(h.indexOf('xn--') >= 0) f.push('国際化ドメイン(xn--)です。似た別の文字が使われている可能性があります');
+    if(raw.indexOf('@') >= 0) f.push('「@」を含みます(別のサイトへ飛ばす手口)');
+    if(p.length >= 5) f.push('サブドメインが多すぎます');
+    if((h.match(/-/g) || []).length >= 2) f.push('ハイフンが多いドメインです');
+    if(/(^|\.)(bit\.ly|t\.co|tinyurl\.com|is\.gd|cutt\.ly|ow\.ly|goo\.gl|t\.ly)$/.test(h)) f.push('短縮URLです(行き先が見えません)');
+    if(/\.(top|xyz|click|icu|cfd|sbs|cyou|buzz|vip|loan)$/.test(h)) f.push('フィッシングに悪用されやすい末尾のドメインです');
+    if(!match && /(kaiyaku|kaiyo|cancel|unsub|taikai|terminate|refund|support|center)/.test(h)) f.push('ドメインに「解約」「サポート」などの意味の語を含みます(公式ドメインでない場合、なりすましの典型です)');
+    if(!match && /(login|verify|secure|signin|confirm|update|account|pay)/.test(h)) f.push('ドメインに login・verify・pay などの語が含まれます');
+    var lv = (mismatch || brandLike || f.length >= 2) ? 1 : f.length === 1 ? 2 : 3;
+    var head = '<b>本当の接続先ドメイン:</b> <span class="tl-mono">' + esc(reg) + '</span>(ホスト名: ' + esc(h) + ')<br>';
+    var res = '';
+    if(offs.length){
+      res = match
+        ? '<b>公式ドメイン(' + esc(offs.join('、')) + ')と一致しました。</b><br>'
+        : '<b class="u u1">不一致</b> 入力した公式ドメイン(' + esc(offs.join('、')) + ')と<b>一致しません。公式サイトではありません。</b>' + (brandLike ? 'サービス名に似せた別ドメインの可能性があります。' : '') + '<br>';
+    }else{
+      res = '<span class="sm">公式のドメインが未入力のため、構造の確認だけです。</span><br>';
+    }
+    o.innerHTML = '<div class="act a' + lv + '">' + head + res +
+      (f.length ? '<b>怪しい兆候:</b><ul style="margin:4px 0 4px 19px">' + f.map(function(s){ return '<li>' + esc(s) + '</li>'; }).join('') + '</ul>' : (match ? '' : '構造上の大きな兆候は見つかりませんでした。')) +
+      '<br>' + (match
+        ? '<b>ただし、ドメインが合っていても、安全とは限りません。</b>公式のドメインが開かれる経路(偽メール、広告)もあります。解約のために手数料の支払いや、新しいカード番号の入力を求められたら、止めて、公式の窓口に確認してください。'
+        : mismatch
+          ? '<b>入力も支払いもせず、ページを閉じてください。</b>解約は、公式アプリかブックマークから行います。'
+          : '<b>兆候が見つからなくても、安全とは限りません。</b>公式のドメインを手元の情報で確認して、入力欄に入れて照合してください。') +
+      '<br>このURLは、開かないでください。</div>';
+  };
+
+  /* ③ 払った後の手順 */
+  var CXS = [
+    ['追加の入力・支払いをやめて、ページを閉じる', '「返金します」「手続きを完了します」と連絡が来ても応じません。新しいカード番号や認証コードを、これ以上入力しないでください。'],
+    ['いますぐ、カード会社に電話する', 'カード裏面の番号か、公式アプリから連絡します。伝えること:いつ・いくら・どのページ・何を入力したか(カード番号、有効期限、セキュリティコード、認証コードの有無)。頼むこと:利用停止と再発行、該当の請求の調査、今後の請求の拒否。取り消せるかどうかは、カード会社の調査と状況によります。'],
+    ['証拠を残す', 'ページのスクリーンショット(URL・金額・日時が見えるもの)、届いたメール・SMS、カードの利用明細を保存します。カード番号が写った画像は、他人に送らないでください。'],
+    ['本物のサービスの解約を、公式の手順でやり直す', 'カードを止めても、契約が自動で解約されるとは限りません。公式アプリやブックマークからログインして、解約できているかを確認します(④を参照)。'],
+    ['パスワードを変える', '入力したIDとパスワード、同じものを使い回している他のサービスを変更し、二段階認証をオンにします。'],
+    ['個人情報が渡った前提で、警戒する', '氏名・住所・電話番号・生年月日を入力した場合、後日の電話・SMS・郵便に注意します。知らない番号には折り返さず、「返金」「還付」をうたう連絡は、詐欺を疑います。'],
+    ['端末を点検する', 'アプリのインストールや、遠隔操作ソフトの導入に応じた場合は、通信を切り、アプリを削除して、⑤の窓口に相談します。'],
+    ['この先の明細を、毎月確認する', '後日に請求が来る手口です。カードのご利用通知をオンにし、利用限度額を必要最低限まで下げて、数か月は毎月の明細を確認します。'],
+    ['相談・通報する', '消費者ホットライン188、警察相談専用電話 #9110、偽サイトの報告(⑤を参照)。']
+  ];
+  $('cxSteps').innerHTML = CXS.map(function(s, i){
+    return '<label class="tk"><input type="checkbox" data-cs="' + i + '"><span><b>' + (i + 1) + '. ' + esc(s[0]) + '</b><small>' + esc(s[1]) + '</small></span></label>';
+  }).join('');
+  function csRun(){
+    var n = document.querySelectorAll('[data-cs]:checked').length;
+    $('cxProg').textContent = '完了 ' + n + ' / ' + CXS.length;
+  }
+  [].forEach.call(document.querySelectorAll('[data-cs]'), function(x){ x.onchange = csRun; });
+  csRun();
+
+  /* ⑤ 相談先 */
+  var LK = [
+    ['消費者ホットライン 188', '電話 188(いやや!)。最寄りの消費生活センターにつながります', ''],
+    ['警察相談専用電話 #9110', '電話 #9110。サイバー犯罪の相談は、各都道府県警察の窓口でも受け付けています', ''],
+    ['カード会社', 'カード裏面の電話番号、または公式アプリから', ''],
+    ['国民生活センター', '消費生活の相談・注意喚起', 'https://www.kokusen.go.jp/'],
+    ['フィッシング対策協議会', '偽サイトの報告・緊急情報', 'https://www.antiphishing.jp/'],
+    ['IPA 情報セキュリティ安心相談窓口', '不審なアプリ・遠隔操作などの相談', 'https://www.ipa.go.jp/security/anshin/'],
+    ['Google セーフブラウジング:フィッシングサイトの報告', '偽ページを見つけたときの報告', 'https://safebrowsing.google.com/safebrowsing/report_phish/'],
+    ['国税庁 法人番号公表サイト', '運営会社名・所在地の照合', 'https://www.houjin-bangou.nta.go.jp/']
+  ];
+  $('cxLinks').innerHTML = LK.map(function(l){
+    return l[2]
+      ? '<a class="cx-lnk" href="' + esc(l[2]) + '" target="_blank" rel="noopener"><b>' + esc(l[0]) + ' ↗</b><small>' + esc(l[1]) + '</small></a>'
+      : '<div class="cx-lnk"><b>' + esc(l[0]) + '</b><small>' + esc(l[1]) + '</small></div>';
+  }).join('') + '<p class="sm" style="margin-top:8px">窓口の電話番号や受付時間は変わることがあります。各機関の公式ページでご確認ください。</p>';
+
+  /* リンクのコピー(開くと、このチェッカーが直接開く) */
+  function cxUrl(){ return location.href.split('#')[0] + '#cancel'; }
+  $('cxLink').onclick = function(){ copy(cxUrl(), 'リンクをコピーしました'); };
+  function cxHash(){ if(location.hash === '#cancel') openDlg('dlgCancel'); }
+  window.addEventListener('hashchange', cxHash); cxHash();
+
+  /* ⑥ 家族へ */
+  $('cxMsg').value = '【家族への注意】\n「サービス名 解約」とネットで検索すると出てくるページの中に、偽の解約ページがあります。\n・「解約手数料○○円」と言って、クレジットカード番号を入力させる\n・入力した情報を盗み、後日、高額な請求が来る\n\n対策\n1. 解約は、検索ではなく、公式アプリか、ブックマークしたサイトからログインして行う\n2. 解約のために、カード番号の入力や手数料の支払いを求められたら、いったん止める\n3. 入力してしまったら、すぐカード会社へ電話する(カード裏面の番号)\n4. 迷ったら、警察 #9110 か 消費者ホットライン 188 に相談する';
+  $('cxCopy').onclick = function(){ copy($('cxMsg').value, '文面をコピーしました'); };
+  $('cxShare').onclick = function(){
+    if(navigator.share){ navigator.share({text: $('cxMsg').value}).catch(function(){}); }
+    else copy($('cxMsg').value, '文面をコピーしました');
+  };
 })();
 </script>
 
