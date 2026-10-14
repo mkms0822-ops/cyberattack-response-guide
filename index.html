@@ -646,6 +646,10 @@
       <span class="ic">🌏</span>
       <span class="tx">情報漏洩企業一覧2026 世界版<small>検索・並べ替え・重大度ランク</small></span></button>
 
+    <button type="button" class="mnu-i" onclick="openOut('')">
+      <span class="ic">🛠</span>
+      <span class="tx">サイバー攻撃・システム障害一覧2026<small>漏えい以外の攻撃(業務停止・遠隔操作など)</small></span></button>
+
     <div class="mnu-sec">// これからの備え</div>
     <button type="button" class="mnu-i" onclick="goShield()">
       <span class="ic">🛡</span>
@@ -849,10 +853,46 @@
       <button type="button" data-m="all" aria-pressed="true">全体</button>
       <button type="button" data-m="country" aria-pressed="false">国別</button></span></div>
     <div class="ls-sum" id="lsInfo" aria-live="polite"></div>
+    <div class="ls-ctl"><button type="button" class="tl-b" onclick="closeDlg('dlgList');openOut('')">🛠 漏えい以外のサイバー攻撃の一覧へ</button></div>
     <div class="ls-ctl"><button type="button" class="tl-b p" id="lsCopy">📋 結果をコピー</button><button type="button" class="tl-b" id="lsShare">📤 結果を共有</button></div>
     <details><summary style="cursor:pointer;font-size:13px;min-height:36px">重大度ランク(SS・A・B・C・D・E)の基準</summary>
       <p class="sm" style="font-size:12px;color:var(--sub)">規模(件数)・情報の機微さ(旅券・免許・口座・医療など)・影響範囲(ランサムウェア、多数機関への波及など)からの目安で、公的な区分ではありません。規模が未確認の事案は低めに出るため暫定です。IDCフロンティアは多数の組織に波及しデータ復元が困難なため、手動でSSとしています。</p></details>
     <div id="lsOut"></div>
+  </div>
+</div>
+
+
+<!-- ===== サイバー攻撃(システム障害)一覧 ===== -->
+<div class="dlg dlg-wide" id="dlgOut" onclick="if(event.target===this)closeDlg('dlgOut')">
+  <div class="dlg-in">
+    <button class="dlg-x" onclick="closeDlg('dlgOut')" aria-label="閉じる">✕</button>
+    <h2>🛠 サイバー攻撃・システム障害一覧2026</h2>
+    <p class="ls-sum">情報漏えいが主ではない攻撃(業務停止・サービス停止・遠隔操作・資産窃取など)のうち、2026年9月20日〜10月14日に報じられた主な事案です。<b>すべてを網羅した一覧ではありません。</b>米国の小規模な自治体・学校の事案は、事例集サイト(Dysruption Hub)の記載にもとづきます。</p>
+    <label for="otQ" style="font-size:13px;font-weight:700">検索(組織名・国・内容)</label>
+    <input id="otQ" type="text" autocomplete="off" placeholder="例:ランサムウェア、フランス、学校、IDCF" style="width:100%;min-height:44px;font-size:16px;padding:7px 11px;border:2px solid var(--line);border-radius:10px;background:transparent;color:inherit;font-family:inherit">
+    <div class="ls-ctl"><span class="lb2" id="otLb">範囲</span><span class="seg" role="group" aria-labelledby="otLb" id="otScope">
+      <button type="button" data-s="all" aria-pressed="true">すべて</button>
+      <button type="button" data-s="jp" aria-pressed="false">日本</button>
+      <button type="button" data-s="world" aria-pressed="false">海外</button></span></div>
+    <div class="ls-sum" id="otInfo" aria-live="polite"></div>
+    <div class="ls-ctl"><button type="button" class="tl-b p" id="otCopy">📋 結果をコピー</button></div>
+    <details><summary style="cursor:pointer;font-size:13px;min-height:36px">影響度ランク(SS・A・B・C・D)の基準</summary>
+      <p class="sm" style="font-size:12px;color:var(--sub)">影響を受けた組織の数、停止した期間、社会的な影響の大きさからの目安です。公的な区分ではありません。</p></details>
+    <div id="otOut"></div>
+    <details style="margin-top:12px"><summary style="cursor:pointer;font-size:13px;min-height:36px">出典</summary>
+      <ul class="sm" style="font-size:12px;line-height:1.9">
+        <li><a href="https://piyolog.hatenadiary.jp/entry/2026/10/13/133936" target="_blank" rel="noopener">フランス国内の小売チェーンで発生した冷凍冷蔵設備の遠隔操作について(piyolog)</a></li>
+        <li><a href="https://www.itmedia.co.jp/news/article/2610/13/2000002201/" target="_blank" rel="noopener">フランスのスーパー数百店舗で冷蔵設備にサイバー攻撃(ITmedia NEWS)</a></li>
+        <li><a href="https://bleepingcomputer.com/news/security/retail-giant-ahold-delhaize-takes-systems-offline-after-cyberattack" target="_blank" rel="noopener">Ahold Delhaize takes systems offline after cyberattack(BleepingComputer)</a></li>
+        <li><a href="https://cybernews.com/security/dutch-retailer-albert-heijn-offline-cybersecurity-incident" target="_blank" rel="noopener">Albert Heijn cyberattack(Cybernews)</a></li>
+        <li><a href="https://tech-insider.org/tfg-london-hobbs-whistles-phase-eight-cyberattack-2026" target="_blank" rel="noopener">TFG London Cyberattack(Tech Insider)</a></li>
+        <li><a href="https://tech-insider.org/idcf-cloud-ransomware-zones-unrecoverable-backups-2026" target="_blank" rel="noopener">IDCF Cloud Ransomware(Tech Insider)</a></li>
+        <li><a href="https://piyolog.hatenadiary.jp/entry/2026/10/08/070606" target="_blank" rel="noopener">IDCFクラウドへのランサムウェア攻撃について(piyolog)</a></li>
+        <li><a href="https://westeria.jp/security-incidents/2026/" target="_blank" rel="noopener">2026年の情報漏洩・不正アクセス・ランサムウェア事案一覧(ウェステリア)</a></li>
+        <li><a href="https://rocket-boys.co.jp/security-measures-lab/cyberattacks-data-breaches-latest-cases-2026/" target="_blank" rel="noopener">2026年最新 サイバー攻撃・情報漏洩の事例まとめ(セキュリティ対策Lab)</a></li>
+        <li><a href="https://dysruptionhub.com/incidents/" target="_blank" rel="noopener">Cyber Incident Registry(Dysruption Hub)</a></li>
+        <li><a href="https://www.cyfirma.com/news/weekly-intelligence-report-1-oct-2026/" target="_blank" rel="noopener">Weekly Intelligence Report 1 Oct 2026(CYFIRMA)</a></li>
+      </ul></details>
   </div>
 </div>
 
@@ -1765,6 +1805,42 @@ function goShield(){
     render(); openDlg('dlgList');
     var d = $('dlgList'); if(d) d.scrollTop = 0;
   };
+  render();
+})();
+
+
+/* ---- サイバー攻撃・システム障害一覧 ---- */
+(function(){
+  var OT = [{"o":"IDCフロンティア(IDCFクラウド)","k":"日本","d":"2026-10-07","c":"ランサムウェア","r":"SS","i":"東日本リージョン1の4ゾーンで仮想サーバが停止。495の企業・自治体が影響。JR東日本、日水物流、茨城県、小平市、UDトーク、サイバー大学などで障害や情報漏えいのおそれ。Peachでは旅程表メールの配信停止・遅延","w":"当初は不正アクセスと発表し、同日中にランサムウェア攻撃と訂正。犯行声明は確認されていない","s":"影響ゾーンをネットワークから隔離し、全リージョンの管理コンソールを停止。復旧日程は未公表。データは顧客自身のバックアップからしか戻せない可能性があり、別の清浄な環境での再構築を案内"},{"o":"フランスの大手スーパー(Intermarché、Carrefour、Monoprixなど)","k":"フランス","d":"2026-10-12","c":"制御機器の遠隔操作","r":"A","i":"全国で約300〜500店の冷凍冷蔵設備の設定温度が最高50度に上げられ、食品を大量廃棄。Intermarchéは午前中だけで数千万ユーロ規模の損失を見込む。件数は各社の回答で食い違い","w":"デンマークDanfoss社の冷凍冷蔵用制御機器(AK-SM・AK-SCシリーズ)が遠隔操作された。多くは保守終了品で、管理画面がインターネットに公開されていた。攻撃者や動機は未確定","s":"フランスのCERT-FRが警戒情報を公表(機器のインターネット切断・初期化・修正の適用)。パリ検察が捜査を全国管轄のサイバー犯罪対策部門に委ねた。業界団体はDanfossに透明性を要請"},{"o":"Ahold Delhaize(Albert Heijn、Delhaizeなど)","k":"オランダ・ベルギー・米国","d":"2026-10-11","c":"システム停止(サイバーセキュリティインシデント)","r":"B","i":"Albert Heijn、Etos、Gall & Gall、Delhaizeのウェブサイト・アプリ・カスタマーサービスが利用不能。オンライン配達が停止し、配送拠点にも影響が出たと報じられた。実店舗は営業を継続。米Stop & Shopの従業員は給与明細などが見られない","w":"ネットワーク内のセキュリティ問題と説明。原因や攻撃者、ランサムウェアかどうかは未公表。2024年11月にも別の攻撃を受けている","s":"影響システムを予防的にオフラインにし、評価と被害の軽減を進めている。復旧の見通しは示されていない"},{"o":"TFG London(Hobbs、Whistles、Phase Eight)","k":"英国","d":"2026-10-13","c":"システム障害(攻撃)","r":"C","i":"一部ITシステムがオフラインになり、オンライン機能の一部が利用できない。実店舗は営業を継続","w":"10月11日に検知。侵入経路・手口・攻撃者は未公表で、犯行声明も確認されていない。顧客データの侵害は未確認で、決済情報は影響を受けていないとみている","s":"事業継続計画を発動し、外部の専門家と調査。関係当局へ通知済み。影響が確認された顧客には直接連絡する方針"},{"o":"シンガポールの暗号資産取引所","k":"シンガポール","d":"2026-09","c":"資産の窃取","r":"A","i":"ホットウォレットとウォームウォレットから約3億8,750万ドル相当が流出。取引データが操作された可能性。秘密鍵とコールドウォレットは無事とされる","w":"バックエンドシステムの侵害。北朝鮮系ハッカーの関与が疑われている(確定ではない)。発生日は出典に記載なし","s":"詳細は出典で未確認"},{"o":"大阪公立大学","k":"日本","d":"2026-10-02","c":"ランサムウェア","r":"C","i":"仮想化基盤の障害でシステムが停止し、10月2日〜8日は全授業を休講。10月9日から対面授業を再開","w":"仮想化基盤の障害を、ランサムウェア攻撃によるものと判断","s":"システムの復旧と授業再開。情報流出の有無は出典で確認できず"},{"o":"日水物流(ニッスイグループ)","k":"日本","d":"2026-10-07","c":"システム障害(不正アクセスとみられる)","r":"C","i":"商品の入出荷ができなくなった(IDCFクラウドの障害の影響先として報じられている)","w":"委託先データセンターへの第三者による不正アクセスとみられると発表","s":"復旧作業中"},{"o":"京王グループ","k":"日本","d":"2026-09-26","c":"ランサムウェア","r":"C","i":"一部の営業システムに障害。ホテルの問い合わせ業務などに影響。鉄道の運行への影響はなし","w":"ランサムウェア攻撃","s":"公表・復旧作業"},{"o":"手間いらず(宿泊予約管理システム)","k":"日本","d":"2026-09-24","c":"機能の一時停止(攻撃の種別は未確認)","r":"D","i":"一部機能を10:58〜21:48に一時停止。基幹の予約・在庫連携は維持","w":"攻撃の種別は、今回確認した出典に詳しい記載なし","s":"当日中に再開"},{"o":"ローソン(自社メールサーバ)","k":"日本","d":"2026-10-01","c":"メールサーバの不正利用","r":"D","i":"9月25〜27日に、不審な英文メールが推計約70万件送信された。個人情報の流出は確認されていない","w":"自社メールサーバへの不正アクセスによる不正利用","s":"設定変更と通信制限で対処"},{"o":"イリノイ大学シカゴ校 医学部","k":"米国","d":"2026-10-02","c":"ランサムウェア","r":"C","i":"一部システムが利用不能になり、情報の窃取を同校が認めた。10月5日までに復旧し、主要ネットワークや患者ケアへの影響はなし","w":"ランサムウェア","s":"復旧済み"},{"o":"BM Technologies(BankMobile)","k":"米国","d":"2026-10-02","c":"アカウント侵害","r":"C","i":"カリフォルニア州の複数のコミュニティカレッジで、奨学金の振込が遅延・停止。紙の小切手で対応","w":"アカウントの不正アクセス。被害範囲は未確定","s":"紙の小切手で対応"},{"o":"ジェファーソン郡(ミズーリ州)","k":"米国","d":"2026-10-02","c":"ネットワーク遮断","r":"D","i":"取引処理ができず、公開会議2件が中止。警察機能には影響なし","w":"セキュリティ上の脅威を受けてネットワークを遮断","s":"復旧作業中"},{"o":"Green Clinic(ルイジアナ州)","k":"米国","d":"2026-10-02","c":"障害(攻撃の疑い)","r":"D","i":"電子カルテと予約情報にアクセスできず、一部は紙の記録で対応","w":"サイバー攻撃の疑い。攻撃の確認と情報流出の有無は未確定","s":"紙の記録で診療を継続"},{"o":"インディアナ学区(ペンシルベニア州)","k":"米国","d":"2026-10-04","c":"サイバーインシデント","r":"D","i":"サーバーとシステムへのアクセスが障害となり、デスクトップ端末が停止","w":"ランサムウェアの有無は未確定","s":"外部の専門家が復旧作業中"},{"o":"イーストハンプトン公立学校(マサチューセッツ州)","k":"米国","d":"2026-10-05","c":"ネットワーク遮断","r":"D","i":"不審な活動を受けて全ネットワークを停止。電話・メール・Wi-Fiなどが利用不能になり、紙ベースの授業で継続","w":"不審な活動の検知による予防的な遮断","s":"復旧作業中"},{"o":"メリーランド州教育省","k":"米国","d":"2026-10-07","c":"予防的なサイト停止","r":"D","i":"公式サイトを停止し、代替サイトで案内。被害範囲と復旧時期は未確定","w":"サイバー調査に伴う予防的な停止","s":"調査中"},{"o":"U.S.NEXT(ミシシッピ州)","k":"米国","d":"2026-10-09","c":"サイバー攻撃による障害","r":"D","i":"ホスティングサービスのウェブサイトとメールが停止し、ミシシッピ州の郡政府などに影響","w":"ランサムウェアの関与は未確認","s":"復旧作業中"},{"o":"ノースプラット市・リンカーン郡(ネブラスカ州)","k":"米国","d":"2026-10-09","c":"通信障害(サイバーインシデント)","r":"D","i":"インターネットと電話が停止し、郡庁舎が早期閉鎖。911と緊急サービスは稼働を継続","w":"サイバーインシデントに起因","s":"復旧作業中"},{"o":"テレボーン教区政府(ルイジアナ州)","k":"米国","d":"2026-09-30","c":"サイバー攻撃による障害","r":"D","i":"オンラインの公共料金支払いが停止。必須業務は継続","w":"ネットワークを遮断","s":"復旧作業中"}];
+  var $ = function(id){ return document.getElementById(id); };
+  var q = '', sc = 'all', last = [];
+  function card(o){
+    return '<div class="ls-card"><div class="hd"><span class="rk rk-' + o.r + '" aria-label="影響度' + o.r + '">' + o.r + '</span><b>' + esc(o.o) + '</b></div>' +
+      '<div class="mt2">' + esc(o.k) + ' ・ ' + esc(o.d) + ' ・ ' + esc(o.c) + '</div>' +
+      '<dl><dt>影響:</dt><dd>' + esc(o.i) + '</dd><dt>原因・手口:</dt><dd>' + esc(o.w) + '</dd><dt>対応・状況:</dt><dd>' + esc(o.s) + '</dd></dl></div>';
+  }
+  function render(){
+    var k = q.trim().toLowerCase();
+    var rows = OT.filter(function(o){
+      if(sc === 'jp' && o.k !== '日本') return false;
+      if(sc === 'world' && o.k === '日本') return false;
+      return !k || (o.o + o.k + o.c + o.i + o.w + o.s).toLowerCase().indexOf(k) >= 0;
+    }).sort(function(a,b){ return a.d < b.d ? 1 : a.d > b.d ? -1 : 0; });
+    last = rows;
+    $('otInfo').textContent = '該当 ' + rows.length + ' 件 / 全 ' + OT.length + ' 件 ・ 日付順(新しい順)';
+    $('otOut').innerHTML = rows.length ? rows.map(card).join('') : '<p class="sm">該当する事案が見つかりません。</p>';
+    [].forEach.call(document.querySelectorAll('#otScope button'), function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-s') === sc); });
+  }
+  [].forEach.call(document.querySelectorAll('#otScope button'), function(b){ b.onclick = function(){ sc = b.getAttribute('data-s'); render(); }; });
+  $('otQ').oninput = function(){ q = $('otQ').value; render(); };
+  $('otCopy').onclick = function(){
+    if(!last.length){ toast('コピーする結果がありません'); return; }
+    var t = '【サイバー攻撃・システム障害一覧2026】\n該当 ' + last.length + ' 件(全 ' + OT.length + ' 件・2026年10月14日時点の報道)\n';
+    last.forEach(function(o, i){ t += '\n' + (i + 1) + '. [' + o.r + '] ' + o.o + '(' + o.k + '・' + o.d + '・' + o.c + ')\n   影響:' + o.i + '\n   原因・手口:' + o.w + '\n   対応・状況:' + o.s + '\n'; });
+    t += '\n※ 主な事案のみで、網羅ではありません。影響度ランクは目安です。\n詳しくは → ' + location.href.split('#')[0] + '\nDWA防災情報センター';
+    copy(t, last.length + '件の結果をコピーしました');
+  };
+  window.openOut = function(query){ q = query || ''; $('otQ').value = q; render(); openDlg('dlgOut'); var d = $('dlgOut'); if(d) d.scrollTop = 0; };
   render();
 })();
 
