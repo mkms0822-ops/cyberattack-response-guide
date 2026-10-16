@@ -432,6 +432,20 @@
   .tl-r{font-size:15px;font-weight:700;margin:8px 0}
   .tl-mono{font-family:var(--mono);letter-spacing:.03em}
   @media print{#secShield{display:none}}
+
+  /* ---- サイバー用語集 ---- */
+  .gl-q{width:100%;min-height:44px;font-size:16px;padding:7px 11px;border:2px solid var(--line);border-radius:10px;background:transparent;color:inherit;font-family:inherit;margin:6px 0 10px}
+  .gl-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}
+  .gl-chip{min-height:36px;padding:4px 11px;border:1px solid var(--line);border-radius:18px;background:transparent;color:inherit;font-size:12.5px;font-family:inherit;cursor:pointer}
+  .gl-chip[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff;font-weight:700}
+  .gl-cat{font-size:11px;letter-spacing:.12em;color:var(--sub);font-weight:700;margin:18px 0 6px}
+  .gl-i{border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:8px;background:var(--card)}
+  .gl-i b{display:block;font-size:14px;color:var(--blue);margin-bottom:2px;overflow-wrap:anywhere}
+  .gl-i span{display:block;font-size:13px;line-height:1.75;overflow-wrap:anywhere}
+  html.dk .gl-i{background:#1a2332;border-color:#2e3b50}
+  html.dk .gl-i b{color:#8fc0ff}
+  html.dk .gl-chip[aria-pressed="true"]{background:#2f6fd0;border-color:#2f6fd0}
+  .gl-none{font-size:13px;color:var(--sub);padding:14px 2px}
   .dlg-wide .dlg-in{max-width:900px}
   /* 最新情報 */
   .nw-card{background:var(--card);border:1px solid var(--line,#d6dde6);border-left:5px solid var(--red,#d92b2b);border-radius:12px;padding:14px 16px;margin-bottom:12px}
@@ -741,6 +755,10 @@
       <span class="ic">📖</span>
       <span class="tx">脅威マップの見方<small>OAS・ODS・MAVなど9項目の意味</small></span></button>
 
+    <button type="button" class="mnu-i" onclick="openDlg('dlgGloss')">
+      <span class="ic">🔤</span>
+      <span class="tx">サイバー用語集<small>ランサムウェア・ゼロデイ・MFAなど主要用語を解説</small></span></button>
+
     <div class="mnu-sec">// 公式LINE</div>
     <div class="mnu-qr">
       <img src="https://qr-official.line.me/gs/M_187ukqci_GW.png?oat_content=qr"
@@ -838,6 +856,19 @@
 
 
 <!-- ===== サイバー脅威マップの説明書 ===== -->
+<div class="dlg" id="dlgGloss" onclick="if(event.target===this)closeDlg('dlgGloss')">
+  <div class="dlg-in">
+    <button class="dlg-x" onclick="closeDlg('dlgGloss')" aria-label="閉じる">✕</button>
+    <h2>🔤 サイバー用語集</h2>
+    <p class="sm" style="line-height:1.7">本ページで出てくる主要な用語を、一般的な意味でやさしく説明します。掲載する用語は作者が選んだもので、網羅的ではありません。正式な定義は、IPA・NISC・JPCERT/CC などの公的機関の資料をご確認ください。</p>
+    <label for="glQ" class="sm" style="font-weight:700">用語を探す</label>
+    <input id="glQ" class="gl-q" type="text" autocomplete="off" placeholder="例:ランサム、パスワード、ゼロデイ">
+    <div class="gl-chips" id="glChips" role="group" aria-label="分類"></div>
+    <div id="glBody"></div>
+    <p class="sm" style="margin-top:14px;line-height:1.7">脅威マップの「OAS・ODSなど9項目」の意味は、メニューの「脅威マップの見方」で説明しています。</p>
+  </div>
+</div>
+
 <div class="dlg" id="dlgCyber" onclick="if(event.target===this)closeDlg('dlgCyber')">
   <div class="dlg-in">
     <button class="dlg-x" onclick="closeDlg('dlgCyber')" aria-label="閉じる">✕</button>
@@ -2273,5 +2304,32 @@ function cxOpen(id){
 })();
 </script>
 
+<script>
+(function(){
+  var G=[{"c": "攻撃の種類", "t": [{"n": "ランサムウェア", "y": "らんさむうぇあ", "d": "パソコンやサーバーのデータを暗号化して使えなくし、元に戻す代わりに身代金を要求するウイルス。最近は、データを盗んだうえで「公開する」と脅す二重恐喝も多い。"}, {"n": "二重恐喝", "y": "にじゅうきょうかつ", "d": "データの暗号化に加えて、盗んだ情報の公開をちらつかせて金銭を要求する手口。バックアップがあっても脅される点が厄介。"}, {"n": "マルウェア", "y": "まるうぇあ", "d": "利用者に害を与える不正なプログラムの総称。ウイルス、ワーム、スパイウェア、ランサムウェアなどを含む。"}, {"n": "フィッシング", "y": "ふぃっしんぐ", "d": "銀行・通販・宅配などを装ったメールやSMSで偽サイトに誘導し、ID・パスワード・カード情報を入力させて盗む手口。"}, {"n": "ビッシング・スミッシング", "y": "びっしんぐ すみっしんぐ", "d": "ビッシングは電話(音声)、スミッシングはSMSを使うフィッシングの仲間。宅配業者や金融機関を名乗るものが多い。"}, {"n": "標的型攻撃", "y": "ひょうてきがたこうげき", "d": "特定の組織や人を狙い、業務に見せかけたメールなどで時間をかけて侵入する攻撃。"}, {"n": "サプライチェーン攻撃", "y": "さぷらいちぇーんこうげき", "d": "本命の企業ではなく、取引先・委託先・ソフトの提供元など守りの弱い所から侵入する攻撃。委託先経由の漏えいはこの型が多い。"}, {"n": "リスト型攻撃(クレデンシャルスタッフィング)", "y": "りすとがたこうげき", "d": "他所で漏れたIDとパスワードの組を、別のサービスで次々に試してログインを狙う攻撃。同じパスワードの使い回しが狙われる。"}, {"n": "DDoS攻撃", "y": "でぃーどす", "d": "大量のアクセスを一斉に送りつけて、サイトやサービスを停止させる攻撃。情報は盗まれないが、業務は止まる。"}, {"n": "ソーシャルエンジニアリング", "y": "そーしゃるえんじにありんぐ", "d": "システムではなく人の心理や行動の隙を突き、パスワードなどを聞き出す手口。なりすまし電話や、肩越しののぞき見など。"}, {"n": "サポート詐欺", "y": "さぽーとさぎ", "d": "「ウイルスに感染した」という偽の警告画面と電話番号を表示し、電話させて遠隔操作や金銭の支払いに誘導する詐欺。"}, {"n": "バックドア", "y": "ばっくどあ", "d": "侵入者が後から何度でも入れるように仕込む、正規の認証を通らない裏口。"}, {"n": "不正アクセス", "y": "ふせいあくせす", "d": "他人のID・パスワードの利用や、システムの弱点を突くなどして、権限なく入り込むこと。不正アクセス禁止法で禁じられている。"}]}, {"c": "弱点・技術用語", "t": [{"n": "脆弱性", "y": "ぜいじゃくせい", "d": "ソフトや機器の設計・作りの不備で、攻撃に悪用され得る弱点。修正プログラム(パッチ)で塞ぐ。"}, {"n": "ゼロデイ攻撃", "y": "ぜろでいこうげき", "d": "開発元が弱点を知る前、または修正が出る前に突かれる攻撃。対策が間に合わないため防ぎにくい。"}, {"n": "パッチ", "y": "ぱっち", "d": "脆弱性や不具合を直す修正プログラム。早く適用するほど安全になる。"}, {"n": "CVE・CVSS", "y": "しーぶいいー しーぶいえすえす", "d": "CVEは脆弱性ごとに付く共通の識別番号(例:CVE-2026-xxxx)。CVSSはその深刻さを0〜10の点数で表す尺度。"}, {"n": "SQLインジェクション", "y": "えすきゅーえるいんじぇくしょん", "d": "入力欄などに不正な命令文を紛れ込ませ、データベースの情報を盗んだり書き換えたりする攻撃。"}, {"n": "RCE(リモートコード実行)", "y": "あーるしーいー", "d": "外部から任意のプログラムを相手のシステム上で実行できてしまう弱点。乗っ取りにつながる深刻なもの。"}, {"n": "SSRF", "y": "えすえすあーるえふ", "d": "サーバーを踏み台にして、外からは届かない内部のシステムへ不正に通信させる攻撃。"}, {"n": "IDOR", "y": "あいどー", "d": "URLやIDの数字を書き換えるだけで、他人のデータを見られてしまう欠陥。アクセス権の確認漏れが原因。"}, {"n": "API・APIキー", "y": "えーぴーあい", "d": "APIはソフト同士がデータをやり取りする窓口。APIキーはその利用を許可する合言葉で、流出すると他人に使われる。"}, {"n": "A2B攻撃", "y": "えーつーびーこうげき", "d": "侵入先の「次の接続先」を狙う攻撃の考え方として解説している(本ページの「最新情報」参照)。特定の事案との関連は確認できていない。"}, {"n": "認証と認可", "y": "にんしょうとにんか", "d": "認証は「本人であることの確認」(ログイン)、認可は「その人に何を許すかの決定」(権限)。両方が正しくないと情報は守れない。"}, {"n": "ダークウェブ", "y": "だーくうぇぶ", "d": "通常の検索では出てこず、専用ソフトで接続する匿名性の高いネットの領域。盗まれた情報の売買に使われることがある。"}, {"n": "ログ", "y": "ろぐ", "d": "システムの利用や操作の記録。侵入の有無や被害範囲を調べる手がかりになる。"}]}, {"c": "守り・対策", "t": [{"n": "多要素認証(MFA)", "y": "たようそにんしょう", "d": "パスワードに加え、スマホのコードや生体情報など別の要素も使って本人確認する仕組み。パスワードが漏れても突破されにくい。"}, {"n": "パスキー", "y": "ぱすきー", "d": "パスワードの代わりに、端末の指紋・顔認証などでログインする新しい方式。偽サイトに入力させられにくい。"}, {"n": "ハッシュ化・ソルト", "y": "はっしゅか", "d": "ハッシュ化はパスワードを元に戻せない文字列に変えて保存すること。ソルトはそこに加える乱数で、まとめて解読されるのを防ぐ。"}, {"n": "暗号化", "y": "あんごうか", "d": "データを鍵がないと読めない形に変えること。盗まれても中身を読まれにくい。鍵も一緒に盗まれると意味が薄れる。"}, {"n": "ファイアウォール", "y": "ふぁいあうぉーる", "d": "ネットワークの出入口で通信を監視し、不審なものを遮断する仕組み。"}, {"n": "WAF", "y": "わふ", "d": "Webサイトへの攻撃(SQLインジェクションなど)に特化して通信を検査・遮断する仕組み。"}, {"n": "EDR", "y": "いーでぃーあーる", "d": "パソコンやサーバーの挙動を常時監視し、不審な動きを見つけて対処を助ける製品・仕組み。"}, {"n": "VPN", "y": "ぶいぴーえぬ", "d": "インターネット上に安全な専用の通り道を作る技術。ただし機器の脆弱性が侵入口になることもあり、更新が欠かせない。"}, {"n": "脆弱性診断・ペネトレーションテスト", "y": "ぜいじゃくせいしんだん", "d": "自社のシステムの弱点を、攻撃者の視点で事前に探して洗い出す検査。"}, {"n": "フォレンジック調査", "y": "ふぉれんじっくちょうさ", "d": "ログや機器のデータを分析して、侵入経路・被害範囲・流出した情報を突き止める調査。"}, {"n": "IoC", "y": "あいおーしー", "d": "攻撃の痕跡を示す手がかり(不審なIPアドレス、ファイルの特徴など)。共有して他の被害防止に使う。"}, {"n": "ブラックリスト・IP遮断", "y": "あいぴーしゃだん", "d": "不審な通信元(IPアドレスや国)からのアクセスを拒否する対策。"}]}, {"c": "公的機関・制度", "t": [{"n": "JPCERT/CC", "y": "じぇいぴーさーと", "d": "国内のサイバーセキュリティ事案の調整や注意喚起を行う民間の非営利組織。"}, {"n": "IPA(情報処理推進機構)", "y": "あいぴーえー", "d": "情報セキュリティの啓発、相談窓口、脆弱性情報の取りまとめなどを行う独立行政法人。"}, {"n": "NICT", "y": "えぬあいしーてぃー", "d": "情報通信分野の研究機関。サイバー攻撃の観測・分析も行っている。"}, {"n": "個人情報保護委員会", "y": "こじんじょうほうほごいいんかい", "d": "個人情報保護法を所管する国の機関。漏えいが起きた事業者は、一定の場合に同委員会への報告と本人への通知が求められる。"}, {"n": "国家サイバー統括室", "y": "こっかさいばーとうかつしつ", "d": "政府のサイバーセキュリティ施策を統括する組織(旧・内閣サイバーセキュリティセンター)。"}]}], cat='', q='';
+  var body=document.getElementById('glBody'), chips=document.getElementById('glChips'), inp=document.getElementById('glQ');
+  function norm(x){return (x||'').toLowerCase().replace(/[\u30a1-\u30f6]/g,function(c){return String.fromCharCode(c.charCodeAt(0)-96)});}
+  function esc(x){return x.replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function mkChips(){
+    var h='<button type="button" class="gl-chip" data-c="" aria-pressed="'+(cat===''?'true':'false')+'">すべて</button>';
+    G.forEach(function(g){h+='<button type="button" class="gl-chip" data-c="'+esc(g.c)+'" aria-pressed="'+(cat===g.c?'true':'false')+'">'+esc(g.c)+'</button>';});
+    chips.innerHTML=h;
+  }
+  function render(){
+    var nq=norm(q.trim()), h='', n=0;
+    G.forEach(function(g){
+      if(cat && cat!==g.c) return;
+      var it=g.t.filter(function(t){return !nq || norm(t.n+' '+t.y+' '+t.d).indexOf(nq)>=0;});
+      if(!it.length) return;
+      h+='<div class="gl-cat">// '+esc(g.c)+'</div>';
+      it.forEach(function(t){n++;h+='<div class="gl-i"><b>'+esc(t.n)+'</b><span>'+esc(t.d)+'</span></div>';});
+    });
+    body.innerHTML = n? h : '<div class="gl-none">該当する用語がありません。別の言葉でお試しください。</div>';
+  }
+  chips.addEventListener('click',function(e){var b=e.target.closest('.gl-chip');if(!b)return;cat=b.getAttribute('data-c');mkChips();render();});
+  inp.addEventListener('input',function(){q=inp.value;render();});
+  mkChips();render();
+})();
+</script>
 </body>
 </html>
