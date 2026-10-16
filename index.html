@@ -564,11 +564,11 @@ html.dk #phRoot .ph-chkin{border-color:#2e3b50}
 #phRoot a{color:var(--blue)}
 html.dk #phRoot a{color:#8fc0ff}
 #phRoot .ph-sec{scroll-margin-top:64px}
-.ph-bar{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:5px;flex-wrap:nowrap;overflow-x:auto;
+.ph-top{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:5px;flex-wrap:nowrap;overflow-x:auto;
   margin:-24px -22px 14px;padding:9px 12px;background:var(--card);border-bottom:1px solid var(--line);border-radius:18px 18px 0 0}
-.ph-bar::-webkit-scrollbar{display:none}
-html.dk .ph-bar{background:#1a2332;border-color:#2e3b50}
-.ph-bar .tb-ham{margin-left:auto}
+.ph-top::-webkit-scrollbar{display:none}
+html.dk .ph-top{background:#1a2332;border-color:#2e3b50}
+.ph-top .tb-ham{margin-left:auto}
 .ph-toc{display:none;margin:-6px 0 12px;border:1px solid var(--line);border-radius:12px;padding:6px}
 .ph-toc.open{display:block}
 .ph-toc button{display:block;width:100%;text-align:left;background:none;border:none;color:inherit;font-family:inherit;font-size:13.5px;padding:10px 10px;border-radius:8px;cursor:pointer;min-height:40px}
@@ -1031,7 +1031,7 @@ html.dk .ph-toc{border-color:#2e3b50}
 
 <div class="dlg dlg-wide" id="dlgPhish" onclick="if(event.target===this)closeDlg('dlgPhish')">
   <div class="dlg-in">
-    <div class="ph-bar">
+    <div class="ph-top">
       <button type="button" class="tb" onclick="closeDlg('dlgPhish')" aria-label="閉じる"><span class="ic">✕</span><span class="tx">閉じる</span></button>
       <button type="button" class="tb" onclick="doRefresh()" aria-label="最新版に更新する"><span class="ic">🔄</span><span class="tx">更新</span></button>
       <button type="button" class="tb" onclick="phShare()" aria-label="共有する"><span class="ic">📤</span><span class="tx">共有</span></button>
