@@ -1,0 +1,16 @@
+{
+  "name": "個人情報が漏れたら｜対処ガイド",
+  "short_name": "漏洩ガイド",
+  "description": "個人情報が漏れたとき、いま何をどの順番ですべきか。ネットが切れたときの備えも。",
+  "lang": "ja",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#131a26",
+  "theme_color": "#131a26",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
