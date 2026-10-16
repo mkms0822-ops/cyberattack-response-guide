@@ -478,6 +478,108 @@
   html.dk .ai-bar i.on{background:#5aa2ff}
   .ai-site{display:flex;align-items:center;justify-content:center;min-height:44px;margin-top:14px;border-radius:10px;background:var(--blue);color:#fff;font-weight:700;text-decoration:none;font-size:14px}
   .ai-src{font-size:11.5px;color:var(--sub);line-height:1.7;margin-top:12px}
+#phRoot a{color:var(--blue)}
+#phRoot .ph-lead{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 17px;margin-bottom:18px}
+#phRoot .ph-lead b{color:var(--red)}
+#phRoot .ph-lead p+p{margin-top:8px}
+#phRoot .ph-prog{margin:0 0 16px;border-radius:10px;border:1px solid var(--line);
+    background:rgba(255,255,255,.97);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);padding:9px 16px;}
+#phRoot .ph-prog .ph-lb{display:flex;justify-content:space-between;font-size:11.5px;color:var(--sub);margin-bottom:5px}
+#phRoot .ph-prog .ph-lb b{color:var(--ink)}
+#phRoot .ph-prog .ph-tr{height:7px;background:#e4eaf2;border-radius:99px;overflow:hidden}
+#phRoot .ph-prog .ph-tr i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,#7ec89c,var(--green));transition:width .4s}
+#phRoot .ph-sec{margin-top:28px}
+#phRoot .ph-sec>h2{font-size:17px;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:8px;text-wrap:balance}
+#phRoot .ph-sec>.ph-sub{font-size:13px;color:var(--sub);margin-bottom:12px}
+#phRoot .ph-sec h3{font-size:14px;color:var(--blue);margin:16px 0 6px}
+#phRoot .ph-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 15px;margin-bottom:10px}
+#phRoot .ph-card p{font-size:13.5px}
+#phRoot .ph-card p+p{margin-top:6px}
+#phRoot .ph-card ul,#phRoot .ph-card ol{padding-left:1.3em;font-size:13.5px}
+#phRoot .ph-card li{margin:3px 0}
+#phRoot .ph-warn{background:#fff8ea;border:1px solid #efd9a6;border-radius:12px;padding:11px 14px;font-size:13px;margin:10px 0}
+#phRoot .ph-warn b{color:#9a5b00}
+#phRoot .ph-bad{background:#fff3f3;border:1px solid #f3c0c0;border-radius:12px;padding:11px 14px;font-size:13px;margin:10px 0}
+#phRoot .ph-sm{font-size:11.5px;color:var(--sub);line-height:1.8}
+#phRoot /* 比較 */
+  .ph-cmp{margin-bottom:12px}
+#phRoot .ph-cmp h3{margin-top:0}
+#phRoot .ph-bars{display:grid;gap:6px;margin:8px 0}
+#phRoot .ph-bar>span:first-child{white-space:nowrap}
+#phRoot .ph-bar{display:grid;grid-template-columns:8.4em 1fr;align-items:center;gap:8px;font-size:12px}
+#phRoot .ph-bar .ph-t{height:22px;background:#e9eef5;border-radius:6px;overflow:hidden;position:relative}
+#phRoot .ph-bar .ph-t i{font-style:normal;display:flex;align-items:center;height:100%;padding-left:7px;font-size:11.5px;font-weight:700;color:#fff;white-space:nowrap;border-radius:6px}
+#phRoot .ph-bar.ph-y25 .ph-t i{background:#7a8aa3}
+#phRoot .ph-bar.ph-y26 .ph-t i{background:var(--blue)}
+#phRoot .ph-chg{display:inline-block;font-size:12px;font-weight:700;color:var(--green);border:1px solid #bfe3cf;background:#eef9f3;border-radius:99px;padding:1px 10px}
+#phRoot .ph-tbl{overflow-x:auto;margin:10px 0}
+#phRoot .ph-tbl table{border-collapse:collapse;min-width:560px;width:100%;font-size:12.5px;background:var(--card)}
+#phRoot .ph-tbl th,#phRoot .ph-tbl td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top;line-height:1.6}
+#phRoot .ph-tbl th{background:#eef3f9;font-size:12px}
+#phRoot .ph-na{color:var(--sub)}
+#phRoot /* 手順 */
+  .ph-st{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:9px;overflow:hidden}
+#phRoot .ph-st summary{list-style:none;display:flex;align-items:flex-start;gap:10px;padding:12px 14px;cursor:pointer}
+#phRoot .ph-st summary::-webkit-details-marker{display:none}
+#phRoot .ph-st .ph-ck{flex:none;width:24px;height:24px;margin-top:1px;accent-color:var(--green)}
+#phRoot .ph-st .ph-ti{flex:1;min-width:0;font-size:14.5px;font-weight:700;line-height:1.55}
+#phRoot .ph-st .ph-ti small{display:block;font-size:12px;font-weight:400;color:var(--sub);margin-top:1px}
+#phRoot .ph-st .ph-ar{flex:none;color:var(--sub);transition:transform .2s;margin-top:2px}
+#phRoot .ph-st[open] .ph-ar{transform:rotate(90deg)}
+#phRoot .ph-st .ph-bd{padding:2px 15px 14px 48px;font-size:13.5px}
+#phRoot .ph-st .ph-bd ol,#phRoot .ph-st .ph-bd ul{padding-left:1.2em}
+#phRoot .ph-st .ph-bd li{margin:4px 0}
+#phRoot .ph-st.ph-done{border-color:#bfe3cf;background:#f4fbf7}
+#phRoot /* URLの読み方 */
+  .ph-url{font-family:var(--mono);font-size:12.5px;word-break:break-all;background:#f1f5fa;border-radius:8px;padding:8px 10px;margin:6px 0;line-height:1.7}
+#phRoot .ph-url em{font-style:normal;background:#ffe9a8;border-radius:3px;padding:0 2px;font-weight:700}
+#phRoot .ph-url .ph-x{color:var(--red)}
+#phRoot .ph-chkin{width:100%;min-height:44px;font-size:16px;padding:7px 11px;border:2px solid var(--line);border-radius:10px;background:transparent;color:inherit;font-family:inherit}
+#phRoot .ph-chkout{margin-top:10px;font-size:13px}
+#phRoot .ph-chkout .ph-r{border:1px solid var(--line);border-radius:10px;padding:9px 12px;margin-bottom:6px;background:var(--card)}
+#phRoot .ph-chkout .ph-f{border-color:#efd9a6;background:#fff8ea}
+#phRoot .ph-src li{margin:5px 0;font-size:12.5px}
+#phRoot .ph-note{margin-top:22px;font-size:11.5px;color:var(--sub);line-height:1.85;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:13px 15px}
+#phRoot .ph-note b{color:var(--ink)}
+#phRoot /* ===== 暗い表示 ===== */
+  html.dk{background:#0e141f}
+html.dk #phRoot .ph-card,html.dk #phRoot .ph-lead,html.dk #phRoot .ph-st,html.dk #phRoot .ph-note,html.dk #phRoot .ph-tbl table,html.dk #phRoot .ph-chkout .ph-r{background:#1a2332 !important;border-color:#2e3b50 !important;color:#e2e8f0}
+html.dk #phRoot .ph-tbl th{background:#222c3e}
+html.dk #phRoot .ph-tbl th,html.dk #phRoot .ph-tbl td{border-color:#2e3b50}
+html.dk #phRoot .ph-url{background:#222c3e}
+html.dk #phRoot .ph-url em{background:#5a4a14;color:#ffe9a8}
+html.dk #phRoot .ph-warn,html.dk #phRoot .ph-chkout .ph-f{background:#2a2418 !important;border-color:#55472a !important}
+html.dk #phRoot .ph-warn b{color:#f0c674}
+html.dk #phRoot .ph-bad{background:#2a1a1e;border-color:#5e3236}
+html.dk #phRoot .ph-st.ph-done{background:#192a22 !important;border-color:#2f5440 !important}
+html.dk #phRoot .ph-prog{background:rgba(14,20,31,.97) !important;border-bottom-color:#2e3b50}
+html.dk #phRoot .ph-prog .ph-tr,html.dk #phRoot .ph-bar .ph-t{background:#2a3547}
+html.dk #phRoot .ph-chg{background:#17281d;border-color:#2e5540;color:#7fd4a6}
+html.dk #phRoot .ph-sub,html.dk #phRoot .ph-sm,html.dk #phRoot .ph-note,html.dk #phRoot .ph-prog .ph-lb,html.dk #phRoot .ph-st .ph-ti small{color:#94a3b8 !important}
+html.dk #phRoot a{color:#8fc0ff}
+html.dk #phRoot .ph-sec h3{color:#8fc0ff}
+html.dk #phRoot .ph-chkin{border-color:#2e3b50}
+#phRoot{line-height:1.85}
+#phRoot a{color:var(--blue)}
+html.dk #phRoot a{color:#8fc0ff}
+#phRoot .ph-sec{scroll-margin-top:64px}
+.ph-bar{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:5px;flex-wrap:nowrap;overflow-x:auto;
+  margin:-24px -22px 14px;padding:9px 12px;background:var(--card);border-bottom:1px solid var(--line);border-radius:18px 18px 0 0}
+.ph-bar::-webkit-scrollbar{display:none}
+html.dk .ph-bar{background:#1a2332;border-color:#2e3b50}
+.ph-bar .tb-ham{margin-left:auto}
+.ph-toc{display:none;margin:-6px 0 12px;border:1px solid var(--line);border-radius:12px;padding:6px}
+.ph-toc.open{display:block}
+.ph-toc button{display:block;width:100%;text-align:left;background:none;border:none;color:inherit;font-family:inherit;font-size:13.5px;padding:10px 10px;border-radius:8px;cursor:pointer;min-height:40px}
+.ph-toc button:hover{background:rgba(44,111,209,.1)}
+html.dk .ph-toc{border-color:#2e3b50}
+.ph-hd{text-align:center;padding:6px 0 14px}
+.ph-hd .mk{font-family:var(--mono);font-size:9.5px;letter-spacing:.3em;color:var(--blue);margin-bottom:6px}
+.ph-hd h2{font-size:21px;line-height:1.4;text-wrap:balance;margin:0 0 8px}
+.ph-hd p{font-size:12.5px;color:var(--sub)}
+.ph-zoom{zoom:var(--pz,1)}
+
   .dlg-wide .dlg-in{max-width:900px}
   /* 最新情報 */
   .nw-card{background:var(--card);border:1px solid var(--line,#d6dde6);border-left:5px solid var(--red,#d92b2b);border-radius:12px;padding:14px 16px;margin-bottom:12px}
@@ -776,6 +878,11 @@
       <span class="ic">🔎</span>
       <span class="tx">解約ページ詐欺チェッカー<small>偽の解約ページの見分け方・払ってしまった時の手順</small></span></button>
 
+    <div class="mnu-sec">// 口座・お金を守る</div>
+    <button type="button" class="mnu-i" onclick="openDlg('dlgPhish')">
+      <span class="ic">🎣</span>
+      <span class="tx">フィッシング対策ガイド<small>口座・暗号資産を偽サイトから守る手順と、2025年・2026年の被害比較</small></span></button>
+
     <div class="mnu-sec">// 関連サイト</div>
     <a class="mnu-i" href="https://bousai0111.info/" target="_blank" rel="noopener">
       <span class="ic">🏠</span>
@@ -920,6 +1027,235 @@
 </div>
 <div class="dlg" id="dlgAIdet" onclick="if(event.target===this)aiCloseDet()">
   <div class="dlg-in ai-d" id="aiDet"></div>
+</div>
+
+<div class="dlg dlg-wide" id="dlgPhish" onclick="if(event.target===this)closeDlg('dlgPhish')">
+  <div class="dlg-in">
+    <div class="ph-bar">
+      <button type="button" class="tb" onclick="closeDlg('dlgPhish')" aria-label="閉じる"><span class="ic">✕</span><span class="tx">閉じる</span></button>
+      <button type="button" class="tb" onclick="doRefresh()" aria-label="最新版に更新する"><span class="ic">🔄</span><span class="tx">更新</span></button>
+      <button type="button" class="tb" onclick="phShare()" aria-label="共有する"><span class="ic">📤</span><span class="tx">共有</span></button>
+      <button type="button" class="tb" onclick="phCopy()" aria-label="内容をコピー"><span class="ic">📋</span><span class="tx">コピー</span></button>
+      <button type="button" class="tb" onclick="phLink()" aria-label="リンクをコピー"><span class="ic">🔗</span><span class="tx">リンク</span></button>
+      <button type="button" class="tb" id="phTheme" onclick="phTheme()" aria-label="表示を切り替える"><span class="ic">🌙</span><span class="tx">暗く</span></button>
+      <span class="tb-sz" role="group" aria-label="文字の大きさ">
+        <button type="button" class="z1" data-pz="s" onclick="phSize('s')" aria-label="小さく">小</button>
+        <button type="button" class="z2" data-pz="m" onclick="phSize('m')" aria-label="標準">中</button>
+        <button type="button" class="z3" data-pz="l" onclick="phSize('l')" aria-label="大きく">大</button>
+      </span>
+      <button type="button" class="tb tb-ham" onclick="phToc()" aria-label="目次"><span class="ic">☰</span></button>
+    </div>
+    <div class="ph-toc" id="phToc">
+      <button type="button" onclick="phGo('data')">📊 被害データの比較</button>
+      <button type="button" onclick="phGo('phish')">🎣 偽サイトを見破る</button>
+      <button type="button" onclick="phGo('bank')">🏦 銀行・証券口座の設定</button>
+      <button type="button" onclick="phGo('crypto')">🪙 暗号資産を守る</button>
+      <button type="button" onclick="phGo('habit')">🧭 毎日の習慣と家族の守り</button>
+      <button type="button" onclick="phGo('after')">🚨 被害にあったとき</button>
+      <button type="button" onclick="phGo('tool')">🔍 URLの読み解きツール</button>
+      <button type="button" onclick="phGo('src')">📚 出典と注意</button>
+    </div>
+    <div id="phRoot" class="ph-zoom">
+      <div class="ph-hd"><div class="mk">PHISHING DEFENSE GUIDE</div><h2>口座とお金を守る<br>フィッシング対策ガイド</h2><p>銀行・証券・暗号資産を、偽サイトから守る手順書。2025年と2026年の被害データの比較つき。</p></div>
+<div class="ph-lead">
+    <p>銀行や取引所の内部の守りは、<b>私たち個人には変えられません</b>。だからこそ、個人にできて効果が大きいのは次の2つです。</p>
+    <p>① <b>偽サイトに、IDやパスワード、認証コードを入力しないこと</b><br>② <b>万一入力しても、お金が動かない設定にしておくこと</b></p>
+    <p class="ph-sm">このページは、その手順を順番にまとめたものです。各手順の左のチェックで、進み具合を記録できます(この端末のブラウザにだけ保存されます)。</p>
+  </div>
+
+  <div class="ph-prog">
+    <div class="ph-lb"><span>対策の進み具合</span><b id="phPn">0 / 0</b></div>
+    <div class="ph-tr"><i id="phPb"></i></div>
+  </div>
+
+  <!-- ===== データ比較 ===== -->
+  <section class="ph-sec" id="ph-sec-data">
+    <h2>📊 被害データ:2025年と2026年の比較</h2>
+    <p class="ph-sub">「フィッシングサイトによる被害額」だけを切り出した公的な統計は、見つけられませんでした。そこで、フィッシングに深くかかわる3つの公表データで比べます。</p>
+
+    <div class="ph-card ph-cmp">
+      <h3>① ネットバンキングの不正送金(警察庁)</h3>
+      <div class="ph-bars" role="img" aria-label="1〜6月の不正送金被害額。2025年は約42億円、2026年は約20.7億円">
+        <div class="ph-bar ph-y25"><span>2025年1〜6月</span><span class="ph-t"><i style="width:100%">約42億円</i></span></div>
+        <div class="ph-bar ph-y26"><span>2026年1〜6月</span><span class="ph-t"><i style="width:49%">約20.7億円</i></span></div>
+      </div>
+      <p><span class="ph-chg">前年同期比 51%減</span>(2026年上半期は253件)</p>
+      <p class="ph-sm">2025年の1年間は約104億円で過去最悪とされ、被害の約9割がフィッシングによるとする解説記事があります。2026年は半減していますが、警察庁の資料は、法人口座を狙う「ボイスフィッシング(電話によるフィッシング)」の急増が続いていること、2026年5月には、電話をきっかけに遠隔操作ソフトを入れさせ、偽サイトでID・パスワードを盗む手口の被害が急増したことも伝えています。</p>
+    </div>
+
+    <div class="ph-card ph-cmp">
+      <h3>② フィッシングの報告件数(フィッシング対策協議会)</h3>
+      <div class="ph-bars" role="img" aria-label="1〜6月のフィッシング報告件数。2025年は約120万件、2026年は約73万件">
+        <div class="ph-bar ph-y25"><span>2025年1〜6月</span><span class="ph-t"><i style="width:100%">1,196,314件</i></span></div>
+        <div class="ph-bar ph-y26"><span>2026年1〜6月</span><span class="ph-t"><i style="width:61%">約73万件</i></span></div>
+      </div>
+      <p><span class="ph-chg">約4割減</span></p>
+      <div class="ph-bars" role="img" aria-label="1〜8月のフィッシング報告件数。2025年は約162万件、2026年は約88万件(概算)">
+        <div class="ph-bar ph-y25"><span>2025年1〜8月</span><span class="ph-t"><i style="width:100%">約162万件</i></span></div>
+        <div class="ph-bar ph-y26"><span>2026年1〜8月</span><span class="ph-t"><i style="width:54%">約88万件(概算)</i></span></div>
+      </div>
+      <p class="ph-sm">2026年1〜8月は、1〜6月の「約73万件」に、7月(66,119件)と8月(82,338件)を足した当ページの概算です。<b>件数が減っても、安全になったとは言えません。</b>報告されない偽サイトや、電話・遠隔操作など、手口が変わっている可能性があります。</p>
+    </div>
+
+    <div class="ph-card ph-cmp">
+      <h3>③ クレジットカードの不正利用(日本クレジット協会)</h3>
+      <div class="ph-bars" role="img" aria-label="1〜6月のカード不正利用被害額。2025年は約314億円、2026年は221.3億円">
+        <div class="ph-bar ph-y25"><span>2025年1〜6月</span><span class="ph-t"><i style="width:100%">約314億円</i></span></div>
+        <div class="ph-bar ph-y26"><span>2026年1〜6月</span><span class="ph-t"><i style="width:70%">221.3億円</i></span></div>
+      </div>
+      <p><span class="ph-chg">約3割減</span>(当ページの計算。2025年は報道見出しの「314億円超」にもとづく概算)</p>
+      <p class="ph-sm">2026年上半期の被害の93.1%は「番号盗用」(カード番号などを盗まれて、通販などで使われるもの)です。フィッシングはその主な入口のひとつですが、<b>この額のすべてがフィッシングによるものとは言えません</b>。</p>
+    </div>
+
+    <h3>1〜9月の比較(同じ期間)について</h3>
+    <div class="ph-tbl"><table>
+      <tr><th>指標</th><th>2025年1〜9月</th><th>2026年1〜9月</th></tr>
+      <tr><td>ネットバンキング不正送金(警察庁)</td><td>1〜9月の単独の公表は見当たらない(1〜6月は約42億円、通年は約104億円)</td><td class="ph-na">未公表(警察庁は上半期と通年で公表。1〜6月は約20.7億円)</td></tr>
+      <tr><td>フィッシング報告件数</td><td>1,840,773件(1〜6月の1,196,314件+7月226,433件+8月193,333件+9月224,693件。当ページの合算)</td><td class="ph-na">9月分は未公表(1〜8月は約88万件の概算)</td></tr>
+      <tr><td>カード不正利用(日本クレジット協会)</td><td>416億円超(報道見出しの数値)</td><td class="ph-na">7〜9月分は未公表(2025年の同じ期間は12月5日に公表)</td></tr>
+    </table></div>
+    <div class="ph-warn"><b>読むときの注意</b><br>
+      ・2026年の1〜9月は、まだ全体がそろっていません。比較は、そろっている「1〜6月」を中心に見てください。<br>
+      ・被害額が減った理由は、断定できません。報道では多要素認証の普及が寄与したとされていますが、私はその記事の本文を確認できていません。<br>
+      ・2025年の「約42億円」や「314億円超」は、報道の見出しなどにもとづく概算です。契約や引用に使う場合は、警察庁・日本クレジット協会の一次資料で確認してください。</div>
+  </section>
+
+  <!-- ===== 偽サイト ===== -->
+  <section class="ph-sec" id="ph-sec-phish">
+    <h2>🎣 偽サイトを見破る</h2>
+    <p class="ph-sub">お金を守る最大のポイントです。「見破る」より先に、「そもそも開かない」を徹底します。</p>
+
+    <div class="ph-card">
+      <h3 style="margin-top:0">鉄則:リンクから入らない</h3>
+      <ul>
+        <li>メール・SMS・LINE・SNSのメッセージの<b>リンクやQRコードからは、金融機関のサイトに入らない</b>。</li>
+        <li>入るときは、<b>公式アプリ</b>、または<b>自分で登録したブックマーク</b>から。</li>
+        <li>「電話をかけてください」と書かれた番号にも、かけない。<b>カード裏面や、公式サイトに載っている番号</b>にかける。</li>
+        <li>検索結果の<b>広告(スポンサー)</b>に出た偽サイトから入らない。ブックマークが確実。</li>
+      </ul>
+    </div>
+
+    <div class="ph-card">
+      <h3 style="margin-top:0">こんな内容は、まず疑う</h3>
+      <ul>
+        <li>「不正ログインを検知」「口座を一時停止」「本人確認が必要」「利用制限」</li>
+        <li>「24時間以内」「今すぐ」など、急がせる</li>
+        <li>宅配の不在通知、未払い、税金・年金の還付、ポイント失効</li>
+        <li>電話の自動音声で「1を押してください」と言われる(ボイスフィッシング)</li>
+        <li>「パソコンやスマホの画面を共有してほしい」「遠隔操作アプリを入れて」</li>
+      </ul>
+      <div class="ph-bad"><b>本物の金融機関は、</b>電話やメールで、暗証番号・パスワード・ワンタイムパスワード・認証コードを聞くことはありません。聞かれたら、詐欺です。</div>
+    </div>
+
+    <div class="ph-card">
+      <h3 style="margin-top:0">URLは「右から」読む</h3>
+      <p>サイトの本当の運営者は、<b>最初の「/」の直前の部分の、後ろから2つ(.co.jpなどは3つ)</b>で決まります。前の部分は、いくらでも偽装できます。</p>
+      <div class="ph-url">https://login.<span class="ph-x">example-bank</span>.co.jp.<em>secure-check.top</em>/auth</div>
+      <p class="ph-sm">上の例(架空)は、「example-bank.co.jp」に見えますが、本当の運営ドメインは「secure-check.top」です。</p>
+      <ul>
+        <li>公式のドメインを、自分で一度確認して覚えておく(公式アプリの案内や、カード裏面など)。</li>
+        <li>鍵マーク(https)は<b>「通信が暗号化されている」だけ</b>の意味です。偽サイトにも付きます。</li>
+        <li>見た目がそっくりでも、ドメインが違えば偽物です。</li>
+      </ul>
+    </div>
+
+    <div class="ph-card">
+      <h3 style="margin-top:0">手口別の注意点</h3>
+      <ul>
+        <li><b>SMS(スミッシング):</b>宅配・携帯会社・金融機関を名乗る。短縮URLにも注意。</li>
+        <li><b>メール:</b>表示名は偽装できる。差出人のアドレスの、ドメイン部分を見る。</li>
+        <li><b>ボイスフィッシング:</b>自動音声から、担当者につなぐ流れ。法人口座の担当者が狙われている。電話の最中にメールを送ると言われ、そのリンクを開かせる。<b>電話を受けながら、言われるままに、遠隔操作ソフト(AnyDeskなど)を入れたり、リンクを開いたりしない。</b></li>
+        <li><b>遠隔操作:</b>サポートや銀行員を名乗り、遠隔操作アプリを入れさせる。<b>入れた時点で、画面を見られ、操作される</b>(ネットバンキングの画面も)。電話の相手に言われて、アプリを入れない。</li>
+        <li><b>QRコード(クイッシング):</b>貼られたQRや、メールの画像のQRで偽サイトに誘導。読み取ったあとのURLを確認する。</li>
+        <li><b>ワンタイムパスワードの中継:</b>偽サイトに入力した認証コードを、犯人が本物のサイトにすぐ入力する。コードも安全とは限らない。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== 銀行口座 ===== -->
+  <section class="ph-sec" id="ph-sec-bank">
+    <h2>🏦 銀行・証券口座を守る設定</h2>
+    <p class="ph-sub">金融機関ごとに画面は異なります。項目の名前を、ご自身の銀行のアプリ・サイトで探してください。やったら左のチェックを入れます。</p>
+    <div id="phListBank"></div>
+  </section>
+
+  <!-- ===== 暗号資産 ===== -->
+  <section class="ph-sec" id="ph-sec-crypto">
+    <h2>🪙 暗号資産を守る</h2>
+    <p class="ph-sub">暗号資産は、<b>送金すると、原則として取り戻せません</b>。「送る前に防ぐ」が、ほぼすべてです。</p>
+    <div id="phListCrypto"></div>
+    <div class="ph-warn"><b>送金してしまったら</b><br>警察への相談と並行して、<b>TxID(取引ハッシュ)と送金先アドレスを、すぐ控え</b>、<b>取引所に被害を申告</b>してください(手順は「被害にあったとき」の6番)。</div>
+    <div class="ph-card">
+      <p>国の動きとして、金融庁と警察庁は2026年8月6日に、暗号資産交換業者へ、詐欺被害の防止対策の強化(送金・出庫の制限など)を要請しています。詳しくは<a href="https://www.fsa.go.jp/news/r8/sonota/20260806/20260806.html" target="_blank" rel="noopener noreferrer">金融庁の発表 ↗</a>をご確認ください。</p>
+    </div>
+  </section>
+
+  <!-- ===== 習慣 ===== -->
+  <section class="ph-sec" id="ph-sec-habit">
+    <h2>🧭 毎日の習慣と、家族の守り</h2>
+    <div id="phListHabit"></div>
+  </section>
+
+  <!-- ===== 被害 ===== -->
+  <section class="ph-sec" id="ph-sec-after">
+    <h2>🚨 入力してしまった・お金が動いたとき</h2>
+    <p class="ph-sub">あわてず、でも急いで。早さが被害の大きさを左右します。上から順に。</p>
+    <div class="ph-card">
+      <ol>
+        <li><b>ネットを切る</b>(<b>遠隔操作アプリ(AnyDeskなど)を入れた場合は、すぐ通信を切って</b>、そのアプリを削除。端末の初期化も検討する)。通話中でも、電話は切ってよい。</li>
+        <li><b>金融機関へすぐ電話</b>(カード裏面・公式サイトの番号から)。口座の利用停止、振込の組み戻しの相談、カードの再発行を依頼する。</li>
+        <li><b>同じパスワードを使っているサービス</b>のパスワードを、<b>別の端末から</b>変更する。メールアカウントも変更する。</li>
+        <li><b>履歴・画面を残す</b>(偽サイトのURL、メール・SMS、通話履歴、取引明細のスクリーンショット)。</li>
+        <li><b>警察に相談</b>(#9110、または最寄りの警察署・サイバー犯罪相談窓口)。被害届の提出も検討する。</li>
+        <li><b>暗号資産の場合は、警察への相談と並行して、すぐ次の2つを行う。</b><br>① <b>送金のトランザクションID(TxID・取引ハッシュ)と、送金先アドレスを、早めに控える</b>(取引所・ウォレットの送金履歴に出ます。スクリーンショットも残す)。<br>② <b>取引所に、被害を申告する</b>(送金先が取引所のアドレスなら、止められる可能性がわずかに高まります)。<br><span class="ph-sm">追跡や凍結は保証されません。ただし、時間がたつほど難しくなるため、<b>TxIDを控えて、その日のうちに申告</b>するのが要点です。</span></li>
+        <li>「お金を取り戻します」と言ってくる業者・個人は、<b>二次被害(再度の詐欺)</b>のおそれが大きい。応じない。</li>
+      </ol>
+      <p class="ph-sm">個人のネットバンキングの不正送金については、全国銀行協会が補償に取り組む方針を示していますが、補償の可否や額は、各行の規定と状況(利用者の過失の程度など)で異なります。<b>連絡が早いほど、対応しやすくなります</b>。</p>
+    </div>
+    <div class="ph-card">
+      <p><b>相談先</b></p>
+      <ul>
+        <li>警察の相談専用電話:<b>#9110</b></li>
+        <li>消費者ホットライン:<b>188</b></li>
+        <li>偽サイトの報告:<a href="https://www.antiphishing.jp/" target="_blank" rel="noopener noreferrer">フィッシング対策協議会 ↗</a></li>
+        <li>情報セキュリティの相談:<a href="https://www.ipa.go.jp/security/anshin/" target="_blank" rel="noopener noreferrer">IPA 安心相談窓口 ↗</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== URLチェック ===== -->
+  <section class="ph-sec" id="ph-sec-tool">
+    <h2>🔍 URLの読み解きツール(簡易)</h2>
+    <p class="ph-sub">気になるURLを貼ると、ホスト名の分解と、よくある不審な特徴を表示します。<b>通信はせず、この端末の中だけで動きます</b>。</p>
+    <div class="ph-card">
+      <label for="phUIn" class="ph-sm" style="font-weight:700;display:block;margin-bottom:4px">調べたいURL</label>
+      <input id="phUIn" class="ph-chkin" type="text" autocomplete="off" spellcheck="false" placeholder="例:https://login.example.co.jp.secure.top/">
+      <div id="phUOut" class="ph-chkout"></div>
+      <div class="ph-warn"><b>これは安全かどうかの判定ではありません。</b>URLの形だけを見た目安です。「特徴が出ない=安全」ではありません。最終的には、公式サイトのドメインと一致するかを、ご自身で確認してください。</div>
+    </div>
+  </section>
+
+  <!-- ===== 出典 ===== -->
+  <section class="ph-sec" id="ph-sec-src">
+    <h2>📚 出典と、確認できなかったこと</h2>
+    <div class="ph-card ph-src"><ul>
+      <li>警察庁「令和8年上半期におけるサイバー空間をめぐる脅威の情勢等について」(2026年9月10日公表。不正送金約20.7億円・253件・前年同期比51%減、フィッシング報告約73万件、ボイスフィッシング等の手口の記述)</li>
+      <li>フィッシング対策協議会 月次報告(2025年7〜9月、2026年7〜8月の報告件数)。2025年上半期の119万6,314件は、<a href="https://internet.watch.impress.co.jp/docs/news/2048752.html" target="_blank" rel="noopener noreferrer">INTERNET Watchの記事 ↗</a>による</li>
+      <li>日本クレジット協会 クレジットカード不正利用被害の集計(2026年9月7日公表。2026年上半期221.3億円、番号盗用93.1%)。2025年の上半期314億円超・1〜9月416億円超は、報道の見出しの数値で、一次資料では未確認</li>
+      <li>2025年の不正送金の通年約104億円・約9割がフィッシングとする点は、2026年3月の解説記事(警察庁資料にもとづく)による。警察庁の原資料は未確認</li>
+      <li>金融庁・警察庁「暗号資産を用いた詐欺被害等防止に向けた対策の一層の強化について」(2026年8月6日)</li>
+    </ul></div>
+    <div class="ph-note">
+      <b>このページについて</b><br>
+      ・2026年10月17日時点の情報です。統計は更新されます。<br>
+      ・金融機関の画面・手順は、各社で異なります。設定項目の名前は目安です。<br>
+      ・暗号資産の守り方や補償に関する記述は、一般的な説明で、個別の被害の救済を保証するものではありません。<br>
+      ・「作者」はAIのClaudeです。数値は取得できた資料のとおりに記し、算出したものは「当ページの合算・計算」と明記しています。<br>
+      ・法律・金融の専門的な判断は、専門家・金融機関・警察にご相談ください。
+    </div>
+  </section>
+    </div>
+  </div>
 </div>
 
 <div class="dlg" id="dlgCyber" onclick="if(event.target===this)closeDlg('dlgCyber')">
@@ -2431,6 +2767,163 @@ function cxOpen(id){
   var eh='<b>提供が終了したAI</b>';ENDED.forEach(function(x){eh+='<br>・'+esc(x[0])+':'+esc(x[1])});
   document.getElementById('aiEnd').innerHTML=eh;
   mkChips();render();
+})();
+</script>
+<script>
+(function(){
+var BANK = [
+ {t:'ブックマークと公式アプリから入る', s:'リンクからの入口を、先に閉じる',
+  b:'<ol><li>銀行・証券・取引所の公式サイトを開き、<b>ブックマークに登録</b>する(今、本物であることを確認してから)。</li><li>公式アプリは、<b>公式ストア</b>のものを入れる。開発元の名前が銀行・会社名と一致するか確認する。</li><li>以後、ログインは<b>ブックマークか公式アプリからだけ</b>にする。メールやSMSのリンクは使わない。</li></ol>'},
+ {t:'パスワードを、長く・使い回さない', s:'1つ漏れても、他に広がらない',
+  b:'<ol><li>金融サービスごとに、<b>別々の、長い(12文字以上が目安)</b>パスワードにする。</li><li>覚えきれないので、<b>パスワードマネージャー</b>を使う。ブラウザやOS標準のものでも良い。</li><li>金融系と同じパスワードを使っている他のサービスがないか、確認して変更する。</li><li>登録している<b>メールアカウント</b>を、特に強くする(各種の再設定がメールで届くため)。</li></ol>'},
+ {t:'認証を強くする(パスキー・認証アプリ)', s:'偽サイトに入力させられにくい方式へ',
+  b:'<ol><li>可能なら<b>パスキー</b>(指紋・顔認証でのログイン)に切り替える。偽サイトでは働きにくい方式です。</li><li>難しければ、<b>認証アプリ</b>や、銀行の<b>専用アプリでの承認</b>を使う。</li><li>SMSで届くコードは、偽サイトに入力させられ、犯人に<b>中継</b>されることがある。<b>コードを人やサイトに入力する前に、今のサイトが本物か</b>を必ず確認する。</li><li>多要素認証が使えるサービスは、すべて有効にする。</li></ol>'},
+ {t:'振込・出金の限度額を下げる', s:'万一のとき、被害の上限を決めておく',
+  b:'<ol><li>ネットバンキングの<b>1日・1回あたりの振込限度額</b>を、普段使う額に下げる。</li><li>大きな額を動かすときだけ、一時的に上げる運用にする。</li><li>ATMの引き出し限度額も、必要最小限にする。</li><li>ネットでの取引を使わないなら、<b>ネットバンキング自体を停止</b>できるか確認する。</li></ol>'},
+ {t:'通知をオンにする(入出金・ログイン)', s:'異変に、すぐ気づける',
+  b:'<ol><li>入出金・ログイン・登録情報の変更の<b>通知</b>(アプリのプッシュ、メール)を、すべてオンにする。</li><li>通知の届く先が、<b>自分だけが見られる</b>メールか確認する。</li><li>身に覚えのない通知が来たら、通知のリンクは使わず、<b>公式アプリ</b>で履歴を確認する。</li></ol>'},
+ {t:'スマホ・パソコンを安全に保つ', s:'偽サイトの前に、端末が乗っ取られないように',
+  b:'<ol><li>OSとアプリを、<b>最新に更新</b>する(自動更新をオン)。</li><li>公式ストア以外から、アプリを入れない。<b>遠隔操作アプリ</b>は、人に言われて入れない。</li><li>知らないUSB・ファイル・添付は開かない。</li><li>画面ロックをかけ、紛失時の遠隔ロックを設定する。</li></ol>'},
+ {t:'使っていない口座を整理し、預け方を分ける', s:'狙われる面積を減らす',
+  b:'<ol><li>使っていない口座は、<b>解約</b>するか、ネット機能を止める。</li><li>普段使い用と貯蓄用の口座を<b>分け</b>、ネットから動かす口座には、必要な額だけ置く。</li><li>証券口座も同様に。<b>出金先の口座の変更</b>に通知が出るか、確認する。</li></ol>'},
+ {t:'法人・事業用口座の担当者の対策', s:'ボイスフィッシングが、法人口座を狙っている',
+  b:'<div class="ph-bad"><b>電話を受けながら、言われるままに、遠隔操作ソフト(AnyDesk等)を入れない。</b><br>警察庁の資料は、法人口座を狙うボイスフィッシングの被害が続いていること、さらに2026年5月には、電話をきっかけに<b>遠隔操作ソフトを入れさせ、偽サイトでID・パスワードを盗む</b>手口の被害が急増したことを伝えています。</div><ol><li>銀行を名乗る電話で、<b>メールのリンクを開かせようとする</b>のは、詐欺の典型。<b>一度切って</b>、公式の番号にかけ直す。</li><li><b>電話の最中に、ソフトのインストール、画面共有、リンクを開く操作は、一切しない。</b>相手が名乗った部署名や番号も、信用しない。</li><li><b>ID・パスワード・ワンタイムパスワード</b>を、電話で伝えない。サイトに入力する前に、ドメインが公式と一致するか確認する。</li><li>承認者と実行者を分け、<b>高額の振込は複数人</b>で確認する運用にする。</li><li>振込の限度額と、連絡先の登録を見直す。</li><li>従業員にも、この手口を共有する(代表・経理担当だけでなく、電話を取る人全員に)。</li></ol>'}
+];
+var CRYPTO = [
+ {t:'取引所は、登録された業者を使う', s:'日本では、金融庁への登録が必要',
+  b:'<ol><li>日本で暗号資産の売買を仲介するには、<b>暗号資産交換業者としての登録</b>が必要です。<a href="https://www.fsa.go.jp/menkyo/menkyoj/kasoutuka.pdf" target="_blank" rel="noopener noreferrer">金融庁の登録業者一覧 ↗</a>で、使っている業者が載っているか確認する。</li><li>登録のない海外業者や、SNSで勧誘される投資サイトは使わない。</li></ol>'},
+ {t:'取引所の口座を、強く守る', s:'ログインと出金の、両方を固める',
+  b:'<ol><li>パスキー、または<b>認証アプリ</b>で、ログインと出金の認証を有効にする。SMSだけに頼らない。</li><li>出金先の<b>アドレスのホワイトリスト</b>(登録した宛先にしか送れない設定)があれば使う。</li><li>出金の<b>上限額</b>や、<b>ロック期間</b>(設定変更の後、一定時間は出金できない機能)があれば設定する。</li><li>取引所のアプリ・サイトも、ブックマークと公式アプリから入る。</li></ol>'},
+ {t:'ウォレットの「秘密の言葉」を、誰にも見せない', s:'シードフレーズ(リカバリーフレーズ)=お金そのもの',
+  b:'<ol><li>12〜24個の単語の<b>シードフレーズ</b>を知られると、中身をすべて移されます。</li><li><b>サイト・アプリ・メール・チャット・サポート</b>に、入力も送信もしない。正規のサポートが、聞くことはありません。</li><li>スクリーンショットや、クラウドのメモに<b>残さない</b>。紙などに書き、<b>火災や水害にも備えて</b>保管する。</li></ol>'},
+ {t:'大きな額は、ハードウェアウォレットで', s:'ネットにつながない保管',
+  b:'<ol><li>長く持つ分は、専用の<b>ハードウェアウォレット</b>に移す。</li><li>購入は、必ず<b>メーカーの公式サイト</b>から。中古や、出所の不明なものは使わない。</li><li>初期設定で表示される言葉は、自分で生成したものか確認する(最初から書かれた紙が入っていたら、使わない)。</li></ol>'},
+ {t:'署名・承認する前に、内容を読む', s:'「接続」「承認」ボタンの先に、罠がある',
+  b:'<ol><li>見知らぬサイトでウォレットを<b>接続</b>しない。広告やDM、無料配布(エアドロップ)のリンクは特に注意。</li><li>「承認(Approve)」は、<b>自分の資産を使う権限</b>を相手に渡す操作のことがある。画面の内容を読み、<b>全額の無制限承認</b>は避ける。</li><li>使わなくなった承認は、定期的に取り消す(ウォレットの管理機能で確認できる)。</li></ol>'},
+ {t:'送金の前に、宛先を確認する', s:'1文字違いで、戻らない',
+  b:'<ol><li>宛先アドレスは、<b>先頭と末尾だけでなく、全体</b>を照合する。</li><li>コピーした文字列を、貼り付け後に<b>書き換える</b>マルウェアがある。貼り付けた結果を、毎回確認する。</li><li>初めての宛先には、<b>少額のテスト送金</b>をしてから、本送金をする。</li><li>送るネットワーク(チェーン)の種類が、宛先と合っているかも確認する。</li></ol>'},
+ {t:'「必ず儲かる」には、応じない', s:'SNS型投資・ロマンス詐欺で、暗号資産が使われる',
+  b:'<ol><li>SNSやマッチングで知り合った相手から、<b>投資や暗号資産の送金</b>を勧められたら、詐欺を疑う。</li><li>「出金には手数料・税金が必要」と、追加で送金させる手口がある。<b>追加で払うほど、被害が増えます</b>。</li><li>家族や警察(#9110)に、相談する。</li></ol>'}
+];
+var HABIT = [
+ {t:'家族の「合言葉」を決める', s:'声や顔、画面の電話番号は、偽装できる時代',
+  b:'<ol><li>家族の間で、<b>電話やメッセージで、お金の話が出たときの合言葉</b>を決める。</li><li>AIで声や顔をまねる「ディープフェイク」も、現実に使われている。<b>合言葉と、かけ直し</b>が確実。</li></ol>'},
+ {t:'高齢のご家族の設定を見直す', s:'振込限度額・迷惑電話対策',
+  b:'<ol><li>ネットバンキングを使わないなら、<b>停止</b>する。使うなら、限度額を低くする。</li><li>固定電話は、<b>留守番電話</b>や、迷惑電話を防ぐ機能・機器を使う。</li><li>「警察官や銀行員を名乗り、お金を要求する電話」は、詐欺であると、繰り返し伝える。</li></ol>'},
+ {t:'月に一度、明細と通知を見る', s:'小さな不審に、早く気づく',
+  b:'<ol><li>口座・カードの明細を、月に1回は目を通す。</li><li>少額の、身に覚えのない請求(カードの小額課金)は、<b>試し使いのことがある</b>。見つけたらすぐカード会社へ。</li></ol>'}
+];
+
+  var DONE={}, CK='phish-chk';
+  try{ DONE=JSON.parse(localStorage.getItem(CK)||'{}')||{}; }catch(e){ DONE={}; }
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]}); }
+  function $(id){ return document.getElementById(id); }
+  function renderList(id, arr, pre){
+    var h='';
+    arr.forEach(function(o,i){
+      var k=pre+i;
+      h+='<details class="ph-st'+(DONE[k]?' ph-done':'')+'" id="phst_'+k+'"><summary>'+
+        '<input class="ph-ck" type="checkbox" data-k="'+k+'"'+(DONE[k]?' checked':'')+' aria-label="実施した" onclick="event.stopPropagation()">'+
+        '<span class="ph-ti">'+esc(o.t)+'<small>'+esc(o.s)+'</small></span><span class="ph-ar" aria-hidden="true">›</span></summary>'+
+        '<div class="ph-bd">'+o.b+'</div></details>';
+    });
+    $(id).innerHTML=h;
+  }
+  function total(){ return BANK.length+CRYPTO.length+HABIT.length; }
+  function updProg(){
+    var n=0; for(var k in DONE) if(DONE[k]) n++;
+    var t=total();
+    $('phPn').textContent=n+' / '+t;
+    $('phPb').style.width=(t?Math.round(n/t*100):0)+'%';
+  }
+  $('dlgPhish').addEventListener('change',function(e){
+    var c=e.target; if(!c||!c.classList||!c.classList.contains('ph-ck')) return;
+    var k=c.getAttribute('data-k'); DONE[k]=c.checked;
+    var d=$('phst_'+k); if(d) d.classList.toggle('ph-done',c.checked);
+    try{ localStorage.setItem(CK,JSON.stringify(DONE)); }catch(err){}
+    updProg();
+  });
+  renderList('phListBank',BANK,'b'); renderList('phListCrypto',CRYPTO,'c'); renderList('phListHabit',HABIT,'h'); updProg();
+
+  /* URL読み解き */
+  (function(){
+    var inp=$('phUIn'), out=$('phUOut');
+    var SHORT=['bit.ly','t.co','tinyurl.com','goo.gl','ow.ly','is.gd','buff.ly','t.ly','cutt.ly','rebrand.ly','x.gd'];
+    function base(host){
+      var l=host.split('.');
+      if(l.length>=3 && /^(co|or|ne|go|ac|ad|ed|gr|lg)\.jp$/.test(l.slice(-2).join('.'))) return l.slice(-3).join('.');
+      return l.slice(-2).join('.');
+    }
+    function run(){
+      var v=inp.value.trim();
+      if(!v){ out.innerHTML=''; return; }
+      var u;
+      try{ u=new URL(/^[a-z][a-z0-9+.-]*:\/\//i.test(v)?v:'https://'+v); }
+      catch(e){ out.innerHTML='<div class="ph-r">URLとして読み取れません。</div>'; return; }
+      var host=u.hostname.toLowerCase(), f=[];
+      var isIp=/^\d{1,3}(\.\d{1,3}){3}$/.test(host)||host.indexOf('[')===0;
+      if(isIp) f.push('ドメイン名ではなく、<b>IPアドレスが直接</b>使われています。');
+      if(u.username||u.password) f.push('URLに<b>「@」や認証情報</b>が含まれています。@の前は無視され、後ろのサイトに接続されます。');
+      if(host.indexOf('xn--')>=0) f.push('<b>国際化ドメイン(xn--)</b>です。見た目が似た別の文字が使われている可能性があります。');
+      var labels=host.split('.');
+      if(!isIp&&labels.length>=5) f.push('サブドメインが<b>多すぎます</b>('+labels.length+'階層)。');
+      if((host.match(/-/g)||[]).length>=3) f.push('ハイフンが<b>多く</b>使われています。');
+      if(SHORT.indexOf(base(host))>=0) f.push('<b>短縮URL</b>です。リンク先が見えません。');
+      if(u.protocol==='http:') f.push('<b>httpsではありません</b>(通信が暗号化されません)。');
+      if(u.port&&u.port!=='80'&&u.port!=='443') f.push('<b>特殊なポート番号</b>('+esc(u.port)+')が指定されています。');
+      if(v.length>120) f.push('URLが<b>非常に長い</b>です。');
+      var b=isIp?host:base(host);
+      var h='<div class="ph-r">ホスト名(接続先):<br><b style="word-break:break-all">'+esc(host)+'</b></div>'+
+        '<div class="ph-r">運営ドメインの目安(後ろから):<br><b style="word-break:break-all">'+esc(b)+'</b><br><span class="ph-sm">これが公式のドメインと<b>完全に一致</b>するか、確認してください。</span></div>';
+      if(f.length){ f.forEach(function(x){ h+='<div class="ph-r ph-f">⚠ '+x+'</div>'; }); }
+      else h+='<div class="ph-r">目立った不審な形の特徴は、見つかりませんでした。<b>ただし、安全という意味ではありません。</b></div>';
+      out.innerHTML=h;
+    }
+    inp.addEventListener('input',run);
+  })();
+
+  /* ダイアログ内の操作 */
+  var PZ='phish-size', ZS={s:0.9,m:1,l:1.18};
+  function getPZ(){ try{ return localStorage.getItem(PZ)||'m'; }catch(e){ return 'm'; } }
+  window.phSize=function(v){
+    try{ localStorage.setItem(PZ,v); }catch(e){}
+    $('phRoot').style.setProperty('--pz',ZS[v]||1);
+    var bs=document.querySelectorAll('#dlgPhish .tb-sz button');
+    for(var i=0;i<bs.length;i++) bs[i].classList.toggle('on',bs[i].getAttribute('data-pz')===v);
+  };
+  function syncTheme(){
+    var dk=document.documentElement.classList.contains('dk'), b=$('phTheme');
+    b.querySelector('.ic').textContent=dk?'☀️':'🌙'; b.querySelector('.tx').textContent=dk?'明るく':'暗く';
+  }
+  window.phTheme=function(){ doTheme(); syncTheme(); };
+  window.phToc=function(){ $('phToc').classList.toggle('open'); };
+  window.phGo=function(id){
+    $('phToc').classList.remove('open');
+    var e=$('ph-sec-'+id); if(e) e.scrollIntoView({behavior:'smooth',block:'start'});
+  };
+  function pageUrl(){ return location.href.split('#')[0]+'#phish'; }
+  window.phLink=function(){ copy(pageUrl(),'リンクをコピーしました'); };
+  window.phShare=function(){
+    var text='口座とお金を守る｜フィッシング対策ガイド\n偽サイトの見分け方と、口座・暗号資産を守る手順をまとめています。\n';
+    if(navigator.share){ navigator.share({title:'フィッシング対策ガイド',text:text,url:pageUrl()}).catch(function(){}); return; }
+    copy(text+pageUrl(),'共有メッセージをコピーしました');
+  };
+  window.phCopy=function(){
+    var t='【口座とお金を守る｜フィッシング対策ガイド】\n\n';
+    t+='■ 鉄則\n  ・メール/SMS/LINEのリンク・QRから、金融機関に入らない\n  ・公式アプリか、自分で登録したブックマークから入る\n  ・暗証番号・パスワード・認証コードを聞かれたら詐欺\n\n';
+    t+='■ 銀行・証券の設定\n'; BANK.forEach(function(o,i){ t+='  '+(i+1)+'. '+o.t+'\n'; });
+    t+='\n■ 暗号資産\n'; CRYPTO.forEach(function(o,i){ t+='  '+(i+1)+'. '+o.t+'\n'; });
+    t+='\n■ 被害にあったら\n  1.ネットを切る(遠隔操作アプリは入れない・入れたら即切断) 2.金融機関へ電話 3.パスワード変更(別端末) 4.履歴を残す 5.警察 #9110\n  暗号資産は、TxID(取引ハッシュ)と送金先を早めに控え、取引所へ被害申告\n';
+    t+='\n■ 比較(1〜6月・前年同期)\n  不正送金(警察庁) 約42億円 → 約20.7億円(51%減)\n  フィッシング報告 119.6万件 → 約73万件(約4割減)\n  カード不正利用 約314億円 → 221.3億円(約3割減)\n  ※2026年1〜9月は未公表の項目あり\n\n';
+    t+='詳しくは → '+pageUrl()+'\nDWA防災情報センター';
+    copy(t,'内容をコピーしました');
+  };
+  window.phSize(getPZ());
+  var _od=window.openDlg;
+  window.openDlg=function(id){ _od(id); if(id==='dlgPhish'){ syncTheme(); } };
+  function hashOpen(){ if(location.hash==='#phish') window.openDlg('dlgPhish'); }
+  window.addEventListener('hashchange',hashOpen); hashOpen();
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeDlg('dlgPhish'); });
 })();
 </script>
 </body>
