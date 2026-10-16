@@ -580,6 +580,16 @@ html.dk .ph-toc{border-color:#2e3b50}
 .ph-hd p{font-size:12.5px;color:var(--sub)}
 .ph-zoom{zoom:var(--pz,1)}
 
+
+  /* ---- 全ページ共通のヘッダーバー ---- */
+  .dh-bar{position:sticky;top:0;z-index:6;display:flex;align-items:center;gap:5px;flex-wrap:nowrap;overflow-x:auto;
+    margin:-24px -22px 14px;padding:9px 12px;background:var(--card);border-bottom:1px solid var(--line);border-radius:18px 18px 0 0}
+  .dh-bar::-webkit-scrollbar{display:none}
+  html.dk .dh-bar{background:#1a2332;border-color:#2e3b50}
+  .dh-bar .tb-ham{margin-left:auto}
+  .dlg-in.has-dh{zoom:var(--z,1)}
+  .dlg-in.has-dh>.dlg-x{display:none}
+  @media print{.dh-bar{display:none}}
   .dlg-wide .dlg-in{max-width:900px}
   /* 最新情報 */
   .nw-card{background:var(--card);border:1px solid var(--line,#d6dde6);border-left:5px solid var(--red,#d92b2b);border-radius:12px;padding:14px 16px;margin-bottom:12px}
@@ -1031,20 +1041,6 @@ html.dk .ph-toc{border-color:#2e3b50}
 
 <div class="dlg dlg-wide" id="dlgPhish" onclick="if(event.target===this)closeDlg('dlgPhish')">
   <div class="dlg-in">
-    <div class="ph-top">
-      <button type="button" class="tb" onclick="closeDlg('dlgPhish')" aria-label="閉じる"><span class="ic">✕</span><span class="tx">閉じる</span></button>
-      <button type="button" class="tb" onclick="doRefresh()" aria-label="最新版に更新する"><span class="ic">🔄</span><span class="tx">更新</span></button>
-      <button type="button" class="tb" onclick="phShare()" aria-label="共有する"><span class="ic">📤</span><span class="tx">共有</span></button>
-      <button type="button" class="tb" onclick="phCopy()" aria-label="内容をコピー"><span class="ic">📋</span><span class="tx">コピー</span></button>
-      <button type="button" class="tb" onclick="phLink()" aria-label="リンクをコピー"><span class="ic">🔗</span><span class="tx">リンク</span></button>
-      <button type="button" class="tb" id="phTheme" onclick="phTheme()" aria-label="表示を切り替える"><span class="ic">🌙</span><span class="tx">暗く</span></button>
-      <span class="tb-sz" role="group" aria-label="文字の大きさ">
-        <button type="button" class="z1" data-pz="s" onclick="phSize('s')" aria-label="小さく">小</button>
-        <button type="button" class="z2" data-pz="m" onclick="phSize('m')" aria-label="標準">中</button>
-        <button type="button" class="z3" data-pz="l" onclick="phSize('l')" aria-label="大きく">大</button>
-      </span>
-      <button type="button" class="tb tb-ham" onclick="phToc()" aria-label="目次"><span class="ic">☰</span></button>
-    </div>
     <div class="ph-toc" id="phToc">
       <button type="button" onclick="phGo('data')">📊 被害データの比較</button>
       <button type="button" onclick="phGo('phish')">🎣 偽サイトを見破る</button>
@@ -1432,6 +1428,10 @@ html.dk .ph-toc{border-color:#2e3b50}
       <button type="button" data-s="all" aria-pressed="true">すべて</button>
       <button type="button" data-s="jp" aria-pressed="false">日本</button>
       <button type="button" data-s="world" aria-pressed="false">海外</button></span></div>
+    <div class="ls-ctl"><span class="lb2" id="otLb2">並べ替え</span><span class="seg" role="group" aria-labelledby="otLb2" id="otSort">
+      <button type="button" data-o="sev" aria-pressed="false">重大度順</button>
+      <button type="button" data-o="kana" aria-pressed="false">五十音順</button>
+      <button type="button" data-o="date" aria-pressed="true">日付順</button></span></div>
     <div class="ls-sum" id="otInfo" aria-live="polite"></div>
     <div class="ls-ctl"><button type="button" class="tl-b p" id="otCopy">📋 結果をコピー</button></div>
     <details><summary style="cursor:pointer;font-size:13px;min-height:36px">影響度ランク(SS・A・B・C・D)の基準</summary>
@@ -2471,9 +2471,16 @@ function goShield(){
 
 /* ---- サイバー攻撃・システム障害一覧 ---- */
 (function(){
-  var OT = [{"o":"小池酸素工業","k":"日本","d":"2026-10-15","c":"ランサムウェア(データ公開)","r":"C","i":"一部システムの障害が続き、業務に支障。流出が疑われる電子ファイルがインターネット上に公開されていることを確認。被害サーバーの一部に個人情報が保管されていたが、実際に漏えいしたか・範囲は調査中。連結業績への影響は軽微とし、決算発表日程への影響は精査中","w":"10月5日にサイバー攻撃の可能性を認識し、8日の第2報で一部サーバーへの不正アクセスの疑いとデータ漏えいを認識。ランサムウェアグループExitiumは10月10日に約5.8TBを窃取したと主張(自己申告で、同社は裏付けていない)","s":"社内ネットワークの接続を制限し、外部専門家と調査、システム復旧を継続。個人情報保護委員会へ漏えいのおそれとして報告"},{"o":"ハルメク「HALMEK up」","k":"日本","d":"2026-10-15","c":"不正アクセス(不審プログラムの設置)","r":"D","i":"Webサイトに不審なプログラムが設置されていたことが判明(最終報)。サーバー上のファイルの閲覧・取得・外部転送の痕跡は確認されず、個人情報の外部流出を示す痕跡も見つかっていない","w":"6月13日・8月7日・9月2日・9月3日・9月9日の計5回の不正アクセス。9月10日に社員1名のID・パスワードの不正利用を特定","s":"管理画面のパスワードを変更し、個人情報保護委員会へ報告。不審プログラムは9月10〜12日に削除。10月11日にフォレンジック調査が完了。システム・ネットワークの対策と監視体制を強化。業績への影響は軽微"},{"o":"ワサビ「WASABI SWITCH」利用店舗の購入者","k":"日本","d":"2026-10-15","c":"不審メール(原因調査中)","r":"D","i":"利用店舗の購入者宛に、実際の注文日時・商品名・金額・届け先を記載した不審メールが届き、品切れを理由に返金を案内してLINEへの連絡を求めている。影響を受けた店舗数・購入者数は未公表。WASABI SWITCHからの情報漏えいは現時点で確認されていないが、調査中で確定していない","w":"送信経路・原因・影響範囲を調査中。送信元は店舗と無関係のフリーメールアドレス","s":"株式会社ワサビが公式サポートサイトで注意喚起。メール内のLINEアカウントを追加せず、口座・カード情報・認証コードを入力しない。購入した店舗やECモールの正規窓口で確認。金銭を送った場合は金融機関・警察に相談"},{"o":"IDCフロンティア(IDCFクラウド)","k":"日本","d":"2026-10-07","c":"ランサムウェア","r":"SS","i":"東日本リージョン1の4ゾーンで仮想サーバが停止。495の企業・自治体が影響。JR東日本、日水物流、茨城県、小平市、UDトーク、サイバー大学などで障害や情報漏えいのおそれ。Peachでは旅程表メールの配信停止・遅延","w":"当初は不正アクセスと発表し、同日中にランサムウェア攻撃と訂正。犯行声明は確認されていない","s":"影響ゾーンをネットワークから隔離し、全リージョンの管理コンソールを停止。復旧日程は未公表。データは顧客自身のバックアップからしか戻せない可能性があり、別の清浄な環境での再構築を案内。10月14日の第5報で、スナップショットを使っていた194顧客のバックアップデータの取り出しが可能と確認(実際に復元できるかは確認中)。IDCFクラウドのポータルで48社の登録情報(企業名・ログインID・ハッシュ化パスワード・通知先メール・月額利用料金の合計)への不正な照会を確認(外部への持ち出しの痕跡なし)。仮想サーバー内の顧客データは、照会・持ち出しの痕跡なしと判断"},{"o":"フランスの大手スーパー(Intermarché、Carrefour、Monoprixなど)","k":"フランス","d":"2026-10-12","c":"制御機器の遠隔操作","r":"A","i":"全国で約300〜500店の冷凍冷蔵設備の設定温度が最高50度に上げられ、食品を大量廃棄。Intermarchéは午前中だけで数千万ユーロ規模の損失を見込む。件数は各社の回答で食い違い","w":"デンマークDanfoss社の冷凍冷蔵用制御機器(AK-SM・AK-SCシリーズ)が遠隔操作された。多くは保守終了品で、管理画面がインターネットに公開されていた。攻撃者や動機は未確定","s":"フランスのCERT-FRが警戒情報を公表(機器のインターネット切断・初期化・修正の適用)。パリ検察が捜査を全国管轄のサイバー犯罪対策部門に委ねた。業界団体はDanfossに透明性を要請"},{"o":"Ahold Delhaize(Albert Heijn、Delhaizeなど)","k":"オランダ・ベルギー・米国","d":"2026-10-11","c":"システム停止(サイバーセキュリティインシデント)","r":"B","i":"Albert Heijn、Etos、Gall & Gall、Delhaizeのウェブサイト・アプリ・カスタマーサービスが利用不能。オンライン配達が停止し、配送拠点にも影響が出たと報じられた。実店舗は営業を継続。米Stop & Shopの従業員は給与明細などが見られない","w":"ネットワーク内のセキュリティ問題と説明。原因や攻撃者、ランサムウェアかどうかは未公表。2024年11月にも別の攻撃を受けている","s":"影響システムを予防的にオフラインにし、評価と被害の軽減を進めている。復旧の見通しは示されていない"},{"o":"TFG London(Hobbs、Whistles、Phase Eight)","k":"英国","d":"2026-10-13","c":"システム障害(攻撃)","r":"C","i":"一部ITシステムがオフラインになり、オンライン機能の一部が利用できない。実店舗は営業を継続","w":"10月11日に検知。侵入経路・手口・攻撃者は未公表で、犯行声明も確認されていない。顧客データの侵害は未確認で、決済情報は影響を受けていないとみている","s":"事業継続計画を発動し、外部の専門家と調査。関係当局へ通知済み。影響が確認された顧客には直接連絡する方針"},{"o":"シンガポールの暗号資産取引所","k":"シンガポール","d":"2026-09","c":"資産の窃取","r":"A","i":"ホットウォレットとウォームウォレットから約3億8,750万ドル相当が流出。取引データが操作された可能性。秘密鍵とコールドウォレットは無事とされる","w":"バックエンドシステムの侵害。北朝鮮系ハッカーの関与が疑われている(確定ではない)。発生日は出典に記載なし","s":"詳細は出典で未確認"},{"o":"大阪公立大学","k":"日本","d":"2026-10-02","c":"ランサムウェア","r":"C","i":"仮想化基盤の障害でシステムが停止し、10月2日〜8日は全授業を休講。10月9日から対面授業を再開","w":"仮想化基盤の障害を、ランサムウェア攻撃によるものと判断","s":"システムの復旧と授業再開。情報流出の有無は出典で確認できず"},{"o":"日水物流(ニッスイグループ)","k":"日本","d":"2026-10-07","c":"システム障害(不正アクセスとみられる)","r":"C","i":"商品の入出荷ができなくなった(IDCFクラウドの障害の影響先として報じられている)","w":"委託先データセンターへの第三者による不正アクセスとみられると発表","s":"復旧作業中"},{"o":"京王グループ","k":"日本","d":"2026-09-26","c":"ランサムウェア","r":"C","i":"一部の営業システムに障害。ホテルの問い合わせ業務などに影響。鉄道の運行への影響はなし。10月15日、ランサムウェアグループQilinが「KEIO CORPORATION」をリークサイトに掲載したとされる(攻撃者側の主張で、京王の調査では裏付けられていない)。掲載ページに『27 photos』とあり、確認できたサンプルは業務委託契約書形式の文書・社内メールの画面・雇用関連の集計表など。顧客情報の大量流出はサンプルからは確認されていない","w":"ランサムウェア攻撃","s":"公表・復旧作業。京王は9月26日の公表時点で、ネットワークの遮断・警察への通報・外部専門家による調査を実施し、情報漏えいの事実は確認されていないと説明(鉄道の運行に支障なし)。Qilinの主張に対する京王の公式見解は未確認"},{"o":"手間いらず(宿泊予約管理システム)","k":"日本","d":"2026-09-24","c":"機能の一時停止(攻撃の種別は未確認)","r":"D","i":"一部機能を10:58〜21:48に一時停止。基幹の予約・在庫連携は維持","w":"攻撃の種別は、今回確認した出典に詳しい記載なし","s":"当日中に再開"},{"o":"ローソン(自社メールサーバ)","k":"日本","d":"2026-10-01","c":"メールサーバの不正利用","r":"D","i":"9月25〜27日に、不審な英文メールが推計約70万件送信された。個人情報の流出は確認されていない","w":"自社メールサーバへの不正アクセスによる不正利用","s":"設定変更と通信制限で対処"},{"o":"イリノイ大学シカゴ校 医学部","k":"米国","d":"2026-10-02","c":"ランサムウェア","r":"C","i":"一部システムが利用不能になり、情報の窃取を同校が認めた。10月5日までに復旧し、主要ネットワークや患者ケアへの影響はなし","w":"ランサムウェア","s":"復旧済み"},{"o":"BM Technologies(BankMobile)","k":"米国","d":"2026-10-02","c":"アカウント侵害","r":"C","i":"カリフォルニア州の複数のコミュニティカレッジで、奨学金の振込が遅延・停止。紙の小切手で対応","w":"アカウントの不正アクセス。被害範囲は未確定","s":"紙の小切手で対応"},{"o":"ジェファーソン郡(ミズーリ州)","k":"米国","d":"2026-10-02","c":"ネットワーク遮断","r":"D","i":"取引処理ができず、公開会議2件が中止。警察機能には影響なし","w":"セキュリティ上の脅威を受けてネットワークを遮断","s":"復旧作業中"},{"o":"Green Clinic(ルイジアナ州)","k":"米国","d":"2026-10-02","c":"障害(攻撃の疑い)","r":"D","i":"電子カルテと予約情報にアクセスできず、一部は紙の記録で対応","w":"サイバー攻撃の疑い。攻撃の確認と情報流出の有無は未確定","s":"紙の記録で診療を継続"},{"o":"インディアナ学区(ペンシルベニア州)","k":"米国","d":"2026-10-04","c":"サイバーインシデント","r":"D","i":"サーバーとシステムへのアクセスが障害となり、デスクトップ端末が停止","w":"ランサムウェアの有無は未確定","s":"外部の専門家が復旧作業中"},{"o":"イーストハンプトン公立学校(マサチューセッツ州)","k":"米国","d":"2026-10-05","c":"ネットワーク遮断","r":"D","i":"不審な活動を受けて全ネットワークを停止。電話・メール・Wi-Fiなどが利用不能になり、紙ベースの授業で継続","w":"不審な活動の検知による予防的な遮断","s":"復旧作業中"},{"o":"メリーランド州教育省","k":"米国","d":"2026-10-07","c":"予防的なサイト停止","r":"D","i":"公式サイトを停止し、代替サイトで案内。被害範囲と復旧時期は未確定","w":"サイバー調査に伴う予防的な停止","s":"調査中"},{"o":"U.S.NEXT(ミシシッピ州)","k":"米国","d":"2026-10-09","c":"サイバー攻撃による障害","r":"D","i":"ホスティングサービスのウェブサイトとメールが停止し、ミシシッピ州の郡政府などに影響","w":"ランサムウェアの関与は未確認","s":"復旧作業中"},{"o":"ノースプラット市・リンカーン郡(ネブラスカ州)","k":"米国","d":"2026-10-09","c":"通信障害(サイバーインシデント)","r":"D","i":"インターネットと電話が停止し、郡庁舎が早期閉鎖。911と緊急サービスは稼働を継続","w":"サイバーインシデントに起因","s":"復旧作業中"},{"o":"テレボーン教区政府(ルイジアナ州)","k":"米国","d":"2026-09-30","c":"サイバー攻撃による障害","r":"D","i":"オンラインの公共料金支払いが停止。必須業務は継続","w":"ネットワークを遮断","s":"復旧作業中"}];
+  var OT = [{"o": "小池酸素工業", "k": "日本", "d": "2026-10-15", "c": "ランサムウェア(データ公開)", "r": "C", "i": "一部システムの障害が続き、業務に支障。流出が疑われる電子ファイルがインターネット上に公開されていることを確認。被害サーバーの一部に個人情報が保管されていたが、実際に漏えいしたか・範囲は調査中。連結業績への影響は軽微とし、決算発表日程への影響は精査中", "w": "10月5日にサイバー攻撃の可能性を認識し、8日の第2報で一部サーバーへの不正アクセスの疑いとデータ漏えいを認識。ランサムウェアグループExitiumは10月10日に約5.8TBを窃取したと主張(自己申告で、同社は裏付けていない)", "s": "社内ネットワークの接続を制限し、外部専門家と調査、システム復旧を継続。個人情報保護委員会へ漏えいのおそれとして報告", "y": "こいけさんそこうぎょう"}, {"o": "ハルメク「HALMEK up」", "k": "日本", "d": "2026-10-15", "c": "不正アクセス(不審プログラムの設置)", "r": "D", "i": "Webサイトに不審なプログラムが設置されていたことが判明(最終報)。サーバー上のファイルの閲覧・取得・外部転送の痕跡は確認されず、個人情報の外部流出を示す痕跡も見つかっていない", "w": "6月13日・8月7日・9月2日・9月3日・9月9日の計5回の不正アクセス。9月10日に社員1名のID・パスワードの不正利用を特定", "s": "管理画面のパスワードを変更し、個人情報保護委員会へ報告。不審プログラムは9月10〜12日に削除。10月11日にフォレンジック調査が完了。システム・ネットワークの対策と監視体制を強化。業績への影響は軽微", "y": "はるめく"}, {"o": "ワサビ「WASABI SWITCH」利用店舗の購入者", "k": "日本", "d": "2026-10-15", "c": "不審メール(原因調査中)", "r": "D", "i": "利用店舗の購入者宛に、実際の注文日時・商品名・金額・届け先を記載した不審メールが届き、品切れを理由に返金を案内してLINEへの連絡を求めている。影響を受けた店舗数・購入者数は未公表。WASABI SWITCHからの情報漏えいは現時点で確認されていないが、調査中で確定していない", "w": "送信経路・原因・影響範囲を調査中。送信元は店舗と無関係のフリーメールアドレス", "s": "株式会社ワサビが公式サポートサイトで注意喚起。メール内のLINEアカウントを追加せず、口座・カード情報・認証コードを入力しない。購入した店舗やECモールの正規窓口で確認。金銭を送った場合は金融機関・警察に相談", "y": "わさび"}, {"o": "IDCフロンティア(IDCFクラウド)", "k": "日本", "d": "2026-10-07", "c": "ランサムウェア", "r": "SS", "i": "東日本リージョン1の4ゾーンで仮想サーバが停止。495の企業・自治体が影響。JR東日本、日水物流、茨城県、小平市、UDトーク、サイバー大学などで障害や情報漏えいのおそれ。Peachでは旅程表メールの配信停止・遅延", "w": "当初は不正アクセスと発表し、同日中にランサムウェア攻撃と訂正。犯行声明は確認されていない", "s": "影響ゾーンをネットワークから隔離し、全リージョンの管理コンソールを停止。復旧日程は未公表。データは顧客自身のバックアップからしか戻せない可能性があり、別の清浄な環境での再構築を案内。10月14日の第5報で、スナップショットを使っていた194顧客のバックアップデータの取り出しが可能と確認(実際に復元できるかは確認中)。IDCFクラウドのポータルで48社の登録情報(企業名・ログインID・ハッシュ化パスワード・通知先メール・月額利用料金の合計)への不正な照会を確認(外部への持ち出しの痕跡なし)。仮想サーバー内の顧客データは、照会・持ち出しの痕跡なしと判断", "y": "あいでぃーしーふろんてぃあ"}, {"o": "フランスの大手スーパー(Intermarché、Carrefour、Monoprixなど)", "k": "フランス", "d": "2026-10-12", "c": "制御機器の遠隔操作", "r": "A", "i": "全国で約300〜500店の冷凍冷蔵設備の設定温度が最高50度に上げられ、食品を大量廃棄。Intermarchéは午前中だけで数千万ユーロ規模の損失を見込む。件数は各社の回答で食い違い", "w": "デンマークDanfoss社の冷凍冷蔵用制御機器(AK-SM・AK-SCシリーズ)が遠隔操作された。多くは保守終了品で、管理画面がインターネットに公開されていた。攻撃者や動機は未確定", "s": "フランスのCERT-FRが警戒情報を公表(機器のインターネット切断・初期化・修正の適用)。パリ検察が捜査を全国管轄のサイバー犯罪対策部門に委ねた。業界団体はDanfossに透明性を要請", "y": "ふらんすのおおてすーぱー"}, {"o": "Ahold Delhaize(Albert Heijn、Delhaizeなど)", "k": "オランダ・ベルギー・米国", "d": "2026-10-11", "c": "システム停止(サイバーセキュリティインシデント)", "r": "B", "i": "Albert Heijn、Etos、Gall & Gall、Delhaizeのウェブサイト・アプリ・カスタマーサービスが利用不能。オンライン配達が停止し、配送拠点にも影響が出たと報じられた。実店舗は営業を継続。米Stop & Shopの従業員は給与明細などが見られない", "w": "ネットワーク内のセキュリティ問題と説明。原因や攻撃者、ランサムウェアかどうかは未公表。2024年11月にも別の攻撃を受けている", "s": "影響システムを予防的にオフラインにし、評価と被害の軽減を進めている。復旧の見通しは示されていない", "y": "あほーるどでるはいぜ"}, {"o": "TFG London(Hobbs、Whistles、Phase Eight)", "k": "英国", "d": "2026-10-13", "c": "システム障害(攻撃)", "r": "C", "i": "一部ITシステムがオフラインになり、オンライン機能の一部が利用できない。実店舗は営業を継続", "w": "10月11日に検知。侵入経路・手口・攻撃者は未公表で、犯行声明も確認されていない。顧客データの侵害は未確認で、決済情報は影響を受けていないとみている", "s": "事業継続計画を発動し、外部の専門家と調査。関係当局へ通知済み。影響が確認された顧客には直接連絡する方針", "y": "てぃーえふじーろんどん"}, {"o": "シンガポールの暗号資産取引所", "k": "シンガポール", "d": "2026-09", "c": "資産の窃取", "r": "A", "i": "ホットウォレットとウォームウォレットから約3億8,750万ドル相当が流出。取引データが操作された可能性。秘密鍵とコールドウォレットは無事とされる", "w": "バックエンドシステムの侵害。北朝鮮系ハッカーの関与が疑われている(確定ではない)。発生日は出典に記載なし", "s": "詳細は出典で未確認", "y": "しんがぽーるのあんごうしさんとりひきじょ"}, {"o": "大阪公立大学", "k": "日本", "d": "2026-10-02", "c": "ランサムウェア", "r": "C", "i": "仮想化基盤の障害でシステムが停止し、10月2日〜8日は全授業を休講。10月9日から対面授業を再開", "w": "仮想化基盤の障害を、ランサムウェア攻撃によるものと判断", "s": "システムの復旧と授業再開。情報流出の有無は出典で確認できず", "y": "おおさかこうりつだいがく"}, {"o": "日水物流(ニッスイグループ)", "k": "日本", "d": "2026-10-07", "c": "システム障害(不正アクセスとみられる)", "r": "C", "i": "商品の入出荷ができなくなった(IDCFクラウドの障害の影響先として報じられている)", "w": "委託先データセンターへの第三者による不正アクセスとみられると発表", "s": "復旧作業中", "y": "にっすいぶつりゅう"}, {"o": "京王グループ", "k": "日本", "d": "2026-09-26", "c": "ランサムウェア", "r": "C", "i": "一部の営業システムに障害。ホテルの問い合わせ業務などに影響。鉄道の運行への影響はなし。10月15日、ランサムウェアグループQilinが「KEIO CORPORATION」をリークサイトに掲載したとされる(攻撃者側の主張で、京王の調査では裏付けられていない)。掲載ページに『27 photos』とあり、確認できたサンプルは業務委託契約書形式の文書・社内メールの画面・雇用関連の集計表など。顧客情報の大量流出はサンプルからは確認されていない", "w": "ランサムウェア攻撃", "s": "公表・復旧作業。京王は9月26日の公表時点で、ネットワークの遮断・警察への通報・外部専門家による調査を実施し、情報漏えいの事実は確認されていないと説明(鉄道の運行に支障なし)。Qilinの主張に対する京王の公式見解は未確認", "y": "けいおうぐるーぷ"}, {"o": "手間いらず(宿泊予約管理システム)", "k": "日本", "d": "2026-09-24", "c": "機能の一時停止(攻撃の種別は未確認)", "r": "D", "i": "一部機能を10:58〜21:48に一時停止。基幹の予約・在庫連携は維持", "w": "攻撃の種別は、今回確認した出典に詳しい記載なし", "s": "当日中に再開", "y": "てまいらず"}, {"o": "ローソン(自社メールサーバ)", "k": "日本", "d": "2026-10-01", "c": "メールサーバの不正利用", "r": "D", "i": "9月25〜27日に、不審な英文メールが推計約70万件送信された。個人情報の流出は確認されていない", "w": "自社メールサーバへの不正アクセスによる不正利用", "s": "設定変更と通信制限で対処", "y": "ろーそん"}, {"o": "イリノイ大学シカゴ校 医学部", "k": "米国", "d": "2026-10-02", "c": "ランサムウェア", "r": "C", "i": "一部システムが利用不能になり、情報の窃取を同校が認めた。10月5日までに復旧し、主要ネットワークや患者ケアへの影響はなし", "w": "ランサムウェア", "s": "復旧済み", "y": "いりのいだいがくしかごこう"}, {"o": "BM Technologies(BankMobile)", "k": "米国", "d": "2026-10-02", "c": "アカウント侵害", "r": "C", "i": "カリフォルニア州の複数のコミュニティカレッジで、奨学金の振込が遅延・停止。紙の小切手で対応", "w": "アカウントの不正アクセス。被害範囲は未確定", "s": "紙の小切手で対応", "y": "びーえむてくのろじーずばんくもばいる"}, {"o": "ジェファーソン郡(ミズーリ州)", "k": "米国", "d": "2026-10-02", "c": "ネットワーク遮断", "r": "D", "i": "取引処理ができず、公開会議2件が中止。警察機能には影響なし", "w": "セキュリティ上の脅威を受けてネットワークを遮断", "s": "復旧作業中", "y": "じぇふぁーそんぐん"}, {"o": "Green Clinic(ルイジアナ州)", "k": "米国", "d": "2026-10-02", "c": "障害(攻撃の疑い)", "r": "D", "i": "電子カルテと予約情報にアクセスできず、一部は紙の記録で対応", "w": "サイバー攻撃の疑い。攻撃の確認と情報流出の有無は未確定", "s": "紙の記録で診療を継続", "y": "ぐりーんくりにっく"}, {"o": "インディアナ学区(ペンシルベニア州)", "k": "米国", "d": "2026-10-04", "c": "サイバーインシデント", "r": "D", "i": "サーバーとシステムへのアクセスが障害となり、デスクトップ端末が停止", "w": "ランサムウェアの有無は未確定", "s": "外部の専門家が復旧作業中", "y": "いんでぃあなかっく"}, {"o": "イーストハンプトン公立学校(マサチューセッツ州)", "k": "米国", "d": "2026-10-05", "c": "ネットワーク遮断", "r": "D", "i": "不審な活動を受けて全ネットワークを停止。電話・メール・Wi-Fiなどが利用不能になり、紙ベースの授業で継続", "w": "不審な活動の検知による予防的な遮断", "s": "復旧作業中", "y": "いーすとはんぷとんこうりつがっこう"}, {"o": "メリーランド州教育省", "k": "米国", "d": "2026-10-07", "c": "予防的なサイト停止", "r": "D", "i": "公式サイトを停止し、代替サイトで案内。被害範囲と復旧時期は未確定", "w": "サイバー調査に伴う予防的な停止", "s": "調査中", "y": "めりーらんどしゅうきょういくしょう"}, {"o": "U.S.NEXT(ミシシッピ州)", "k": "米国", "d": "2026-10-09", "c": "サイバー攻撃による障害", "r": "D", "i": "ホスティングサービスのウェブサイトとメールが停止し、ミシシッピ州の郡政府などに影響", "w": "ランサムウェアの関与は未確認", "s": "復旧作業中", "y": "ゆーえすねくすと"}, {"o": "ノースプラット市・リンカーン郡(ネブラスカ州)", "k": "米国", "d": "2026-10-09", "c": "通信障害(サイバーインシデント)", "r": "D", "i": "インターネットと電話が停止し、郡庁舎が早期閉鎖。911と緊急サービスは稼働を継続", "w": "サイバーインシデントに起因", "s": "復旧作業中", "y": "のーすぷらっとし"}, {"o": "テレボーン教区政府(ルイジアナ州)", "k": "米国", "d": "2026-09-30", "c": "サイバー攻撃による障害", "r": "D", "i": "オンラインの公共料金支払いが停止。必須業務は継続", "w": "ネットワークを遮断", "s": "復旧作業中", "y": "てれぼーんきょうくせいふ"}];
   var $ = function(id){ return document.getElementById(id); };
-  var q = '', sc = 'all', last = [];
+  var q = '', sc = 'all', so = 'date', last = [];
+  var ORD = ['SS','A','B','C','D','E'];
+  var SORTS = {
+    date: function(a,b){ return b.d.localeCompare(a.d); },
+    kana: function(a,b){ return a.y.localeCompare(b.y, 'ja') || b.d.localeCompare(a.d); },
+    sev:  function(a,b){ return (ORD.indexOf(a.r) - ORD.indexOf(b.r)) || b.d.localeCompare(a.d) || a.y.localeCompare(b.y, 'ja'); }
+  };
+  var SLB = { date:'日付順(新しい順)', kana:'五十音順', sev:'重大度順(SS→D・同じ重大度は新しい順)' };
   function card(o){
     return '<div class="ls-card"><div class="hd"><span class="rk rk-' + o.r + '" aria-label="影響度' + o.r + '">' + o.r + '</span><b>' + esc(o.o) + '</b></div>' +
       '<div class="mt2">' + esc(o.k) + ' ・ ' + esc(o.d) + ' ・ ' + esc(o.c) + '</div>' +
@@ -2485,17 +2492,19 @@ function goShield(){
       if(sc === 'jp' && o.k !== '日本') return false;
       if(sc === 'world' && o.k === '日本') return false;
       return !k || (o.o + o.k + o.c + o.i + o.w + o.s).toLowerCase().indexOf(k) >= 0;
-    }).sort(function(a,b){ return a.d < b.d ? 1 : a.d > b.d ? -1 : 0; });
+    }).sort(SORTS[so]);
     last = rows;
-    $('otInfo').textContent = '該当 ' + rows.length + ' 件 / 全 ' + OT.length + ' 件 ・ 日付順(新しい順)';
+    $('otInfo').textContent = '該当 ' + rows.length + ' 件 / 全 ' + OT.length + ' 件 ・ ' + SLB[so];
+    [].forEach.call(document.querySelectorAll('#otSort button'), function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-o') === so); });
     $('otOut').innerHTML = rows.length ? rows.map(card).join('') : '<p class="sm">該当する事案が見つかりません。</p>';
     [].forEach.call(document.querySelectorAll('#otScope button'), function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-s') === sc); });
   }
   [].forEach.call(document.querySelectorAll('#otScope button'), function(b){ b.onclick = function(){ sc = b.getAttribute('data-s'); render(); }; });
+  [].forEach.call(document.querySelectorAll('#otSort button'), function(b){ b.onclick = function(){ so = b.getAttribute('data-o'); render(); }; });
   $('otQ').oninput = function(){ q = $('otQ').value; render(); };
   $('otCopy').onclick = function(){
     if(!last.length){ toast('コピーする結果がありません'); return; }
-    var t = '【サイバー攻撃・システム障害一覧2026】\n該当 ' + last.length + ' 件(全 ' + OT.length + ' 件・2026年10月16日時点の報道)\n';
+    var t = '【サイバー攻撃・システム障害一覧2026】\n該当 ' + last.length + ' 件(全 ' + OT.length + ' 件・2026年10月16日時点の報道)・' + SLB[so] + '\n';
     last.forEach(function(o, i){ t += '\n' + (i + 1) + '. [' + o.r + '] ' + o.o + '(' + o.k + '・' + o.d + '・' + o.c + ')\n   影響:' + o.i + '\n   原因・手口:' + o.w + '\n   対応・状況:' + o.s + '\n'; });
     t += '\n※ 主な事案のみで、網羅ではありません。影響度ランクは目安です。\n詳しくは → ' + location.href.split('#')[0] + '\nDWA防災情報センター';
     copy(t, last.length + '件の結果をコピーしました');
@@ -2892,7 +2901,7 @@ var HABIT = [
     for(var i=0;i<bs.length;i++) bs[i].classList.toggle('on',bs[i].getAttribute('data-pz')===v);
   };
   function syncTheme(){
-    var dk=document.documentElement.classList.contains('dk'), b=$('phTheme');
+    var dk=document.documentElement.classList.contains('dk'), b=$('phTheme'); if(!b) return;
     b.querySelector('.ic').textContent=dk?'☀️':'🌙'; b.querySelector('.tx').textContent=dk?'明るく':'暗く';
   }
   window.phTheme=function(){ doTheme(); syncTheme(); };
@@ -2924,6 +2933,84 @@ var HABIT = [
   function hashOpen(){ if(location.hash==='#phish') window.openDlg('dlgPhish'); }
   window.addEventListener('hashchange',hashOpen); hashOpen();
   document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeDlg('dlgPhish'); });
+})();
+</script>
+<script>
+(function(){
+  var SKIP={dlgAIdet:1};
+  var EXTRA={dlgPhish:'<button type="button" class="tb" onclick="phToc()" aria-label="目次"><span class="ic">📑</span><span class="tx">目次</span></button>'};
+  function slug(id){ return id.replace(/^dlg/,'').toLowerCase(); }
+  function pageUrl(id){ return location.href.split('#')[0]+'#'+slug(id); }
+  function title(d){
+    var h=d.querySelector('h2'); var t=h?h.textContent:document.title;
+    return t.replace(/^[^A-Za-z0-9\u3040-\u30ff\u4e00-\u9fff]+/,'').trim()||document.title;
+  }
+  function bar(id){
+    return '<div class="dh-bar" data-dh="'+id+'">'+
+      '<button type="button" class="tb" onclick="closeDlg(\''+id+'\')" aria-label="閉じる"><span class="ic">✕</span><span class="tx">閉じる</span></button>'+
+      '<button type="button" class="tb" onclick="doRefresh()" aria-label="最新版に更新する"><span class="ic">🔄</span><span class="tx">更新</span></button>'+
+      '<button type="button" class="tb" onclick="dhShare(\''+id+'\')" aria-label="共有する"><span class="ic">📤</span><span class="tx">共有</span></button>'+
+      '<button type="button" class="tb" onclick="dhCopy(\''+id+'\')" aria-label="内容をコピー"><span class="ic">📋</span><span class="tx">コピー</span></button>'+
+      '<button type="button" class="tb" onclick="dhLink(\''+id+'\')" aria-label="リンクをコピー"><span class="ic">🔗</span><span class="tx">リンク</span></button>'+
+      '<button type="button" class="tb dh-theme" onclick="dhTheme()" aria-label="表示を切り替える"><span class="ic">🌙</span><span class="tx">暗く</span></button>'+
+      '<span class="tb-sz" role="group" aria-label="文字の大きさ">'+
+        '<button type="button" class="z1" data-z="s" onclick="doSize(\'s\')" aria-label="小さく">小</button>'+
+        '<button type="button" class="z2" data-z="m" onclick="doSize(\'m\')" aria-label="標準">中</button>'+
+        '<button type="button" class="z3" data-z="l" onclick="doSize(\'l\')" aria-label="大きく">大</button></span>'+
+      (EXTRA[id]||'')+
+      '<button type="button" class="tb tb-ham" onclick="dhMenu(\''+id+'\')" aria-label="メニュー"><span class="ic">☰</span></button>'+
+    '</div>';
+  }
+  function syncTheme(){
+    var dk=document.documentElement.classList.contains('dk');
+    var bs=document.querySelectorAll('.dh-theme');
+    for(var i=0;i<bs.length;i++){ bs[i].querySelector('.ic').textContent=dk?'☀️':'🌙'; bs[i].querySelector('.tx').textContent=dk?'明るく':'暗く'; }
+  }
+  function init(){
+    var ds=document.querySelectorAll('.dlg');
+    for(var i=0;i<ds.length;i++){
+      var d=ds[i]; if(SKIP[d.id]) continue;
+      var inn=d.querySelector('.dlg-in'); if(!inn||inn.querySelector('.dh-bar')) continue;
+      inn.insertAdjacentHTML('afterbegin',bar(d.id));
+      inn.classList.add('has-dh');
+      var cs=getComputedStyle(inn), b=inn.querySelector('.dh-bar');
+      b.style.margin='-'+cs.paddingTop+' -'+cs.paddingLeft+' 14px';
+    }
+    var bs=document.querySelectorAll('.tb-sz button');
+    var cur=getSize(); for(var j=0;j<bs.length;j++) bs[j].classList.toggle('on',bs[j].getAttribute('data-z')===cur);
+    syncTheme();
+  }
+  window.dhTheme=function(){ doTheme(); syncTheme(); };
+  window.dhMenu=function(id){ closeDlg(id); openMenu(); };
+  window.dhLink=function(id){ copy(pageUrl(id),'リンクをコピーしました'); };
+  window.dhShare=function(id){
+    if(id==='dlgPhish'&&window.phShare){ window.phShare(); return; }
+    var d=document.getElementById(id), t=title(d);
+    var text=t+'\n個人情報が漏れたら｜対処ガイド\n';
+    if(navigator.share){ navigator.share({title:t,text:text,url:pageUrl(id)}).catch(function(){}); return; }
+    copy(text+pageUrl(id),'共有メッセージをコピーしました');
+  };
+  window.dhCopy=function(id){
+    if(id==='dlgPhish'&&window.phCopy){ window.phCopy(); return; }
+    var d=document.getElementById(id), inn=d.querySelector('.dlg-in'), b=inn.querySelector('.dh-bar');
+    var old=b.style.display; b.style.display='none';
+    var txt=(inn.innerText||inn.textContent||'').replace(/\n{3,}/g,'\n\n').trim();
+    b.style.display=old;
+    var h2=d.querySelector('h2'); if(h2&&txt.indexOf(h2.textContent.trim())===0) txt=txt.slice(h2.textContent.trim().length).trim();
+    copy('【'+title(d)+'】\n\n'+txt+'\n\n詳しくは → '+pageUrl(id)+'\nDWA防災情報センター','内容をコピーしました');
+  };
+  var _od=window.openDlg;
+  window.openDlg=function(id){ _od(id); syncTheme(); };
+  function hashOpen(){
+    var h=location.hash.replace('#','').toLowerCase(); if(!h) return;
+    var el=document.getElementById('dlg'+h.charAt(0).toUpperCase()+h.slice(1));
+    if(!el){ var ds=document.querySelectorAll('.dlg'); for(var i=0;i<ds.length;i++) if(ds[i].id.toLowerCase()==='dlg'+h) el=ds[i]; }
+    if(el&&!SKIP[el.id]&&!el.classList.contains('open')) window.openDlg(el.id);
+  }
+  var _sz=window.doSize;
+  window.doSize=function(v){ _sz(v); };
+  init();
+  window.addEventListener('hashchange',hashOpen); hashOpen();
 })();
 </script>
 </body>
