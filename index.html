@@ -174,6 +174,12 @@
   .hero-img{margin:0 -13px;position:relative;line-height:0}
   .hero-img img{width:100%;height:auto;display:block}
 
+  .tb-php{border-color:#d93025;color:#d93025;font-weight:700}
+  .tb-php:hover{border-color:#b3261e;color:#b3261e}
+  html.dk .tb-php{border-color:#ff8a80;color:#ff8a80}
+  .php-fr{width:100%;height:68vh;min-height:360px;border:1px solid var(--line);border-radius:10px;background:#fff;display:block}
+  .php-act{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+  .php-act a,.php-act button{display:inline-flex;align-items:center;min-height:40px;padding:0 14px;border:1px solid var(--line);border-radius:99px;background:var(--card);color:var(--blue);font-family:inherit;font-size:13px;text-decoration:none;cursor:pointer}
   /* ===== 上部の操作バー ===== */
   .topbar{
     position:sticky;top:0;z-index:40;
@@ -815,6 +821,8 @@ html.dk #ofRoot .of-btn.dg{color:var(--of-red)}
 <div class="wrap">
 
   <div class="topbar">
+    <button type="button" class="tb tb-php" onclick="openDlg('dlgPhp')" aria-label="PHP脆弱性 緊急パッチ 状況ボードを開く">
+      <span class="ic">🚨</span><span class="tx">PHP状況</span></button>
     <button type="button" class="tb" onclick="doRefresh()" aria-label="最新版に更新する">
       <span class="ic">🔄</span><span class="tx">更新</span></button>
     <button type="button" class="tb" onclick="doShare()" aria-label="共有する">
@@ -984,6 +992,9 @@ html.dk #ofRoot .of-btn.dg{color:var(--of-red)}
     </div>
 
     <div class="mnu-sec">// 最新情報</div>
+    <button type="button" class="mnu-i" onclick="openDlg('dlgPhp')">
+      <span class="ic">🚨</span>
+      <span class="tx">PHP脆弱性 緊急パッチ 状況ボード<small>停止・再開したサイトを、ほぼリアルタイムで確認</small></span></button>
     <button type="button" class="mnu-i" onclick="openDlg('dlgNews')">
       <span class="ic">📰</span>
       <span class="tx">最新情報<small>A2B攻撃の注意喚起と、しくみの図解</small></span></button>
@@ -1859,6 +1870,20 @@ html.dk #ofRoot .of-btn.dg{color:var(--of-red)}
 <div class="toast" id="toast"></div>
 
 <!-- ===== 最新情報 ===== -->
+<div class="dlg dlg-wide" id="dlgPhp" onclick="if(event.target===this)closeDlg('dlgPhp')">
+  <div class="dlg-in">
+    <button class="dlg-x" onclick="closeDlg('dlgPhp')" aria-label="閉じる">✕</button>
+    <h2>🚨 PHP脆弱性 緊急パッチ 状況ボード</h2>
+    <p class="sm" style="line-height:1.7">PHPの重大な脆弱性(PHP2Shell)に関連して、停止・再開したサイトを一覧にしたボードです。別のページを表示しており、内容は更新され続けます。表示されないときは、下のボタンから別のタブで開いてください。出典と未確認の事項は、ボード内の各項目に書かれています。</p>
+    <div class="php-act">
+      <a href="https://mkms0822-ops.github.io/PHPLIVE/" target="_blank" rel="noopener">別のタブで開く ↗</a>
+      <button type="button" onclick="phpReload()">再読み込み</button>
+    </div>
+    <iframe id="phpFr" class="php-fr" title="PHP脆弱性 緊急パッチ 状況ボード" loading="lazy" referrerpolicy="no-referrer" data-src="https://mkms0822-ops.github.io/PHPLIVE/"></iframe>
+    <p class="sm" id="phpOff" style="display:none;line-height:1.7">いまオフラインのため表示できません。接続してから、もう一度開いてください。</p>
+  </div>
+</div>
+
 <div class="dlg dlg-wide" id="dlgNews" onclick="if(event.target===this)closeDlg('dlgNews')">
   <div class="dlg-in">
     <button class="dlg-x" onclick="closeDlg('dlgNews')" aria-label="閉じる">✕</button>
@@ -4498,5 +4523,23 @@ body.tts-picking #ttsHint{display:block}
 })();
 </script>
 
+<script>
+(function(){
+  function fr(){return document.getElementById('phpFr')}
+  function load(force){
+    var f=fr(); if(!f) return;
+    var off=document.getElementById('phpOff'), on=(navigator.onLine!==false);
+    if(off) off.style.display=on?'none':'block';
+    if(!on){ f.style.display='none'; return; }
+    f.style.display='block';
+    if(force||!f.getAttribute('src')){
+      var u=f.getAttribute('data-src'); f.setAttribute('src',force?u+'?t='+Date.now():u);
+    }
+  }
+  window.phpReload=function(){ load(true); };
+  var _o=window.openDlg;
+  window.openDlg=function(id){ var r=_o.apply(this,arguments); if(id==='dlgPhp') load(false); return r; };
+})();
+</script>
 </body>
 </html>
