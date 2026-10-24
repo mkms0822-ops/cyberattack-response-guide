@@ -609,6 +609,7 @@ html.dk .ph-toc{border-color:#2e3b50}
 
   .lt-card{background:var(--card);border:1px solid var(--line,#d6dde6);border-radius:12px;padding:12px 14px;margin:10px 0}
   .lt-card h3{font-size:15px;margin:0 0 6px;line-height:1.5}
+  .lt-card h3 small{display:block;font-size:11.5px;font-weight:400;opacity:.75}
   .lt-card ul{margin:6px 0 0;padding-left:1.2em}
   .lt-card li{margin:4px 0;line-height:1.7;font-size:13.5px}
   .lt-card.lt-r{border-left:5px solid #d92b2b}.lt-card.lt-g{border-left:5px solid #1e8e3e}.lt-card.lt-o{border-left:5px solid #e8710a}.lt-card.lt-b{border-left:5px solid #1a73e8}
@@ -1038,6 +1039,17 @@ html.dk #ofRoot .of-btn.dg{color:var(--of-red)}
       </ul>
     </div>
 
+    <div class="lt-card lt-r">
+      <h3>①-2 新たな脆弱性:Brotliライブラリ(CVE-2026-111497)<small>『Node2Shell』『HTTP2Shell』とも呼ばれる</small></h3>
+      <ul>
+        <li>圧縮方式Brotliのデコーダーにあるバッファオーバーフロー(範囲外書き込み)。細工したデータで、メモリの破損・情報漏えい・サービス停止、場合によってはコード実行のおそれ。CVSS v4.0で9.2(Critical)。</li>
+        <li>影響:Brotli 1.0.3〜1.2.0。修正版は Brotli 1.2.1(旧系列は1.0.10・1.1.1)。Node.jsは 22.23.4 / 24.22.1 / 26.12.1。Pythonの Brotli・brotlicffi、curl/libcurl、Bun、Envoy、Istioなども対象または修正済み。ApacheとNginxは、既定ではBrotliを復号しない。</li>
+        <li>『ブラウザ(Chrome・Edge・Firefox)、Electronアプリ(Discord・Slack・VSCode)、iOSにも影響』とする要約もありますが、確認できた資料(Aikido・Semgrep・Debian)には記載がなく、<b>未確認</b>です。</li>
+        <li>悪用:2026年10月22日時点で『実際の攻撃は未確認』とする報道がある一方、Node.js 24.22.0で同じ部分を突けると報告した事業者もあり、PoCや悪用の状況は資料で割れています(一次情報は未確認)。</li>
+        <li>対策:一般の方は、OS・アプリ・ブラウザの自動更新を有効にして、更新後は再起動まで。開発者は、依存関係(Python・Node.js・curlなど)に含まれるBrotliの版を確認し、修正版へ更新して再起動を。</li>
+      </ul>
+    </div>
+
     <div class="lt-card lt-o">
       <h3>③ 停止が続く・再開未確認のサイト・サービス</h3>
       <ul>
@@ -1122,7 +1134,7 @@ html.dk #ofRoot .of-btn.dg{color:var(--of-red)}
     <div class="mnu-sec">// ネットが切れたら</div>
     <button type="button" class="mnu-i" onclick="openDlg('dlgOffline')">
       <span class="ic">📡</span>
-      <span class="tx">ネット切断対策ガイド<small>止まるものの一覧・原因別の対策・オフライン地図と「自分の地図」の端末保存</small></span></button>
+      <span class="tx">ネット切断対策ガイド<small>止まるものの一覧・原因別の対策・代わりの連絡手段(+メッセージ)・オフライン地図</small></span></button>
 
     <div class="mnu-sec">// 関連サイト</div>
     <a class="mnu-i" href="https://bousai0111.info/" target="_blank" rel="noopener">
@@ -1285,7 +1297,7 @@ html.dk #ofRoot .of-btn.dg{color:var(--of-red)}
           <button type="button" onclick="ofGo('diag')">🩺 原因の切り分け</button>
           <button type="button" onclick="ofGo('list')">📋 止まるもの一覧</button>
           <button type="button" onclick="ofGo('cause')">🔌 原因別の対策</button>
-          <button type="button" onclick="ofGo('comm')">📞 代わりの連絡手段</button>
+          <button type="button" onclick="ofGo('comm')">📞 代わりの連絡手段(+メッセージ)</button>
           <button type="button" onclick="ofGo('power')">🔋 電源・現金</button>
           <button type="button" onclick="ofGo('map')">🗺 オフライン地図</button>
           <button type="button" onclick="ofGo('my')">📍 自分の地図</button>
@@ -1386,6 +1398,7 @@ html.dk #ofRoot .of-btn.dg{color:var(--of-red)}
           <tr><td><b>災害用伝言ダイヤル(171)</b></td><td>災害時に、音声で安否を録音・再生。固定電話・携帯電話から。</td><td>提供は災害時。<b>体験利用日</b>が毎月1日・15日、正月三が日、防災週間(8/30〜9/5)、防災とボランティア週間(1/15〜1/21)にあると、NTT東日本の2022年1月の発表にある。<b>最新の日程と操作は、NTTの公式ページで確認してください。</b></td></tr>
           <tr><td><b>災害用伝言板(web171)・各社の伝言板</b></td><td>文字で安否を登録・確認。</td><td>インターネット接続が必要。ネットが全断のときは使えない。</td></tr>
           <tr><td><b>公衆電話</b></td><td>携帯がつながらない・電池切れのとき。</td><td>災害時は無料になることがあるが、事業者の判断。小銭の用意。設置場所を事前に確認。</td></tr>
+          <tr><td><b>+メッセージ(RCS)</b></td><td>LINEが障害で使えないとき。電話番号だけで送れる。相手が未対応ならSMSで届く。</td><td>通常のやり取りはデータ通信を使う。モバイル回線そのものが止まる障害では使えない可能性。詳しくは下の「+メッセージ」の解説。</td></tr>
           <tr><td><b>SMS・短文メッセージ</b></td><td>音声通話が混雑しているとき、届く場合がある。</td><td>遅延することがある。キャリア障害時は使えない。</td></tr>
           <tr><td><b>別キャリアのSIM/eSIM・モバイルWi-Fi</b></td><td>1社の障害のとき。</td><td>契約が増える。普段は安いプランで、いざというときだけ使う方法もある。</td></tr>
           <tr><td><b>無料Wi-Fi「00000JAPAN」</b></td><td>大規模災害で、通信事業者が提供を決めたとき。</td><td>通常は使えない。接続先の偽Wi-Fiに注意。個人情報やパスワードは入力しない。</td></tr>
@@ -1393,6 +1406,60 @@ html.dk #ofRoot .of-btn.dg{color:var(--of-red)}
           <tr><td><b>ラジオ(AM/FM)</b></td><td>情報を受け取る。</td><td>電池式・手回し式を用意。ネット配信のラジオは通信が必要なので、電波のラジオを使う。</td></tr>
           <tr><td><b>紙の連絡網・伝言・集合場所</b></td><td>全部だめなとき。</td><td>「災害時はここに集まる」を家族で決めておく。</td></tr>
         </table></div>
+        <div class="of-box" id="ofPlusMsg">
+          <b style="font-size:15px">💬 LINEが止まっても連絡できる備えに「+メッセージ」</b>
+          <p>LINEは便利ですが、サービス障害・通信障害・災害時の回線混雑などで使えなくなることがあります。連絡手段が一つだけだと、いざというときに家族や職場と連絡が取れません。その予備として、<b>「+メッセージ」</b>を入れておくことをおすすめします。</p>
+          <p><b>+メッセージとは</b>:ドコモ・au・ソフトバンクが提供する、電話番号宛てに送れるメッセージサービスです(RCSという規格にもとづく)。</p>
+          <ul>
+            <li>相手の電話番号さえ分かれば送れる(友だち登録が不要)</li>
+            <li>既読表示、グループチャット、画像・ファイル送信に対応</li>
+            <li>相手が+メッセージを使っていない場合は、SMSとして届く</li>
+            <li>LINEと同じ運営会社のサーバーに依存しない</li>
+          </ul>
+          <p><b>備えとして有効な理由</b></p>
+          <ol>
+            <li><b>LINEとは別系統の連絡手段になる。</b>LINE側の障害が起きても、キャリアの仕組みで動く+メッセージには影響しません。</li>
+            <li><b>電話番号だけで届く。</b>アカウント作成や友だち追加が不要なので、普段LINEを使わない親世代や取引先にも連絡できます。</li>
+            <li><b>届かなくてもSMSに切り替わる。</b>相手が未対応でも、最低限テキストは届きます。</li>
+          </ol>
+        </div>
+        <div class="of-warn"><b class="t">⚠ データ通信が遮断したとき・過信しないために</b>
+          <p>+メッセージの通常のやり取りは<b>データ通信</b>を使います。モバイル回線そのものが止まる大規模障害では、LINEと同様に使えない可能性があります。通信が不安定なときは、データ量の小さいSMSのほうが届きやすいことがあります。</p>
+          <p>通信料や、SMSに切り替わった場合の料金は、契約や相手の環境で変わります。ご契約のキャリアで確認してください。メッセージ系サービスには、キャリアやOS側の実装不備による脆弱性が見つかることがあるため、OSとアプリは常に最新にしておきましょう。</p>
+        </div>
+        <div class="of-box">
+          <b>SMSの料金(文字数別)</b>
+          <p class="sm">+メッセージが相手に届かずSMSに切り替わった場合や、通常のSMSで送る場合は、文字数に応じて送信料がかかります。ソフトバンク系(ワイモバイル)の公式案内では、全角70文字までが3.3円(税込)で、以降は67文字ごとに3.3円ずつ加算され、受信は無料とされています。以下は、その案内にもとづく目安です。</p>
+          <div class="of-tw"><table class="of-t">
+            <tr><th>全角の文字数</th><th>半角英数字のみ</th><th>送信料(税込)</th></tr>
+            <tr><td>1〜70文字</td><td>1〜160文字</td><td>3.3円</td></tr>
+            <tr><td>71〜134文字</td><td>161〜306文字</td><td>6.6円</td></tr>
+            <tr><td>135〜201文字</td><td>307〜459文字</td><td>9.9円</td></tr>
+            <tr><td>202〜268文字</td><td>460〜612文字</td><td>13.2円</td></tr>
+            <tr><td>269〜335文字</td><td>613〜765文字</td><td>16.5円</td></tr>
+            <tr><td>336〜402文字</td><td>766〜918文字</td><td>19.8円</td></tr>
+            <tr><td>403〜469文字</td><td>919〜1,071文字</td><td>23.1円</td></tr>
+            <tr><td>470〜536文字</td><td>1,072〜1,224文字</td><td>26.4円</td></tr>
+            <tr><td>537〜603文字</td><td>1,225〜1,377文字</td><td>29.7円</td></tr>
+            <tr><td>604〜670文字</td><td>1,378〜1,530文字</td><td>33円</td></tr>
+          </table></div>
+          <ul>
+            <li>絵文字は文字数を多く消費することがあり、思ったより早く次の料金段階に入ります。</li>
+            <li>楽天モバイルでは、Rakuten Linkを使えば送信料は0円で、通常のSMSは70文字までが3.3円とされています。</li>
+            <li>機種・アプリ・契約プラン、国際SMSかどうかで、送れる文字数や料金は変わります。</li>
+            <li>緊急時は、<b>70文字以内</b>の短い文面にすると、料金面でも通信面でも有利です。</li>
+          </ul>
+        </div>
+        <div class="of-ok"><b class="t">✅ 今日からできる準備</b>
+          <ul>
+            <li>+メッセージをインストールし、電話番号で初期設定をする</li>
+            <li>家族・親しい人に「LINEが使えないときはこちらで連絡する」と伝える</li>
+            <li>緊急時の文面を、70文字以内で決めておく(例:「無事。〇〇にいる。連絡待つ」)</li>
+            <li>通常の電話番号の控えと、災害用伝言ダイヤル(171)の使い方も確認しておく</li>
+            <li>可能なら、Wi-Fiが使える場所と、モバイルバッテリーも確保する</li>
+          </ul>
+          <p><b>まとめ</b>:連絡手段は「LINE」「+メッセージ(SMS)」「音声通話・171」と複数持つのが基本です。+メッセージは、その中で手軽に追加できる一つです。SMSの料金は短文なら数円なので、緊急時は短く要点だけ送りましょう。万能ではないことを理解した上で、備えの一部として入れておきましょう。</p>
+        </div>
       </section>
 
       <section class="of-sec" id="ofS-power">
