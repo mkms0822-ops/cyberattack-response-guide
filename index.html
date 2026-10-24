@@ -606,6 +606,15 @@ html.dk .ph-toc{border-color:#2e3b50}
   @media print{.dh-bar{display:none}}
   .dlg-wide .dlg-in{max-width:1350px}
   /* 最新情報 */
+
+  .lt-card{background:var(--card);border:1px solid var(--line,#d6dde6);border-radius:12px;padding:12px 14px;margin:10px 0}
+  .lt-card h3{font-size:15px;margin:0 0 6px;line-height:1.5}
+  .lt-card ul{margin:6px 0 0;padding-left:1.2em}
+  .lt-card li{margin:4px 0;line-height:1.7;font-size:13.5px}
+  .lt-card.lt-r{border-left:5px solid #d92b2b}.lt-card.lt-g{border-left:5px solid #1e8e3e}.lt-card.lt-o{border-left:5px solid #e8710a}.lt-card.lt-b{border-left:5px solid #1a73e8}
+  .lt-go{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+  .lt-tag{display:inline-block;font-size:11px;font-weight:700;border-radius:99px;padding:1px 8px;margin-right:6px;color:#fff;background:#5f6b7a}
+  .lt-tag.r{background:#d92b2b}.lt-tag.g{background:#1e8e3e}.lt-tag.o{background:#e8710a}
   .nw-card{background:var(--card);border:1px solid var(--line,#d6dde6);border-left:5px solid var(--red,#d92b2b);border-radius:12px;padding:14px 16px;margin-bottom:12px}
   .nw-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;color:#fff;background:var(--red,#d92b2b);border-radius:99px;padding:2px 10px;margin-bottom:8px}
   .nw-ti{font-size:16px;line-height:1.6;margin:0 0 6px;font-weight:700;color:var(--fg,inherit)}
@@ -920,7 +929,7 @@ html.dk #ofRoot .of-btn.dg{color:var(--of-red)}
         <div><button type="button" class="tl-b" id="svClr">選択をすべて外す</button></div>
         <div class="tk-list" id="svList" style="max-height:260px;overflow:auto"></div>
         <div id="svOut" aria-live="polite"></div>
-        <p class="sm" style="font-size:12px;color:var(--sub)">掲載は主要な事案のみで、2026年10月10日時点です(日本郵便・デンマーク・アルカディア・銀のさらの事案は10月14日に追記、ソースネクスト・メドレー・吉野家HDは10月15日に追記、10月15〜16日に判明した事案(Eストアー、ファンケル・アテニア、ヤマト運輸、日本経済新聞社、バーガーキング、Studioなど)は10月16日に追記、ブックオフは10月13日の第2報に、VALXはコミューンの事案として10月15日に更新、10月16〜20日に判明・更新した事案は10月20日追記、10月21〜23日に判明・更新した事案(カプコン、ブラストメール、バルテック、お名前.comデスクトップクラウド、NP後払い、OTOTOY、大阪大学など)は10月24日(7時時点)追記)。<b>一覧にないからといって、漏れていないとは限りません。</b>該当したら、その機関の公式サイトを自分で開いて、本人向けのお知らせを確認してください。</p>
+        <p class="sm" style="font-size:12px;color:var(--sub)">掲載は主要な事案のみで、2026年10月10日時点です(日本郵便・デンマーク・アルカディア・銀のさらの事案は10月14日に追記、ソースネクスト・メドレー・吉野家HDは10月15日に追記、10月15〜16日に判明した事案(Eストアー、ファンケル・アテニア、ヤマト運輸、日本経済新聞社、バーガーキング、Studioなど)は10月16日に追記、ブックオフは10月13日の第2報に、VALXはコミューンの事案として10月15日に更新、10月16〜20日に判明・更新した事案は10月20日追記、10月21〜23日に判明・更新した事案(カプコン、ブラストメール、バルテック、お名前.comデスクトップクラウド、NP後払い、OTOTOY、大阪大学など)は10月24日(7時時点)追記、10月23〜24日に判明・更新した事案(日本ピザハット、アンドエスティHD、タイムズカー第5報、ブラストメール344契約など)は10月25日(6時時点)追記)。<b>一覧にないからといって、漏れていないとは限りません。</b>該当したら、その機関の公式サイトを自分で開いて、本人向けのお知らせを確認してください。</p>
       </div></div>
 
     <div class="step" id="t2"><button type="button" class="step-h" onclick="toggleStep('t2')">
@@ -989,6 +998,76 @@ html.dk #ofRoot .of-btn.dg{color:var(--of-red)}
 </div><!-- /wrap -->
 
 
+
+<!-- ===== 今日の最新まとめ ===== -->
+<div class="dlg dlg-wide" id="dlgLatest" onclick="if(event.target===this)closeDlg('dlgLatest')">
+  <div class="dlg-in">
+    <button class="dlg-x" onclick="closeDlg('dlgLatest')" aria-label="閉じる">✕</button>
+    <h2>📌 今日の最新まとめ</h2>
+    <div class="nw-card">
+      <span class="nw-tag">2026年10月25日 5時50分 時点</span>
+      <h3 class="nw-ti">PHPの脆弱性・停止と再開・サイバー攻撃・情報漏洩の最新</h3>
+      <p class="nw-sub">報道や各社の告知をもとにした要約です。多くは一次情報が未確認で、最新は各社の公式発表をご確認ください。</p>
+    </div>
+    <div class="lt-go">
+      <button type="button" class="tl-b" onclick="openDlg('dlgPhp')">🚨 状況ボードを開く</button>
+      <button type="button" class="tl-b" onclick="openList('')">🌏 情報漏洩一覧</button>
+      <button type="button" class="tl-b" onclick="openOut('')">🛠 攻撃・障害一覧</button>
+    </div>
+
+    <div class="lt-card lt-r">
+      <h3>① PHPの脆弱性「PHP2Shell」の最新</h3>
+      <ul>
+        <li>対象はCVE-2026-109618 / 109619(CVSS v4.0で9.2)。修正版は PHP 8.5.12 / 8.4.27 / 8.3.36 / 8.2.35。8.1以前は公式の修正版なし。</li>
+        <li>攻撃の試行は複数社が観測(Amazonは公開前の17日)。SophosはMirai系マルウェアの設置試行を観測したが、標的に届く前に止まったと説明(以前の『成功』報告は訂正)。</li>
+        <li>VulnCheckは、ASLR有効の一般的な本番環境でも動く悪用コードを作ったと発表(顧客限定で非公開)。</li>
+        <li><b>成功した侵害の報告は、確認できた範囲ではありません。</b>CISAのKEV(悪用が確認された脆弱性の一覧)は、23日朝時点で未登録。</li>
+        <li>Ubuntu・Debianなどは修正済み、RHEL 10・Rocky Linuxなどは当初未提供とされる(要確認)。PHP本体の更新が唯一の完全な対策で、更新後も10月20日以降のログの点検を。</li>
+        <li>yamoryの調査(23日14:00時点):国内の停止告知502件・再開告知217件・再開告知の未確認285件。『285件』は停止が続く件数ではありません。</li>
+      </ul>
+    </div>
+
+    <div class="lt-card lt-g">
+      <h3>② 再開したサイト・サービス</h3>
+      <ul>
+        <li><span class="lt-tag g">再開</span>ココペリ(Big Advance・BAポータル・BIG ADVANCE GLOBAL・BMポータル)全4サービス</li>
+        <li><span class="lt-tag g">再開</span>ロリポップ!(22日13時〜16:44に全て再開)、セガ製品情報サイト(23日11:30)、バンダイナムコID</li>
+        <li><span class="lt-tag g">再開</span>オムロン ヘルスケア(3サービスが22日19:30に復旧)、コドモン、あすけん、pixiv、BASE、Chatwork、グランブルーファンタジー、ウマ娘</li>
+        <li><span class="lt-tag g">再開</span>首相の個人サイト(22日13時)、JR九州の公式HP、CPIの管理系機能の大半</li>
+        <li><span class="lt-tag o">一部</span>エーアイ(A.I.VOICEの管理系2サイトのみ)、佐川急便(荷物追跡のみ。API・集荷受付などは停止)、DMM(順次)</li>
+      </ul>
+    </div>
+
+    <div class="lt-card lt-o">
+      <h3>③ 停止が続く・再開未確認のサイト・サービス</h3>
+      <ul>
+        <li><span class="lt-tag r">停止</span><b>ソフトバンク・ワイモバイル・LINEMOの緊急速報メール</b>(緊急地震速報・津波警報・避難情報)は23日6:47から26日まで停止の予定。Yahoo!防災速報などのアプリでの受信を。</li>
+        <li><span class="lt-tag r">停止</span>バルテック(MOT/Cloud・POSなど24サービス。26日中の復旧見込み。※原因はPHPではなく自社サービスの脆弱性と訂正)</li>
+        <li><span class="lt-tag r">停止</span>ブラストメール(21日から)、トレジャー・ファクトリーの出張買取・引越の申込(28日目途)、アンドエスティHDの会員ポイント、お名前.comのFX自動売買VPS</li>
+        <li><span class="lt-tag o">未確認</span>大阪市のPHP脆弱性対応による利用停止(対象不明)、三菱UFJ銀行の一部取引、ニコニコ、ブシロード、アルファポリス、CPIのセキュアファイルマネージャー(30日以降の見込み)など</li>
+      </ul>
+      <p class="sm">『停止中』の表示は、再開が確認できていないという意味を含みます。</p>
+    </div>
+
+    <div class="lt-card lt-b">
+      <h3>④ 個人情報の漏洩・サイバー攻撃の最新(PHPとは別件を含む)</h3>
+      <ul>
+        <li><b>佐川急便</b>:最大約5,323万件(荷物追跡サービス。延べ件数で人数ではない)</li>
+        <li><b>日本ピザハット</b>:最大約448万件と報じられた(決済APIへの不正アクセス。同社の発表には件数なし)</li>
+        <li><b>アンドエスティHD</b>:顧客約250万件・取引先約1万件。<b>グリーンモンスター(FXなび)</b>:約619万件</li>
+        <li><b>タイムズカー</b>:外部送信の痕跡のある本人確認書類の画像が約146万件。脆弱性の悪用が原因と報じられた</li>
+        <li><b>ユミルリンク</b>:延べ約900万件。<b>ブラストメール</b>:344契約で契約者情報以外の漏えいを確認(24日10:00時点)</li>
+        <li><b>デジタル庁</b>(Studio経由):問い合わせ最大1万3,323件。<b>トレジャー・ファクトリー</b>:メールアドレス74万6,277件(PHPとは無関係と公式が説明)</li>
+        <li><b>お名前.com デスクトップクラウド</b>:影響の可能性があるサーバーは26,739件。GMOは政府に『能動的サイバー防御』を要請と報道</li>
+        <li>そのほか:モスバーガー(プリペイドカード約57万件)、パナソニックHD(生成AIへの入力約33万人分)、eMudhraの中間CA秘密鍵漏えい、Microsoftが報告したStorm-0940のAI悪用攻撃(いずれも要約記事ベースで未確認)</li>
+      </ul>
+      <p class="sm">件数は延べ件数の場合があり、人数ではありません。詳細・出典・注意書きは、各一覧と状況ボードをご覧ください。</p>
+    </div>
+
+    <p class="sm">※ 本ページは、公開された報道・公式告知をもとにした要約で、確認できなかった点は『未確認』と書いています。誤りに気づいた場合は、公式発表を優先してください。</p>
+  </div>
+</div>
+
 <!-- ===== メニュー ===== -->
 <div class="mnu" id="mnu" onclick="if(event.target===this)closeMenu()">
   <nav class="mnu-in">
@@ -999,6 +1078,9 @@ html.dk #ofRoot .of-btn.dg{color:var(--of-red)}
     </div>
 
     <div class="mnu-sec">// 最新情報</div>
+    <button type="button" class="mnu-i" onclick="openDlg('dlgLatest')">
+      <span class="ic">📌</span>
+      <span class="tx">今日の最新まとめ(10月25日 5時50分)<small>PHPの最新・停止と再開・サイバー攻撃・個人情報漏洩を1ページで</small></span></button>
     <button type="button" class="mnu-i" onclick="openDlg('dlgPhp')">
       <span class="ic">🚨</span>
       <span class="tx">PHP脆弱性 緊急パッチ 状況ボード<small>停止・再開したサイトを、ほぼリアルタイムで確認</small></span></button>
@@ -1978,7 +2060,7 @@ html.dk #ofRoot .of-btn.dg{color:var(--of-red)}
   <div class="dlg-in">
     <button class="dlg-x" onclick="closeDlg('dlgList')" aria-label="閉じる">✕</button>
     <h2>🌏 情報漏洩企業一覧2026 世界版</h2>
-    <p class="ls-sum">2026年10月10日時点の報道にもとづく主要事案です(日本郵便・デンマーク・アルカディア・銀のさらの事案は10月14日に追記、ソースネクスト・メドレー・吉野家HDは10月15日に追記、10月15〜16日に判明した事案(Eストアー、ファンケル・アテニア、ヤマト運輸、日本経済新聞社、バーガーキング、Studioなど)は10月16日に追記、ブックオフは10月13日の第2報に、VALXはコミューンの事案として10月15日に更新、10月16〜20日に判明・更新した事案は10月20日追記、10月21〜23日に判明・更新した事案(カプコン、ブラストメール、バルテック、お名前.comデスクトップクラウド、NP後払い、OTOTOY、大阪大学など)は10月24日(7時時点)追記)。件数は人数ではなく件数・アカウント数の場合があります。「主張」は攻撃者側の数字で、確認されていません。</p>
+    <p class="ls-sum">2026年10月10日時点の報道にもとづく主要事案です(日本郵便・デンマーク・アルカディア・銀のさらの事案は10月14日に追記、ソースネクスト・メドレー・吉野家HDは10月15日に追記、10月15〜16日に判明した事案(Eストアー、ファンケル・アテニア、ヤマト運輸、日本経済新聞社、バーガーキング、Studioなど)は10月16日に追記、ブックオフは10月13日の第2報に、VALXはコミューンの事案として10月15日に更新、10月16〜20日に判明・更新した事案は10月20日追記、10月21〜23日に判明・更新した事案(カプコン、ブラストメール、バルテック、お名前.comデスクトップクラウド、NP後払い、OTOTOY、大阪大学など)は10月24日(7時時点)追記、10月23〜24日に判明・更新した事案(日本ピザハット、アンドエスティHD、タイムズカー第5報、ブラストメール344契約など)は10月25日(6時時点)追記)。件数は人数ではなく件数・アカウント数の場合があります。「主張」は攻撃者側の数字で、確認されていません。</p>
     <label for="lsQ" style="font-size:13px;font-weight:700">検索(機関名・国・漏洩内容)</label>
     <input id="lsQ" type="text" autocomplete="off" placeholder="例:JR東日本、医療、パスワード、米国" style="width:100%;min-height:44px;font-size:16px;padding:7px 11px;border:2px solid var(--line);border-radius:10px;background:transparent;color:inherit;font-family:inherit">
     <div class="ls-ctl"><span class="lb2" id="lsLb1">並べ替え</span><span class="seg" role="group" aria-labelledby="lsLb1" id="lsSort">
@@ -3054,7 +3136,7 @@ function goShield(){
   function lsText(){
     var k = q.trim();
     var t = '【情報漏洩企業一覧2026 世界版】\n条件:' + (k ? '検索「' + k + '」' : '検索なし') + ' / ' + NM[so] + ' / ' + (mo === 'all' ? '全体' : '国別') +
-      '\n該当 ' + last.length + ' 件(全 ' + BREACH_DATA.length + ' 件・2026年10月10日時点の報道、日本郵便・デンマーク・アルカディア・銀のさらは10月14日追記、ソースネクスト・メドレー・吉野家HDは10月15日追記、10月15〜16日に判明した事案は10月16日追記、10月16〜20日に判明・更新した事案は10月20日追記、ブックオフは第2報に、VALXはコミューンの事案として10月15日に更新、10月16〜20日に判明・更新した事案は10月20日追記、10月21〜23日に判明・更新した事案(カプコン、ブラストメール、バルテック、お名前.comデスクトップクラウド、NP後払い、OTOTOY、大阪大学など)は10月24日(7時時点)追記)\n';
+      '\n該当 ' + last.length + ' 件(全 ' + BREACH_DATA.length + ' 件・2026年10月10日時点の報道、日本郵便・デンマーク・アルカディア・銀のさらは10月14日追記、ソースネクスト・メドレー・吉野家HDは10月15日追記、10月15〜16日に判明した事案は10月16日追記、10月16〜20日に判明・更新した事案は10月20日追記、ブックオフは第2報に、VALXはコミューンの事案として10月15日に更新、10月16〜20日に判明・更新した事案は10月20日追記、10月21〜23日に判明・更新した事案(カプコン、ブラストメール、バルテック、お名前.comデスクトップクラウド、NP後払い、OTOTOY、大阪大学など)は10月24日(7時時点)追記、10月23〜24日に判明・更新した事案(日本ピザハット、アンドエスティHD、タイムズカー第5報、ブラストメール344契約など)は10月25日(6時時点)追記)\n';
     function line(o, i){ return '\n' + i + '. [' + o.r + '] ' + o.o + '(' + o.k + '・' + o.d + ')\n   規模:' + scale(o) + '\n   漏洩:' + o.i + '\n   手口:' + o.w + '\n   対応:' + o.s + '\n'; }
     if(mo === 'all'){ last.forEach(function(o, i){ t += line(o, i + 1); }); }
     else{
