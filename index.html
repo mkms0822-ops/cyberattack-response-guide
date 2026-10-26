@@ -613,6 +613,8 @@ html.dk .ph-toc{border-color:#2e3b50}
   .lt-card ul{margin:6px 0 0;padding-left:1.2em}
   .lt-card li{margin:4px 0;line-height:1.7;font-size:13.5px}
   .lt-card.lt-r{border-left:5px solid #d92b2b}.lt-card.lt-g{border-left:5px solid #1e8e3e}.lt-card.lt-o{border-left:5px solid #e8710a}.lt-card.lt-b{border-left:5px solid #1a73e8}
+  .ov-ol{margin:6px 0 0;padding-left:1.4em}.ov-ol li{margin:6px 0;line-height:1.75;font-size:13.5px}
+  .ov-chk{list-style:none;padding-left:0!important}.ov-chk label{display:flex;gap:8px;align-items:flex-start;min-height:32px}.ov-chk input{margin-top:5px;width:18px;height:18px;flex:none}
   .lt-go{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
   .lt-tag{display:inline-block;font-size:11px;font-weight:700;border-radius:99px;padding:1px 8px;margin-right:6px;color:#fff;background:#5f6b7a}
   .lt-tag.r{background:#d92b2b}.lt-tag.g{background:#1e8e3e}.lt-tag.o{background:#e8710a}
@@ -1099,6 +1101,92 @@ html.dk #ofRoot .of-btn.dg{color:var(--of-red)}
   </div>
 </div>
 
+<!-- ===== オーバーレイ攻撃の対処手順 ===== -->
+<div class="dlg dlg-wide" id="dlgOverlay" onclick="if(event.target===this)closeDlg('dlgOverlay')">
+  <div class="dlg-in">
+    <button class="dlg-x" onclick="closeDlg('dlgOverlay')" aria-label="閉じる">✕</button>
+    <h2>📱 金融アプリのオーバーレイ攻撃｜対処手順</h2>
+    <div class="nw-card">
+      <span class="nw-tag">スマホの金融アプリ(銀行・証券・決済など)</span>
+      <h3 class="nw-ti">本物のアプリの上に「偽のログイン画面」を重ねて盗む手口</h3>
+      <p class="nw-sub">メールの怪しいURLを開かなくても、<b>いつもの正規アプリを開いた瞬間</b>に被害に遭うおそれがあります。IDや暗証番号、SMS認証のコードまで同時に盗まれる危険があります。</p>
+    </div>
+
+    <div class="lt-card lt-r">
+      <h3>🚨 まず確認:こんなサインがあったら疑う</h3>
+      <ul>
+        <li>普段は<b>指紋や顔認証</b>でログインできるのに、突然<b>パスワード入力</b>を求められた</li>
+        <li>アプリを開いた瞬間に、<b>画面が一瞬ちらつく</b></li>
+        <li><b>身に覚えのないアイコン</b>(アプリ)がある</li>
+        <li>入力してしまったあとで、おかしいと気づいた</li>
+      </ul>
+      <p class="sm">サインがあれば、下の「緊急対処」へ。入力してしまった場合は、特に急いでください。</p>
+    </div>
+
+    <div class="lt-card lt-r">
+      <h3>⏱ 緊急対処(不審なアプリを入れた・入力した疑いがあるとき)<small>この順番で。まず通信を切るのが先です</small></h3>
+      <ol class="ov-ol">
+        <li><b>機内モードにして、通信を遮断する</b>(Wi-Fiもオフ)。これ以上の情報の持ち出しを止めます。</li>
+        <li><b>セーフモードで起動し、不審なアプリを削除する</b>(主にAndroid)。見覚えのないアプリ、最近入れたアプリから確認します。操作は機種で異なります。不安なら、端末メーカーの案内に従うか、携帯ショップへ。</li>
+        <li><b>別の端末(家族のスマホ・パソコン)から、金融機関へ連絡する</b>。ログイン情報を入力した可能性があることを伝え、不正な送金・取引の有無を確認してもらいます。</li>
+        <li><b>パスワード・暗証番号を、別の端末から再設定する</b>。同じ情報を使い回しているサービスも、すべて変更します。</li>
+        <li><b>金融機関の案内に従い、利用停止や取引制限の手続きをする</b>。身に覚えのない送金があれば、すぐに伝えます。</li>
+        <li><b>相談する</b>(下の窓口)。1人で抱え込まず、早めに。</li>
+      </ol>
+      <p class="sm">削除したあとも、スマホ自体の安全が確認できるまでは、金融アプリへのログインを控えてください。心配なときは、端末の初期化も選択肢です(重要なデータは、事前に信頼できる方法でバックアップ)。</p>
+    </div>
+
+    <div class="lt-card lt-o">
+      <h3>🔍 どうやって入り込む?<small>攻撃の4ステップ</small></h3>
+      <ol class="ov-ol">
+        <li>宅配の不在通知・料金未納などを装った<b>SMS</b>で、偽サイトへ誘導</li>
+        <li><b>不正アプリ</b>をインストールさせ、画面の重ね表示などの<b>権限</b>を許可させる</li>
+        <li>金融アプリの起動を検知し、<b>偽の画面を最前面に重ねて表示</b></li>
+        <li><b>ID・暗証番号・SMS認証のコード</b>を盗み、不正送金</li>
+      </ol>
+      <p class="sm">仕組みは3段階です。①正規アプリを起動 → ②裏に潜んだ不正アプリが起動を検知 → ③偽の入力画面を最前面に表示。<br>従来のフィッシングは、URLの不審な文字列で見分けられました。この攻撃は<b>本物のアプリ上</b>で起きるため、URLでは見分けられません。</p>
+    </div>
+
+    <div class="lt-card lt-o">
+      <h3>⛔ 許可してはいけない3つの権限・設定</h3>
+      <ul>
+        <li><span class="lt-tag r">危険</span><b>他のアプリの上に重ねて表示する</b>権限(偽画面を重ねる直接の原因)</li>
+        <li><span class="lt-tag r">危険</span><b>ユーザー補助(アクセシビリティ)</b>機能の許可(画面の読み取りや遠隔操作に悪用される)</li>
+        <li><span class="lt-tag r">危険</span><b>提供元不明のアプリ</b>のインストール許可(公式ストア以外のアプリが入ってしまう)</li>
+      </ul>
+      <p class="sm">点検の場所は、機種により名称が違います。一般には、設定の「アプリ」や「特別なアプリアクセス」の中にあります。許可した覚えのないアプリは、権限をオフにして、削除を検討します。</p>
+    </div>
+
+    <div class="lt-card lt-g">
+      <h3>✅ 今日からできる4つのルール</h3>
+      <ul class="ov-chk">
+        <li><label><input type="checkbox"> アプリは<b>公式ストア以外</b>から入れない</label></li>
+        <li><label><input type="checkbox"> <b>権限の設定</b>を、定期的に点検する</label></li>
+        <li><label><input type="checkbox"> <b>セキュリティ機能</b>(ウイルス対策・不正アプリの検出機能など)を有効にする</label></li>
+        <li><label><input type="checkbox"> <b>OSとアプリ</b>を、常に最新の状態に保つ</label></li>
+      </ul>
+      <p class="sm">最後の3原則:<b>①怪しいURLから、アプリをインストールしない ②重ね表示の権限を、安易に許可しない ③違和感を覚えたら、すぐに通信を切って銀行へ連絡する</b></p>
+    </div>
+
+    <div class="lt-card lt-b">
+      <h3>📞 相談窓口</h3>
+      <ul>
+        <li><b>ご利用の金融機関の窓口</b>(まずここへ。公式アプリ・公式サイトに載っている番号を使う)</li>
+        <li><b>警察相談専用電話 #9110</b></li>
+        <li><b>消費者ホットライン 188</b></li>
+        <li><b>金融庁の相談窓口</b>(最新の連絡先は、金融庁の公式サイトで確認してください)</li>
+      </ul>
+      <p class="sm">SMSやメールに書かれた電話番号・URLは使わず、公式の連絡先からかけてください。</p>
+    </div>
+
+    <div class="lt-go">
+      <button type="button" class="tl-b" onclick="closeDlg('dlgOverlay');openDlg('dlgPhish')">🎣 フィッシング対策ガイドへ</button>
+      <button type="button" class="tl-b" onclick="closeDlg('dlgOverlay');goNotice()">📨 機関から連絡が来たら</button>
+    </div>
+    <p class="sm">※ DWA防災情報センターの解説動画(オーバーレイ攻撃の手口と対策)にもとづく内容です。操作の手順は、スマホの機種・OSによって異なります。不安なときは、端末メーカーや金融機関の案内に従ってください。</p>
+  </div>
+</div>
+
 <!-- ===== メニュー ===== -->
 <div class="mnu" id="mnu" onclick="if(event.target===this)closeMenu()">
   <nav class="mnu-in">
@@ -1149,6 +1237,9 @@ html.dk #ofRoot .of-btn.dg{color:var(--of-red)}
     <button type="button" class="mnu-i" onclick="openDlg('dlgPhish');setTimeout(function(){phGo('app')},120)">
       <span class="ic">📱</span>
       <span class="tx">偽アプリで、お金を抜かれる被害に注意<small>SNS広告・メールから入れた偽アプリで、スマホを乗っ取られる手口と守り方(2026年10月・日本サイバー犯罪対策センター JC3/警察庁)</small></span></button>
+    <button type="button" class="mnu-i" onclick="openDlg('dlgOverlay')">
+      <span class="ic">🪟</span>
+      <span class="tx">金融アプリのオーバーレイ攻撃｜対処手順<small>本物のアプリに偽画面を重ねて盗む手口。サインの見分け方と緊急対処</small></span></button>
 
     <div class="mnu-sec">// ネットが切れたら</div>
     <button type="button" class="mnu-i" onclick="openDlg('dlgOffline')">
