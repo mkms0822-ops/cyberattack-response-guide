@@ -1016,6 +1016,7 @@ html.dk #ofRoot .of-btn.dg{color:var(--of-red)}
       <button type="button" class="tl-b" onclick="openDlg('dlgPhp')">🚨 状況ボードを開く</button>
       <button type="button" class="tl-b" onclick="openList('')">🌏 情報漏洩一覧</button>
       <button type="button" class="tl-b" onclick="openOut('')">🛠 攻撃・障害一覧</button>
+      <button type="button" class="tl-b" onclick="openDlg('dlgToku')">🚨 トクリュウ対策</button>
     </div>
 
     <div class="lt-card lt-r">
@@ -1141,6 +1142,92 @@ html.dk #ofRoot .of-btn.dg{color:var(--of-red)}
 </div>
 
 <!-- ===== オーバーレイ攻撃の対処手順 ===== -->
+<div class="dlg dlg-wide" id="dlgToku" onclick="if(event.target===this)closeDlg('dlgToku')">
+  <div class="dlg-in">
+    <button class="dlg-x" onclick="closeDlg('dlgToku')" aria-label="閉じる">✕</button>
+    <h2>🚨 トクリュウ(匿名・流動型犯罪)対策</h2>
+    <div class="nw-card">
+      <span class="nw-tag">FACE TO FACE 警戒</span>
+      <h3 class="nw-ti">強盗・訪問・受け渡しなど、人と直接会う「対面」が最も危険</h3>
+      <p class="nw-sub">電話やSNSの被害は、お金や情報を失う被害が中心です。いっぽう、玄関先・自宅・現金の受け渡しの場など、犯人と直接向き合う場面は、けがや命の危険に直結します。※「最も危険」は、被害が身体・生命に及ぶという意味での警鐘です。公的資料に、この言葉どおりの記述があるかは未確認です。</p>
+    </div>
+    <div class="lt-go">
+      <a class="tl-b" style="text-decoration:none" href="tel:110">🚨 110番(いま危険)</a>
+      <a class="tl-b" style="text-decoration:none" href="tel:#9110">☎ #9110(警察相談専用電話)</a>
+      <a class="tl-b" style="text-decoration:none" href="tel:188">☎ 188(消費者ホットライン)</a>
+    </div>
+
+    <div class="lt-card lt-r">
+      <h3>トクリュウとは</h3>
+      <ul>
+        <li>「匿名・流動型犯罪グループ」の略。固定した組織ではなく、<b>指示役と実行役が、事件ごとにSNSや通信アプリでつながる</b>ネットワークです。</li>
+        <li>SNSや求人サイトで「高収入」「即金」をうたって実行役を集める<b>「闇バイト」</b>で、強盗・特殊詐欺・窃盗などを実行します。他人名義の口座や犯行ツールを提供する「道具屋」も関わります。</li>
+      </ul>
+    </div>
+
+    <div class="lt-card lt-r">
+      <h3>対面で起きる4つの危険な場面</h3>
+      <ul>
+        <li><span class="lt-tag r">①</span><b>玄関の訪問</b>:「点検」「リフォーム」「宅配」「警察・役所」を名乗り、間取り・防犯設備・留守の時間を探る(下見)。そのまま押し入る例も。</li>
+        <li><span class="lt-tag r">②</span><b>アポ電(予告の電話)</b>:資産・現金の保管場所・在宅状況を聞き出し、後で訪問・押し入り。</li>
+        <li><span class="lt-tag r">③</span><b>現金・カードの受け渡し</b>:受け子が自宅や路上で受け取る。ニセ警察官の「防犯指導」を装い、電話で現金の置き場所と留守の時間を聞き出す手口も(警視庁が8月27日に公表と、コラムが記載)。</li>
+        <li><span class="lt-tag r">④</span><b>押し入り強盗</b>:在宅中に侵入して暴力・脅迫。住人が死亡した事件も起きています。</li>
+      </ul>
+    </div>
+
+    <div class="lt-card lt-o">
+      <h3>最新の状況(確認できた範囲)</h3>
+      <ul>
+        <li>特殊詐欺は2025年に<b>認知4.3万件・被害額3,257.4億円</b>(前年は31,280件・1,990.7億円)。5年連続・4年連続の増加で、過去最悪(警察白書 令和8年版)。</li>
+        <li>検挙者のうち<b>約3割(1,823人)はSNSの募集がきっかけ</b>。20代までの若年層が約6割(同)。</li>
+        <li>2026年3月末までの特殊詐欺は認知11,093件・937.9億円(前年同期比+413.9億円)。防犯会社のコラムが引用した数字で、<b>未確認</b>。</li>
+        <li>2023年1月 東京都狛江市で強盗殺人(90歳の女性が死亡)/2024年8〜11月 1都3県で闇バイトの強盗18件/2026年5月14日 栃木県上三川町で69歳の女性が殺害される強盗殺人(いずれもコラムの記載)。</li>
+        <li>2026年5月25日、警察庁長官が全国の刑事部長会議で、実態解明と取締りの強化を改めて指示(NHK報道)。</li>
+      </ul>
+    </div>
+
+    <div class="lt-card lt-g">
+      <h3>場面別:やること</h3>
+      <ul>
+        <li><span class="lt-tag g">玄関</span>すぐにドアを開けず、インターホン・ドアスコープで確認。宅配・点検・工事・営業を名乗っても、予定にない人は開けない。不審なら応答せず、110番。</li>
+        <li><span class="lt-tag g">電話</span>留守番電話を常時設定。知らない番号・非通知には出ず、留守電で確認。警察・銀行を名乗る電話はいったん切り、<b>自分で調べた正規の番号</b>にかけ直す。家族で合言葉を決める。</li>
+        <li><span class="lt-tag g">要求</span>現金・カード・暗証番号を求められても、その場で渡さない。警察官は電話で「あなたは捜査対象」と伝えたり、カードや暗証番号を預かったりしません。すぐ110番か#9110。</li>
+        <li><span class="lt-tag g">住まい</span>在宅中も外出時も施錠。補助錠・防犯フィルム・センサーライト・防犯カメラで「侵入に時間がかかる、狙いにくい」家に。多額の現金を自宅に置かない。郵便・荷物をためない。</li>
+        <li><span class="lt-tag g">SNS</span>旅行・帰省・不在の投稿は、帰宅後に。写真の位置情報や周辺の景色に注意。</li>
+        <li><span class="lt-tag o">万一</span>(一般的な目安)押し入られたら、安全の確保を最優先にし、抵抗しない。可能になったらすぐ110番。犯人の人数・服装・車・逃げた方向を覚える。</li>
+      </ul>
+      <p class="sm">やらないこと:名前や在宅状況を答えて話し込む/「警察です」「役所です」の言葉だけで信用する/現金の保管場所・資産・留守の時間・家族構成を話す/「いま急ぎ」に流されて1人で判断する。</p>
+    </div>
+
+    <div class="lt-card lt-b">
+      <h3>家族で話しておくこと(闇バイト)</h3>
+      <ul>
+        <li>「高収入」「即金」「だれでもできる」「運ぶだけ・受け取るだけ」は、犯罪の入り口の言葉です。</li>
+        <li>応募すると、身分証・顔写真・家族の情報を送らされ、それをもとに脅されて抜けられなくなるケースがあります。</li>
+        <li>応募した・誘われた人は、<b>犯行に加わる前に、すぐ#9110か110番</b>へ。警察は少年の保護・離脱の支援にも取り組んでいます(報道)。</li>
+      </ul>
+    </div>
+
+    <div class="lt-card lt-o">
+      <h3>個人情報の漏えいと、対面の危険</h3>
+      <ul>
+        <li>氏名・住所・電話番号・生年月日などが漏れると、<b>なりすましの電話や訪問</b>に使われるおそれがあります。漏えいのニュースに自分の使う会社が出たら、見知らぬ電話・訪問・メールに、いつも以上に注意してください。</li>
+        <li>これは一般的な注意です。漏えいと強盗事件を結びつける報道を確認したものではありません。</li>
+      </ul>
+    </div>
+
+    <div class="lt-card lt-b">
+      <h3>相談先・国と警察の取り組み</h3>
+      <ul>
+        <li><b>110番</b>:緊急(いま危険・不審者がいる)/<b>#9110</b>:事件になる前の相談、闇バイトの誘い・脅迫の相談/<b>188</b>:消費者ホットライン。</li>
+        <li>法テラス 0570-078374、金融サービス利用者相談室 0570-016811(記事の記載。かける前に公式サイトで確認を)。</li>
+        <li>国と警察:2025年4月「国民を詐欺から守るための総合対策2.0」/2025年10月 警察庁に情報分析室・警視庁に専従の取締りチーム(T3)/2026年3月 特殊詐欺対策アプリ2件を警察庁推奨に認定/2026年6月 犯収法改正が成立、被害金の追跡・凍結の官民枠組みが運用開始(警察白書)。</li>
+      </ul>
+      <p class="sm">出典:警察白書 令和8年版 トピックス(警察庁)、NHK(2026年5月)、日本防犯カメラセンター・securiro・secualのコラム。一次発表は直接確認していない項目があります。数字・日付・電話番号は公式発表で確認してください。危険を感じたら、ためらわず110番を。</p>
+    </div>
+  </div>
+</div>
+
 <div class="dlg dlg-wide" id="dlgOverlay" onclick="if(event.target===this)closeDlg('dlgOverlay')">
   <div class="dlg-in">
     <button class="dlg-x" onclick="closeDlg('dlgOverlay')" aria-label="閉じる">✕</button>
@@ -1239,6 +1326,9 @@ html.dk #ofRoot .of-btn.dg{color:var(--of-red)}
     <button type="button" class="mnu-i" onclick="openDlg('dlgLatest')">
       <span class="ic">📌</span>
       <span class="tx">今日の最新まとめ(10月28日 15時)<small>PHPの最新・停止と再開・サイバー攻撃・個人情報漏洩を1ページで</small></span></button>
+    <button type="button" class="mnu-i" onclick="openDlg('dlgToku')">
+      <span class="ic">🚨</span>
+      <span class="tx">トクリュウ(匿名・流動型犯罪)対策<small>強盗・訪問・受け渡しなど「対面」が最も危険。手口と対策、相談先</small></span></button>
     <button type="button" class="mnu-i" onclick="openDlg('dlgPhp')">
       <span class="ic">🚨</span>
       <span class="tx">PHP脆弱性 緊急パッチ 状況ボード<small>停止・再開したサイトを、ほぼリアルタイムで確認</small></span></button>
