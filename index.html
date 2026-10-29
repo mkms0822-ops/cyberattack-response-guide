@@ -1008,13 +1008,14 @@ html.dk #ofRoot .of-btn.dg{color:var(--of-red)}
     <button class="dlg-x" onclick="closeDlg('dlgLatest')" aria-label="閉じる">✕</button>
     <h2>📌 今日の最新まとめ</h2>
     <div class="nw-card">
-      <span class="nw-tag">2026年10月29日 18時 時点</span>
+      <span class="nw-tag">2026年10月29日 19時 時点</span>
       <h3 class="nw-ti">PHPの脆弱性・停止と再開・サイバー攻撃・情報漏洩の最新</h3>
       <p class="nw-sub">報道や各社の告知をもとにした要約です。多くは一次情報が未確認で、最新は各社の公式発表をご確認ください。</p>
     </div>
     <div class="lt-go">
       <button type="button" class="tl-b" onclick="openDlg('dlgPhp')">🚨 状況ボードを開く</button>
       <button type="button" class="tl-b" onclick="openList('')">🌏 情報漏洩一覧</button>
+      <button type="button" class="tl-b" onclick="openChart()">📊 漏洩件数グラフ</button>
       <button type="button" class="tl-b" onclick="openOut('')">🛠 攻撃・障害一覧</button>
       <button type="button" class="tl-b" onclick="openDlg('dlgToku')">🚨 トクリュウ対策</button>
     </div>
@@ -1098,6 +1099,7 @@ html.dk #ofRoot .of-btn.dg{color:var(--of-red)}
     <div class="lt-card lt-b">
       <h3>④ 個人情報の漏洩・サイバー攻撃の最新(PHPとは別件を含む)</h3>
       <ul>
+        <li><b>【28〜29日の追加】JAL・JTA(委託先アマデウス経由)</b>:委託先のスペインのアマデウスのシステムへの不正アクセスで、予約記録<b>約9万2,000人分</b>(2023年8月〜2026年9月)が参照された可能性(JALが28日に発表・Aviation Wire)。約9万人分は予約番号・氏名・搭乗日・区間・搭乗クラス、<b>うち約2,000人分</b>はさらに連絡先・<b>パスポート番号</b>・国籍・マイレージ番号・航空券番号・座席情報などの恐れ。<b>クレジットカード番号・パスワードの漏えいは確認されていない</b>、不正使用も確認されていないと説明。JALが対象者に個別に連絡。<b>ANAも29日に、同じ委託先経由で一部顧客の個人情報を参照された形跡があると発表</b>(人数・項目は未発表・ITmedia)。韓国の航空会社などへの広がりは、確認できた記事では未確認です。JALやANAを名乗る不審なメール・SMS・電話・偽サイトにご注意ください。パスポート番号の漏えいは、本ガイドの「パスポート」の項もご覧ください。</li>
         <li><b>【28日の事案・29日に追加】ツイキャス(モイ)</b>:10月28日10:20ごろから不正アクセスによる探索が始まり、10:30ごろ自動検知、10:40ごろ緊急停止、10:45ごろ完全停止。<b>7件のユーザー情報へのアクセス</b>を確認(カードの有効期限と暗号化済みの名義が1件、メールアドレスと活動履歴などのログデータが6件)。ほかにサーバー上のログデータにも恐れ(規模は調査中)。会社は、<b>大規模な流出は確認していない</b>、カード番号・セキュリティコードは保持していない、本人確認書類などは暗号化して保存と説明。連携するSNS(X・Google・Facebookなど)の認証情報をリセット済み。アクセスされたユーザーには個別に連絡する予定。<b>サービスは停止中で、再開時期は未発表</b>(メディアIR・29日16:50表示の記事の時点)。ツイキャスを名乗る「再ログイン」「確認」のメール・SMSのリンクは開かないでください。PHPの脆弱性対応とは関連がないと会社は説明しています。</li>
         <li><b>【29日の追加】グッドスマイルカンパニー(第3報)</b>:公式ショップの<b>カード決済ページに不正プログラム</b>が設置され(10月21日13:55〜23日7:00)、カード情報を入力した可能性のある<b>約2,800人</b>について、<b>カード番号(全16桁)・名義・有効期限・セキュリティコード</b>が漏えいした可能性(ITmedia・オタクマ)。2,800人には、個別に連絡したとされます。別に、サイトへ登録したことがあるカード<b>約40万2,466枚</b>の下4桁と有効期限、10月22日夜〜23日の注文者<b>7,673人</b>の氏名・住所・電話・メール・注文内容も漏えいの可能性(オタクマは注文情報の不正閲覧を202件としており、数字の食い違いは未確認)。原因は、システムの脆弱性による管理者権限の不正取得とみられ(最近のPHPの脆弱性ではないと説明)、10月23日にサイトを閉鎖、再開時期は未定。<b>該当する心当たりがあれば、カード会社に連絡して、利用停止・再発行(番号の変更)を相談し、利用明細をこまめに確認してください。</b>カード会社やグッドスマイルを名乗る「再入力」「確認」のメール・SMSのリンクは開かないでください。</li>
         <li><b>【29日の追加】松屋フーズ</b>:<b>外部からの不正アクセスを検知</b>したとして、松屋公式アプリ(松弁ネット・モバイルオーダー・松弁デリバリー)とホームページなどを<b>停止</b>(メディアIR・NHK・ITmedia)。NHKは『28日夜9時ごろ検知』と報道、利用者の不具合の報告は28日午後7時ごろから。持ち帰り・予約・宅配の注文が使えない状態で、店舗の営業停止は発表されていません。<b>個人情報への影響・漏えいの有無は、現時点で公式に明らかになっていません</b>(確認されたとも、ないとも言っていません)。原因と影響範囲を調査中で、復旧の見通しは未発表(会社が改めて知らせる予定)。復旧のお知らせは公式サイト・公式X・店舗で確認し、松屋を名乗る不審なメール・SMSのリンクは開かないでください。</li>
@@ -1336,7 +1338,7 @@ html.dk #ofRoot .of-btn.dg{color:var(--of-red)}
     <div class="mnu-sec">// 最新情報</div>
     <button type="button" class="mnu-i" onclick="openDlg('dlgLatest')">
       <span class="ic">📌</span>
-      <span class="tx">今日の最新まとめ(10月29日 18時)<small>PHPの最新・停止と再開・サイバー攻撃・個人情報漏洩を1ページで</small></span></button>
+      <span class="tx">今日の最新まとめ(10月29日 19時)<small>PHPの最新・停止と再開・サイバー攻撃・個人情報漏洩を1ページで</small></span></button>
     <button type="button" class="mnu-i" onclick="openDlg('dlgToku')">
       <span class="ic">🚨</span>
       <span class="tx">トクリュウ(匿名・流動型犯罪)対策<small>強盗・訪問・受け渡しなど「対面」が最も危険。手口と対策、相談先</small></span></button>
@@ -1356,6 +1358,10 @@ html.dk #ofRoot .of-btn.dg{color:var(--of-red)}
     <button type="button" class="mnu-i" onclick="openList('')">
       <span class="ic">🌏</span>
       <span class="tx">情報漏洩企業一覧2026 世界版<small>検索・並べ替え・重大度ランク</small></span></button>
+
+    <button type="button" class="mnu-i" onclick="openChart()">
+      <span class="ic">📊</span>
+      <span class="tx">情報漏洩の件数グラフ<small>日別の推移・カテゴリー別(メール・カード情報など)</small></span></button>
 
     <button type="button" class="mnu-i" onclick="openOut('')">
       <span class="ic">🛠</span>
@@ -2372,6 +2378,107 @@ html.dk #ofRoot .of-btn.dg{color:var(--of-red)}
 </div>
 
 
+<!-- ===== 情報漏洩 件数グラフ ===== -->
+<style>
+  #dlgChart{--gc-bar:#2a78d6;--gc-grid:#e1e0d9;--gc-axis:#c3c2b7;--gc-mut:#7a7872;--gc-ink2:#52514e;--gc-track:#eef1f5;--gc-surf:#fff;--gc-ink:#1a2332}
+  html.dk #dlgChart{--gc-bar:#3987e5;--gc-grid:#2b3648;--gc-axis:#3d4a60;--gc-mut:#98a2b3;--gc-ink2:#c3cad6;--gc-track:#222d3f;--gc-surf:#1a2332;--gc-ink:#e2e8f0}
+  .gc-sec{margin:14px 0 6px;font-size:12.5px;font-weight:700}
+  .gc-row{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:7px 0}
+  .gc-row .lb2{font-size:12.5px;font-weight:700;margin-right:2px;min-width:3.2em}
+  .gc-chips{display:flex;flex-wrap:wrap;gap:6px}
+  .gc-chips button,.gc-row .seg button{min-height:40px}
+  .gc-chip{padding:5px 11px;border-radius:99px;border:2px solid var(--line);background:#fff;color:inherit;font-size:12.5px;cursor:pointer;font-family:inherit}
+  html.dk .gc-chip{background:#141c2b}
+  .gc-chip[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+  .gc-chip small{opacity:.75;margin-left:3px;font-size:11px}
+  .gc-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(104px,1fr));gap:8px;margin:12px 0 4px}
+  .gc-kpi{border:1px solid var(--line);border-radius:12px;padding:9px 11px;min-width:0}
+  .gc-kpi .l{font-size:11.5px;color:var(--sub);line-height:1.5}
+  .gc-kpi .v{font-size:22px;font-weight:700;line-height:1.3;word-break:keep-all}
+  .gc-kpi .s{font-size:11px;color:var(--sub);line-height:1.5}
+  .gc-card{border:1px solid var(--line);border-radius:14px;padding:12px 12px 8px;margin:10px 0;background:var(--gc-surf);position:relative}
+  .gc-card h3{margin:0 0 2px !important;color:inherit !important;font-size:14px}
+  .gc-card .sm{margin:0 0 6px}
+  .gc-plot{position:relative;width:100%;min-height:200px}
+  .gc-plot svg{display:block;max-width:100%}
+  .gc-plot .hit{fill:transparent;cursor:pointer;outline:none}
+  .gc-plot .hit:hover,.gc-plot .hit:focus{fill:rgba(120,140,170,.14)}
+  .gc-plot text{font-family:inherit}
+  .gc-tip{position:absolute;pointer-events:none;z-index:5;background:var(--gc-surf);color:var(--gc-ink);border:1px solid var(--line);border-radius:10px;padding:7px 10px;font-size:12px;line-height:1.55;box-shadow:0 4px 16px rgba(0,0,0,.18);max-width:240px;display:none}
+  .gc-tip b{display:block;font-size:15px;line-height:1.4}
+  .gc-tip span{color:var(--gc-ink2)}
+  .gc-cat{display:block;width:100%;text-align:left;border:0;background:none;color:inherit;font-family:inherit;cursor:pointer;padding:4px 2px;border-radius:8px}
+  .gc-cat:hover{background:rgba(120,140,170,.12)}
+  .gc-cat .t{display:flex;justify-content:space-between;gap:8px;font-size:12.5px;line-height:1.5}
+  .gc-cat .t i{font-style:normal;color:var(--gc-ink2);white-space:nowrap}
+  .gc-cat .tr{height:14px;background:var(--gc-track);border-radius:0 4px 4px 0;margin-top:2px;position:relative}
+  .gc-cat .br{position:absolute;left:0;top:0;bottom:0;background:var(--gc-bar);border-radius:0 4px 4px 0;min-width:2px}
+  .gc-cat.dim .br{opacity:.38}
+  .gc-ins{margin:8px 0 0 18px}
+  .gc-ins li{font-size:12.5px;line-height:1.8}
+  .gc-list{list-style:none;margin:6px 0 0 !important;padding:0}
+  .gc-list li{border-top:1px solid var(--line);padding:8px 2px;margin:0 !important}
+  .gc-list .nm{font-size:13px;font-weight:700;line-height:1.6}
+  .gc-list .mt{font-size:11.5px;color:var(--sub);line-height:1.7}
+  .gc-list .rk{display:inline-block;min-width:1.9em;text-align:center;font-size:11px;font-weight:700;border:1px solid var(--line);border-radius:6px;margin-right:5px;color:var(--gc-ink2)}
+  .gc-list button{background:none;border:0;color:var(--blue);font-size:12px;cursor:pointer;padding:6px 0;min-height:36px;font-family:inherit}
+  .gc-tbl{width:100%;border-collapse:collapse;font-size:12px}
+  .gc-tbl th,.gc-tbl td{border-bottom:1px solid var(--line);padding:4px 6px;text-align:right;white-space:nowrap}
+  .gc-tbl th:first-child,.gc-tbl td:first-child{text-align:left}
+  .gc-scroll{overflow-x:auto;max-height:260px;overflow-y:auto}
+  .gc-empty{padding:26px 8px;text-align:center;color:var(--sub);font-size:13px}
+  @media (max-width:520px){.gc-kpi .v{font-size:19px}}
+</style>
+<div class="dlg dlg-wide" id="dlgChart" onclick="if(event.target===this)closeDlg('dlgChart')">
+  <div class="dlg-in">
+    <button class="dlg-x" onclick="closeDlg('dlgChart')" aria-label="閉じる">✕</button>
+    <h2>📊 情報漏洩の件数グラフ</h2>
+    <p class="ls-sum">「情報漏洩企業一覧」の事案を、日別・カテゴリー別に集計します。棒をタップすると、その日の事案の内訳が出ます。件数は報道・公表の数字で、<b>人数とは限りません</b>(下の注意を確認してください)。</p>
+
+    <div class="gc-row"><span class="lb2" id="gcL1">指標</span><span class="seg" role="group" aria-labelledby="gcL1" id="gcMetric">
+      <button type="button" data-v="sum" aria-pressed="true">漏洩件数の合計</button>
+      <button type="button" data-v="cnt" aria-pressed="false">事案の数</button></span></div>
+    <div class="gc-row"><span class="lb2" id="gcL2">期間</span><span class="seg" role="group" aria-labelledby="gcL2" id="gcRange">
+      <button type="button" data-v="7" aria-pressed="false">7日</button>
+      <button type="button" data-v="14" aria-pressed="false">14日</button>
+      <button type="button" data-v="30" aria-pressed="true">30日</button>
+      <button type="button" data-v="0" aria-pressed="false">すべて</button></span></div>
+    <div class="gc-row"><span class="lb2" id="gcL3">範囲</span><span class="seg" role="group" aria-labelledby="gcL3" id="gcScope">
+      <button type="button" data-v="all" aria-pressed="true">すべて</button>
+      <button type="button" data-v="jp" aria-pressed="false">日本</button>
+      <button type="button" data-v="world" aria-pressed="false">海外</button></span></div>
+    <div class="gc-row"><span class="lb2" id="gcL4">表示</span><span class="seg" role="group" aria-labelledby="gcL4" id="gcView">
+      <button type="button" data-v="day" aria-pressed="true">日別</button>
+      <button type="button" data-v="cum" aria-pressed="false">累計</button></span>
+      <label style="font-size:12.5px;display:inline-flex;align-items:center;gap:5px;min-height:40px;margin-left:6px"><input type="checkbox" id="gcLog" style="width:18px;height:18px"> 対数目盛り(小さな事案も見える)</label></div>
+    <div class="gc-sec" id="gcL5">カテゴリーで絞り込む(複数選べます。選んだどれかに当てはまる事案を表示)</div>
+    <div class="gc-chips" id="gcChips" role="group" aria-labelledby="gcL5"></div>
+
+    <div class="gc-kpis" id="gcKpis" aria-live="polite"></div>
+
+    <div class="gc-card"><h3 id="gcT1">日別の推移</h3><p class="sm" id="gcS1"></p>
+      <div class="gc-plot" id="gcDay"><div id="gcSvg"></div><div class="gc-tip" id="gcTip" role="status"></div></div></div>
+
+    <div class="gc-card"><h3>カテゴリー別(期間・範囲の中の事案)</h3><p class="sm" id="gcS2">項目をタップすると、そのカテゴリーで絞り込みます。1件の事案が複数のカテゴリーに当てはまるため、合計は全体より大きくなります。</p>
+      <div id="gcCat"></div></div>
+
+    <div class="gc-card"><h3 id="gcT3">事案の内訳</h3><p class="sm" id="gcS3"></p>
+      <ul class="gc-list" id="gcList"></ul></div>
+
+    <div class="gc-card"><h3>読み取りのポイント</h3><ul class="gc-ins" id="gcIns"></ul></div>
+
+    <div class="ls-ctl"><button type="button" class="tl-b p" id="gcCopy">📋 この集計をコピー</button><button type="button" class="tl-b" id="gcShare">📤 共有</button><button type="button" class="tl-b" onclick="closeDlg('dlgChart');openList('')">🌏 一覧を開く</button></div>
+    <details><summary style="cursor:pointer;font-size:13px;min-height:36px">数値の表(グラフと同じ値)</summary><div class="gc-scroll"><table class="gc-tbl" id="gcTbl"></table></div></details>
+    <details><summary style="cursor:pointer;font-size:13px;min-height:36px">集計の注意(必ずお読みください)</summary>
+      <ul class="sm" style="font-size:12px;color:var(--sub);margin-top:6px">
+        <li>件数は、報道・公表された数字です。<b>人数とは限らず</b>、同じ人の重複や、「件」と「人」の違いを含みます。攻撃者側の主張の数字は含めていません。件数が未公表の事案は、件数合計では0として扱い、「事案の数」には含めます。</li>
+        <li>日付は、発表・報道の日です。被害の発生日とは限りません。日付が月や年だけの事案は、日別のグラフに入れていません(期間「すべて」のカテゴリー別には含みます)。</li>
+        <li>カテゴリーは、一覧の説明文のキーワードから<b>自動で判定した目安</b>です。「含まれない」「未確認」などの文は除いていますが、誤りがあり得ます。説明文に項目が書かれていない事案は「項目の記載なし」です。</li>
+        <li>一覧は主な事案で、すべてを網羅したものではありません。グラフの形は、掲載の有無や、公表のタイミングの影響を受けます。</li>
+      </ul></details>
+  </div>
+</div>
+
 <!-- ===== 情報漏洩企業一覧2026 世界版 ===== -->
 <div class="dlg dlg-wide" id="dlgList" onclick="if(event.target===this)closeDlg('dlgList')">
   <div class="dlg-in">
@@ -2389,6 +2496,7 @@ html.dk #ofRoot .of-btn.dg{color:var(--of-red)}
       <button type="button" data-m="all" aria-pressed="true">全体</button>
       <button type="button" data-m="country" aria-pressed="false">国別</button></span></div>
     <div class="ls-sum" id="lsInfo" aria-live="polite"></div>
+    <div class="ls-ctl"><button type="button" class="tl-b p" onclick="closeDlg('dlgList');openChart()">📊 件数をグラフで見る(日別・カテゴリー別)</button></div>
     <div class="ls-ctl"><button type="button" class="tl-b" onclick="closeDlg('dlgList');openOut('')">🛠 漏えい以外のサイバー攻撃の一覧へ</button></div>
     <div class="ls-ctl"><button type="button" class="tl-b p" id="lsCopy">📋 結果をコピー</button><button type="button" class="tl-b" id="lsShare">📤 結果を共有</button></div>
     <details><summary style="cursor:pointer;font-size:13px;min-height:36px">重大度ランク(SS・A・B・C・D・E)の基準</summary>
@@ -5025,5 +5133,335 @@ body.tts-picking #ttsHint{display:block}
   window.openDlg=function(id){ var r=_o.apply(this,arguments); if(id==='dlgPhp') load(false); return r; };
 })();
 </script>
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  var CATS=[
+   {k:'mail',n:'メールアドレス',rx:/メールアドレス|メアド|e-?mail|Ｅメール|メールアカウント/i},
+   {k:'pass',n:'パスワード・認証情報',rx:/パスワード|ログインID|ユーザーID|アカウントID|アカウント情報|認証情報|認証コード|APIキー|トークン|パスコード|秘密の質問|セッション|ログイン情報|ID・パス/i},
+   {k:'card',n:'クレジットカード情報',rx:/クレジットカード|クレカ|カード番号|カード情報|カード名義|セキュリティコード|有効期限|決済情報|カード決済|カード会員番号|カード下/},
+   {k:'contact',n:'氏名・住所・電話番号',rx:/氏名|住所|電話|名前|郵便番号|連絡先|FAX|ファックス|ふりがな|フリガナ/i},
+   {k:'attr',n:'生年月日・属性',rx:/生年月日|年齢|性別|職業|勤務先|会社名|役職|部署|国籍|家族構成|学校名|学年|学歴|職歴/},
+   {k:'idoc',n:'本人確認書類・公的ID',rx:/免許|パスポート|旅券|マイナンバー|在留|保険証|本人確認|顔写真|身分証|学生証|公的書類|運転経歴/},
+   {k:'fin',n:'口座・金融・契約',rx:/口座|銀行口座|給与|振込|資産|保険契約|証券番号|契約内容|与信|ローン|年収|信用情報|決済手段|契約情報|取引内容|取引履歴|残高/},
+   {k:'med',n:'医療・健康',rx:/診療|医療|患者|カルテ|健康|診断|検査結果|ヘルスケア|症状|処方|病歴|疾患|妊/},
+   {k:'hist',n:'購入・利用・問い合わせ履歴',rx:/購入履歴|注文|利用履歴|閲覧履歴|配送|予約|問い合わせ|問合せ|ログデータ|活動履歴|位置情報|アクセスログ|行動履歴|視聴履歴|応募/},
+   {k:'media',n:'画像・動画・音声',rx:/画像|動画|写真|音声|録音/},
+   {k:'corp',n:'社内・取引先・機密情報',rx:/機密|技術情報|設計|ソースコード|社内|取引先|従業員|社員|職員|人事|採用|内部情報|営業秘密|財務|顧客リスト/}
+  ];
+  var NONE={k:'none',n:'項目の記載なし'};
+  var NEG=/含まれ(ない|ず|ていない)|含まない|含まれません|対象外|していない|しておらず|されていない|されておらず|確認されていない|確認していない|認められ(ない|ず|ません)|可能性(は|も)?(ない|なし|低)|保持していない|ではない|を除く|別件|公表はない|発表はない|影響なし|影響はない|影響を受けて|しなかった|未確認|不明|未公表|確認中|調査中|精査中|確認できな|か(は|どうか)|有無|なし$/;
+  var SPLIT=/[。\n()（）]|ただし|一方|だが|ものの|が、|【[^】]*】/;
+  function classify(t){
+    var hit={}, any=false, cl=String(t||'').split(SPLIT);
+    for(var i=0;i<cl.length;i++){
+      var c=cl[i].replace(/ポイントカード|応援パスポート|プリペイドカード/g,'');
+      if(!c.trim()||NEG.test(c)) continue;
+      for(var j=0;j<CATS.length;j++){ if(CATS[j].rx.test(c)){ hit[CATS[j].k]=1; any=true; } }
+    }
+    if(!any) hit.none=1; return hit;
+  }
+  var ALLC=CATS.concat([NONE]);
+  var NAME={}; ALLC.forEach(function(c){NAME[c.k]=c.n});
+  var S={metric:'sum',range:30,scope:'all',view:'day',log:false,cats:{},sel:null};
+  var ROWS=null, ready=false, W=0;
+
+  function pd(s){ var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(s); return m? Date.UTC(+m[1],+m[2]-1,+m[3]) : null; }
+  function ds(ms){ var d=new Date(ms); return d.getUTCFullYear()+'-'+('0'+(d.getUTCMonth()+1)).slice(-2)+'-'+('0'+d.getUTCDate()).slice(-2); }
+  function md(ms){ var d=new Date(ms); return (d.getUTCMonth()+1)+'/'+d.getUTCDate(); }
+  function mdj(ms){ var d=new Date(ms); return (d.getUTCMonth()+1)+'月'+d.getUTCDate()+'日'; }
+  function num(n){ return Math.round(n).toLocaleString('ja-JP'); }
+  function cmp(n){ n=Math.round(n); if(n>=1e8){ return (n/1e8).toFixed(n>=1e9?0:1).replace(/\.0$/,'')+'億'; } if(n>=1e4){ return (n/1e4).toFixed(n>=1e5?0:1).replace(/\.0$/,'')+'万'; } return n.toLocaleString('ja-JP'); }
+  function el(tag,cls,txt){ var e=document.createElement(tag); if(cls) e.className=cls; if(txt!=null) e.textContent=txt; return e; }
+
+  function build(){
+    var src=window.BREACH_DATA||[]; ROWS=[];
+    for(var i=0;i<src.length;i++){
+      var e=src[i], t=pd(e.d);
+      ROWS.push({e:e, t:t, n:(e.t==='主張')?0:(+e.n||0), jp:e.k==='日本', cats:classify(e.i)});
+    }
+  }
+  function inScope(r){ return S.scope==='all' || (S.scope==='jp'?r.jp:!r.jp); }
+  function inCats(r){ var ks=Object.keys(S.cats); if(!ks.length) return true; for(var i=0;i<ks.length;i++){ if(r.cats[ks[i]]) return true; } return false; }
+  function endMs(){ var m=0; ROWS.forEach(function(r){ if(r.t&&r.t>m) m=r.t; }); return m; }
+  function startMs(end){
+    if(S.range>0) return end-(S.range-1)*864e5;
+    var m=Infinity; ROWS.forEach(function(r){ if(r.t&&r.t<m) m=r.t; }); return m;
+  }
+  function val(rows){ if(S.metric==='cnt') return rows.length; var s=0; rows.forEach(function(r){ s+=r.n; }); return s; }
+
+  /* バケット(日、または全期間が長いときは週) */
+  function buckets(){
+    var end=endMs(), st=startMs(end), days=Math.round((end-st)/864e5)+1, wk=days>62, out=[], idx={};
+    var step=wk?7:1, first=st;
+    if(wk){ var d=new Date(st).getUTCDay(); first=st-((d+6)%7)*864e5; }
+    for(var t=first;t<=end;t+=step*864e5){ var b={t:t,key:ds(t),rows:[],v:0,wk:wk}; out.push(b); idx[b.key]=b; }
+    ROWS.forEach(function(r){
+      if(!r.t||r.t<st||r.t>end||!inScope(r)||!inCats(r)) return;
+      var k=r.t; if(wk){ var d=new Date(r.t).getUTCDay(); k=r.t-((d+6)%7)*864e5; }
+      var b=idx[ds(k)]; if(b) b.rows.push(r);
+    });
+    var cum=0; out.forEach(function(b){ b.v=val(b.rows); cum+=b.v; b.c=cum; });
+    return {b:out,wk:wk,st:st,end:end};
+  }
+  function periodRows(useAll){
+    var end=endMs(), st=startMs(end);
+    return ROWS.filter(function(r){
+      if(!inScope(r)) return false;
+      if(S.range>0) return r.t&&r.t>=st&&r.t<=end;
+      return true;
+    });
+  }
+
+  function seg(id,key){
+    var g=$(id); [].forEach.call(g.querySelectorAll('button'),function(b){
+      b.setAttribute('aria-pressed', String(String(S[key])===b.getAttribute('data-v')));
+    });
+  }
+  function bindSeg(id,key,num_){
+    $(id).addEventListener('click',function(ev){
+      var b=ev.target.closest('button'); if(!b) return;
+      var v=b.getAttribute('data-v'); S[key]=num_?+v:v; S.sel=null; render();
+    });
+  }
+
+  function axisTicks(max,log){
+    var t=[];
+    if(log){ for(var p=0;Math.pow(10,p)<=max*1.0001;p+=1) t.push(Math.pow(10,p)); return {ticks:t,top:Math.pow(10,Math.max(1,Math.ceil(Math.log(max)/Math.LN10)))}; }
+    var raw=max/4||1, pw=Math.pow(10,Math.floor(Math.log(raw)/Math.LN10)), f=raw/pw, nice=f<=1?1:f<=2?2:f<=5?5:10, st=nice*pw, top=Math.ceil(max/st)*st||st;
+    for(var v=0;v<=top+1e-9;v+=st) t.push(v); return {ticks:t,top:top};
+  }
+
+  var tip=null;
+  function showTip(i,bk,x,y,wd){
+    if(!tip) tip=$('gcTip'); tip.textContent='';
+    var b=bk.b[i], lab=bk.wk? (mdj(b.t)+'〜'+mdj(b.t+6*864e5)+'の週') : mdj(b.t);
+    var strong=el('b',null, S.view==='cum'? num(b.c)+(S.metric==='cnt'?' 事案':' 件・人') : (S.metric==='cnt'? b.v+' 事案' : num(b.v)+' 件・人'));
+    tip.appendChild(strong); tip.appendChild(el('span',null,lab+(S.view==='cum'?'までの累計':'')));
+    tip.appendChild(document.createElement('br'));
+    tip.appendChild(el('span',null,(S.view==='cum'?'この日の':'')+'事案 '+b.rows.length+'件'+(b.rows.length? ' ※タップで内訳':'')));
+    tip.style.display='block';
+    var tw=tip.offsetWidth, th=tip.offsetHeight, px=x+10, py=Math.max(2,y-th-8);
+    if(px+tw>wd) px=Math.max(2,x-tw-10);
+    tip.style.left=px+'px'; tip.style.top=py+'px';
+  }
+  function hideTip(){ if(tip) tip.style.display='none'; }
+
+  function drawDay(bk){
+    var wrap=$('gcDay'), host=$('gcSvg'); host.textContent='';
+    var W=Math.max(260,wrap.clientWidth||320), H=W<420?230:260, ml=44,mr=8,mt=24,mb=30, pw=W-ml-mr, ph=H-mt-mb, N=bk.b.length;
+    var cum=S.view==='cum', log=S.log&&!cum&&S.metric==='sum';
+    var vals=bk.b.map(function(b){return cum?b.c:b.v}), max=Math.max.apply(null,vals.concat([1]));
+    if(S.metric==='cnt'&&!cum) max=Math.max(max,4);
+    var ax=axisTicks(max,log), top=ax.top;
+    var Y=function(v){ if(log){ return v<1?0:Math.log(v)/Math.LN10/(Math.log(top)/Math.LN10)*ph; } return v/top*ph; };
+    var step=pw/N, bw=Math.max(2,Math.min(24,step-2)), s=[];
+    s.push('<svg width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+(cum?'累計':'日別')+'の漏洩件数のグラフ。数値は下の表にもあります。">');
+    ax.ticks.forEach(function(v){
+      var y=mt+ph-Y(v);
+      s.push('<line x1="'+ml+'" x2="'+(W-mr)+'" y1="'+y+'" y2="'+y+'" stroke="var(--gc-grid)" stroke-width="1"/>');
+      s.push('<text x="'+(ml-6)+'" y="'+(y+4)+'" text-anchor="end" font-size="10.5" fill="var(--gc-mut)">'+(S.metric==='cnt'?v:cmp(v))+'</text>');
+    });
+    s.push('<line x1="'+ml+'" x2="'+(W-mr)+'" y1="'+(mt+ph)+'" y2="'+(mt+ph)+'" stroke="var(--gc-axis)" stroke-width="1"/>');
+    var every=Math.max(1,Math.ceil(40/step)), selI=-1, maxI=0;
+    vals.forEach(function(v,i){ if(v>vals[maxI]) maxI=i; });
+    bk.b.forEach(function(b,i){
+      var cx=ml+step*i+step/2;
+      if(i%every===0||i===N-1&&(N-1)%every>every/2) s.push('<text x="'+cx+'" y="'+(H-10)+'" text-anchor="middle" font-size="10.5" fill="var(--gc-mut)">'+md(b.t)+'</text>');
+      if(b.key===S.sel) selI=i;
+    });
+    if(!cum){
+      bk.b.forEach(function(b,i){
+        var v=vals[i], h=v>0?Math.max(2,Y(v)):0, x=ml+step*i+(step-bw)/2, y=mt+ph-h, op=(S.sel&&b.key!==S.sel)?.38:1;
+        if(h>0){
+          var r=Math.min(4,bw/2,h);
+          s.push('<path d="M'+x+' '+(mt+ph)+'V'+(y+r)+'Q'+x+' '+y+' '+(x+r)+' '+y+'H'+(x+bw-r)+'Q'+(x+bw)+' '+y+' '+(x+bw)+' '+(y+r)+'V'+(mt+ph)+'Z" fill="var(--gc-bar)" opacity="'+op+'"/>');
+        }
+      });
+      if(vals[maxI]>0){
+        var mi=maxI, mh=Y(vals[mi]), mx=ml+step*mi+step/2;
+        var ta=mx>W-60?'end':mx<ml+30?'start':'middle';
+        s.push('<text x="'+(ta==='end'?mx+bw/2:ta==='start'?mx-bw/2:mx)+'" y="'+(mt+ph-mh-6)+'" text-anchor="'+ta+'" font-size="11.5" font-weight="700" fill="var(--gc-ink)">'+(S.metric==='cnt'?vals[mi]:cmp(vals[mi]))+'</text>');
+      }
+    } else {
+      var pts=bk.b.map(function(b,i){ return [ml+step*i+step/2, mt+ph-Y(vals[i])]; });
+      if(pts.length){
+        var d='M'+pts.map(function(p){return p[0].toFixed(1)+' '+p[1].toFixed(1)}).join('L');
+        s.push('<path d="'+d+'L'+pts[pts.length-1][0]+' '+(mt+ph)+'L'+pts[0][0]+' '+(mt+ph)+'Z" fill="var(--gc-bar)" opacity=".1"/>');
+        s.push('<path d="'+d+'" fill="none" stroke="var(--gc-bar)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>');
+        var lp=pts[pts.length-1];
+        s.push('<circle cx="'+lp[0]+'" cy="'+lp[1]+'" r="4" fill="var(--gc-bar)" stroke="var(--gc-surf)" stroke-width="2"/>');
+        var ta2=lp[0]>W-70?'end':'middle';
+        s.push('<text x="'+(ta2==='end'?lp[0]+4:lp[0])+'" y="'+(lp[1]-10)+'" text-anchor="'+ta2+'" font-size="11.5" font-weight="700" fill="var(--gc-ink)">'+(S.metric==='cnt'?vals[vals.length-1]:cmp(vals[vals.length-1]))+'</text>');
+        if(selI>=0) s.push('<circle cx="'+pts[selI][0]+'" cy="'+pts[selI][1]+'" r="4.5" fill="var(--gc-bar)" stroke="var(--gc-surf)" stroke-width="2"/>');
+      }
+    }
+    bk.b.forEach(function(b,i){
+      var lab=(bk.wk?md(b.t)+'の週':md(b.t))+' '+(S.metric==='cnt'?b.v+'事案':num(b.v)+'件・人');
+      s.push('<rect class="hit" data-i="'+i+'" x="'+(ml+step*i)+'" y="'+mt+'" width="'+step+'" height="'+ph+'" tabindex="0" role="button" aria-label="'+lab+'。内訳を表示"/>');
+    });
+    s.push('</svg>');
+    host.innerHTML=s.join('');
+    var svg=host.querySelector('svg');
+    [].forEach.call(svg.querySelectorAll('.hit'),function(h){
+      var i=+h.getAttribute('data-i');
+      function at(ev){ var r=wrap.getBoundingClientRect(), hr=h.getBoundingClientRect(); showTip(i,bk,hr.left-r.left+hr.width/2,(ev&&ev.clientY!=null?ev.clientY-r.top:hr.top-r.top+30),wrap.clientWidth); }
+      h.addEventListener('pointermove',at); h.addEventListener('pointerenter',at); h.addEventListener('pointerleave',hideTip);
+      h.addEventListener('focus',function(){ at(null); }); h.addEventListener('blur',hideTip);
+      h.addEventListener('click',function(){ var k=bk.b[i].key; S.sel=(S.sel===k)?null:k; render(); });
+      h.addEventListener('keydown',function(ev){ if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); h.dispatchEvent(new Event('click')); } });
+    });
+  }
+
+  function drawCats(){
+    var host=$('gcCat'); host.textContent='';
+    var rows=periodRows(true), list=ALLC.map(function(c){
+      var rs=rows.filter(function(r){return r.cats[c.k]}); return {k:c.k,n:c.n,rows:rs,v:val(rs)};
+    }).filter(function(c){return c.rows.length});
+    var main=list.filter(function(c){return c.k!=='none'}).sort(function(a,b){return (b.v-a.v)||(b.rows.length-a.rows.length)});
+    list=main.concat(list.filter(function(c){return c.k==='none'}));
+    var log=S.log&&S.metric==='sum', mx=Math.max.apply(null,list.map(function(c){return c.v}).concat([1]));
+    var any=Object.keys(S.cats).length>0;
+    if(!list.length){ host.appendChild(el('div','gc-empty','この条件に当てはまる事案がありません。')); return; }
+    list.forEach(function(c){
+      var b=el('button','gc-cat'+(any&&!S.cats[c.k]?' dim':'')); b.type='button'; b.setAttribute('aria-pressed',String(!!S.cats[c.k]));
+      var t=el('span','t'); t.appendChild(el('span',null,c.n));
+      t.appendChild(el('i',null,(S.metric==='cnt'? c.rows.length+'事案' : cmp(c.v)+' ・'+c.rows.length+'事案')));
+      var tr=el('span','tr'); var br=el('span','br');
+      var w;
+      if(S.metric==='cnt') w=c.rows.length/Math.max.apply(null,list.map(function(x){return x.rows.length}));
+      else if(log) w=(c.v<1||mx<=1)?0:Math.log(c.v)/Math.log(mx);
+      else w=c.v/mx;
+      br.style.width=Math.max(0.5,Math.min(100,w*100))+'%'; tr.appendChild(br);
+      b.appendChild(t); b.appendChild(tr);
+      b.setAttribute('aria-label',c.n+' '+c.rows.length+'事案 '+(S.metric==='sum'?num(c.v)+'件・人':'')+'。タップで絞り込み');
+      b.addEventListener('click',function(){ if(S.cats[c.k]) delete S.cats[c.k]; else S.cats[c.k]=1; S.sel=null; render(); });
+      host.appendChild(b);
+    });
+  }
+
+  function drawChips(){
+    var host=$('gcChips'); host.textContent='';
+    var rows=periodRows(true);
+    var all=el('button','gc-chip','すべて'); all.type='button'; all.setAttribute('aria-pressed',String(!Object.keys(S.cats).length));
+    all.addEventListener('click',function(){ S.cats={}; S.sel=null; render(); }); host.appendChild(all);
+    ALLC.forEach(function(c){
+      var n=rows.filter(function(r){return r.cats[c.k]}).length;
+      var b=el('button','gc-chip',c.n); b.type='button'; b.setAttribute('aria-pressed',String(!!S.cats[c.k]));
+      b.appendChild(el('small',null,String(n)));
+      b.addEventListener('click',function(){ if(S.cats[c.k]) delete S.cats[c.k]; else S.cats[c.k]=1; S.sel=null; render(); });
+      host.appendChild(b);
+    });
+  }
+
+  function catLabel(){ var ks=Object.keys(S.cats); return ks.length? ks.map(function(k){return NAME[k]}).join('・') : 'すべてのカテゴリー'; }
+  function scopeLabel(){ return S.scope==='jp'?'日本':S.scope==='world'?'海外':'国内外'; }
+
+  function filteredRows(bk){
+    var st=bk.st,end=bk.end;
+    return ROWS.filter(function(r){ return r.t&&r.t>=st&&r.t<=end&&inScope(r)&&inCats(r); });
+  }
+  function drawList(bk){
+    var ul=$('gcList'); ul.textContent='';
+    var rows, selB=null;
+    if(S.sel){ bk.b.forEach(function(b){ if(b.key===S.sel) selB=b; }); }
+    if(selB){ rows=selB.rows.slice(); $('gcT3').textContent='事案の内訳:'+(bk.wk?mdj(selB.t)+'〜'+mdj(selB.t+6*864e5)+'の週':mdj(selB.t)); $('gcS3').textContent='件数の多い順。同じグラフの棒をもう一度タップすると、選択を解除します。'; }
+    else { rows=filteredRows(bk); $('gcT3').textContent='事案の内訳(期間内・件数の多い順)'; $('gcS3').textContent='棒をタップすると、その日の事案だけを表示します。上位30件まで表示します。'; }
+    rows.sort(function(a,b){return (b.n-a.n)||String(b.e.d).localeCompare(String(a.e.d))});
+    if(!rows.length){ var li=el('li','gc-empty','この条件に当てはまる事案がありません。'); ul.appendChild(li); return; }
+    rows.slice(0,30).forEach(function(r){
+      var li=el('li'), nm=el('div','nm'); var rk=el('span','rk',r.e.r||'-'); rk.title='重大度ランク(目安)'; nm.appendChild(rk); nm.appendChild(document.createTextNode(r.e.o)); li.appendChild(nm);
+      var cats=Object.keys(r.cats).map(function(k){return NAME[k]}).join('・');
+      var unit=r.e.t&&r.e.t!=='主張'?r.e.t:'';
+      li.appendChild(el('div','mt',r.e.d+' ・ '+(r.n>0? num(r.n)+(unit||'件') : '件数は未公表・未確認')+(r.e.t==='主張'?' ・攻撃者側の主張(集計に含めず)':'')+' ・ '+r.e.k));
+      li.appendChild(el('div','mt','カテゴリー(自動判定):'+cats));
+      var b=el('button',null,'一覧で詳細を見る ›'); b.type='button';
+      b.addEventListener('click',function(){ var q=String(r.e.o).split(/[(（]/)[0].trim(); closeDlg('dlgChart'); window.openList(q); });
+      li.appendChild(b); ul.appendChild(li);
+    });
+    if(rows.length>30){ ul.appendChild(el('li','mt','ほか '+(rows.length-30)+' 件(一覧で確認できます)')); }
+  }
+
+  function kpis(bk){
+    var rows=filteredRows(bk), tot=val(rows), host=$('gcKpis'); host.textContent='';
+    var best=null; bk.b.forEach(function(b){ if(!best||b.v>best.v) best=b; });
+    function k(l,v,s){ var d=el('div','gc-kpi'); d.appendChild(el('div','l',l)); d.appendChild(el('div','v',v)); d.appendChild(el('div','s',s||'')); host.appendChild(d); }
+    k('事案の数',String(rows.length),mdj(bk.st)+'〜'+mdj(bk.end));
+    var big=rows.reduce(function(m,r){return r.n>m?r.n:m},0);
+    k('漏洩件数の合計(目安)',cmp(rows.reduce(function(s,r){return s+r.n},0)),'人数とは限りません');
+    k('最も多かった日'+(bk.wk?'(週)':''),(best&&best.v>0)?md(best.t):'-',best&&best.v>0?(S.metric==='cnt'?best.v+'事案':cmp(best.v)):'');
+    return {rows:rows,tot:rows.reduce(function(s,r){return s+r.n},0),best:best,big:big};
+  }
+
+  function insights(bk,K){
+    var ul=$('gcIns'); ul.textContent='';
+    function li(t){ ul.appendChild(el('li',null,t)); }
+    if(!K.rows.length){ li('この条件に当てはまる事案はありません。期間や範囲、カテゴリーを変えてみてください。'); return; }
+    if(K.best&&K.best.v>0) li('期間内で'+(S.metric==='cnt'?'事案が最も多かった':'件数が最も多かった')+(bk.wk?'週':'日')+'は '+(bk.wk?mdj(K.best.t)+'の週':mdj(K.best.t))+'('+(S.metric==='cnt'?K.best.v+'事案':num(K.best.v)+'件・人')+'・事案 '+K.best.rows.length+'件)。棒をタップすると内訳が見られます。');
+    var top=K.rows.slice().sort(function(a,b){return b.n-a.n})[0];
+    if(top&&top.n>0&&K.tot>0){ var p=Math.round(top.n/K.tot*100); li('最大の事案は「'+String(top.e.o).split(/[(（]/)[0]+'」('+cmp(top.n)+')で、期間内の合計の約'+p+'%を占めます。'+(p>=40?'1件の影響が大きいため、「対数目盛り」や「事案の数」に切り替えると、全体の動きが見やすくなります。':'')); }
+    var unk=K.rows.filter(function(r){return r.n<=0}).length;
+    if(unk) li('件数が未公表・未確認の事案が '+unk+' 件あります(件数合計には含まれません)。');
+    var und=ROWS.filter(function(r){return !r.t&&inScope(r)&&inCats(r)}).length;
+    if(und) li('日付が月・年だけの事案が ほかに '+und+' 件あり、日別のグラフには入っていません。');
+  }
+
+  function table(bk){
+    var t=$('gcTbl'); t.textContent='';
+    var h=el('tr'); ['日付'+(bk.wk?'(週の開始日)':''),S.metric==='cnt'?'事案の数':'件数の合計','累計','事案の数'].forEach(function(x){ h.appendChild(el('th',null,x)); });
+    t.appendChild(h);
+    bk.b.slice().reverse().forEach(function(b){
+      var r=el('tr'); r.appendChild(el('td',null,b.key)); r.appendChild(el('td',null,S.metric==='cnt'?String(b.v):num(b.v))); r.appendChild(el('td',null,S.metric==='cnt'?String(b.c):num(b.c))); r.appendChild(el('td',null,String(b.rows.length))); t.appendChild(r);
+    });
+  }
+
+  var lastText='';
+  function summary(bk,K){
+    var L=[];
+    L.push('【情報漏洩の件数グラフ】'+mdj(bk.st)+'〜'+mdj(bk.end)+'('+scopeLabel()+'・'+catLabel()+')');
+    L.push('事案 '+K.rows.length+'件 / 漏洩件数の合計(目安) '+num(K.tot)+'(人数とは限りません)');
+    var top=K.rows.slice().sort(function(a,b){return b.n-a.n}).slice(0,5).filter(function(r){return r.n>0});
+    if(top.length){ L.push('件数の多い事案:'); top.forEach(function(r){ L.push('・'+String(r.e.o).split(/[(（]/)[0]+' '+cmp(r.n)+'('+r.e.d+')'); }); }
+    L.push('※報道・公表の数字。カテゴリーは自動判定の目安。');
+    L.push('詳しくは → '+location.href.split('#')[0]+'#chart');
+    L.push('DWA防災情報センター');
+    return L.join('\n');
+  }
+
+  function render(){
+    if(!ready) return;
+    seg('gcMetric','metric'); seg('gcRange','range'); seg('gcScope','scope'); seg('gcView','view');
+    var lg=$('gcLog'); var canLog=S.view==='day'&&S.metric==='sum'; lg.disabled=!canLog; lg.checked=S.log&&canLog;
+    var bk=buckets();
+    drawChips();
+    var K=kpis(bk);
+    $('gcT1').textContent=(S.view==='cum'?'累計の推移':(bk.wk?'週別':'日別')+'の'+(S.metric==='cnt'?'事案の数':'漏洩件数'));
+    $('gcS1').textContent=scopeLabel()+'・'+catLabel()+'・'+mdj(bk.st)+'〜'+mdj(bk.end)+(S.log&&canLog?'・縦軸は対数(1→10→100…)':'')+(bk.wk?'・期間が長いため週ごとに集計':'');
+    drawDay(bk); drawCats(); drawList(bk); insights(bk,K); table(bk);
+    lastText=summary(bk,K);
+  }
+
+  function init(){
+    if(ready){ render(); return; }
+    window.__onBreach(function(){
+      if(!ready){ build(); ready=true; }
+      render();
+    });
+  }
+  function setup(){
+    bindSeg('gcMetric','metric'); bindSeg('gcRange','range',true); bindSeg('gcScope','scope'); bindSeg('gcView','view');
+    $('gcLog').addEventListener('change',function(){ S.log=this.checked; render(); });
+    $('gcCopy').addEventListener('click',function(){ if(!lastText) return; if(window.copy) copy(lastText,'集計をコピーしました'); else if(navigator.clipboard) navigator.clipboard.writeText(lastText).then(function(){ if(window.toast) toast('集計をコピーしました'); }); });
+    $('gcShare').addEventListener('click',function(){ if(!lastText) return; if(navigator.share) navigator.share({title:'情報漏洩の件数グラフ',text:lastText}).catch(function(){}); else if(window.copy) copy(lastText,'共有に未対応のため、集計をコピーしました'); });
+    var rt=null; window.addEventListener('resize',function(){ clearTimeout(rt); rt=setTimeout(function(){ if(ready&&$('dlgChart').classList.contains('open')) render(); },120); });
+    document.addEventListener('keydown',function(ev){ if(ev.key==='Escape') hideTip(); });
+    var _o=window.openDlg; window.openDlg=function(id){ var r=_o.apply(this,arguments); if(id==='dlgChart'){ init(); setTimeout(function(){ if(ready) render(); },60); } return r; };
+    if($('dlgChart').classList.contains('open')) init();
+    window.openChart=function(opts){ opts=opts||{}; if(opts.cat){ S.cats={}; S.cats[opts.cat]=1; } window.openDlg('dlgChart'); };
+  }
+  setup();
+})();
+</script>
+
 </body>
 </html>
