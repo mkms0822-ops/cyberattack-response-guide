@@ -2549,6 +2549,7 @@ var STEPS = [
    '<li><b>メールアドレス</b> … なりすましメールに注意</li>' +
    '<li><b>パスワード</b> … 使い回していた他のサービスも変更</li>' +
    '<li><b>運転免許証・マイナンバーカードの画像</b> … <b>最も危険</b>。手順2へ</li>' +
+   '<li><b>パスポートの番号</b> … 番号だけなら、すぐの悪用は困難とされます。<b>顔写真ページの画像</b>まで漏れたときは、免許証と同じく危険。<a href="#passport" onclick="goPassport();return false">→ パスポートの対応</a></li>' +
    '<li><b>クレジットカード番号</b> … カード会社へ即連絡。手順3へ</li>' +
    '</ul>' +
    '<div class="warn">⚠️ <b>通知を装った詐欺に注意。</b>' +
@@ -2636,13 +2637,14 @@ var STEPS = [
    '通知の内容を確認してから申し込むと、自己負担を避けられる場合があります。</p>' },
 
 
- { id:'s2b', ti:'身分証そのものへの対応', mt:'免許証・マイナンバーカードが流出したとき',
+ { id:'s2b', ti:'身分証そのものへの対応', mt:'免許証・マイナンバーカード・パスポートが流出したとき',
    body:
-   '<p>どちらが流出したかで、やることが変わります。</p>' +
+   '<p>どの書類が流出したかで、やることが変わります。</p>' +
 
    '<div class="doc-tab">' +
      '<button type="button" class="on" onclick="docTab(\'lic\',this)">🚗 運転免許証</button>' +
      '<button type="button" onclick="docTab(\'myn\',this)">🪪 マイナンバーカード</button>' +
+     '<button type="button" onclick="docTab(\'pas\',this)">🛂 パスポート</button>' +
    '</div>' +
 
    /* ---- 運転免許証 ---- */
@@ -2721,9 +2723,71 @@ var STEPS = [
      '受診の予定がある方は、資格確認書の発行を窓口で相談してください。</p>' +
    '</div>' +
 
+   /* ---- パスポート ---- */
+   '<div class="doc-p" id="docPas">' +
+     '<p><b>パスポートの番号が漏れた場合</b>の対応です。まず落ち着いてください。' +
+     '番号だけが単独で漏れても、すぐに悪用されることは<b>極めて困難</b>とされます。</p>' +
+
+     '<div class="warn">💡 <b>番号だけでは、悪用されにくい理由</b><br>' +
+     '・ICチップと<b>顔の照合</b>があり、物理的な旅券の暗号鍵は複製できない<br>' +
+     '・旅券に<b>住所欄がなく</b>、番号だけで銀行口座を開くのは難しい<br>' +
+     '本当の脅威は、漏れた番号が<b>他の個人情報と結びつけられる(名寄せ)</b>ことです。' +
+     '「困難」であって「不可能」ではないので、次の対策を進めてください。</div>' +
+
+     '<div class="warn">⚠️ <b>顔写真ページの「画像」まで漏れた場合は別です。</b><br>' +
+     '氏名・生年月日・顔写真・番号がそろうため、運転免許証の画像と同じように、' +
+     '口座・携帯回線・カードの<b>不正な契約</b>に使われるおそれがあります。' +
+     '<b>手順2の本人申告を最優先</b>にしてください。</div>' +
+
+     '<p><b>警戒したい二次被害</b></p>' +
+     '<ul>' +
+       '<li><b>標的型フィッシング</b> … 本物の番号を書いた偽の通知で、だます詐欺</li>' +
+       '<li><b>海外サービスでの不正契約</b> … 簡易なオンライン認証の悪用</li>' +
+       '<li><b>データ削除詐欺</b> … 「漏えいデータを消す」費用を口実にした金銭の要求</li>' +
+       '<li><b>宿泊・予約の乗っ取り</b> … 旅行サイトや航空券の情報の変更を狙う詐欺</li>' +
+     '</ul>' +
+
+     '<div class="warn">🚫 <b>情報漏えいだけでは、番号の再発行は原則できません。</b><br>' +
+     '再発行(切替)の対象になるのは、残存有効期間が1年未満の場合や、紛失・盗難の場合などです。' +
+     '<b>まず、都道府県の旅券窓口に事前に相談</b>してください。' +
+     '紛失・盗難の届出をすると、その旅券は<b>失効</b>し、見つかっても使えなくなります(詳しい条件は窓口で確認)。' +
+     '海外への渡航予定がある方は、早めの相談を。</div>' +
+
+     '<p><b>漏えいを確認した直後の4ステップ</b></p>' +
+     '<ol>' +
+       '<li><b>漏えいの範囲を特定</b> … 流出元の公式窓口で、対象の項目と期間を確認(番号だけか、画像もか)</li>' +
+       '<li><b>信用情報機関に本人申告</b> … JICC・CIC・全銀協(全国銀行個人信用情報センター)。' +
+         '<a href="#s2" onclick="var e=document.getElementById(\'s2\');if(e){e.classList.add(\'open\');e.scrollIntoView({behavior:\'smooth\',block:\'start\'})};return false">→ 手順2</a>。' +
+         '受付の条件・有効期間(JICCは5年間と案内される例)は、各機関の公式ページで確認してください</li>' +
+       '<li><b>パスワードの刷新</b> … 旅行サイト、航空会社、メールのパスワードを変更し、二要素認証をオンに</li>' +
+       '<li><b>窓口に個別に相談</b> … 都道府県の旅券窓口で、特例の有無を確認</li>' +
+     '</ol>' +
+
+     '<p><b>漏えいに便乗した詐欺への判断基準</b></p>' +
+     '<div class="warn">🚫 <b>やってはいけない対応</b><br>' +
+     '・不審なメールやSMSのURLをクリックする<br>' +
+     '・「漏えいデータの削除」などの名目で、お金を払う(削除の代行をうたう請求には応じない)<br>' +
+     '・認証コードや身分証の写真を、求められるまま再送信する</div>' +
+     '<div class="warn">✅ <b>推奨される防衛行動</b><br>' +
+     '・公式サイトから、直接窓口に問い合わせる(メールのリンクからは入らない)<br>' +
+     '・警察相談専用電話 <a href="tel:%239110"><b>#9110</b></a> に相談する<br>' +
+     '・クレジットカードの利用明細と、旅行・航空券の予約内容を、こまめに確認する</div>' +
+
+     '<p><b>防犯・被害予防チェックシート</b></p>' +
+     '<ul>' +
+       '<li>□ 漏えいの経路を特定する(正確な対象期間と項目を照会)</li>' +
+       '<li>□ JICC・全銀協などに届け出る(個人信用情報への不正利用防止の申告)</li>' +
+       '<li>□ 二要素認証を徹底する(メール・金融・旅行サイトを強化)</li>' +
+       '<li>□ 公的な相談窓口を確保する(#9110や、都道府県の旅券窓口)</li>' +
+     '</ul>' +
+
+     '<p class="sm" style="font-size:12px">※ 制度の条件(本人申告の受付、再発行の対象など)は変わることがあります。' +
+     '最新の条件は、外務省・都道府県の旅券窓口・各信用情報機関の公式の案内で確認してください。</p>' +
+   '</div>' +
+
    '<div class="cm-note" style="margin-top:14px">' +
-     '<b>どちらの場合も、最優先は手順2の本人申告です。</b><br>' +
-     'カードを作り直しても、流出した情報は取り戻せません。' +
+     '<b>どの場合も、最優先は手順2の本人申告です。</b><br>' +
+     'カードや旅券を作り直しても、流出した情報は取り戻せません。' +
      '名義を使われないようにする手続きを、先に済ませてください。' +
    '</div>' },
  { id:'s3', ti:'カードと口座を確認する', mt:'いま最も早く効きます。本人申告を待っている間に',
@@ -2869,6 +2933,17 @@ function drawSteps(){
   document.getElementById('steps').innerHTML = h;
   updProg();
 }
+
+function goPassport(){
+  var el = document.getElementById('s2b');
+  if(!el) return;
+  el.classList.add('open');
+  var bs = el.querySelectorAll('.doc-tab button');
+  docTab('pas', bs.length ? bs[bs.length-1] : null);
+  try{ el.scrollIntoView({behavior:'smooth', block:'start'}); }catch(e){ el.scrollIntoView(); }
+}
+window.addEventListener('hashchange', function(){ if(location.hash === '#passport') goPassport(); });
+window.addEventListener('load', function(){ if(location.hash === '#passport') setTimeout(goPassport, 400); });
 
 function toggleStep(id){
   var el = document.getElementById(id);
@@ -3069,8 +3144,10 @@ document.addEventListener('keydown', function(e){
 function docTab(k, btn){
   var l = document.getElementById('docLic');
   var m = document.getElementById('docMyn');
+  var pp = document.getElementById('docPas');
   if(l) l.classList.toggle('on', k === 'lic');
   if(m) m.classList.toggle('on', k === 'myn');
+  if(pp) pp.classList.toggle('on', k === 'pas');
   var bs = document.querySelectorAll('.doc-tab button');
   for(var i=0;i<bs.length;i++) bs[i].classList.remove('on');
   if(btn) btn.classList.add('on');
